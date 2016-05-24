@@ -1,0 +1,6 @@
+dcase/target/
+dcase/.settings
+dcase/src/test
+/sonar-project.properties
+/.sonar/
+/target/

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Module id="${project.name}" class="edu.casetools.dcase.module.impl.DCaseModule" binaryversion="3.4.01" version="${project.version}" schema-level="2" uid="7b85c00b-917d-41d1-9787-90da3684574c">
+    <ClassPath>
+        <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
+        <PathEntry path="lib/commons-lang3-3.1.jar"/>
+    </ClassPath>
+    <Profiles>
+        <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
+            <Stereotype name="ContextInformationMessageStereotype" metaclass="CommunicationMessage" is-hidden="false" label="%ContextInformationMessageStereotype.label" uid="25ad856f-5c3c-44f3-be0e-d717bf7a79d4">
+                <Icon path="%ContextInformationMessageStereotype.image"/>
+                <Image path="%ContextInformationMessageStereotype.image"/>
+                <TagTypes>
+                    <TagType name="CETagId" uid="f09597f9-4954-4e9e-bc9a-eaa41795cba7" label="%ContextInformationMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagResponsibility" uid="bb76ef80-add9-4b1f-8234-467e32e89fff" label="%ContextInformationMessageStereotype.properties.responsibility" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagRegularity" uid="5ed5cdae-cd6c-47d8-931c-40d423500f5e" label="%ContextInformationMessageStereotype.properties.regularity" parameter-card="2" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagFrequency" uid="d29eb85f-d81c-47ba-85c4-e70ebb5d9a7d" label="%ContextInformationMessageStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagSynchronicity" uid="b6df0eec-68b3-498c-bb8a-913efe9821f8" label="%ContextInformationMessageStereotype.properties.synchronicity" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="InteractionDiagramStereotype" metaclass="SequenceDiagram" is-hidden="false" label="%InteractionDiagramStereotype.label" uid="6b01c5f3-529e-486c-aa36-57a7fb4f9b2d">
+                <Icon path="%InteractionDiagramStereotype.image"/>
+                <Image path="%InteractionDiagramStereotype.image"/>
+            </Stereotype>
+            <Stereotype name="CommunicationDiagramStereotype" metaclass="CommunicationDiagram" is-hidden="false" label="%CommunicationDiagramStereotype.label" uid="b07585d6-6c7f-4dc0-b631-5510a8453e81">
+                <Icon path="%CommunicationDiagramStereotype.image"/>
+                <Image path="%CommunicationDiagramStereotype.image"/>
+            </Stereotype>
+            <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
+                <TagTypes>
+                    <TagType name="TagName" uid="eb5615f7-28bd-4314-913a-9bccf7e0bf12" label="Name" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </MetaclassReference>
+        </Profile>
+    </Profiles>
+    <Gui>
+        <Commands>
+            <Command id="CreateInteractionDiagram" label="%CreateInteractionDiagram.label" tooltip="%CreateInteractionDiagram.tooltip" image="%CreateInteractionDiagram.image" group="%CreateInteractionDiagram.group" modify-model="true" group-image="%CreateInteractionDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateInteractionDiagram"/>
+            </Command>
+            <Command id="CreateCommunicationDiagram" label="%CreateCommunicationDiagram.label" tooltip="%CreateCommunicationDiagram.tooltip" image="%CreateCommunicationDiagram.image" group="%CreateCommunicationDiagram.group" modify-model="true" group-image="%CreateCommunicationDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateCommunicationDiagram"/>
+            </Command>
+        </Commands>
+        <Tools>
+            <Tool id="ContextInformationMessageTool" label="%ContextInformationMessageTool.label" tooltip="%ContextInformationMessageTool.tooltip" image="%ContextInformationMessageTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.communication.tools.notes.ContextInformationMessageTool">
+                    <HParameter name="metaclass" value="CommunicationMessage"/>
+                    <HParameter name="stereotype" value="ContextInformationMessageStereotype"/>
+                </Handler>
+            </Tool>
+        </Tools>
+        <ContextualMenu>
+            <CommandRef refid="CreateInteractionDiagram"/>
+            <CommandRef refid="CreateCommunicationDiagram"/>
+        </ContextualMenu>
+        <Diagrams>
+            <DiagramType base-diagram="SequenceDiagram" stereotype="InteractionDiagramStereotype">
+                <Palette keepBasePalette="true"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.interaction.InteractionDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="CommunicationDiagram" stereotype="CommunicationDiagramStereotype">
+                <Palette keepBasePalette="true"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.communication.CommunicationDiagramCustomizer"/>
+            </DiagramType>
+        </Diagrams>
+        <Views>
+            <PropertyPage id="DCasePropertyPage" class="edu.casetools.dcase.modelio.properties.DCasePropertyPage" label="%PropertyPage.label" image="%PropertyPage.image"/>
+        </Views>
+    </Gui>
+    <Dependencies/>
+</Module>
