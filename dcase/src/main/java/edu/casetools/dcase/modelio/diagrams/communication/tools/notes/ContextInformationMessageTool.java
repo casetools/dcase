@@ -27,14 +27,14 @@ import org.modelio.metamodel.factory.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationMessage;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
-import edu.casetools.dcase.modelio.diagrams.NoteTool;
+import edu.casetools.dcase.modelio.diagrams.CommunicationMessageTool;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.utils.DiagramUtils;
 
 /**
  * The Class ContextNoteTool is the tool for creating a Context Note.
  */
-public class ContextInformationMessageTool extends NoteTool {
+public class ContextInformationMessageTool extends CommunicationMessageTool {
 
     /*
      * (non-Javadoc)
@@ -57,7 +57,7 @@ public class ContextInformationMessageTool extends NoteTool {
      * org.modelio.metamodel.uml.infrastructure.ModelElement)
      */
     @Override
-    protected CommunicationMessage createOwnNote(IUmlModel model, ModelElement owner)
+    protected CommunicationMessage createOwnCommunicationMessage(IUmlModel model, ModelElement owner)
 	    throws ExtensionNotFoundException {
 	return DiagramUtils.getInstance().createCommunicationMessage(model, owner, DCaseStereotypes.STEREOTYPE_MESSAGE);
     }

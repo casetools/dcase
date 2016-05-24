@@ -60,6 +60,9 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 	    case 5:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_FREQUENCY, value);
 		break;
+	    case 6:
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_SYNCHRONICITY, value);
+		break;
 	    default:
 		break;
 	    }
@@ -98,8 +101,17 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
 	// TagFrequency
 	string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MESSAGE_FREQUENCY, element);
-	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.Frequency"), string);
+	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagFrequency"), string);
 
+	// TagSynchronicity
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_SYNCHRONICITY);
+	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagSynchronicity"),
+		property,
+		new String[] {
+			I18nMessageService
+				.getString("Ui.ContextInformationMessage.Property.TagSynchronicity.Synchronous"),
+			I18nMessageService
+				.getString("Ui.ContextInformationMessage.Property.TagSynchronicity.Asynchronous") });
     }
 
 }

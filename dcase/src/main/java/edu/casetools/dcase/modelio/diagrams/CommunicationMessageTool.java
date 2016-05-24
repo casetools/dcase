@@ -44,9 +44,9 @@ import edu.casetools.dcase.module.i18n.I18nMessageService;
 /**
  * The Class NoteTool has the common methods to create the tool of a note.
  */
-public abstract class NoteTool extends DefaultAttachedBoxTool {
+public abstract class CommunicationMessageTool extends DefaultAttachedBoxTool {
 
-    private static final Logger logger = Logger.getLogger(NoteTool.class.getName());
+    private static final Logger logger = Logger.getLogger(CommunicationMessageTool.class.getName());
 
     /**
      * Default method to accept the Note when creating it.
@@ -85,7 +85,7 @@ public abstract class NoteTool extends DefaultAttachedBoxTool {
 	try {
 	    ModelElement owner = (ModelElement) paramIDiagramGraphic.getElement();
 
-	    CommunicationMessage message = createOwnNote(model, owner);
+	    CommunicationMessage message = createOwnCommunicationMessage(model, owner);
 	    paramIDiagramHandle.unmask(message, paramPoint.x, paramPoint.y);
 	    paramIDiagramHandle.save();
 	    paramIDiagramHandle.close();
@@ -110,7 +110,7 @@ public abstract class NoteTool extends DefaultAttachedBoxTool {
      * @throws ExtensionNotFoundException
      *             the extension not found exception
      */
-    protected abstract CommunicationMessage createOwnNote(IUmlModel model, ModelElement owner)
+    protected abstract CommunicationMessage createOwnCommunicationMessage(IUmlModel model, ModelElement owner)
 	    throws ExtensionNotFoundException;
 
     /*

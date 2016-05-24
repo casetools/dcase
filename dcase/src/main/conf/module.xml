@@ -42,6 +42,10 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateCommunicationDiagram"/>
             </Command>
+            <Command id="OpenContextInformationMessagesTable" label="%OpenContextInformationMessagesTable.label" tooltip="%OpenContextInformationMessagesTable.tooltip" image="%OpenContextInformationMessagesTable.image" group="%OpenContextInformationMessagesTable.group" modify-model="true" group-image="%OpenContextInformationMessagesTable.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.tables.OpenMessagesTable"/>
+            </Command>
         </Commands>
         <Tools>
             <Tool id="ContextInformationMessageTool" label="%ContextInformationMessageTool.label" tooltip="%ContextInformationMessageTool.tooltip" image="%ContextInformationMessageTool.image">
@@ -54,6 +58,7 @@
         <ContextualMenu>
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateCommunicationDiagram"/>
+            <CommandRef refid="OpenContextInformationMessagesTable"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="SequenceDiagram" stereotype="InteractionDiagramStereotype">

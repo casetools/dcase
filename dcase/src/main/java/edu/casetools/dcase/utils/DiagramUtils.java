@@ -284,7 +284,7 @@ public class DiagramUtils {
 	} catch (ExtensionNotFoundException e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
 	}
-	DiagramUtils.getInstance().setFreeName(createdElement, "message");
+	DiagramUtils.getInstance().setFreeName(createdElement, I18nMessageService.getString("Ui.Message.Name"));
 	return createdElement;
     }
 
