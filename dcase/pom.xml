@@ -213,7 +213,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<description>D-CASE (Design for Context-Aware Systems Engineering), a module for Modelio (https://www.modelio.org/) that helps the design stage of a Context-Aware System (C-AS) through UML extensions.</description>
+	<description>DCASE (Design for Context-Aware Systems Engineering), a module for Modelio (https://www.modelio.org/) that helps the design stage of a Context-Aware System (C-AS) through UML extensions.</description>
 	<url>https://github.com/casetools/dcase</url>
 	<organization>
 		<name>C-ASE</name>

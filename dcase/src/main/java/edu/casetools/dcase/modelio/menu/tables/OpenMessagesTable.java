@@ -26,15 +26,22 @@ import org.modelio.api.module.IModule;
 import org.modelio.api.module.commands.DefaultModuleCommandHandler;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
+import edu.casetools.dcase.extensions.tables.contextmodel.ContextModelTable;
+
 /**
  * The Class OpenMessagesTable opens the Context Information Messages Table from
  * the contextual menu.
  */
 public class OpenMessagesTable extends DefaultModuleCommandHandler {
 
+    private ContextModelTable tableDialog;
+
+    /**
+     * Instantiates a new open dependency table.
+     */
     public OpenMessagesTable() {
 	super();
-
+	this.tableDialog = null;
     }
 
     /*
@@ -57,7 +64,13 @@ public class OpenMessagesTable extends DefaultModuleCommandHandler {
      */
     @Override
     public void actionPerformed(List<MObject> selectedElements, IModule module) {
-	/* method not implemented yet */
+	if (this.tableDialog != null)
+	    this.tableDialog.setVisible(true);
+	else
+	    this.tableDialog = new ContextModelTable();
+
+	this.tableDialog.refresh();
+	this.tableDialog.toFront();
     }
 
 }
