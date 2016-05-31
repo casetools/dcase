@@ -24,7 +24,9 @@ import org.modelio.api.diagram.IDiagramGraphic;
 import org.modelio.api.diagram.IDiagramHandle;
 import org.modelio.api.model.IUmlModel;
 import org.modelio.metamodel.factory.ExtensionNotFoundException;
+import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationChannel;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationMessage;
+import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationNode;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
 import edu.casetools.dcase.modelio.diagrams.CommunicationMessageTool;
@@ -59,7 +61,22 @@ public class ContextInformationMessageTool extends CommunicationMessageTool {
     @Override
     protected CommunicationMessage createOwnCommunicationMessage(IUmlModel model, ModelElement owner)
 	    throws ExtensionNotFoundException {
-	return DiagramUtils.getInstance().createCommunicationMessage(model, owner, DCaseStereotypes.STEREOTYPE_MESSAGE);
+	CommunicationMessage message = DiagramUtils.getInstance().createCommunicationMessage(model, owner,
+		DCaseStereotypes.STEREOTYPE_MESSAGE);
+	createContextMessageDependencies(owner, message);
+	return message;
+    }
+
+    private void createContextMessageDependencies(ModelElement owner, CommunicationMessage message) {
+	if (owner instanceof CommunicationChannel) {
+	    CommunicationChannel channel = (CommunicationChannel) owner;
+	    CommunicationNode origin = channel.getStart();
+	    DiagramUtils.getInstance().createDependency(origin, message,
+		    DCaseStereotypes.STEREOTYPE_DEPENDENCY_PRODUCE);
+	    CommunicationNode target = channel.getEnd();
+	    DiagramUtils.getInstance().createDependency(target, message,
+		    DCaseStereotypes.STEREOTYPE_DEPENDENCY_CONSUME);
+	}
     }
 
 }

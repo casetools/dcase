@@ -71,7 +71,7 @@ public class TableUtils {
 	List<MObject> linesHeader = new ArrayList<>();
 
 	for (Stereotype stereotype : stereotypeVector) {
-	    linesHeader = getAllElementsStereotypedAs(linesHeader, stereotype.getName());
+	    linesHeader = getAllElementsStereotypedAs(linesHeader, DCasePeerModule.MODULE_NAME, stereotype.getName());
 	}
 
 	return linesHeader;
@@ -86,12 +86,12 @@ public class TableUtils {
      *            the stereotype
      * @return the all elements stereotyped as
      */
-    public List<MObject> getAllElementsStereotypedAs(List<MObject> list, String stereotype) {
+    public List<MObject> getAllElementsStereotypedAs(List<MObject> list, String module, String stereotype) {
 	List<MObject> allElements = ModelioUtils.getInstance().getAllElements();
 
 	for (MObject object : allElements) {
 	    if (object instanceof ModelElement) {
-		if (((ModelElement) object).isStereotyped(DCasePeerModule.MODULE_NAME, stereotype))
+		if (((ModelElement) object).isStereotyped(module, stereotype))
 		    list.add(object);
 	    }
 	}

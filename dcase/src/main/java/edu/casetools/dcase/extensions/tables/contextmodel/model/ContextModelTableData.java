@@ -32,6 +32,7 @@ import edu.casetools.dcase.extensions.tables.headers.TableHeaderData;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.ModelioUtils;
 import edu.casetools.dcase.utils.tables.ModelioTableUtils;
 import edu.casetools.dcase.utils.tables.TableUtils;
@@ -143,9 +144,9 @@ public class ContextModelTableData implements Serializable {
 
     private void updateScope() {
 	MObject element = ModelioUtils.getInstance().getElementByName(scope);
-	ArrayList<MObject> messages = new ArrayList<MObject>();
-	messages = (ArrayList<MObject>) ModelioTableUtils.getInstance()
-		.getMessagesFromComInteraction(messages,(ModelElement) element);
+	ArrayList<MObject> messages = new ArrayList<>();
+	messages = (ArrayList<MObject>) ModelioTableUtils.getInstance().getMessagesFromComInteraction(messages,
+		(ModelElement) element);
 	dataList = new ArrayList<>();
 	setSituationalParameters(messages);
     }
@@ -161,7 +162,7 @@ public class ContextModelTableData implements Serializable {
 	dataList = new ArrayList<>();
 	ArrayList<MObject> list = new ArrayList<>();
 	list = (ArrayList<MObject>) TableUtils.getInstance().getAllElementsStereotypedAs(list,
-		DCaseStereotypes.STEREOTYPE_MESSAGE);
+		DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE);
 	setSituationalParameters(list);
     }
 

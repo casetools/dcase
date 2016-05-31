@@ -20,19 +20,27 @@
  */
 package edu.casetools.dcase.modelio.properties.pages;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.core.runtime.AssertionFailedException;
+import org.modelio.api.model.IModelingSession;
+import org.modelio.api.model.ITransaction;
+import org.modelio.api.modelio.Modelio;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.factory.ExtensionNotFoundException;
+import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
+import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.dcase.utils.ModelioUtils;
 import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.dcase.utils.tables.TableUtils;
 
 public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
@@ -62,6 +70,14 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 		break;
 	    case 6:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_SYNCHRONICITY, value);
+		break;
+	    case 7:
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_SITUATIONAL_PARAMETER,
+			value);
+		removeOldTracedSituationalParameters(element);
+		if (!value.equals(I18nMessageService
+			.getString("Ui.ContextInformationMessage.Property.TagSituationalParameter.None")))
+		    traceElementToSituationalParameter(element, value);
 		break;
 	    default:
 		break;
@@ -112,6 +128,72 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 				.getString("Ui.ContextInformationMessage.Property.TagSynchronicity.Synchronous"),
 			I18nMessageService
 				.getString("Ui.ContextInformationMessage.Property.TagSynchronicity.Asynchronous") });
+
+	// TagSituationalParameter
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_MESSAGE_SITUATIONAL_PARAMETER);
+	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagSituationalParameter"),
+		property, getAllSituationalParameters());
+
+    }
+
+    private String[] getAllSituationalParameters() {
+
+	MObject situationalParameter;
+	ArrayList<MObject> situationalParameters = new ArrayList<>();
+
+	situationalParameters = (ArrayList<MObject>) TableUtils.getInstance()
+		.getAllElementsStereotypedAs(situationalParameters, "RCase", "SituationalParameterStereotype");
+	String[] situationalParameterNames = new String[situationalParameters.size() + 1];
+	situationalParameterNames[0] = new String(
+		I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagSituationalParameter.None"));
+	for (int i = 0; i < situationalParameters.size(); i++) {
+	    situationalParameter = situationalParameters.get(i);
+	    situationalParameterNames[i + 1] = situationalParameter.getName();
+	}
+	return situationalParameterNames;
+    }
+
+    private void traceElementToSituationalParameter(ModelElement element, String value) {
+	IModelingSession session = Modelio.getInstance().getModelingSession();
+	ITransaction transaction = session
+		.createTransaction(I18nMessageService.getString("Info.Session.Create", new String[] { "" }));
+	ModelElement situationalParameter = (ModelElement) ModelioUtils.getInstance().getElementByName(value);
+
+	try {
+	    session.getModel().createDependency(element, situationalParameter, "ModelerModule", "trace");
+	    transaction.commit();
+	} catch (ExtensionNotFoundException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	} finally {
+	    transaction.close();
+	}
+
+    }
+
+    private void removeOldTracedSituationalParameters(ModelElement element) {
+
+	for (MObject child : element.getCompositionChildren()) {
+	    if (child instanceof ModelElement) {
+		ModelElement auxiliarChild = (ModelElement) child;
+		if (auxiliarChild.isStereotyped("ModelerModule", "trace")) {
+		    deleteSituationalParameter(auxiliarChild);
+		}
+	    }
+
+	}
+
+    }
+
+    private void deleteSituationalParameter(ModelElement auxiliarChild) {
+	if (auxiliarChild instanceof Dependency) {
+	    Dependency dependency = (Dependency) auxiliarChild;
+	    ModelElement target = dependency.getDependsOn();
+	    if (target.isStereotyped("RCase", "SituationalParameterStereotype"))
+		auxiliarChild.delete();
+
+	}
     }
 
 }

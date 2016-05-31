@@ -47,6 +47,8 @@ public class DCaseProperties {
 
     public static final String PROPERTY_MESSAGE_SYNCHRONICITY = "TagSynchronicity";
 
+    public static final String PROPERTY_MESSAGE_SITUATIONAL_PARAMETER = "TagSituationalParameter";
+
     private DCaseProperties() {
 
     }
