@@ -15,6 +15,7 @@
                     <TagType name="TagRegularity" uid="5ed5cdae-cd6c-47d8-931c-40d423500f5e" label="%ContextInformationMessageStereotype.properties.regularity" parameter-card="2" is-hidden="false" is-signed="false"/>
                     <TagType name="TagFrequency" uid="d29eb85f-d81c-47ba-85c4-e70ebb5d9a7d" label="%ContextInformationMessageStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagSynchronicity" uid="b6df0eec-68b3-498c-bb8a-913efe9821f8" label="%ContextInformationMessageStereotype.properties.synchronicity" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagSituationalParameter" uid="0fb050e1-5267-4c1f-8b42-92a113caded0" label="%ContextInformationMessageStereotype.properties.situationalParameter" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="InteractionDiagramStereotype" metaclass="SequenceDiagram" is-hidden="false" label="%InteractionDiagramStereotype.label" uid="6b01c5f3-529e-486c-aa36-57a7fb4f9b2d">
@@ -24,6 +25,18 @@
             <Stereotype name="CommunicationDiagramStereotype" metaclass="CommunicationDiagram" is-hidden="false" label="%CommunicationDiagramStereotype.label" uid="b07585d6-6c7f-4dc0-b631-5510a8453e81">
                 <Icon path="%CommunicationDiagramStereotype.image"/>
                 <Image path="%CommunicationDiagramStereotype.image"/>
+            </Stereotype>
+            <Stereotype name="ProduceStereotype" metaclass="Dependency" is-hidden="false" label="%ProduceStereotype.label" uid="646d8bd2-6d16-4ea5-a9d1-45ef01aceac6">
+                <Icon path="%ProduceStereotype.image"/>
+                <Image path="%ProduceStereotype.image"/>
+                <TagTypes/>
+                <NoteTypes/>
+            </Stereotype>
+            <Stereotype name="ConsumeStereotype" metaclass="Dependency" is-hidden="false" label="%ConsumeStereotype.label" uid="68fa3182-ba54-4c49-a402-ef307736d75e">
+                <Icon path="%ConsumeStereotype.image"/>
+                <Image path="%ConsumeStereotype.image"/>
+                <TagTypes/>
+                <NoteTypes/>
             </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
                 <TagTypes>
@@ -42,6 +55,10 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateCommunicationDiagram"/>
             </Command>
+            <Command id="OpenContextInformationMessagesTable" label="%OpenContextInformationMessagesTable.label" tooltip="%OpenContextInformationMessagesTable.tooltip" image="%OpenContextInformationMessagesTable.image" group="%OpenContextInformationMessagesTable.group" modify-model="true" group-image="%OpenContextInformationMessagesTable.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.tables.OpenMessagesTable"/>
+            </Command>
         </Commands>
         <Tools>
             <Tool id="ContextInformationMessageTool" label="%ContextInformationMessageTool.label" tooltip="%ContextInformationMessageTool.tooltip" image="%ContextInformationMessageTool.image">
@@ -54,6 +71,7 @@
         <ContextualMenu>
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateCommunicationDiagram"/>
+            <CommandRef refid="OpenContextInformationMessagesTable"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="SequenceDiagram" stereotype="InteractionDiagramStereotype">

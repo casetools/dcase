@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with D-CASE. If not, see <http://www.gnu.org/licenses/>.
+ * along with DCASE. If not, see <http://www.gnu.org/licenses/>.
  * 
  */
 package edu.casetools.dcase.module.api;
@@ -46,6 +46,8 @@ public class DCaseProperties {
     public static final String PROPERTY_MESSAGE_FREQUENCY = "TagFrequency";
 
     public static final String PROPERTY_MESSAGE_SYNCHRONICITY = "TagSynchronicity";
+
+    public static final String PROPERTY_MESSAGE_SITUATIONAL_PARAMETER = "TagSituationalParameter";
 
     private DCaseProperties() {
 

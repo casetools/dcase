@@ -30,7 +30,6 @@ import org.modelio.metamodel.mda.Project;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.GeneralClass;
-import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 // TODO: Auto-generated Javadoc
@@ -78,7 +77,7 @@ public class ModelioUtils {
 	ArrayList<MObject> auxiliarVector = vector;
 	for (MObject child : project.getCompositionChildren()) {
 
-	    if (child instanceof Package) {
+	    if (!child.getCompositionChildren().isEmpty()) {
 		auxiliarVector = getElementsFromMObject(auxiliarVector, child);
 	    }
 
