@@ -106,18 +106,18 @@ public class ModelioTableUtils {
     }
 
     public List<MObject> getMessagesFromComInteraction(List<MObject> list, ModelElement element) {
+	List<MObject> auxiliarList = list;
 	for (MObject child : element.getCompositionChildren()) {
-	    if(child instanceof ModelElement){
-        	    ModelElement modelElement = (ModelElement) child;
-        	    if (!modelElement.getCompositionChildren().isEmpty() )
-        		list = getMessagesFromComInteraction(list, modelElement);
-        	    if (modelElement.isStereotyped(DCasePeerModule.MODULE_NAME,
-        		    DCaseStereotypes.STEREOTYPE_MESSAGE)) {
-        		list.add(child);
-        	    }
+	    if (child instanceof ModelElement) {
+		ModelElement modelElement = (ModelElement) child;
+		if (!modelElement.getCompositionChildren().isEmpty())
+		    auxiliarList = getMessagesFromComInteraction(auxiliarList, modelElement);
+		if (modelElement.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE)) {
+		    auxiliarList.add(child);
+		}
 	    }
 	}
-	return list;
+	return auxiliarList;
     }
 
 }

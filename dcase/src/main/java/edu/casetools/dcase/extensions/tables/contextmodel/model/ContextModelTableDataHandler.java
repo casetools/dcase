@@ -47,29 +47,4 @@ public class ContextModelTableDataHandler implements Serializable {
 
     }
 
-    // /**
-    // * Creates the content.
-    // *
-    // * @param data
-    // * the data
-    // */
-    // public void createContent(ContextModelTableData data) {
-    // for (int i = 0; i < data.dataList.size(); i++) {
-    // // createRows(i, data);
-    // }
-    // }
-
-    // private void createRows(Object rowHeaderElement, ContextModelTableData
-    // data) {
-    // ContextModelTableRow row = new
-    // ContextModelTableRow((ModelElement)rowHeaderElement);
-    // for (Object column : data.getHeaders()) {
-    // // Object value =
-    // // ModelioTableUtils.getInstance().getTableValues(column,
-    // // rowHeaderElement, data);
-    // // row.add(value);
-    // }
-    // data.dataList.add(row);
-    // }
-
 }

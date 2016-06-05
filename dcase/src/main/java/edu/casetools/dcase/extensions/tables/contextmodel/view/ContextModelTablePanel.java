@@ -75,9 +75,6 @@ public class ContextModelTablePanel extends TablePanel {
 	table.setModel(this.tableModel);
 	setComboBoxStyle();
 	table.repaint();
-	// RowHeaderUtils.getInstance().addRowHeader(table,
-	// ROW_HEADER.DEPENDENCY,
-	// this.tableModel.getData().getyHeaderList());
 	refreshRowHeaderRenderer();
 
     }
@@ -106,14 +103,9 @@ public class ContextModelTablePanel extends TablePanel {
 	List<String> possibleValues;
 	switch (column) {
 	case 0:
-	    // Name
-	    // element.setName(value);
 	    setStringEditor(tableColumn);
 	    break;
 	case 1:
-	    // ID
-	    // PropertiesUtils.getInstance().findAndAddValue(RCasePeerModule.MODULE_NAME,
-	    // RCaseProperties.PROPERTY_CONTEXT_ID, value, element);
 	    setStringEditor(tableColumn);
 	    break;
 	case 2:
@@ -134,6 +126,8 @@ public class ContextModelTablePanel extends TablePanel {
 	    // Synchronicity
 	    possibleValues = ModelioTableUtils.getInstance().getSynchronicityPossibleValues();
 	    setComboBoxEditor(tableColumn, possibleValues);
+	    break;
+	default:
 	    break;
 	}
     }

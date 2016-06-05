@@ -74,10 +74,7 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 	    case 7:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_SITUATIONAL_PARAMETER,
 			value);
-		removeOldTracedSituationalParameters(element);
-		if (!value.equals(I18nMessageService
-			.getString("Ui.ContextInformationMessage.Property.TagSituationalParameter.None")))
-		    traceElementToSituationalParameter(element, value);
+		refreshLinks(element, value);
 		break;
 	    default:
 		break;
@@ -86,6 +83,13 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
 	}
 
+    }
+
+    private void refreshLinks(ModelElement element, String value) {
+	removeOldTracedSituationalParameters(element);
+	if (!value.equals(I18nMessageService
+		.getString("Ui.ContextInformationMessage.Property.TagSituationalParameter.None")))
+	    traceElementToSituationalParameter(element, value);
     }
 
     @Override
@@ -164,8 +168,7 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 	    session.getModel().createDependency(element, situationalParameter, "ModelerModule", "trace");
 	    transaction.commit();
 	} catch (ExtensionNotFoundException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
+	    logger.log(Level.SEVERE, e.getMessage(), e);
 	} finally {
 	    transaction.close();
 	}

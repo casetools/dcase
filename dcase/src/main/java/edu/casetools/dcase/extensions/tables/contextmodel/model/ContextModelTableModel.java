@@ -30,14 +30,12 @@ public class ContextModelTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 4329075668436833054L;
     private ContextModelTableData data;
-    // private ContextModelTableDataHandler dataHandler;
 
     /**
      * Instantiates a new dependency table model.
      */
     public ContextModelTableModel() {
 	this.data = new ContextModelTableData();
-	// this.dataHandler = new ContextModelTableDataHandler();
     }
 
     /**
@@ -48,7 +46,6 @@ public class ContextModelTableModel extends AbstractTableModel {
      */
     public ContextModelTableModel(ContextModelTableData data) {
 	this.data = data;
-	// this.dataHandler = new ContextModelTableDataHandler();
     }
 
     /*
@@ -141,7 +138,6 @@ public class ContextModelTableModel extends AbstractTableModel {
      */
     public void refresh() {
 	int oldSize = this.data.newDataList();
-	// this.data = this.dataHandler.updateHeaders(this.data);
 	this.data.update();
 	this.refresh(oldSize);
     }

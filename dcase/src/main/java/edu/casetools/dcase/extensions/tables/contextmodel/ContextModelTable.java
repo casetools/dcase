@@ -43,7 +43,6 @@ public class ContextModelTable extends TableWindow {
      */
     public ContextModelTable() {
 	super();
-	// this.initIcon(DCaseResources.ICON_CONTEXT_MODEL_TABLE);
 	this.setTitle(I18nMessageService.getString("Table.MessagesTable.Header.Title"));
 	createPanels();
 	windowSettings();

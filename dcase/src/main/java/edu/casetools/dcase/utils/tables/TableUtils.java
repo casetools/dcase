@@ -90,34 +90,12 @@ public class TableUtils {
 	List<MObject> allElements = ModelioUtils.getInstance().getAllElements();
 
 	for (MObject object : allElements) {
-	    if (object instanceof ModelElement) {
-		if (((ModelElement) object).isStereotyped(module, stereotype))
-		    list.add(object);
-	    }
+	    if ((object instanceof ModelElement) && (((ModelElement) object).isStereotyped(module, stereotype)))
+		list.add(object);
 	}
 
 	return list;
     }
-
-    // /**
-    // * Gets the all elements stereotyped as.
-    // *
-    // * @param list
-    // * the list
-    // * @param stereotype
-    // * the stereotype
-    // * @return the all elements stereotyped as
-    // */
-    // public List<MObject> getAllMessages() {
-    // List<MObject> allElements = ModelioUtils.getInstance().getAllElements();
-    // for (MObject object : allElements) {
-    // if (((ModelElement) object).isStereotyped(DCasePeerModule.MODULE_NAME,
-    // stereotype))
-    // list.add(object);
-    // }
-    //
-    // return list;
-    // }
 
     /**
      * Gets the all dependencies stereotypes.
