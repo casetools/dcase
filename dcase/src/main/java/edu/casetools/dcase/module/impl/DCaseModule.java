@@ -1,12 +1,9 @@
 package edu.casetools.dcase.module.impl;
 
-import org.modelio.api.model.IModelingSession;
 import org.modelio.api.module.AbstractJavaModule;
-import org.modelio.api.module.IModuleAPIConfiguration;
-import org.modelio.api.module.IModuleSession;
-import org.modelio.api.module.IModuleUserConfiguration;
-import org.modelio.api.module.IParameterEditionModel;
-import org.modelio.metamodel.mda.ModuleComponent;
+import org.modelio.api.module.context.IModuleContext;
+import org.modelio.api.module.lifecycle.IModuleLifeCycleHandler;
+import org.modelio.api.module.parameter.IParameterEditionModel;
 
 import edu.casetools.dcase.module.api.DCaseResources;
 
@@ -21,29 +18,10 @@ public class DCaseModule extends AbstractJavaModule {
 
     private DCaseSession session = null;
 
-    /**
-     * Builds a new module.
-     * <p>
-     * <p>
-     * This constructor must not be called by the user. It is automatically
-     * invoked by Modelio when the module is installed, selected or started.
-     * 
-     * @param modelingSession
-     *            the modeling session this module is deployed into.
-     * @param model
-     *            the model part of this module.
-     * @param moduleConfiguration
-     *            the module configuration, to get and set parameter values from
-     *            the module itself.
-     * @param peerConfiguration
-     *            the peer module configuration, to get and set parameter values
-     *            from another module.
-     */
-    public DCaseModule(IModelingSession modelingSession, ModuleComponent moduleComponent,
-	    IModuleUserConfiguration moduleConfiguration, IModuleAPIConfiguration peerConfiguration) {
-	super(modelingSession, moduleComponent, moduleConfiguration);
-	this.session = new DCaseSession(this);
-	this.peerModule = new DCasePeerModule(this, peerConfiguration);
+    private static DCaseModule instance;
+
+    public DCaseModule getInstance() {
+	return instance;
     }
 
     @Override
@@ -52,15 +30,79 @@ public class DCaseModule extends AbstractJavaModule {
     }
 
     /**
-     * Return the session attached to the current module.
+     * Return the lifecycle handler attached to the current module.
      * <p>
      * <p>
-     * This session is used to manage the module lifecycle by declaring the
+     * This handler is used to manage the module lifecycle by declaring the
      * desired implementation on start, select... methods.
      */
     @Override
-    public IModuleSession getSession() {
+    public IModuleLifeCycleHandler getLifeCycleHandler() {
 	return this.session;
+    }
+
+    /**
+     * Method automatically called just after the creation of the module.
+     * <p>
+     * <p>
+     * The module is automatically instanciated at the beginning of the MDA
+     * lifecycle and constructor implementation is not accessible to the module
+     * developer.
+     * <p>
+     * <p>
+     * The <code>init</code> method allows the developer to execute the desired
+     * initialization code at this step. For example, this is the perfect place
+     * to register any IViewpoint this module provides.
+     *
+     *
+     * @see org.modelio.api.module.AbstractJavaModule#init()
+     */
+    @Override
+    public void init() {
+	// Add the module initialization code
+	super.init();
+    }
+
+    /**
+     * Method automatically called just before the disposal of the module.
+     * <p>
+     * <p>
+     * 
+     * 
+     * The <code>uninit</code> method allows the developer to execute the
+     * desired un-initialization code at this step. For example, if IViewpoints
+     * have been registered in the {@link #init()} method, this method is the
+     * perfect place to remove them.
+     * <p>
+     * <p>
+     * 
+     * This method should never be called by the developer because it is already
+     * invoked by the tool.
+     * 
+     * @see org.modelio.api.module.AbstractJavaModule#uninit()
+     */
+    @Override
+    public void uninit() {
+	// Add the module un-initialization code
+	super.uninit();
+    }
+
+    /**
+     * Builds a new module.
+     * <p>
+     * <p>
+     * This constructor must not be called by the user. It is automatically
+     * invoked by Modelio when the module is installed, selected or started.
+     * 
+     * @param moduleContext
+     *            context of the module, needed to access Modelio features.
+     */
+    public DCaseModule(IModuleContext moduleContext) {
+	super(moduleContext);
+	this.session = new DCaseSession(this);
+	this.peerModule = new DCasePeerModule(this, moduleContext.getPeerConfiguration());
+	this.peerModule.init();
+	instance = this;
     }
 
     /**
@@ -77,37 +119,6 @@ public class DCaseModule extends AbstractJavaModule {
     @Override
     public String getModuleImagePath() {
 	return DCaseResources.ICON_MODULE;
-    }
-
-    @Override
-    public int hashCode() {
-	final int prime = 31;
-	int result = super.hashCode();
-	result = prime * result + ((peerModule == null) ? 0 : peerModule.hashCode());
-	result = prime * result + ((session == null) ? 0 : session.hashCode());
-	return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-	if (this == obj)
-	    return true;
-	if (!super.equals(obj))
-	    return false;
-	if (getClass() != obj.getClass())
-	    return false;
-	DCaseModule other = (DCaseModule) obj;
-	if (peerModule == null) {
-	    if (other.peerModule != null)
-		return false;
-	} else if (!peerModule.equals(other.peerModule))
-	    return false;
-	if (session == null) {
-	    if (other.session != null)
-		return false;
-	} else if (!session.equals(other.session))
-	    return false;
-	return true;
     }
 
 }

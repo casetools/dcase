@@ -3,8 +3,6 @@ package edu.casetools.dcase.module.i18n;
 import java.text.MessageFormat;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Message service <br>
@@ -13,13 +11,11 @@ import java.util.logging.Logger;
  */
 public class I18nMessageService {
 
-    private static final String FILE_NAME_MESSAGES = ".messages";
+    private final static String FILE_NAME_MESSAGES = ".messages";
 
     private static I18nMessageService instance;
 
     private ResourceBundle messageResource;
-
-    private static final Logger logger = Logger.getLogger(I18nMessageService.class.getName());
 
     /**
      * Private constructor.
@@ -59,7 +55,6 @@ public class I18nMessageService {
 	    message = getInstance().getMessageResource().getString(key);
 	} catch (MissingResourceException e) {
 	    message = '!' + key + '!';
-	    logger.log(Level.SEVERE, e.getMessage() + message, e);
 	}
 	return message;
     }
@@ -80,7 +75,6 @@ public class I18nMessageService {
 	    message = MessageFormat.format(value, (Object[]) params);
 	} catch (MissingResourceException e) {
 	    message = '!' + key + '!';
-	    logger.log(Level.SEVERE, e.getMessage() + message, e);
 	}
 	return message;
     }
