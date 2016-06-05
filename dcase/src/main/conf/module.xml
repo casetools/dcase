@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Module id="${project.name}" class="edu.casetools.dcase.module.impl.DCaseModule" binaryversion="3.4.01" version="${project.version}" schema-level="2" uid="7b85c00b-917d-41d1-9787-90da3684574c">
+<Module id="${project.name}" class="edu.casetools.dcase.module.impl.DCaseModule" binaryversion="3.5.00" version="${project.version}" schema-level="2" uid="3c0ff0e0-6c77-4298-bd2d-d54abb2f93f5">
     <ClassPath>
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>

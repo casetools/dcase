@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.gef.palette.PaletteRoot;
-import org.modelio.api.diagram.IDiagramCustomizer;
-import org.modelio.api.diagram.tools.PaletteEntry;
+import org.modelio.api.modelio.diagram.IDiagramCustomizer;
+import org.modelio.api.modelio.diagram.tools.PaletteEntry;
 import org.modelio.api.module.IModule;
 
 import edu.casetools.dcase.modelio.diagrams.DiagramCustomizer;
@@ -28,11 +28,6 @@ public class InteractionDiagramCustomizer extends DiagramCustomizer implements I
 	// TODO Implement the palette method or remove the class
     }
 
-    @Override
-    public void initialize(IModule arg0, List<PaletteEntry> arg1, Map<String, String> arg2, boolean arg3) {
-	/* The method is empty because is forced by IDiagramCustomizer */
-    }
-
     /*
      * (non-Javadoc)
      * 
@@ -51,6 +46,12 @@ public class InteractionDiagramCustomizer extends DiagramCustomizer implements I
     @Override
     public Map<String, String> getParameters() {
 	return null;
+    }
+
+    @Override
+    public void initialize(IModule arg0, List<PaletteEntry> arg1, Map<String, String> arg2, boolean arg3) {
+	// TODO Auto-generated method stub
+
     }
 
 }

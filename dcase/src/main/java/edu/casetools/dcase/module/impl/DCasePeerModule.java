@@ -1,6 +1,6 @@
 package edu.casetools.dcase.module.impl;
 
-import org.modelio.api.module.IModuleAPIConfiguration;
+import org.modelio.api.module.context.configuration.IModuleAPIConfiguration;
 import org.modelio.vbasic.version.Version;
 
 import edu.casetools.dcase.module.api.IDCasePeerModule;
@@ -26,6 +26,10 @@ public class DCasePeerModule implements IDCasePeerModule {
 	super();
 	this.module = statModuleModule;
 	this.peerConfiguration = peerConfiguration;
+    }
+
+    public void init() {
+
     }
 
     /**

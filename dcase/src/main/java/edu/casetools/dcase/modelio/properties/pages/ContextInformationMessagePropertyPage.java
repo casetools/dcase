@@ -25,9 +25,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.core.runtime.AssertionFailedException;
-import org.modelio.api.model.IModelingSession;
-import org.modelio.api.model.ITransaction;
 import org.modelio.api.modelio.Modelio;
+import org.modelio.api.modelio.model.IModelingSession;
+import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.factory.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.Dependency;
@@ -87,8 +87,8 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
     private void refreshLinks(ModelElement element, String value) {
 	removeOldTracedSituationalParameters(element);
-	if (!value.equals(I18nMessageService
-		.getString("Ui.ContextInformationMessage.Property.TagSituationalParameter.None")))
+	if (!value.equals(
+		I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagSituationalParameter.None")))
 	    traceElementToSituationalParameter(element, value);
     }
 

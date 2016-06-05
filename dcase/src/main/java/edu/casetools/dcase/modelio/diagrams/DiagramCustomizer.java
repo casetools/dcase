@@ -24,7 +24,7 @@ import org.eclipse.gef.palette.MarqueeToolEntry;
 import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.gef.palette.SelectionToolEntry;
-import org.modelio.api.diagram.IDiagramService;
+import org.modelio.api.modelio.diagram.IDiagramService;
 
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 
