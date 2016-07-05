@@ -1,4 +1,10 @@
-dcase/target/
+dcase/target/antrun
+dcase/target/archive-tmp
+dcase/target/classes
+dcase/target/lib
+dcase/target/maven-archiver
+dcase/target/test-classes
+dcase/target/*.jar
 dcase/.settings
 dcase/src/test
 /sonar-project.properties
