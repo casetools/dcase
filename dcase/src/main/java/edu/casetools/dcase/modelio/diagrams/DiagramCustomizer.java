@@ -98,4 +98,5 @@ public class DiagramCustomizer {
 	group.setInitialState(initialState);
 	return group;
     }
+
 }

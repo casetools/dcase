@@ -8,4 +8,5 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String STEREOTYPE_DIAGRAM_COMMUNICATION = "CommunicationDiagramStereotype";
     public static final String STEREOTYPE_DEPENDENCY_PRODUCE = "ProduceStereotype";
     public static final String STEREOTYPE_DEPENDENCY_CONSUME = "ConsumeStereotype";
+    public static final String STEREOTYPE_DIAGRAM_CONTEXT_RULES = "ContextRulesDiagramStereotype";
 }

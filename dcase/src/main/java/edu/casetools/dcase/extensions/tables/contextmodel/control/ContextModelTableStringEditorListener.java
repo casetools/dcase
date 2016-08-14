@@ -78,7 +78,7 @@ public class ContextModelTableStringEditorListener implements ActionListener {
 	int row = this.editor.getRow();
 	ITransaction transaction = null;
 	IModelingSession session = Modelio.getInstance().getModelingSession();
-	ModelElement element = model.getData().getDataList().get(row).getSituationalParameter();
+	ModelElement element = model.getData().getDataList().get(row).getContextAttribute();
 	try {
 	    transaction = session.createTransaction(
 		    I18nMessageService.getString("Info.Session.Create", new String[] { " Update Property" }));

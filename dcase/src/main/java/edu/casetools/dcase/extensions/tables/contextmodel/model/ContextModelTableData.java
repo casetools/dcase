@@ -148,12 +148,12 @@ public class ContextModelTableData implements Serializable {
 	messages = (ArrayList<MObject>) ModelioTableUtils.getInstance().getMessagesFromComInteraction(messages,
 		(ModelElement) element);
 	dataList = new ArrayList<>();
-	setSituationalParameters(messages);
+	setContextAttributes(messages);
     }
 
-    private void setSituationalParameters(ArrayList<MObject> situationalParameters) {
-	for (int i = 0; i < situationalParameters.size(); i++) {
-	    ContextModelTableRow row = new ContextModelTableRow(situationalParameters.get(i));
+    private void setContextAttributes(ArrayList<MObject> ContextAttributes) {
+	for (int i = 0; i < ContextAttributes.size(); i++) {
+	    ContextModelTableRow row = new ContextModelTableRow(ContextAttributes.get(i));
 	    dataList.add(row);
 	}
     }
@@ -163,7 +163,7 @@ public class ContextModelTableData implements Serializable {
 	ArrayList<MObject> list = new ArrayList<>();
 	list = (ArrayList<MObject>) TableUtils.getInstance().getAllElementsStereotypedAs(list,
 		DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE);
-	setSituationalParameters(list);
+	setContextAttributes(list);
     }
 
     public void update() {

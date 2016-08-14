@@ -27,7 +27,7 @@ import org.modelio.api.module.IModule;
 import org.modelio.metamodel.diagrams.CommunicationDiagram;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.modelio.menu.CreateDiagram;
+import edu.casetools.dcase.modelio.menu.CreateBehaviourDiagram;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.utils.DiagramUtils;
@@ -35,7 +35,7 @@ import edu.casetools.dcase.utils.DiagramUtils;
 /**
  * The Class CreateRequirementsDiagram creates a Requirements Diagram.
  */
-public class CreateCommunicationDiagram extends CreateDiagram {
+public class CreateCommunicationDiagram extends CreateBehaviourDiagram {
 
     /*
      * (non-Javadoc)

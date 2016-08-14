@@ -58,7 +58,7 @@ public class ContextModelTableRow {
 	return values.size();
     }
 
-    public ModelElement getSituationalParameter() {
+    public ModelElement getContextAttribute() {
 	return element;
     }
 }

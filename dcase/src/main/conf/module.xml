@@ -3,6 +3,8 @@
     <ClassPath>
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
+        <PathEntry path="lib/rcase-0.2.3.jar"/>
+        <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
@@ -15,7 +17,7 @@
                     <TagType name="TagRegularity" uid="5ed5cdae-cd6c-47d8-931c-40d423500f5e" label="%ContextInformationMessageStereotype.properties.regularity" parameter-card="2" is-hidden="false" is-signed="false"/>
                     <TagType name="TagFrequency" uid="d29eb85f-d81c-47ba-85c4-e70ebb5d9a7d" label="%ContextInformationMessageStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagSynchronicity" uid="b6df0eec-68b3-498c-bb8a-913efe9821f8" label="%ContextInformationMessageStereotype.properties.synchronicity" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagSituationalParameter" uid="0fb050e1-5267-4c1f-8b42-92a113caded0" label="%ContextInformationMessageStereotype.properties.situationalParameter" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagContextAttribute" uid="0fb050e1-5267-4c1f-8b42-92a113caded0" label="%ContextInformationMessageStereotype.properties.ContextAttribute" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="InteractionDiagramStereotype" metaclass="SequenceDiagram" is-hidden="false" label="%InteractionDiagramStereotype.label" uid="6b01c5f3-529e-486c-aa36-57a7fb4f9b2d">
@@ -38,6 +40,10 @@
                 <TagTypes/>
                 <NoteTypes/>
             </Stereotype>
+            <Stereotype name="ContextRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ContextRulesDiagramStereotype.label" uid="faa0cd25-150b-48ad-83b4-9b3af765abf9">
+                <Icon path="%ContextRulesDiagramStereotype.image"/>
+                <Image path="%ContextRulesDiagramStereotype.image"/>
+            </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
                 <TagTypes>
                     <TagType name="TagName" uid="eb5615f7-28bd-4314-913a-9bccf7e0bf12" label="Name" parameter-card="1" is-hidden="false" is-signed="false"/>
@@ -55,6 +61,10 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateCommunicationDiagram"/>
             </Command>
+            <Command id="CreateContextRulesDiagram" label="%CreateContextRulesDiagram.label" tooltip="%CreateContextRulesDiagram.tooltip" image="%CreateContextRulesDiagram.image" group="%CreateContextRulesDiagram.group" modify-model="true" group-image="%CreateContextRulesDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateContextRulesDiagram"/>
+            </Command>
             <Command id="OpenContextInformationMessagesTable" label="%OpenContextInformationMessagesTable.label" tooltip="%OpenContextInformationMessagesTable.tooltip" image="%OpenContextInformationMessagesTable.image" group="%OpenContextInformationMessagesTable.group" modify-model="true" group-image="%OpenContextInformationMessagesTable.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.tables.OpenMessagesTable"/>
@@ -71,6 +81,7 @@
         <ContextualMenu>
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateCommunicationDiagram"/>
+            <CommandRef refid="CreateContextRulesDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
         </ContextualMenu>
         <Diagrams>
@@ -81,6 +92,10 @@
             <DiagramType base-diagram="CommunicationDiagram" stereotype="CommunicationDiagramStereotype">
                 <Palette keepBasePalette="true"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.communication.CommunicationDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="StaticDiagram" stereotype="ContextRulesDiagramStereotype">
+                <Palette keepBasePalette="true"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.rules.ContextRulesDiagramCustomizer"/>
             </DiagramType>
         </Diagrams>
         <Views>

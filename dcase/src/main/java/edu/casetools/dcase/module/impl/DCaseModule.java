@@ -6,6 +6,7 @@ import org.modelio.api.module.lifecycle.IModuleLifeCycleHandler;
 import org.modelio.api.module.parameter.IParameterEditionModel;
 
 import edu.casetools.dcase.module.api.DCaseResources;
+import edu.casetools.rcase.module.impl.RCaseModule;
 
 /**
  * Implementation of the IModule interface. <br>
@@ -19,6 +20,25 @@ public class DCaseModule extends AbstractJavaModule {
     private DCaseSession session = null;
 
     private static DCaseModule instance;
+
+    /**
+     * Builds a new module.
+     * <p>
+     * <p>
+     * This constructor must not be called by the user. It is automatically
+     * invoked by Modelio when the module is installed, selected or started.
+     * 
+     * @param moduleContext
+     *            context of the module, needed to access Modelio features.
+     */
+    public DCaseModule(IModuleContext moduleContext) {
+	super(moduleContext);
+	this.session = new DCaseSession(this);
+	this.peerModule = new DCasePeerModule(this, moduleContext.getPeerConfiguration());
+	this.peerModule.init();
+	instance = this;
+	new RCaseModule(moduleContext);
+    }
 
     public DCaseModule getInstance() {
 	return instance;
@@ -85,24 +105,6 @@ public class DCaseModule extends AbstractJavaModule {
     public void uninit() {
 	// Add the module un-initialization code
 	super.uninit();
-    }
-
-    /**
-     * Builds a new module.
-     * <p>
-     * <p>
-     * This constructor must not be called by the user. It is automatically
-     * invoked by Modelio when the module is installed, selected or started.
-     * 
-     * @param moduleContext
-     *            context of the module, needed to access Modelio features.
-     */
-    public DCaseModule(IModuleContext moduleContext) {
-	super(moduleContext);
-	this.session = new DCaseSession(this);
-	this.peerModule = new DCasePeerModule(this, moduleContext.getPeerConfiguration());
-	this.peerModule.init();
-	instance = this;
     }
 
     /**

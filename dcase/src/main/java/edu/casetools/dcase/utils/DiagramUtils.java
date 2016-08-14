@@ -29,6 +29,7 @@ import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.IUmlModel;
 import org.modelio.metamodel.diagrams.CommunicationDiagram;
 import org.modelio.metamodel.diagrams.SequenceDiagram;
+import org.modelio.metamodel.diagrams.StaticDiagram;
 import org.modelio.metamodel.factory.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationChannel;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationInteraction;
@@ -286,6 +287,19 @@ public class DiagramUtils {
 	}
 	DiagramUtils.getInstance().setFreeName(createdElement, I18nMessageService.getString("Ui.Message.Name"));
 	return createdElement;
+    }
+
+    public StaticDiagram createDiagram(List<MObject> selectedElements, IModelingSession session, String name,
+	    String stereotypeName) {
+	Stereotype stereotype = session.getMetamodelExtensions().getStereotype(stereotypeName,
+		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(StaticDiagram.class));
+	for (MObject element : selectedElements) {
+	    StaticDiagram diagram;
+	    diagram = session.getModel().createStaticDiagram(name, (ModelElement) element, stereotype);
+	    DiagramUtils.getInstance().setFreeName(diagram, name);
+	    return diagram;
+	}
+	return null;
     }
 
 }

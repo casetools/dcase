@@ -6,7 +6,7 @@
 	<!-- definition -->
 	<groupId>edu.casetools</groupId>
 	<artifactId>dcase</artifactId>
-	<version>0.2.1</version>
+	<version>0.3.0</version>
 
 	<name>DCase</name>
 
@@ -16,6 +16,14 @@
 			<id>modelio</id>
 			<url>http://repository.modelio.org</url>
 		</repository>
+		 <repository>        
+            <id>rcase</id>
+            <url>https://github.com/ualegre/rcase/</url>
+    	</repository>
+		 <repository>        
+            <id>contextmodeller</id>
+            <url>https://github.com/deankramer/ContextModeller</url>
+    	</repository>
 	</repositories>
 
 	<pluginRepositories>
@@ -46,6 +54,21 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.1</version>
 		</dependency>
+		
+		<dependency>       
+           <groupId>edu.casetools</groupId>
+           <artifactId>rcase</artifactId>
+           <version>0.2.3</version>
+           <scope>compile</scope>
+    	</dependency>
+    	
+    	<dependency>       
+		   <groupId>uk.ac.mdx.ie</groupId>
+		   <artifactId>contextmodeller</artifactId>
+		   <version>0.2.0</version>
+           <scope>compile</scope>
+    	</dependency>
+    	
 	</dependencies>
 
 

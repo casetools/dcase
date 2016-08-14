@@ -86,10 +86,10 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
     }
 
     private void refreshLinks(ModelElement element, String value) {
-	removeOldTracedSituationalParameters(element);
+	removeOldTracedContextAttributes(element);
 	if (!value.equals(
-		I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagSituationalParameter.None")))
-	    traceElementToSituationalParameter(element, value);
+		I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagContextAttribute.None")))
+	    traceElementToContextAttribute(element, value);
     }
 
     @Override
@@ -133,39 +133,39 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 			I18nMessageService
 				.getString("Ui.ContextInformationMessage.Property.TagSynchronicity.Asynchronous") });
 
-	// TagSituationalParameter
+	// TagContextAttribute
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_MESSAGE_SITUATIONAL_PARAMETER);
-	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagSituationalParameter"),
-		property, getAllSituationalParameters());
+	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagContextAttribute"),
+		property, getAllContextAttributes());
 
     }
 
-    private String[] getAllSituationalParameters() {
+    private String[] getAllContextAttributes() {
 
-	MObject situationalParameter;
-	ArrayList<MObject> situationalParameters = new ArrayList<>();
+	MObject ContextAttribute;
+	ArrayList<MObject> ContextAttributes = new ArrayList<>();
 
-	situationalParameters = (ArrayList<MObject>) TableUtils.getInstance()
-		.getAllElementsStereotypedAs(situationalParameters, "RCase", "SituationalParameterStereotype");
-	String[] situationalParameterNames = new String[situationalParameters.size() + 1];
-	situationalParameterNames[0] = new String(
-		I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagSituationalParameter.None"));
-	for (int i = 0; i < situationalParameters.size(); i++) {
-	    situationalParameter = situationalParameters.get(i);
-	    situationalParameterNames[i + 1] = situationalParameter.getName();
+	ContextAttributes = (ArrayList<MObject>) TableUtils.getInstance()
+		.getAllElementsStereotypedAs(ContextAttributes, "RCase", "ContextAttributeStereotype");
+	String[] ContextAttributeNames = new String[ContextAttributes.size() + 1];
+	ContextAttributeNames[0] = new String(
+		I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagContextAttribute.None"));
+	for (int i = 0; i < ContextAttributes.size(); i++) {
+	    ContextAttribute = ContextAttributes.get(i);
+	    ContextAttributeNames[i + 1] = ContextAttribute.getName();
 	}
-	return situationalParameterNames;
+	return ContextAttributeNames;
     }
 
-    private void traceElementToSituationalParameter(ModelElement element, String value) {
+    private void traceElementToContextAttribute(ModelElement element, String value) {
 	IModelingSession session = Modelio.getInstance().getModelingSession();
 	ITransaction transaction = session
 		.createTransaction(I18nMessageService.getString("Info.Session.Create", new String[] { "" }));
-	ModelElement situationalParameter = (ModelElement) ModelioUtils.getInstance().getElementByName(value);
+	ModelElement ContextAttribute = (ModelElement) ModelioUtils.getInstance().getElementByName(value);
 
 	try {
-	    session.getModel().createDependency(element, situationalParameter, "ModelerModule", "trace");
+	    session.getModel().createDependency(element, ContextAttribute, "ModelerModule", "trace");
 	    transaction.commit();
 	} catch (ExtensionNotFoundException e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
@@ -175,13 +175,13 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
     }
 
-    private void removeOldTracedSituationalParameters(ModelElement element) {
+    private void removeOldTracedContextAttributes(ModelElement element) {
 
 	for (MObject child : element.getCompositionChildren()) {
 	    if (child instanceof ModelElement) {
 		ModelElement auxiliarChild = (ModelElement) child;
 		if (auxiliarChild.isStereotyped("ModelerModule", "trace")) {
-		    deleteSituationalParameter(auxiliarChild);
+		    deleteContextAttribute(auxiliarChild);
 		}
 	    }
 
@@ -189,11 +189,11 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
     }
 
-    private void deleteSituationalParameter(ModelElement auxiliarChild) {
+    private void deleteContextAttribute(ModelElement auxiliarChild) {
 	if (auxiliarChild instanceof Dependency) {
 	    Dependency dependency = (Dependency) auxiliarChild;
 	    ModelElement target = dependency.getDependsOn();
-	    if (target.isStereotyped("RCase", "SituationalParameterStereotype"))
+	    if (target.isStereotyped("RCase", "ContextAttributeStereotype"))
 		auxiliarChild.delete();
 
 	}
