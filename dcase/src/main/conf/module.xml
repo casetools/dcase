@@ -3,21 +3,52 @@
     <ClassPath>
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
-        <PathEntry path="lib/rcase-0.2.3.jar"/>
+        <PathEntry path="lib/rcase-0.2.4.jar"/>
         <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
+            <Stereotype name="AntecedentGroupStereotype" metaclass="Package" is-hidden="false" label="%AntecedentGroupStereotype.label" uid="f88594e0-4b76-49de-af7f-307282c9f5de">
+                <Icon path="res/icons/antecedent_group_16.png"/>
+                <Image path="res/icons/antecedent_group_64.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="AntecedentStereotype" metaclass="Class" is-hidden="false" label="%AntecedentStereotype.label" uid="847fba72-b841-4a9b-ba29-f3ce45ea6b3b">
+                <Icon path="res/icons/antecedent_16.png"/>
+                <Image path="res/icons/antecedent_16.png"/>
+                <TagTypes>
+                    <TagType name="TagStateName" uid="dc9a616a-b06e-42ad-8ebc-7056562e62c4" label="%AntecedentStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateValue" uid="284eaec6-7709-4338-8a8e-a247e80f1403" label="$AntecedentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="ConsequentStereotype" metaclass="Class" is-hidden="false" label="%ConsequentStereotype.label" uid="89cce865-8fd8-46d0-ad81-56ff0f23aa0d">
+                <Icon path="res/icons/consequent_16.png"/>
+                <Image path="res/icons/consequent_16.png"/>
+                <TagTypes>
+                    <TagType name="TagStateName" uid="7d516b65-dd14-4405-ae2d-c60a8ef372f1" label="%ConsequentStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateValue" uid="e72768d0-993d-4024-b8f7-414c1fc74658" label="$ConsequentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="0cc87953-7b6b-4d30-b104-7649a9c5954f">
+                <Icon path="res/icons/state_16.png"/>
+                <Image path="res/icons/state_16.png"/>
+                <TagTypes>
+                    <TagType name="TagStateId" uid="ae51d5d2-e151-42ca-a557-c7ef6fdcfe0e" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateName" uid="9a595946-8a33-419f-8751-4de45141c20a" label="$StateStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateIndpendent" uid="ce140ef3-0e6c-4a31-ab35-3b9edc49d648" label="%StateStereotype.properties.independent" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateInitial" uid="5961398c-4ae6-4bfa-a1d6-5f39f3d77f01" label="$StateStereotype.properties.initial" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
             <Stereotype name="ContextInformationMessageStereotype" metaclass="CommunicationMessage" is-hidden="false" label="%ContextInformationMessageStereotype.label" uid="25ad856f-5c3c-44f3-be0e-d717bf7a79d4">
                 <Icon path="%ContextInformationMessageStereotype.image"/>
                 <Image path="%ContextInformationMessageStereotype.image"/>
                 <TagTypes>
-                    <TagType name="CETagId" uid="f09597f9-4954-4e9e-bc9a-eaa41795cba7" label="%ContextInformationMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagResponsibility" uid="bb76ef80-add9-4b1f-8234-467e32e89fff" label="%ContextInformationMessageStereotype.properties.responsibility" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagRegularity" uid="5ed5cdae-cd6c-47d8-931c-40d423500f5e" label="%ContextInformationMessageStereotype.properties.regularity" parameter-card="2" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagFrequency" uid="d29eb85f-d81c-47ba-85c4-e70ebb5d9a7d" label="%ContextInformationMessageStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagSynchronicity" uid="b6df0eec-68b3-498c-bb8a-913efe9821f8" label="%ContextInformationMessageStereotype.properties.synchronicity" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagContextAttribute" uid="0fb050e1-5267-4c1f-8b42-92a113caded0" label="%ContextInformationMessageStereotype.properties.ContextAttribute" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="CETagId" uid="e76447a0-40aa-46aa-957a-af33d8c54ed5" label="%ContextInformationMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagResponsibility" uid="2e264d9f-d323-49af-8637-6fb7e717dc5b" label="%ContextInformationMessageStereotype.properties.responsibility" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagRegularity" uid="b18db265-79f8-46e8-8e51-1e575a71ba96" label="%ContextInformationMessageStereotype.properties.regularity" parameter-card="2" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagFrequency" uid="91e5adae-0857-4637-8324-699ddb722d1f" label="%ContextInformationMessageStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagSynchronicity" uid="5ae4bcfe-5521-4621-9094-cc1270e8df94" label="%ContextInformationMessageStereotype.properties.synchronicity" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagContextAttribute" uid="6dd2a6d0-188b-49cd-8924-33e94618aea8" label="%ContextInformationMessageStereotype.properties.ContextAttribute" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="InteractionDiagramStereotype" metaclass="SequenceDiagram" is-hidden="false" label="%InteractionDiagramStereotype.label" uid="6b01c5f3-529e-486c-aa36-57a7fb4f9b2d">
@@ -40,9 +71,13 @@
                 <TagTypes/>
                 <NoteTypes/>
             </Stereotype>
-            <Stereotype name="ContextRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ContextRulesDiagramStereotype.label" uid="faa0cd25-150b-48ad-83b4-9b3af765abf9">
-                <Icon path="%ContextRulesDiagramStereotype.image"/>
-                <Image path="%ContextRulesDiagramStereotype.image"/>
+            <Stereotype name="CSPARQLRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%CSPARQLRulesDiagramStereotype.label" uid="faa0cd25-150b-48ad-83b4-9b3af765abf9">
+                <Icon path="%CSPARQLRulesDiagramStereotype.image"/>
+                <Image path="%CSPARQLRulesDiagramStereotype.image"/>
+            </Stereotype>
+            <Stereotype name="MRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%MRulesDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
+                <Icon path="%MRulesDiagramStereotype.image"/>
+                <Image path="%MRulesDiagramStereotype.image"/>
             </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
                 <TagTypes>
@@ -53,6 +88,10 @@
     </Profiles>
     <Gui>
         <Commands>
+            <Command id="CreateMRulesDiagram" label="%CreateMRulesDiagram.label" tooltip="%CreateMRulesDiagram.tooltip" image="%CreateMRulesDiagram.image" group="%CreateMRulesDiagram.group" modify-model="true" group-image="%CreateMRulesDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateMRulesDiagram"/>
+            </Command>
             <Command id="CreateInteractionDiagram" label="%CreateInteractionDiagram.label" tooltip="%CreateInteractionDiagram.tooltip" image="%CreateInteractionDiagram.image" group="%CreateInteractionDiagram.group" modify-model="true" group-image="%CreateInteractionDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateInteractionDiagram"/>
@@ -61,9 +100,9 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateCommunicationDiagram"/>
             </Command>
-            <Command id="CreateContextRulesDiagram" label="%CreateContextRulesDiagram.label" tooltip="%CreateContextRulesDiagram.tooltip" image="%CreateContextRulesDiagram.image" group="%CreateContextRulesDiagram.group" modify-model="true" group-image="%CreateContextRulesDiagram.groupimage">
+            <Command id="CreateCSPARQLRulesDiagram" label="%CreateCSPARQLRulesDiagram.label" tooltip="%CreateCSPARQLRulesDiagram.tooltip" image="%CreateCSPARQLRulesDiagram.image" group="%CreateCSPARQLRulesDiagram.group" modify-model="true" group-image="%CreateCSPARQLRulesDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateContextRulesDiagram"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateCSPARQLRulesDiagram"/>
             </Command>
             <Command id="OpenContextInformationMessagesTable" label="%OpenContextInformationMessagesTable.label" tooltip="%OpenContextInformationMessagesTable.tooltip" image="%OpenContextInformationMessagesTable.image" group="%OpenContextInformationMessagesTable.group" modify-model="true" group-image="%OpenContextInformationMessagesTable.groupimage">
                 <Scope metaclass="ModelTree"/>
@@ -81,7 +120,8 @@
         <ContextualMenu>
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateCommunicationDiagram"/>
-            <CommandRef refid="CreateContextRulesDiagram"/>
+            <CommandRef refid="CreateCSPARQLRulesDiagram"/>
+            <CommandRef refid="CreateMRulesDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
         </ContextualMenu>
         <Diagrams>
@@ -93,9 +133,13 @@
                 <Palette keepBasePalette="true"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.communication.CommunicationDiagramCustomizer"/>
             </DiagramType>
-            <DiagramType base-diagram="StaticDiagram" stereotype="ContextRulesDiagramStereotype">
+            <DiagramType base-diagram="StaticDiagram" stereotype="CSPARQLRulesDiagramStereotype">
                 <Palette keepBasePalette="true"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.rules.ContextRulesDiagramCustomizer"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.csparqlrules.ContextRulesDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="StaticDiagram" stereotype="MRulesDiagramStereotype">
+                <Palette keepBasePalette="false"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.MRulesDiagramCustomizer"/>
             </DiagramType>
         </Diagrams>
         <Views>
