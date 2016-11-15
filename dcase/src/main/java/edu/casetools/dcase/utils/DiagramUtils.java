@@ -39,8 +39,10 @@ import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Note;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
+import org.modelio.metamodel.uml.statik.Class;
 import org.modelio.metamodel.uml.statik.Collaboration;
 import org.modelio.metamodel.uml.statik.NameSpace;
+import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.i18n.I18nMessageService;
@@ -298,6 +300,31 @@ public class DiagramUtils {
 	    diagram = session.getModel().createStaticDiagram(name, (ModelElement) element, stereotype);
 	    DiagramUtils.getInstance().setFreeName(diagram, name);
 	    return diagram;
+	}
+	return null;
+    }
+
+    public Class createClass(List<MObject> selectedElements, IModelingSession session, String name,
+	    String stereotypeName) {
+	Stereotype stereotype = session.getMetamodelExtensions().getStereotype(stereotypeName,
+		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Class.class));
+	for (MObject element : selectedElements) {
+	    Class createdElement = session.getModel().createClass(name, (NameSpace) element, stereotype);
+	    DiagramUtils.getInstance().setFreeName(createdElement, name);
+	    return createdElement;
+	}
+	return null;
+    }
+
+    public Package createPackage(List<MObject> selectedElements, IModelingSession session, String name,
+	    String stereotypeName) {
+	Stereotype stereotype = session.getMetamodelExtensions().getStereotype(stereotypeName,
+		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Package.class));
+
+	for (MObject element : selectedElements) {
+	    Package createdElement = session.getModel().createPackage(name, (NameSpace) element, stereotype);
+	    DiagramUtils.getInstance().setFreeName(createdElement, name);
+	    return createdElement;
 	}
 	return null;
     }

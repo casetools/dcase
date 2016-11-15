@@ -39,8 +39,8 @@ import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.rcase.module.i18n.I18nMessageService;
-import edu.casetools.rcase.module.impl.RCasePeerModule;
+import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
 
 /**
  * The Class RelationTool has the common methods to create the tool of a
@@ -139,7 +139,7 @@ public abstract class RelationTool extends DefaultLinkTool {
     protected boolean acceptElement(IDiagramGraphic target, String stereotype) {
 	if (target.getElement() instanceof ModelElement) {
 	    ModelElement modelElement = (ModelElement) target.getElement();
-	    if (modelElement.isStereotyped(RCasePeerModule.MODULE_NAME, stereotype))
+	    if (modelElement.isStereotyped(DCasePeerModule.MODULE_NAME, stereotype))
 		return modelElement.getStatus().isModifiable();
 	}
 	return false;

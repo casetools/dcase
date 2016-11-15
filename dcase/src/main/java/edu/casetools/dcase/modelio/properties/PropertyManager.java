@@ -28,8 +28,11 @@ import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationMessage;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
+import org.modelio.metamodel.uml.statik.Class;
 
+import edu.casetools.dcase.modelio.properties.pages.AntecedentPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ContextInformationMessagePropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.PropertiesUtils;
@@ -111,6 +114,19 @@ public class PropertyManager {
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE,
 		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(CommunicationMessage.class)))) {
 	    this.propertyPage = new ContextInformationMessagePropertyPage();
+	}
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_STATE,
+		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
+	    this.propertyPage = new StatePropertyPage();
+	}
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ANTECEDENT,
+		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Class.class)))
+		|| ster.equals(
+			extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONSEQUENT,
+				Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
+	    this.propertyPage = new AntecedentPropertyPage();
 	}
 
     }

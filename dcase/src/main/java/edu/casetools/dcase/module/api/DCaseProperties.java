@@ -49,6 +49,18 @@ public class DCaseProperties {
 
     public static final String PROPERTY_MESSAGE_SITUATIONAL_PARAMETER = "TagContextAttribute";
 
+    public static final String PROPERTY_STATE_ID = "TagStateId";
+
+    public static final String PROPERTY_STATE_NAME = "TagStateName";
+
+    public static final String PROPERTY_STATE_INDEPENDENT = "TagStateIndpendent";
+
+    public static final String PROPERTY_STATE_INITIAL_VALUE = "TagStateInitial";
+
+    public static final String PROPERTY_ANTECEDENT_STATE_NAME = "TagStateName";
+
+    public static final String PROPERTY_ANTECEDENT_VALUE = "TagStateValue";
+
     private DCaseProperties() {
 
     }

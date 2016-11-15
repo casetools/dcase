@@ -31,9 +31,9 @@ import org.modelio.api.modelio.diagram.IDiagramService;
 import org.modelio.api.modelio.diagram.tools.PaletteEntry;
 import org.modelio.api.module.IModule;
 
-import edu.casetools.rcase.modelio.diagrams.DiagramCustomizer;
-import edu.casetools.rcase.module.api.RCaseTools;
-import edu.casetools.rcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.modelio.diagrams.DiagramCustomizer;
+import edu.casetools.dcase.module.api.DCaseTools;
+import edu.casetools.dcase.module.i18n.I18nMessageService;
 
 /**
  * The Class RequirementDiagramCustomizer customizes the palette of the
@@ -82,16 +82,15 @@ public class MRulesDiagramCustomizer extends DiagramCustomizer implements IDiagr
 
     private org.eclipse.gef.palette.PaletteEntry createLinksGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Links");
-	String[] toolNames = new String[] { RCaseTools.TOOL_CONTEXT_DEPENDENCY, RCaseTools.TOOL_TRIGGERS,
-		RCaseTools.TOOL_PART, RCaseTools.TOOL_COPY, RCaseTools.TOOL_DERIVE, RCaseTools.TOOL_SATISFY,
-		RCaseTools.TOOL_VERIFY, RCaseTools.TOOL_REFINE, RCaseTools.TOOL_TRACEABILITY };
+	String[] toolNames = new String[] { DCaseTools.TOOL_SAME_TIME, DCaseTools.TOOL_NEXT_TIME };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
     private org.eclipse.gef.palette.PaletteEntry createNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
-	String[] toolNames = new String[] { RCaseTools.TOOL_REQUIREMENTCONTAINER, RCaseTools.TOOL_REQUIREMENT,
-		RCaseTools.TOOL_SITUATION_OF_INTEREST, RCaseTools.TOOL_TESTCASE };
+	String[] toolNames = new String[] { DCaseTools.TOOL_ANTECEDENT_GROUP, DCaseTools.TOOL_ANTECEDENT,
+		DCaseTools.TOOL_CONSEQUENT, DCaseTools.TOOL_IMMEDIATE_PAST_OPERATOR,
+		DCaseTools.TOOL_ABSOLUTE_PAST_OPERATOR, DCaseTools.TOOL_STATE };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 

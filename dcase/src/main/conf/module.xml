@@ -13,6 +13,14 @@
                 <Image path="res/icons/antecedent_group_64.png"/>
                 <TagTypes/>
             </Stereotype>
+            <Stereotype name="ConsequentStereotype" metaclass="Class" is-hidden="false" label="%ConsequentStereotype.label" uid="90c10322-a899-4adf-b2c3-ebfa3fa4d4c9">
+                <Icon path="res/icons/consequent_16.png"/>
+                <Image path="res/icons/consequent_16.png"/>
+                <TagTypes>
+                    <TagType name="TagStateName" uid="6798fd29-9ea4-45df-a02f-77c5d006c859" label="%ConsequentStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateValue" uid="2aa941a5-713e-40bc-bc90-e2a554183f0b" label="$ConsequentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
             <Stereotype name="AntecedentStereotype" metaclass="Class" is-hidden="false" label="%AntecedentStereotype.label" uid="847fba72-b841-4a9b-ba29-f3ce45ea6b3b">
                 <Icon path="res/icons/antecedent_16.png"/>
                 <Image path="res/icons/antecedent_16.png"/>
@@ -21,15 +29,7 @@
                     <TagType name="TagStateValue" uid="284eaec6-7709-4338-8a8e-a247e80f1403" label="$AntecedentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="ConsequentStereotype" metaclass="Class" is-hidden="false" label="%ConsequentStereotype.label" uid="89cce865-8fd8-46d0-ad81-56ff0f23aa0d">
-                <Icon path="res/icons/consequent_16.png"/>
-                <Image path="res/icons/consequent_16.png"/>
-                <TagTypes>
-                    <TagType name="TagStateName" uid="7d516b65-dd14-4405-ae2d-c60a8ef372f1" label="%ConsequentStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagStateValue" uid="e72768d0-993d-4024-b8f7-414c1fc74658" label="$ConsequentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="0cc87953-7b6b-4d30-b104-7649a9c5954f">
+            <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="b506e386-cb84-42a1-b19d-49dbb5a18540">
                 <Icon path="res/icons/state_16.png"/>
                 <Image path="res/icons/state_16.png"/>
                 <TagTypes>
@@ -37,6 +37,27 @@
                     <TagType name="TagStateName" uid="9a595946-8a33-419f-8751-4de45141c20a" label="$StateStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStateIndpendent" uid="ce140ef3-0e6c-4a31-ab35-3b9edc49d648" label="%StateStereotype.properties.independent" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStateInitial" uid="5961398c-4ae6-4bfa-a1d6-5f39f3d77f01" label="$StateStereotype.properties.initial" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="ImmediatePastOperatorStereotype" metaclass="Class" is-hidden="false" label="%ImmediatePastOperatorStereotype.label" uid="a49e00c7-8102-46ec-af9f-422b5d19a97d">
+                <Icon path="res/icons/immediate_16.png"/>
+                <Image path="res/icons/immediate_16.png"/>
+                <TagTypes>
+                    <TagType name="TagOperatorId" uid="bb8ec369-4226-4196-9f90-df09477b2cb4" label="%ImmediatePastOperatorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagBound" uid="b14b46e3-2d91-42a4-a916-84d3ec87d75b" label="$ImmediatePastOperatorStereotype.properties.bound" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagState" uid="662b9b48-07cb-4a99-a0bb-8fa0a4e523ba" label="$ImmediatePastOperatorStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateValue" uid="1241cbab-7d73-4ad4-9331-60b5b6cdc791" label="$ImmediatePastOperatorStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="AbsolutePastOperatorStereotype" metaclass="Class" is-hidden="false" label="%AbsolutePastOperatorStereotype.label" uid="b3ad2321-46a7-463a-ba7f-b60f82e40c37">
+                <Icon path="res/icons/absolute_16.png"/>
+                <Image path="res/icons/absolute_16.png"/>
+                <TagTypes>
+                    <TagType name="TagOperatorId" uid="807c1fee-7146-450f-a130-24ddb590effc" label="%AbsolutePastOperatorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagLowBound" uid="383a7f35-f28e-4089-b40c-12beb6be4f62" label="$AbsolutePastOperatorStereotype.lowbound" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagUppBound" uid="d55233cf-043e-40fc-b273-dcd5c8dd6494" label="$AbsolutePastOperatorStereotype.uppbound" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagState" uid="6940927e-99eb-43cb-b7d9-a7075c7eac7c" label="$AbsolutePastOperatorStereotype.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateValue" uid="d44b1605-05b0-4811-819b-6f8fe6236fd4" label="$AbsolutePastOperatorStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="ContextInformationMessageStereotype" metaclass="CommunicationMessage" is-hidden="false" label="%ContextInformationMessageStereotype.label" uid="25ad856f-5c3c-44f3-be0e-d717bf7a79d4">
@@ -79,6 +100,14 @@
                 <Icon path="%MRulesDiagramStereotype.image"/>
                 <Image path="%MRulesDiagramStereotype.image"/>
             </Stereotype>
+            <Stereotype name="SameTimeStereotype" metaclass="Dependency" is-hidden="false" label="%SameTimeStereotype.label" uid="0bdf2349-ff7f-4e8f-a439-b0aca9b69fe5">
+                <Icon path="res/icons/str_16.png"/>
+                <Image path="res/icons/str_16.png"/>
+            </Stereotype>
+            <Stereotype name="NextTimeStereotype" metaclass="Dependency" is-hidden="false" label="%NextTimeStereotype.label" uid="d2a2ca9f-0197-44b6-8a12-c5d9e271c48f">
+                <Icon path="res/icons/ntr_16.png"/>
+                <Image path="res/icons/ntr_16.png"/>
+            </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
                 <TagTypes>
                     <TagType name="TagName" uid="eb5615f7-28bd-4314-913a-9bccf7e0bf12" label="Name" parameter-card="1" is-hidden="false" is-signed="false"/>
@@ -114,6 +143,54 @@
                 <Handler class="edu.casetools.dcase.modelio.diagrams.communication.tools.notes.ContextInformationMessageTool">
                     <HParameter name="metaclass" value="CommunicationMessage"/>
                     <HParameter name="stereotype" value="ContextInformationMessageStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="AntecedentGroupTool" label="%AntecedentGroupTool.label" tooltip="%AntecedentGroupTool.tooltip" image="%AntecedentGroupTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.AntecedentGroupTool">
+                    <HParameter name="metaclass" value="Package"/>
+                    <HParameter name="stereotype" value="AntecedentGroupStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="AntecedentTool" label="%AntecedentTool.label" tooltip="%AntecedentTool.tooltip" image="%AntecedentTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.AntecedentTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="AntecedentStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="ConsequentTool" label="%ConsequentTool.label" tooltip="%ConsequentTool.tooltip" image="%ConsequentTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.ConsequentTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="ConsequentStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="ImmediatePastOperatorTool" label="%ImmediatePastOperatorTool.label" tooltip="%ImmediatePastOperatorTool.tooltip" image="%ImmediatePastOperatorTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.ImmediatePastOperatorTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="ImmediatePastOperatorStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="AbsolutePastOperatorTool" label="%AbsolutePastOperatorTool.label" tooltip="%AbsolutePastOperatorTool.tooltip" image="%AbsolutePastOperatorTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.AbsolutePastOperatorTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="AbsolutePastOperatorStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="StateTool" label="%StateTool.label" tooltip="%StateTool.tooltip" image="%StateTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.StateTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="StateStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="SameTimeTool" label="%SameTimeTool.label" tooltip="%SameTimeTool.tooltip" image="%SameTimeTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.relations.SameTimeTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="SameTimeStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="NextTimeTool" label="%NextTimeTool.label" tooltip="%NextTimeTool.tooltip" image="%NextTimeTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.relations.NextTimeTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="NextTimeStereotype"/>
                 </Handler>
             </Tool>
         </Tools>
