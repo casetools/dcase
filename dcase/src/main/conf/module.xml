@@ -31,7 +31,7 @@
             </Stereotype>
             <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="b506e386-cb84-42a1-b19d-49dbb5a18540">
                 <Icon path="res/icons/state_16.png"/>
-                <Image path="res/icons/state_16.png"/>
+                <Image path="res/icons/state_64.png"/>
                 <TagTypes>
                     <TagType name="TagStateId" uid="ae51d5d2-e151-42ca-a557-c7ef6fdcfe0e" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStateName" uid="9a595946-8a33-419f-8751-4de45141c20a" label="$StateStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
