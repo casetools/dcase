@@ -80,7 +80,7 @@ public class DiagramUtils {
     public void setFreeName(ModelElement element, String testedName) {
 	List<MObject> nameList = ModelioUtils.getInstance().getAllElements();
 	String extension = "";
-	int i = 1;
+	int i = 0;
 	while (nameExists(nameList, testedName + extension)) {
 	    extension = Integer.toString(i);
 	    i++;

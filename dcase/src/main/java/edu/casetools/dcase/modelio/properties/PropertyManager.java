@@ -30,9 +30,12 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.Class;
 
+import edu.casetools.dcase.modelio.properties.pages.AbsolutePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AntecedentPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ContextInformationMessagePropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
+import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.PropertiesUtils;
@@ -122,11 +125,27 @@ public class PropertyManager {
 	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ANTECEDENT,
-		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Class.class)))
-		|| ster.equals(
-			extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONSEQUENT,
-				Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
-	    this.propertyPage = new AntecedentPropertyPage();
+		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
+	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME,
+		    DCaseProperties.PROPERTY_ANTECEDENT_STATE_VALUE);
+	}
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONSEQUENT,
+		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
+	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME,
+		    DCaseProperties.PROPERTY_CONSEQUENT_STATE_VALUE);
+	}
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
+		DCaseStereotypes.STEREOTYPE_IMMEDIATE_PAST_OPERATOR,
+		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
+	    this.propertyPage = new ImmediatePastOperatorPropertyPage();
+	}
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
+		DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR,
+		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
+	    this.propertyPage = new AbsolutePastOperatorPropertyPage();
 	}
 
     }

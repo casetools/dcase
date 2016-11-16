@@ -43,16 +43,13 @@ public class StatePropertyPage implements IPropertyContent {
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
 	    switch (row) {
-	    case 1:
+	    case 2:
 		element.setName(value);
 		break;
 	    case 3:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_NAME, value);
-		break;
-	    case 4:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INDEPENDENT, value);
 		break;
-	    case 5:
+	    case 4:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INITIAL_VALUE, value);
 		break;
 	    default:
@@ -73,7 +70,7 @@ public class StatePropertyPage implements IPropertyContent {
 	table.addProperty(I18nMessageService.getString("Ui.State.Property.TagId"), string);
 
 	// State Name
-	table.addProperty(DCaseProperties.PROPERTY_STATE_NAME, element.getName());
+	table.addProperty(I18nMessageService.getString("Ui.State.Property.TagName"), element.getName());
 
 	// Independent
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INDEPENDENT);
@@ -82,7 +79,7 @@ public class StatePropertyPage implements IPropertyContent {
 			I18nMessageService.getString("Ui.State.Property.TagIndependent.True") });
 
 	// Initial Value
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INDEPENDENT);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INITIAL_VALUE);
 	table.addProperty(I18nMessageService.getString("Ui.State.Property.TagInitialValue"), property,
 		new String[] { I18nMessageService.getString("Ui.State.Property.TagInitialValue.False"),
 			I18nMessageService.getString("Ui.State.Property.TagInitialValue.True") });

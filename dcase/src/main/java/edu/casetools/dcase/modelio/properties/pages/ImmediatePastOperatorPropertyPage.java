@@ -20,44 +20,41 @@
  */
 package edu.casetools.dcase.modelio.properties.pages;
 
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.core.runtime.AssertionFailedException;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
-import org.modelio.metamodel.factory.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
-import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
-import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.PropertiesUtils;
-import edu.casetools.dcase.utils.tables.TableUtils;
 
-public class ImmediatePastOperatorPropertyPage implements IPropertyContent {
+public class ImmediatePastOperatorPropertyPage extends PastOperatorPropertyPage {
 
     private static final Logger logger = Logger.getLogger(ImmediatePastOperatorPropertyPage.class.getName());
+
+    public ImmediatePastOperatorPropertyPage() {
+	super(DCaseProperties.PROPERTY_PAST_OPERATOR_IMMEDIATE_STATE_NAME,
+		DCaseProperties.PROPERTY_PAST_OPERATOR_IMMEDIATE_STATE_VALUE);
+    }
 
     // TODO Reduce the complexity of the switch case
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
+	super.changeProperty(element, row, value);
 	try {
 	    switch (row) {
-	    case 1:
+	    case 4:
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME, value, element);
-		break;
-	    case 2:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_ANTECEDENT_VALUE, value);
+			DCaseProperties.PROPERTY_PAST_OPERATOR_BOUND, value, element);
 		break;
 	    default:
 		break;
 	    }
-	} catch (ExtensionNotFoundException | AssertionFailedException e) {
+	} catch (AssertionFailedException e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
 	}
 
@@ -65,35 +62,12 @@ public class ImmediatePastOperatorPropertyPage implements IPropertyContent {
 
     @Override
     public void update(ModelElement element, IModulePropertyTable table) {
-	String property;
+	super.update(element, table);
 
-	// TagStateName
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME);
-	table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateName"), property,
-		getAllStates());
+	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PAST_OPERATOR_BOUND,
+		element);
+	table.addProperty(I18nMessageService.getString("Ui.ImmediatePastOperator.Property.TagBound"), string);
 
-	// TagStateValue
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_ANTECEDENT_VALUE);
-	table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateValue"), property,
-		new String[] { I18nMessageService.getString("Ui.Antecedent.Property.TagStateValue.True"),
-			I18nMessageService.getString("Ui.Antecedent.Property.TagStateValue.False") });
-
-    }
-
-    private String[] getAllStates() {
-
-	MObject state;
-	ArrayList<MObject> stateList = new ArrayList<>();
-
-	stateList = (ArrayList<MObject>) TableUtils.getInstance().getAllElementsStereotypedAs(stateList,
-		DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_STATE);
-	String[] stateNames = new String[stateList.size() + 1];
-	stateNames[0] = new String(I18nMessageService.getString("Ui.Antecedent.Property.StateName.None"));
-	for (int i = 0; i < stateList.size(); i++) {
-	    state = stateList.get(i);
-	    stateNames[i + 1] = state.getName();
-	}
-	return stateNames;
     }
 
 }

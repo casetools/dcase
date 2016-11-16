@@ -57,9 +57,29 @@ public class DCaseProperties {
 
     public static final String PROPERTY_STATE_INITIAL_VALUE = "TagStateInitial";
 
-    public static final String PROPERTY_ANTECEDENT_STATE_NAME = "TagStateName";
+    public static final String PROPERTY_ANTECEDENT_STATE_NAME = "TagAntecedentName";
 
-    public static final String PROPERTY_ANTECEDENT_VALUE = "TagStateValue";
+    public static final String PROPERTY_ANTECEDENT_STATE_VALUE = "TagAntecedentValue";
+
+    public static final String PROPERTY_CONSEQUENT_STATE_NAME = "TagConsequentName";
+
+    public static final String PROPERTY_CONSEQUENT_STATE_VALUE = "TagConsequentValue";
+
+    public static final String PROPERTY_PAST_OPERATOR_ID = "TagOperatorId";
+
+    public static final String PROPERTY_PAST_OPERATOR_BOUND = "TagBound";
+
+    public static final String PROPERTY_PAST_OPERATOR_LOWBOUND = "TagLowBound";
+
+    public static final String PROPERTY_PAST_OPERATOR_UPPBOUND = "TagUppBound";
+
+    public static final String PROPERTY_PAST_OPERATOR_IMMEDIATE_STATE_NAME = "TagIState";
+
+    public static final String PROPERTY_PAST_OPERATOR_IMMEDIATE_STATE_VALUE = "TagIStateValue";
+
+    public static final String PROPERTY_PAST_OPERATOR_ABSOLUTE_STATE_NAME = "TagAState";
+
+    public static final String PROPERTY_PAST_OPERATOR_ABSOLUTE_STATE_VALUE = "TagAStateValue";
 
     private DCaseProperties() {
 

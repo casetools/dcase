@@ -31,7 +31,6 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.modelio.properties.IPropertyContent;
-import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
@@ -42,17 +41,25 @@ public class AntecedentPropertyPage implements IPropertyContent {
 
     private static final Logger logger = Logger.getLogger(AntecedentPropertyPage.class.getName());
 
+    private final String propertyName;
+    private final String propertyValue;
+
+    public AntecedentPropertyPage(final String propertyName, final String propertyValue) {
+	this.propertyName = propertyName;
+	this.propertyValue = propertyValue;
+    }
+
     // TODO Reduce the complexity of the switch case
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
 	    switch (row) {
 	    case 1:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME, value, element);
+		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME, propertyName, value,
+			element);
 		break;
 	    case 2:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_ANTECEDENT_VALUE, value);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, propertyValue, value);
 		break;
 	    default:
 		break;
@@ -68,12 +75,12 @@ public class AntecedentPropertyPage implements IPropertyContent {
 	String property;
 
 	// TagStateName
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyName);
 	table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateName"), property,
 		getAllStates());
 
 	// TagStateValue
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_ANTECEDENT_VALUE);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyValue);
 	table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateValue"), property,
 		new String[] { I18nMessageService.getString("Ui.Antecedent.Property.TagStateValue.True"),
 			I18nMessageService.getString("Ui.Antecedent.Property.TagStateValue.False") });
