@@ -100,6 +100,10 @@
                 <Icon path="%MRulesDiagramStereotype.image"/>
                 <Image path="%MRulesDiagramStereotype.image"/>
             </Stereotype>
+            <Stereotype name="MStateMapDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%MStateMapDiagramStereotype.label" uid="996ead08-eaf0-4208-85ea-51a16133912e">
+                <Icon path="%MStateMapDiagramStereotype.image"/>
+                <Image path="%MStateMapDiagramStereotype.image"/>
+            </Stereotype>
             <Stereotype name="SameTimeStereotype" metaclass="Dependency" is-hidden="false" label="%SameTimeStereotype.label" uid="0bdf2349-ff7f-4e8f-a439-b0aca9b69fe5">
                 <Icon path="res/icons/str_16.png"/>
                 <Image path="res/icons/str_16.png"/>
@@ -117,6 +121,10 @@
     </Profiles>
     <Gui>
         <Commands>
+            <Command id="CreateMStateMapDiagram" label="%CreateMStateMapDiagram.label" tooltip="%CreateMStateMapDiagram.tooltip" image="%CreateMStateMapDiagram.image" group="%CreateMStateMapDiagram.group" modify-model="true" group-image="%CreateMStateMapDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateMStateMapDiagram"/>
+            </Command>
             <Command id="CreateMRulesDiagram" label="%CreateMRulesDiagram.label" tooltip="%CreateMRulesDiagram.tooltip" image="%CreateMRulesDiagram.image" group="%CreateMRulesDiagram.group" modify-model="true" group-image="%CreateMRulesDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateMRulesDiagram"/>
@@ -176,7 +184,7 @@
                 </Handler>
             </Tool>
             <Tool id="StateTool" label="%StateTool.label" tooltip="%StateTool.tooltip" image="%StateTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.StateTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mstatemap.tools.elements.StateTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="StateStereotype"/>
                 </Handler>
@@ -199,6 +207,7 @@
             <CommandRef refid="CreateCommunicationDiagram"/>
             <CommandRef refid="CreateCSPARQLRulesDiagram"/>
             <CommandRef refid="CreateMRulesDiagram"/>
+            <CommandRef refid="CreateMStateMapDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
         </ContextualMenu>
         <Diagrams>
@@ -217,6 +226,10 @@
             <DiagramType base-diagram="StaticDiagram" stereotype="MRulesDiagramStereotype">
                 <Palette keepBasePalette="false"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.MRulesDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="StaticDiagram" stereotype="MStateMapDiagramStereotype">
+                <Palette keepBasePalette="false"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mstatemap.MStateMapDiagramCustomizer"/>
             </DiagramType>
         </Diagrams>
         <Views>
