@@ -58,7 +58,7 @@
 		<dependency>       
            <groupId>edu.casetools</groupId>
            <artifactId>rcase</artifactId>
-           <version>0.2.4</version>
+           <version>0.2.5</version>
            <scope>compile</scope>
     	</dependency>
     	

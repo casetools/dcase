@@ -37,7 +37,6 @@ import edu.casetools.dcase.utils.ModelioUtils;
 import edu.casetools.dcase.utils.tables.ModelioTableUtils;
 import edu.casetools.dcase.utils.tables.TableUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DependencyTableData.
  */

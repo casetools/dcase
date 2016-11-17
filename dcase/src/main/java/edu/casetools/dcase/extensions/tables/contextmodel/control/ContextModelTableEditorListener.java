@@ -35,7 +35,6 @@ import edu.casetools.dcase.modelio.properties.pages.ContextInformationMessagePro
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 
-// TODO: Auto-generated Javadoc
 /**
  * The listener interface for receiving tableEditor events. The class that is
  * interested in processing a tableEditor event implements this interface, and

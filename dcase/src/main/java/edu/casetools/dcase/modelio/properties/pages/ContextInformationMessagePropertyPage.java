@@ -40,7 +40,6 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
     private static final Logger logger = Logger.getLogger(ContextInformationMessagePropertyPage.class.getName());
 
-    // TODO Reduce the complexity of the switch case
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {

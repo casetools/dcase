@@ -27,7 +27,6 @@ import edu.casetools.dcase.extensions.tables.contextmodel.ContextModelTable;
 import edu.casetools.dcase.extensions.tables.contextmodel.model.ContextModelTableData;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 
-// TODO: Auto-generated Javadoc
 /**
  * The listener interface for receiving matrixMenu events. The class that is
  * interested in processing a matrixMenu event implements this interface, and

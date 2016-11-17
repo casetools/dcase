@@ -46,7 +46,6 @@ public class AntecedentPropertyPage implements IPropertyContent {
 	this.propertyValue = propertyValue;
     }
 
-    // TODO Reduce the complexity of the switch case
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {

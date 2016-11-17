@@ -36,19 +36,14 @@ public class ImmediatePastOperatorPropertyPage extends PastOperatorPropertyPage 
 
     private static final Logger logger = Logger.getLogger(ImmediatePastOperatorPropertyPage.class.getName());
 
-    // TODO Reduce the complexity of the switch case
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	super.changeProperty(element, row, value);
 	try {
-	    switch (row) {
-	    case 4:
+	    if (row == 4)
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_BOUND, value, element);
-		break;
-	    default:
-		break;
-	    }
+
 	} catch (AssertionFailedException e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
 	}

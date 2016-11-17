@@ -81,7 +81,10 @@ public class ContextRulesDiagramCustomizer extends DiagramCustomizer implements 
 
     @Override
     public void initialize(IModule arg0, List<PaletteEntry> arg1, Map<String, String> arg2, boolean arg3) {
-	// TODO Auto-generated method stub
+	/*
+	 * The context rule diagram customizer does not need an initialization
+	 * method, but is forced by the ancestors to have one
+	 */
 
     }
 
