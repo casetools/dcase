@@ -3,7 +3,7 @@
     <ClassPath>
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
-        <PathEntry path="lib/rcase-0.2.4.jar"/>
+        <PathEntry path="lib/rcase-0.2.5.jar"/>
         <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
     </ClassPath>
     <Profiles>
@@ -95,9 +95,9 @@
                 <TagTypes/>
                 <NoteTypes/>
             </Stereotype>
-            <Stereotype name="CSPARQLRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%CSPARQLRulesDiagramStereotype.label" uid="faa0cd25-150b-48ad-83b4-9b3af765abf9">
-                <Icon path="%CSPARQLRulesDiagramStereotype.image"/>
-                <Image path="%CSPARQLRulesDiagramStereotype.image"/>
+            <Stereotype name="CSPARQLMapDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%CSPARQLMapDiagramStereotype.label" uid="faa0cd25-150b-48ad-83b4-9b3af765abf9">
+                <Icon path="%CSPARQLMapDiagramStereotype.image"/>
+                <Image path="%CSPARQLMapDiagramStereotype.image"/>
             </Stereotype>
             <Stereotype name="MRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%MRulesDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="%MRulesDiagramStereotype.image"/>
@@ -140,9 +140,9 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateCommunicationDiagram"/>
             </Command>
-            <Command id="CreateCSPARQLRulesDiagram" label="%CreateCSPARQLRulesDiagram.label" tooltip="%CreateCSPARQLRulesDiagram.tooltip" image="%CreateCSPARQLRulesDiagram.image" group="%CreateCSPARQLRulesDiagram.group" modify-model="true" group-image="%CreateCSPARQLRulesDiagram.groupimage">
+            <Command id="CreateCSPARQLMapDiagram" label="%CreateCSPARQLMapDiagram.label" tooltip="%CreateCSPARQLMapDiagram.tooltip" image="%CreateCSPARQLMapDiagram.image" group="%CreateCSPARQLMapDiagram.group" modify-model="true" group-image="%CreateCSPARQLMapDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateCSPARQLRulesDiagram"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateCSPARQLMapDiagram"/>
             </Command>
             <Command id="OpenContextInformationMessagesTable" label="%OpenContextInformationMessagesTable.label" tooltip="%OpenContextInformationMessagesTable.tooltip" image="%OpenContextInformationMessagesTable.image" group="%OpenContextInformationMessagesTable.group" modify-model="true" group-image="%OpenContextInformationMessagesTable.groupimage">
                 <Scope metaclass="ModelTree"/>
@@ -208,9 +208,9 @@
         <ContextualMenu>
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateCommunicationDiagram"/>
-            <CommandRef refid="CreateCSPARQLRulesDiagram"/>
-            <CommandRef refid="CreateMRulesDiagram"/>
+            <CommandRef refid="CreateCSPARQLMapDiagram"/>
             <CommandRef refid="CreateMStateMapDiagram"/>
+            <CommandRef refid="CreateMRulesDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
         </ContextualMenu>
         <Diagrams>
@@ -222,9 +222,9 @@
                 <Palette keepBasePalette="true"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.communication.CommunicationDiagramCustomizer"/>
             </DiagramType>
-            <DiagramType base-diagram="StaticDiagram" stereotype="CSPARQLRulesDiagramStereotype">
+            <DiagramType base-diagram="StaticDiagram" stereotype="CSPARQLMapDiagramStereotype">
                 <Palette keepBasePalette="true"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.csparqlrules.ContextRulesDiagramCustomizer"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.csparqlrules.CSPARQLMapDiagramCustomizer"/>
             </DiagramType>
             <DiagramType base-diagram="StaticDiagram" stereotype="MRulesDiagramStereotype">
                 <Palette keepBasePalette="false"/>

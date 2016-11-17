@@ -15,9 +15,9 @@ import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.rcase.module.api.RCaseTools;
 
-public class ContextRulesDiagramCustomizer extends DiagramCustomizer implements IDiagramCustomizer {
+public class CSPARQLMapDiagramCustomizer extends DiagramCustomizer implements IDiagramCustomizer {
 
-    public ContextRulesDiagramCustomizer() {
+    public CSPARQLMapDiagramCustomizer() {
 	super();
     }
 

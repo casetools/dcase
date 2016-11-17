@@ -36,7 +36,7 @@ import edu.casetools.dcase.utils.DiagramUtils;
 /**
  * The Class CreateRequirementsDiagram creates a Requirements Diagram.
  */
-public class CreateCSPARQLRulesDiagram extends CreateStaticDiagram {
+public class CreateCSPARQLMapDiagram extends CreateStaticDiagram {
 
     /*
      * (non-Javadoc)
@@ -47,7 +47,7 @@ public class CreateCSPARQLRulesDiagram extends CreateStaticDiagram {
     @Override
     protected StaticDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 
-	String name = I18nMessageService.getString("Ui.Command.CreateCSPARQLRulesDiagram.Label");
+	String name = I18nMessageService.getString("Ui.Command.CreateCSPARQLMapDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createDiagram(selectedElements, session, name,
 		DCaseStereotypes.STEREOTYPE_DIAGRAM_CSPARQL_RULES);
 	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_CSPARQL_RULES);

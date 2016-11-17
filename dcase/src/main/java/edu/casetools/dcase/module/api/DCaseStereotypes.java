@@ -19,7 +19,7 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String STEREOTYPE_DIAGRAM_COMMUNICATION = "CommunicationDiagramStereotype";
     public static final String STEREOTYPE_DEPENDENCY_PRODUCE = "ProduceStereotype";
     public static final String STEREOTYPE_DEPENDENCY_CONSUME = "ConsumeStereotype";
-    public static final String STEREOTYPE_DIAGRAM_CSPARQL_RULES = "CSPARQLRulesDiagramStereotype";
+    public static final String STEREOTYPE_DIAGRAM_CSPARQL_RULES = "CSPARQLMapDiagramStereotype";
     public static final String STEREOTYPE_DIAGRAM_M_RULES = "MRulesDiagramStereotype";
     public static final String STEREOTYPE_ABSOLUTE_PAST_OPERATOR = "AbsolutePastOperatorStereotype";
     public static final String STEREOTYPE_IMMEDIATE_PAST_OPERATOR = "ImmediatePastOperatorStereotype";

@@ -50,7 +50,7 @@ public class CreateMRulesDiagram extends CreateStaticDiagram {
 	String name = I18nMessageService.getString("Ui.Command.CreateMRulesDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createDiagram(selectedElements, session, name,
 		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES);
-	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_CSPARQL_RULES);
+	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_M_RULES);
 	return diagram;
     }
 
