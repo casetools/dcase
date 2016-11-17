@@ -20,7 +20,6 @@
  */
 package edu.casetools.dcase.modelio.properties.pages;
 
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,14 +27,12 @@ import org.eclipse.core.runtime.AssertionFailedException;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.factory.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
-import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.PropertiesUtils;
-import edu.casetools.dcase.utils.tables.TableUtils;
 
 public class AntecedentPropertyPage implements IPropertyContent {
 
@@ -77,7 +74,8 @@ public class AntecedentPropertyPage implements IPropertyContent {
 	// TagStateName
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyName);
 	table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateName"), property,
-		getAllStates());
+		PropertiesUtils.getInstance().getAllElements(DCasePeerModule.MODULE_NAME,
+			DCaseStereotypes.STEREOTYPE_STATE, "Ui.None"));
 
 	// TagStateValue
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyValue);
@@ -85,22 +83,6 @@ public class AntecedentPropertyPage implements IPropertyContent {
 		new String[] { I18nMessageService.getString("Ui.Antecedent.Property.TagStateValue.True"),
 			I18nMessageService.getString("Ui.Antecedent.Property.TagStateValue.False") });
 
-    }
-
-    private String[] getAllStates() {
-
-	MObject state;
-	ArrayList<MObject> stateList = new ArrayList<>();
-
-	stateList = (ArrayList<MObject>) TableUtils.getInstance().getAllElementsStereotypedAs(stateList,
-		DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_STATE);
-	String[] stateNames = new String[stateList.size() + 1];
-	stateNames[0] = new String(I18nMessageService.getString("Ui.Antecedent.Property.StateName.None"));
-	for (int i = 0; i < stateList.size(); i++) {
-	    state = stateList.get(i);
-	    stateNames[i + 1] = state.getName();
-	}
-	return stateNames;
     }
 
 }

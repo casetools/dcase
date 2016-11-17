@@ -25,11 +25,14 @@ import java.util.List;
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramNode;
 import org.modelio.api.modelio.model.IModelingSession;
+import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.modelio.diagrams.ElementTool;
+import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.DiagramUtils;
 
 /**
@@ -48,8 +51,13 @@ public class StateTool extends ElementTool {
     public MObject createOwnElement(IModelingSession session, MObject element) {
 	String name = I18nMessageService.getString("Names.State");
 
-	return DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
+	MObject state = DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_STATE);
+
+	DiagramUtils.getInstance().setFreeProperty((ModelElement) state, DCasePeerModule.MODULE_NAME,
+		DCaseStereotypes.STEREOTYPE_STATE, DCaseProperties.PROPERTY_STATE_ID);
+
+	return state;
     }
 
     /*

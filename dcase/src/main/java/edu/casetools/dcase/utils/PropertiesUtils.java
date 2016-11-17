@@ -39,7 +39,9 @@ import org.modelio.metamodel.uml.infrastructure.TaggedValue;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
+import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.dcase.utils.tables.TableUtils;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -412,6 +414,22 @@ public class PropertiesUtils {
 	}
 
 	return false;
+    }
+
+    public String[] getAllElements(String moduleName, String stereotypeName, String emptyCase) {
+
+	MObject state;
+	ArrayList<MObject> stateList = new ArrayList<>();
+
+	stateList = (ArrayList<MObject>) TableUtils.getInstance().getAllElementsStereotypedAs(stateList, moduleName,
+		stereotypeName);
+	String[] stateNames = new String[stateList.size() + 1];
+	stateNames[0] = new String(I18nMessageService.getString(emptyCase));
+	for (int i = 0; i < stateList.size(); i++) {
+	    state = stateList.get(i);
+	    stateNames[i + 1] = state.getName();
+	}
+	return stateNames;
     }
 
 }

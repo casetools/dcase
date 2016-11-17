@@ -20,7 +20,6 @@
  */
 package edu.casetools.dcase.modelio.properties.pages;
 
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,7 +39,8 @@ import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.ModelioUtils;
 import edu.casetools.dcase.utils.PropertiesUtils;
-import edu.casetools.dcase.utils.tables.TableUtils;
+import edu.casetools.rcase.module.api.RCaseStereotypes;
+import edu.casetools.rcase.module.impl.RCasePeerModule;
 
 public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
@@ -87,8 +87,7 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
     private void refreshLinks(ModelElement element, String value) {
 	removeOldTracedContextAttributes(element);
-	if (!value.equals(
-		I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagContextAttribute.None")))
+	if (!value.equals(I18nMessageService.getString("Ui.None")))
 	    traceElementToContextAttribute(element, value);
     }
 
@@ -137,25 +136,9 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_MESSAGE_SITUATIONAL_PARAMETER);
 	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagContextAttribute"),
-		property, getAllContextAttributes());
+		property, PropertiesUtils.getInstance().getAllElements(RCasePeerModule.MODULE_NAME,
+			RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE, "Ui.None"));
 
-    }
-
-    private String[] getAllContextAttributes() {
-
-	MObject ContextAttribute;
-	ArrayList<MObject> ContextAttributes = new ArrayList<>();
-
-	ContextAttributes = (ArrayList<MObject>) TableUtils.getInstance()
-		.getAllElementsStereotypedAs(ContextAttributes, "RCase", "ContextAttributeStereotype");
-	String[] ContextAttributeNames = new String[ContextAttributes.size() + 1];
-	ContextAttributeNames[0] = new String(
-		I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagContextAttribute.None"));
-	for (int i = 0; i < ContextAttributes.size(); i++) {
-	    ContextAttribute = ContextAttributes.get(i);
-	    ContextAttributeNames[i + 1] = ContextAttribute.getName();
-	}
-	return ContextAttributeNames;
     }
 
     private void traceElementToContextAttribute(ModelElement element, String value) {

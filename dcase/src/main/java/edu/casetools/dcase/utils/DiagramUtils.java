@@ -20,6 +20,7 @@
  */
 package edu.casetools.dcase.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,6 +48,7 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.dcase.utils.tables.TableUtils;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -87,6 +89,51 @@ public class DiagramUtils {
 	}
 
 	element.setName(testedName + extension);
+    }
+
+    /**
+     * Sets the free name.
+     *
+     * @param element
+     *            the element
+     * @param testedName
+     *            the tested name
+     */
+    public void setFreeProperty(ModelElement element, String moduleName, String stereotypeName, String propertyName) {
+	List<MObject> elementsList = new ArrayList<>();
+	elementsList = TableUtils.getInstance().getAllElementsStereotypedAs(elementsList, moduleName, stereotypeName);
+
+	int i = 0;
+	while (propertyExists(elementsList, Integer.toString(i), moduleName, propertyName)) {
+	    i++;
+	}
+
+	try {
+	    element.putTagValue(moduleName, propertyName, Integer.toString(i));
+	} catch (ExtensionNotFoundException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
+    }
+
+    /**
+     * Name exists.
+     *
+     * @param elementsList
+     *            the name list
+     * @param name
+     *            the name
+     * @return true, if successful
+     */
+    public boolean propertyExists(List<MObject> elementsList, String name, String moduleName, String propertyName) {
+
+	for (MObject object : elementsList) {
+	    String propertyValue = ((ModelElement) object).getTagValue(moduleName, propertyName);
+	    if (propertyValue != null && propertyValue.equals(name))
+		return true;
+	}
+
+	return false;
     }
 
     /**
