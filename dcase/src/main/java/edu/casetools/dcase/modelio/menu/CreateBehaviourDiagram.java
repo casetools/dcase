@@ -37,6 +37,7 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 
 /**
  * The Class CreateDiagram has the common methods to create a diagram.
@@ -51,8 +52,7 @@ public abstract class CreateBehaviourDiagram extends DefaultModuleCommandHandler
      */
     @Override
     public void actionPerformed(List<MObject> selectedElements, IModule module) {
-	Modelio modelio = Modelio.getInstance();
-	IModelingSession session = modelio.getModelingSession();
+	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 	ITransaction transaction = session
 		.createTransaction(I18nMessageService.getString("Info.Session.Create", new String[] { "Activity" }));
 

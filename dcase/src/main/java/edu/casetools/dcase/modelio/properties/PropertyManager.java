@@ -37,6 +37,7 @@ import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropert
 import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.PropertiesUtils;
 
@@ -101,7 +102,7 @@ public class PropertyManager {
 
     private void init(ModelElement element) {
 	this.propertyPage = null;
-	extensions = Modelio.getInstance().getModelingSession().getMetamodelExtensions();
+	extensions = DCaseModule.getInstance().getModuleContext().getModelingSession().getMetamodelExtensions();
 	sterList = PropertiesUtils.getInstance().computePropertyList(element);
     }
 

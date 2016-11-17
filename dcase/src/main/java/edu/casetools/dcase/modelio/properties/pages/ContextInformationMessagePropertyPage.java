@@ -24,20 +24,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.core.runtime.AssertionFailedException;
-import org.modelio.api.modelio.Modelio;
-import org.modelio.api.modelio.model.IModelingSession;
-import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.factory.ExtensionNotFoundException;
-import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
-import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.ModelioUtils;
 import edu.casetools.dcase.utils.PropertiesUtils;
 import edu.casetools.rcase.module.api.RCaseStereotypes;
 import edu.casetools.rcase.module.impl.RCasePeerModule;
@@ -86,9 +80,9 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
     }
 
     private void refreshLinks(ModelElement element, String value) {
-	removeOldTracedContextAttributes(element);
+	PropertiesUtils.getInstance().removeOldTracedContextAttributes(element);
 	if (!value.equals(I18nMessageService.getString("Ui.None")))
-	    traceElementToContextAttribute(element, value);
+	    PropertiesUtils.getInstance().traceElementToContextAttribute(element, value);
     }
 
     @Override
@@ -139,47 +133,6 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 		property, PropertiesUtils.getInstance().getAllElements(RCasePeerModule.MODULE_NAME,
 			RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE, "Ui.None"));
 
-    }
-
-    private void traceElementToContextAttribute(ModelElement element, String value) {
-	IModelingSession session = Modelio.getInstance().getModelingSession();
-	ITransaction transaction = session
-		.createTransaction(I18nMessageService.getString("Info.Session.Create", new String[] { "" }));
-	ModelElement ContextAttribute = (ModelElement) ModelioUtils.getInstance().getElementByName(value);
-
-	try {
-	    session.getModel().createDependency(element, ContextAttribute, "ModelerModule", "trace");
-	    transaction.commit();
-	} catch (ExtensionNotFoundException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
-	} finally {
-	    transaction.close();
-	}
-
-    }
-
-    private void removeOldTracedContextAttributes(ModelElement element) {
-
-	for (MObject child : element.getCompositionChildren()) {
-	    if (child instanceof ModelElement) {
-		ModelElement auxiliarChild = (ModelElement) child;
-		if (auxiliarChild.isStereotyped("ModelerModule", "trace")) {
-		    deleteContextAttribute(auxiliarChild);
-		}
-	    }
-
-	}
-
-    }
-
-    private void deleteContextAttribute(ModelElement auxiliarChild) {
-	if (auxiliarChild instanceof Dependency) {
-	    Dependency dependency = (Dependency) auxiliarChild;
-	    ModelElement target = dependency.getDependsOn();
-	    if (target.isStereotyped("RCase", "ContextAttributeStereotype"))
-		auxiliarChild.delete();
-
-	}
     }
 
 }

@@ -40,7 +40,7 @@ public class DCaseModule extends AbstractJavaModule {
 	new RCaseModule(moduleContext);
     }
 
-    public DCaseModule getInstance() {
+    public static DCaseModule getInstance() {
 	return instance;
     }
 

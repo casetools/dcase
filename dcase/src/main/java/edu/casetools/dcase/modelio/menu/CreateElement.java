@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.modelio.model.InvalidTransactionException;
@@ -34,6 +33,7 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 
 /**
  * The Class CreateElement has the common methods to create an element.
@@ -61,7 +61,7 @@ public abstract class CreateElement extends DefaultModuleCommandHandler {
     @Override
     public void actionPerformed(List<MObject> selectedElements, IModule module) {
 
-	IModelingSession session = (IModelingSession) Modelio.getInstance().getModelingSession();
+	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 	ITransaction transaction = session.createTransaction(
 		I18nMessageService.getString("Info.Session.Create", new String[] { "Create Element" }));
 	try {

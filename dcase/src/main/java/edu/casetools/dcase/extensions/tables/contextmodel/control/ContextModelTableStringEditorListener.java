@@ -25,7 +25,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
-import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
@@ -34,6 +33,7 @@ import edu.casetools.dcase.extensions.tables.contextmodel.model.ContextModelStri
 import edu.casetools.dcase.extensions.tables.contextmodel.model.ContextModelTableModel;
 import edu.casetools.dcase.modelio.properties.pages.ContextInformationMessagePropertyPage;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -77,7 +77,7 @@ public class ContextModelTableStringEditorListener implements ActionListener {
 	int column = this.editor.getColumn();
 	int row = this.editor.getRow();
 	ITransaction transaction = null;
-	IModelingSession session = Modelio.getInstance().getModelingSession();
+	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 	ModelElement element = model.getData().getDataList().get(row).getContextAttribute();
 	try {
 	    transaction = session.createTransaction(

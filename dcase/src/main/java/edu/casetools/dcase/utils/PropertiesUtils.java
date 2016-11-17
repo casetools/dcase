@@ -27,7 +27,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.EList;
-import org.modelio.api.modelio.Modelio;
+import org.modelio.api.modelio.model.IModelingSession;
+import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.modelio.model.IUmlModel;
 import org.modelio.metamodel.factory.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.Dependency;
@@ -40,10 +41,10 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.tables.TableUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PropertiesUtils.
  */
@@ -77,7 +78,7 @@ public class PropertiesUtils {
      * @return true, if successful
      */
     public boolean accept(MObject selectedElement) {
-	IUmlModel model = Modelio.getInstance().getModelingSession().getModel();
+	IUmlModel model = DCaseModule.getInstance().getModuleContext().getModelingSession().getModel();
 
 	for (MObject libRoot : model.getLibraryRoots()) {
 	    if (selectedElement.equals(libRoot))
@@ -187,7 +188,7 @@ public class PropertiesUtils {
 
 	TaggedValue tag = null;
 	EList<TaggedValue> tagElements = element.getTag();
-	IUmlModel model = Modelio.getInstance().getModelingSession().getModel();
+	IUmlModel model = DCaseModule.getInstance().getModuleContext().getModelingSession().getModel();
 
 	if (!tagElements.isEmpty()) {
 	    for (TaggedValue currentTag : tagElements) {
@@ -259,7 +260,7 @@ public class PropertiesUtils {
 
     private void createTaggedValue(String modulename, String name, String values, ModelElement element) {
 	try {
-	    TaggedValue taggedValue = Modelio.getInstance().getModelingSession().getModel()
+	    TaggedValue taggedValue = DCaseModule.getInstance().getModuleContext().getModelingSession().getModel()
 		    .createTaggedValue(modulename, name, element);
 	    element.getTag().add(taggedValue);
 	    if (!taggedValue.getDefinition().getParamNumber().equals(ZERO))
@@ -281,7 +282,7 @@ public class PropertiesUtils {
      */
     public void setTaggedValue(String name, ModelElement elt, String value) {
 	EList<TaggedValue> tagElements = elt.getTag();
-	IUmlModel model = Modelio.getInstance().getModelingSession().getModel();
+	IUmlModel model = DCaseModule.getInstance().getModuleContext().getModelingSession().getModel();
 	if (!tagElements.isEmpty()) {
 	    for (TaggedValue tag : tagElements) {
 		String tagname = tag.getDefinition().getName();
@@ -332,7 +333,7 @@ public class PropertiesUtils {
     public void setTaggedValue(TaggedValue foundTagValue, ModelElement elt, String value, ModelElement related,
 	    String modulelink, String stereotypeLink) {
 	TagParameter firstElt;
-	IUmlModel model = Modelio.getInstance().getModelingSession().getModel();
+	IUmlModel model = DCaseModule.getInstance().getModuleContext().getModelingSession().getModel();
 	ArrayList<Dependency> linksList = new ArrayList<>(elt.getDependsOnDependency());
 	for (Dependency existingLinks : linksList) {
 	    if (existingLinks.isStereotyped(modulelink, stereotypeLink)) {
@@ -430,6 +431,47 @@ public class PropertiesUtils {
 	    stateNames[i + 1] = state.getName();
 	}
 	return stateNames;
+    }
+
+    public void traceElementToContextAttribute(ModelElement element, String value) {
+	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
+	ITransaction transaction = session
+		.createTransaction(I18nMessageService.getString("Info.Session.Create", new String[] { "" }));
+	ModelElement contextAttribute = (ModelElement) ModelioUtils.getInstance().getElementByName(value);
+
+	try {
+	    session.getModel().createDependency(element, contextAttribute, "ModelerModule", "trace");
+	    transaction.commit();
+	} catch (ExtensionNotFoundException e) {
+	    logger.log(Level.SEVERE, e.getMessage(), e);
+	} finally {
+	    transaction.close();
+	}
+
+    }
+
+    public void removeOldTracedContextAttributes(ModelElement element) {
+
+	for (MObject child : element.getCompositionChildren()) {
+	    if (child instanceof ModelElement) {
+		ModelElement auxiliarChild = (ModelElement) child;
+		if (auxiliarChild.isStereotyped("ModelerModule", "trace")) {
+		    deleteContextAttribute(auxiliarChild);
+		}
+	    }
+
+	}
+
+    }
+
+    private void deleteContextAttribute(ModelElement auxiliarChild) {
+	if (auxiliarChild instanceof Dependency) {
+	    Dependency dependency = (Dependency) auxiliarChild;
+	    ModelElement target = dependency.getDependsOn();
+	    if (target.isStereotyped("RCase", "ContextAttributeStereotype"))
+		auxiliarChild.delete();
+
+	}
     }
 
 }

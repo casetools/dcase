@@ -26,7 +26,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramHandle;
 import org.modelio.api.modelio.diagram.IDiagramNode;
@@ -36,6 +35,7 @@ import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.metamodel.diagrams.AbstractDiagram;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.rcase.module.i18n.I18nMessageService;
 
 /**
@@ -131,7 +131,7 @@ public abstract class ElementTool extends DefaultBoxTool {
     public ITransaction createElement(IDiagramHandle representation, MObject element, IDiagramGraphic target, // NOSONAR
 	    Rectangle rect) {
 
-	IModelingSession session = Modelio.getInstance().getModelingSession();
+	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 
 	ITransaction transaction = session
 		.createTransaction(I18nMessageService.getString("Info.Session.Create", new String[] { "" }));

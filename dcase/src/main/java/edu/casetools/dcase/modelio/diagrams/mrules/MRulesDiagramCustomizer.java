@@ -25,7 +25,6 @@ import java.util.Map;
 
 import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteRoot;
-import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.diagram.IDiagramCustomizer;
 import org.modelio.api.modelio.diagram.IDiagramService;
 import org.modelio.api.modelio.diagram.tools.PaletteEntry;
@@ -34,6 +33,7 @@ import org.modelio.api.module.IModule;
 import edu.casetools.dcase.modelio.diagrams.DiagramCustomizer;
 import edu.casetools.dcase.module.api.DCaseTools;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 
 /**
  * The Class RequirementDiagramCustomizer customizes the palette of the
@@ -50,7 +50,8 @@ public class MRulesDiagramCustomizer extends DiagramCustomizer implements IDiagr
      */
     @Override
     public void fillPalette(PaletteRoot paletteRoot) {
-	IDiagramService toolRegistry = Modelio.getInstance().getDiagramService();
+	IDiagramService toolRegistry = DCaseModule.getInstance().getModuleContext().getModelioServices()
+		.getDiagramService();
 	PaletteDrawer commonGroup = createBasics();
 
 	paletteRoot.add(commonGroup);
