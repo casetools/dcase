@@ -39,25 +39,28 @@
                     <TagType name="TagStateInitial" uid="5961398c-4ae6-4bfa-a1d6-5f39f3d77f01" label="$StateStereotype.properties.initial" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
+            <Stereotype name="PastOperatorStereotype" metaclass="Class" is-hidden="false" label="%PastOperatorStereotype.label" uid="8d90834f-66fc-41c3-86ea-27652123d22a">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="TagOperatorId" uid="a83112a4-2733-413f-8e2d-75e939ce71b9" label="%ImmediatePastOperatorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagOStateName" uid="4ed11d56-8ff1-4d90-947f-773b3670e874" label="$ImmediatePastOperatorStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagOStateValue" uid="7dc7729e-2dba-437e-92ba-ed5dae9f0ba6" label="$ImmediatePastOperatorStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
             <Stereotype name="ImmediatePastOperatorStereotype" metaclass="Class" is-hidden="false" label="%ImmediatePastOperatorStereotype.label" uid="a49e00c7-8102-46ec-af9f-422b5d19a97d">
                 <Icon path="res/icons/immediate_16.png"/>
                 <Image path="res/icons/immediate_16.png"/>
                 <TagTypes>
-                    <TagType name="TagOperatorId" uid="bb8ec369-4226-4196-9f90-df09477b2cb4" label="%ImmediatePastOperatorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagBound" uid="b14b46e3-2d91-42a4-a916-84d3ec87d75b" label="$ImmediatePastOperatorStereotype.properties.bound" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagIState" uid="662b9b48-07cb-4a99-a0bb-8fa0a4e523ba" label="$ImmediatePastOperatorStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagIStateValue" uid="1241cbab-7d73-4ad4-9331-60b5b6cdc791" label="$ImmediatePastOperatorStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="AbsolutePastOperatorStereotype" metaclass="Class" is-hidden="false" label="%AbsolutePastOperatorStereotype.label" uid="b3ad2321-46a7-463a-ba7f-b60f82e40c37">
                 <Icon path="res/icons/absolute_16.png"/>
                 <Image path="res/icons/absolute_16.png"/>
                 <TagTypes>
-                    <TagType name="TagOperatorId" uid="807c1fee-7146-450f-a130-24ddb590effc" label="%AbsolutePastOperatorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagLowBound" uid="383a7f35-f28e-4089-b40c-12beb6be4f62" label="$AbsolutePastOperatorStereotype.properties.lowbound" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagUppBound" uid="d55233cf-043e-40fc-b273-dcd5c8dd6494" label="$AbsolutePastOperatorStereotype.properties.uppbound" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagAState" uid="6940927e-99eb-43cb-b7d9-a7075c7eac7c" label="$AbsolutePastOperatorStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagAStateValue" uid="d44b1605-05b0-4811-819b-6f8fe6236fd4" label="$AbsolutePastOperatorStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="ContextInformationMessageStereotype" metaclass="CommunicationMessage" is-hidden="false" label="%ContextInformationMessageStereotype.label" uid="25ad856f-5c3c-44f3-be0e-d717bf7a79d4">

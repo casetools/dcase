@@ -36,11 +36,6 @@ public class AbsolutePastOperatorPropertyPage extends PastOperatorPropertyPage {
 
     private static final Logger logger = Logger.getLogger(AbsolutePastOperatorPropertyPage.class.getName());
 
-    public AbsolutePastOperatorPropertyPage() {
-	super(DCaseProperties.PROPERTY_PAST_OPERATOR_ABSOLUTE_STATE_NAME,
-		DCaseProperties.PROPERTY_PAST_OPERATOR_ABSOLUTE_STATE_VALUE);
-    }
-
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	super.changeProperty(element, row, value);

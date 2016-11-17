@@ -38,26 +38,18 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 
     private static final Logger logger = Logger.getLogger(PastOperatorPropertyPage.class.getName());
 
-    private final String propertyName;
-    private final String propertyValue;
-
-    public PastOperatorPropertyPage(final String propertyName, final String propertyValue) {
-	this.propertyName = propertyName;
-	this.propertyValue = propertyValue;
-    }
-
     // TODO Reduce the complexity of the switch case
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
 	    switch (row) {
 	    case 2:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME, propertyName, value,
-			element);
+		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+			DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME, value, element);
 		break;
 	    case 3:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME, propertyValue, value,
-			element);
+		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+			DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE, value, element);
 		break;
 	    default:
 		break;
@@ -78,13 +70,13 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagId"), string);
 
 	// TagStateName
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyName);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME);
 	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagStateName"), property,
 		PropertiesUtils.getInstance().getAllElements(DCasePeerModule.MODULE_NAME,
 			DCaseStereotypes.STEREOTYPE_STATE, "Ui.None"));
 
 	// TagStateValue
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyValue);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE);
 	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagStateValue"), property,
 		new String[] { I18nMessageService.getString("Ui.PastOperator.Property.TagStateValue.True"),
 			I18nMessageService.getString("Ui.PastOperator.Property.TagStateValue.False") });

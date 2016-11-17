@@ -24,5 +24,6 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String STEREOTYPE_ABSOLUTE_PAST_OPERATOR = "AbsolutePastOperatorStereotype";
     public static final String STEREOTYPE_IMMEDIATE_PAST_OPERATOR = "ImmediatePastOperatorStereotype";
     public static final String STEREOTYPE_DIAGRAM_M_STATE_MAP = "MStateMapDiagramStereotype";
+    public static final String STEREOTYPE_PAST_OPERATOR = "PastOperatorStereotype";
 
 }

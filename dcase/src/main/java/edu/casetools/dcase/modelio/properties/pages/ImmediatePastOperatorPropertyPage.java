@@ -36,11 +36,6 @@ public class ImmediatePastOperatorPropertyPage extends PastOperatorPropertyPage 
 
     private static final Logger logger = Logger.getLogger(ImmediatePastOperatorPropertyPage.class.getName());
 
-    public ImmediatePastOperatorPropertyPage() {
-	super(DCaseProperties.PROPERTY_PAST_OPERATOR_IMMEDIATE_STATE_NAME,
-		DCaseProperties.PROPERTY_PAST_OPERATOR_IMMEDIATE_STATE_VALUE);
-    }
-
     // TODO Reduce the complexity of the switch case
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
