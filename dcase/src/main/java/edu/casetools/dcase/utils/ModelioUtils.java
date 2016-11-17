@@ -33,7 +33,6 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.impl.DCaseModule;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ModelioUtils.
  */

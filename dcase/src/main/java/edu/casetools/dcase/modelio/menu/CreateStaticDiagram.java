@@ -22,7 +22,6 @@ package edu.casetools.dcase.modelio.menu;
 
 import java.util.List;
 
-import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.diagram.IDiagramHandle;
 import org.modelio.api.modelio.diagram.IDiagramService;
 import org.modelio.api.modelio.diagram.dg.IDiagramDG;
@@ -59,7 +58,7 @@ public abstract class CreateStaticDiagram extends DefaultModuleCommandHandler {
 	StaticDiagram diagram = createOwnDiagram(selectedElements, session);
 
 	if (null != diagram)
-	    Modelio.getInstance().getEditionService().openEditor(diagram);
+	    DCaseModule.getInstance().getModuleContext().getModelioServices().getEditionService().openEditor(diagram);
 	transaction.commit();
 
     }
@@ -105,7 +104,7 @@ public abstract class CreateStaticDiagram extends DefaultModuleCommandHandler {
      * @return the diagram where the style has been changed.
      */
     protected AbstractDiagram addStyle(AbstractDiagram diagram, String styleName) {
-	IDiagramService ds = Modelio.getInstance().getDiagramService();
+	IDiagramService ds = DCaseModule.getInstance().getModuleContext().getModelioServices().getDiagramService();
 	IDiagramHandle handler = ds.getDiagramHandle(diagram);
 	IDiagramDG dg = handler.getDiagramNode();
 

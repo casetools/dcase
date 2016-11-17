@@ -108,9 +108,13 @@ public class MRulesDiagramCustomizer extends DiagramCustomizer implements IDiagr
      *            the variable selects whether if to keep the base palette of
      *            the original diagram or start from scratch.
      */
+    @Override
     public void initialize(IModule module, List<PaletteEntry> tools, Map<String, String> hParameters,
 	    boolean keepBasePalette) {
-	/* Method empty because is forced */
+	/*
+	 * Initialization not required for the diagram but forced by its
+	 * ancestors
+	 */
     }
 
 }

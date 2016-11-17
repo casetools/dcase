@@ -21,12 +21,9 @@
 package edu.casetools.dcase.modelio.menu;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.ITransaction;
-import org.modelio.api.modelio.model.InvalidTransactionException;
 import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
@@ -39,8 +36,6 @@ import edu.casetools.dcase.module.impl.DCaseModule;
  * The Class CreateElement has the common methods to create an element.
  */
 public abstract class CreateElement extends DefaultModuleCommandHandler {
-
-    private static final Logger logger = Logger.getLogger(I18nMessageService.class.getName());
 
     /**
      * Creates the customized element.
@@ -64,17 +59,11 @@ public abstract class CreateElement extends DefaultModuleCommandHandler {
 	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 	ITransaction transaction = session.createTransaction(
 		I18nMessageService.getString("Info.Session.Create", new String[] { "Create Element" }));
-	try {
-	    createOwnElement(selectedElements, session);
+
+	createOwnElement(selectedElements, session);
+	if (transaction != null) {
 	    transaction.commit();
 	    transaction.close();
-	} catch (InvalidTransactionException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
-	}
-
-	finally {
-	    if (transaction != null)
-		transaction.close();
 	}
 
     }

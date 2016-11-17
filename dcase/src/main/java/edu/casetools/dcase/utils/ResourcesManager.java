@@ -24,10 +24,8 @@ import java.io.File;
 
 import javax.swing.ImageIcon;
 
-import org.modelio.api.modelio.Modelio;
-import org.modelio.api.module.IModule;
-
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 
 /**
  * The Class ResourcesManager manages the resources of the system such as Images
@@ -35,7 +33,6 @@ import edu.casetools.dcase.module.i18n.I18nMessageService;
  */
 public class ResourcesManager {
     private static ResourcesManager instance = null;
-    private IModule module;
 
     /**
      * Gets the single instance of ResourcesManager.
@@ -50,16 +47,6 @@ public class ResourcesManager {
     }
 
     /**
-     * Sets the jmdac.
-     *
-     * @param module
-     *            the new jmdac
-     */
-    public void setJMDAC(IModule module) {
-	this.module = module;
-    }
-
-    /**
      * Gets the image.
      *
      * @param imageName
@@ -67,7 +54,7 @@ public class ResourcesManager {
      * @return the image
      */
     public String getImage(String imageName) {
-	return this.module.getConfiguration().getModuleResourcesPath()
+	return DCaseModule.getInstance().getModuleContext().getConfiguration().getModuleResourcesPath()
 		// + File.separator + "res" + File.separator + "icons"
 		+ File.separator + imageName;
     }
@@ -80,8 +67,8 @@ public class ResourcesManager {
      * @return the style
      */
     public String getStyle(String styleName) {
-	return this.module.getConfiguration().getModuleResourcesPath() + File.separator + "res" + File.separator
-		+ "style" + File.separator + styleName;
+	return DCaseModule.getInstance().getModuleContext().getConfiguration().getModuleResourcesPath() + File.separator
+		+ "res" + File.separator + "style" + File.separator + styleName;
     }
 
     /**
@@ -105,7 +92,8 @@ public class ResourcesManager {
 	for (String name : styleNames) {
 	    String path = this.getStyle(name);
 	    File style = new File(path);
-	    Modelio.getInstance().getDiagramService().registerStyle(name, "default", style);
+	    DCaseModule.getInstance().getModuleContext().getModelioServices().getDiagramService().registerStyle(name,
+		    "default", style);
 	}
     }
 
