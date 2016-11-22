@@ -47,7 +47,7 @@ public class CreateMStateMapDiagram extends CreateStaticDiagram {
     @Override
     protected StaticDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 
-	String name = I18nMessageService.getString("Ui.Command.CreateMRulesDiagram.Label");
+	String name = I18nMessageService.getString("Ui.Command.CreateMMapDiagramDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createDiagram(selectedElements, session, name,
 		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_STATE_MAP);
 	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_M_RULES);

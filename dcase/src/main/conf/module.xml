@@ -151,7 +151,7 @@
             <Command id="MDiagrams2UPPAAL" label="%MDiagrams2UPPAAL.label" tooltip="%MDiagrams2UPPAAL.tooltip" image="%MDiagrams2UPPAAL.image" group="%MDiagrams2UPPAAL.group" modify-model="true" group-image="%MDiagrams2UPPAAL.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.ExportMDiagrams2UPPAAL"/>
-            </Command>            
+            </Command>
         </Commands>
         <Tools>
             <Tool id="ContextInformationMessageTool" label="%ContextInformationMessageTool.label" tooltip="%ContextInformationMessageTool.tooltip" image="%ContextInformationMessageTool.image">
@@ -216,6 +216,7 @@
             <CommandRef refid="CreateMStateMapDiagram"/>
             <CommandRef refid="CreateMRulesDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
+            <CommandRef refid="MDiagrams2UPPAAL"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="SequenceDiagram" stereotype="InteractionDiagramStereotype">

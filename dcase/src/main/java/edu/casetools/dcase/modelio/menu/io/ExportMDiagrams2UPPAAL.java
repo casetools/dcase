@@ -12,7 +12,7 @@ import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.io.MDiagrams2UPPAAL;
+import edu.casetools.dcase.extensions.io.MD2UPPAAL;
 
 public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 
@@ -53,7 +53,7 @@ public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 	dialog.setFileName("_UPPAAL.xml");
 	String fileLocation = dialog.open();
 
-	MDiagrams2UPPAAL translator = new MDiagrams2UPPAAL();
+	MD2UPPAAL translator = new MD2UPPAAL();
 
 	// if (!modelelt.isStereotyped(Utils.CONTEXT_MODELLER,
 	// Utils.CONTEXT_MODEL)) {
@@ -70,7 +70,6 @@ public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 	    }
 	}
 
-	translator.setModel();
 	translator.writeToFile(newFile);
 	MessageDialog.openInformation(null, "Model Exported", "Model exported to C-SPARQL at:\n" + fileLocation);
 
