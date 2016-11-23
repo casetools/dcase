@@ -18,12 +18,6 @@ import uk.ac.mdx.ie.contextmodeller.i18n.I18nMessageService;
 
 public class MData {
 
-    private final int TEMPLATE_HEADER_CHARS = 800;
-    private final int TEMPLATE_STATES_CHARS = 80;
-    private final int TEMPLATE_BOPS_CHARS = 12000;
-    private final int TEMPLATE_STR_CHARS = 1450;
-    private final int TEMPLATE_NTR_CHARS = 3050;
-
     private List<MObject> states;
     private List<MObject> bops;
     private List<MObject> strs;
@@ -107,18 +101,6 @@ public class MData {
 
     public void setNtrs(List<MObject> ntrs) {
 	this.ntrs = ntrs;
-    }
-
-    public int getStringLength() {
-	return TEMPLATE_HEADER_CHARS + (states.size() * TEMPLATE_STATES_CHARS) + getBOPStringLength()
-		+ (strs.size() * TEMPLATE_STR_CHARS) + (ntrs.size() * TEMPLATE_NTR_CHARS);
-    }
-
-    private int getBOPStringLength() {
-	if (!bops.isEmpty())
-	    return bops.size() * TEMPLATE_BOPS_CHARS;
-	else
-	    return 0;
     }
 
 }

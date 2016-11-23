@@ -25,6 +25,7 @@ import java.util.List;
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramNode;
 import org.modelio.api.modelio.model.IModelingSession;
+import org.modelio.metamodel.factory.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
@@ -54,9 +55,25 @@ public class StateTool extends ElementTool {
 	MObject state = DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_STATE);
 
+	state = initializeValues(state);
+
 	DiagramUtils.getInstance().setFreeProperty((ModelElement) state, DCasePeerModule.MODULE_NAME,
 		DCaseStereotypes.STEREOTYPE_STATE, DCaseProperties.PROPERTY_STATE_ID);
 
+	return state;
+    }
+
+    private MObject initializeValues(MObject state) {
+	try {
+	    ((ModelElement) state).putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INDEPENDENT,
+		    I18nMessageService.getString("Ui.State.Property.TagIndependent.False"));
+	    ((ModelElement) state).putTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_STATE_INITIAL_VALUE,
+		    I18nMessageService.getString("Ui.State.Property.TagInitialValue.False"));
+	} catch (ExtensionNotFoundException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
 	return state;
     }
 

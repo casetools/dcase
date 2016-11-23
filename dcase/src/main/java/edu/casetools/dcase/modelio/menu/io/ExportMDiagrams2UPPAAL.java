@@ -1,6 +1,7 @@
 package edu.casetools.dcase.modelio.menu.io;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -70,7 +71,12 @@ public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 	    }
 	}
 
-	translator.writeToFile(newFile);
+	try {
+	    translator.translate(fileLocation);
+	} catch (IOException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
 	MessageDialog.openInformation(null, "Model Exported", "Model exported to C-SPARQL at:\n" + fileLocation);
 
     }

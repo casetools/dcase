@@ -10,6 +10,7 @@ that aids the design of a Context-Aware System (C-AS).
 ### Third party libraries and icons
 * see [LIBRARIES](https://github.com/casetools/dcase/blob/master/LIBRARIES.md) file
 * Icons are made by Freepik and Ocha, downloaded from [Flaticon] (www.flaticon.com) 
+* The classes under the juppaal package are originally from [JUPPAAL](https://github.com/ksluckow/juppaal/)
 
 ## License 
 * see [LICENSE](https://github.com/casetools/dcase/blob/master/LICENSE.md) file
