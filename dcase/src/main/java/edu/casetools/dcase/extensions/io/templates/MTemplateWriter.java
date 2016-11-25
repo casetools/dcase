@@ -117,7 +117,7 @@ public class MTemplateWriter extends TemplateGenerator {
 	auxiliarTransition = new Transition(m, str_to_ntr, iteration);
 	auxiliarTransition.setGuard(new Guard("NTR_NO <= 0", -76, 297));
 	auxiliarTransition.addNail(new Nail(18, 238));
-	auxiliarTransition.addNail(new Nail(25, 374));
+	auxiliarTransition.addNail(new Nail(25, 365));
 
 	auxiliarTransition = new Transition(m, bops_to_str, str_to_ntr);
 	auxiliarTransition.setGuard(new Guard("STR_NO <= 0", 281, 144));
@@ -130,7 +130,7 @@ public class MTemplateWriter extends TemplateGenerator {
 	auxiliarTransition.addNail(new Nail(59, -561));
 
 	auxiliarTransition = new Transition(m, bops_to_str, str);
-	auxiliarTransition.setGuard(new Guard("STR_NO > 0", 281, 144));
+	auxiliarTransition.setGuard(new Guard("STR_NO > 0", 119, 93));
 	auxiliarTransition.setSync(new Synchronization("c_str[0]", SyncType.INITIATOR, 119, 110));
 
 	auxiliarTransition = new Transition(m, iteration, iteration_to_ntr_effect);
@@ -144,7 +144,7 @@ public class MTemplateWriter extends TemplateGenerator {
 	auxiliarTransition.setSync(new Synchronization("c_ntr[0]", SyncType.INITIATOR, 119, 263));
 
 	auxiliarTransition = new Transition(m, ntr_effect, initial);
-	auxiliarTransition.setSync(new Synchronization("c_ntr[NTR_NO]", SyncType.RECEIVER, -501, 263));
+	auxiliarTransition.setSync(new Synchronization("c_ntr[NTR_NO]", SyncType.RECEIVER, -501, -110));
 	auxiliarTransition.addNail(new Nail(-365, -603));
 
 	auxiliarTransition = new Transition(m, iteration_to_ntr_effect, ntr_effect);
