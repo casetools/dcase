@@ -7,8 +7,11 @@ import java.util.logging.Logger;
 import edu.casetools.dcase.extensions.io.juppaal.elements.Automaton;
 import edu.casetools.dcase.extensions.io.juppaal.elements.Declaration;
 import edu.casetools.dcase.extensions.io.juppaal.elements.NTA;
-import edu.casetools.dcase.extensions.io.old.DeclarationsWriter;
-import edu.casetools.dcase.extensions.io.old.TemplateGeneratorFactory;
+import edu.casetools.dcase.extensions.io.juppaal.elements.SystemDeclaration;
+import edu.casetools.dcase.extensions.io.mnta.DeclarationsWriter;
+import edu.casetools.dcase.extensions.io.mnta.SystemDeclarationWriter;
+import edu.casetools.dcase.extensions.io.mnta.TemplateGenerationManager;
+import edu.casetools.dcase.extensions.io.mnta.data.MData;
 
 public class MD2UPPAAL {
 
@@ -26,29 +29,8 @@ public class MD2UPPAAL {
 	    declaration.add(new DeclarationsWriter(systemData).write());
 	    NTA nta = new NTA();
 	    nta.setDeclarations(declaration);
-	    nta.setTemplates((ArrayList<Automaton>) new TemplateGeneratorFactory(systemData).generateTemplates());
-	    // nta.setSystemDeclaration();
-
-	    // Document doc = docBuilder.newDocument();
-	    // Element nta = doc.createElement("nta");
-	    // doc.appendChild(nta);
-
-	    // StringBuilder sb = new StringBuilder();
-	    // addHeader(sb);
-	    // nta.appendChild(new DeclarationsWriter(doc,
-	    // systemData).getDeclaration());
-
-	    // nta = new TemplateWriterHandler(doc, nta,
-	    // systemData).addTemplates();
-	    //
-	    // generateTemplates(doc, nta);
-	    //
-	    // Element sys = doc.createElement("system");
-	    // sys.setTextContent(generateSystemDeclaration(null));
-	    // nta.appendChild(sys);
-
-	    // transformer.transform(new DOMSource(doc), new
-	    // javax.xml.transform.stream.StreamResult(writer));
+	    nta.setTemplates((ArrayList<Automaton>) new TemplateGenerationManager(systemData).generateTemplates());
+	    nta.setSystemDeclaration(new SystemDeclaration(new SystemDeclarationWriter(systemData).write()));
 
 	    nta.writeModelToFile(filePath);
 
