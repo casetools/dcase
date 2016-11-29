@@ -44,6 +44,20 @@ public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 
 	ModelElement modelelt = (ModelElement) selectedElements.get(0);
 
+	FileDialog dialog = showDialog(modelelt);
+	String fileLocation = dialog.open();
+	// if (!modelelt.isStereotyped(Utils.CONTEXT_MODELLER,
+	// Utils.CONTEXT_MODEL)) {
+	// MessageDialog.openError(null, "Error", "Element is not a Context
+	// Model");
+	// return;
+	// }
+	checkIfExists(fileLocation);
+	translate(fileLocation);
+
+    }
+
+    private FileDialog showDialog(ModelElement modelelt) {
 	FileDialog dialog = new FileDialog(Display.getCurrent().getActiveShell(), SWT.SAVE);
 	dialog.setFilterNames(new String[] { "Text Files", "All Files (*.*)" });
 	dialog.setFilterExtensions(new String[] { "*.txt", "*.*" }); // Windows
@@ -52,16 +66,21 @@ public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 	dialog.setFilterPath(System.getProperty("user.home") + "/Desktop"); // Windows
 									    // path
 	dialog.setFileName(modelelt.getName() + "_UPPAAL.xml");
-	String fileLocation = dialog.open();
+	return dialog;
+    }
 
-	MDiag2Uppaal translator = new MDiag2Uppaal();
+    private void translate(String fileLocation) {
+	try {
+	    MDiag2Uppaal translator = new MDiag2Uppaal();
+	    translator.translate(fileLocation);
+	    MessageDialog.openInformation(null, "Model Exported", "Model exported to C-SPARQL at:\n" + fileLocation);
+	} catch (IOException e) {
+	    MessageDialog.openInformation(null, "I/O Exception", "File:" + fileLocation + " \n" + e.getMessage());
+	    e.printStackTrace();
+	}
+    }
 
-	// if (!modelelt.isStereotyped(Utils.CONTEXT_MODELLER,
-	// Utils.CONTEXT_MODEL)) {
-	// MessageDialog.openError(null, "Error", "Element is not a Context
-	// Model");
-	// return;
-	// }
+    private void checkIfExists(String fileLocation) {
 	File newFile = new File(fileLocation);
 
 	if (newFile.exists()) {
@@ -70,15 +89,6 @@ public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 		return;
 	    }
 	}
-
-	try {
-	    translator.translate(fileLocation);
-	} catch (IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}
-	MessageDialog.openInformation(null, "Model Exported", "Model exported to C-SPARQL at:\n" + fileLocation);
-
     }
 
 }

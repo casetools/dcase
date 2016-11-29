@@ -8,6 +8,7 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String STEREOTYPE_CONSEQUENT = "ConsequentStereotype";
     public static final String STEREOTYPE_STATE = "StateStereotype";
 
+    public static final String STEREOTYPE_EVENT = "EventMessageStereotype";
     public static final String STEREOTYPE_MESSAGE = "ContextInformationMessageStereotype";
 
     // Relations

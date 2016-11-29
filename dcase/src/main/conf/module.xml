@@ -30,6 +30,15 @@
                     <TagType name="TagAntecedentValue" uid="284eaec6-7709-4338-8a8e-a247e80f1403" label="$AntecedentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
+            <Stereotype name="EventMessageStereotype" metaclass="Class" is-hidden="false" label="%EventMessageStereotype.label" uid="09d9a59c-ae7e-480b-a2fe-26694827bf54">
+                <Icon path="res/icons/consequent_16.png"/>
+                <Image path="res/icons/consequent_16.png"/>
+                <TagTypes>
+                    <TagType name="TagEMStateName" uid="c1047b0b-de34-44ab-b26c-efeafc92563f" label="%EventMessageStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagEMStateValue" uid="df182182-de92-457f-9d81-0c1fbc2e0718" label="$EventMessageStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagEMTime" uid="1e2f6d82-a922-4eac-a505-52c6659d7938" label="$EventMessageStereotype.properties.time" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
             <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="b506e386-cb84-42a1-b19d-49dbb5a18540">
                 <Icon path="res/icons/state_16.png"/>
                 <Image path="res/icons/state_32.png"/>

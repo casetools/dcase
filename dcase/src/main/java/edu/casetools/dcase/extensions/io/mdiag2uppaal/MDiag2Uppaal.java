@@ -7,10 +7,10 @@ import edu.casetools.dcase.extensions.io.juppaal.elements.Automaton;
 import edu.casetools.dcase.extensions.io.juppaal.elements.Declaration;
 import edu.casetools.dcase.extensions.io.juppaal.elements.NTA;
 import edu.casetools.dcase.extensions.io.juppaal.elements.SystemDeclaration;
-import edu.casetools.dcase.extensions.io.mdiag2uppaal.mnta.DeclarationsWriter;
-import edu.casetools.dcase.extensions.io.mdiag2uppaal.mnta.SystemDeclarationWriter;
-import edu.casetools.dcase.extensions.io.mdiag2uppaal.mnta.TemplateGenerationManager;
-import edu.casetools.dcase.extensions.io.mdiag2uppaal.mnta.data.MData;
+import edu.casetools.dcase.extensions.io.mnta.DeclarationsWriter;
+import edu.casetools.dcase.extensions.io.mnta.SystemDeclarationWriter;
+import edu.casetools.dcase.extensions.io.mnta.TemplateGenerationManager;
+import edu.casetools.dcase.extensions.io.mnta.data.MData;
 
 public class MDiag2Uppaal {
 
