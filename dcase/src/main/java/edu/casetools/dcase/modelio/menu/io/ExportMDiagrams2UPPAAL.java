@@ -13,7 +13,8 @@ import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.io.mdiag2uppaal.MDiag2Uppaal;
+import edu.casetools.dcase.extensions.io.md2uppaal.MdData;
+import edu.casetools.dcase.m2uppaal.M2Uppaal;
 
 public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 
@@ -71,8 +72,8 @@ public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 
     private void translate(String fileLocation) {
 	try {
-	    MDiag2Uppaal translator = new MDiag2Uppaal();
-	    translator.translate(fileLocation);
+	    MdData data = new MdData();
+	    new M2Uppaal().translate(fileLocation, data.getMData());
 	    MessageDialog.openInformation(null, "Model Exported", "Model exported to C-SPARQL at:\n" + fileLocation);
 	} catch (IOException e) {
 	    MessageDialog.openInformation(null, "I/O Exception", "File:" + fileLocation + " \n" + e.getMessage());

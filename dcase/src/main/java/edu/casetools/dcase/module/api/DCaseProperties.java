@@ -77,6 +77,20 @@ public class DCaseProperties {
 
     public static final String PROPERTY_PAST_OPERATOR_UPPBOUND = "TagUppBound";
 
+    public static final String PROPERTY_EVENT_ID = "TagEMId";
+
+    public static final String PROPERTY_EVENT_STATE_NAME = "TagEMStateName";
+
+    public static final String PROPERTY_EVENT_STATE_VALUE = "TagEMStateValue";
+
+    public static final String PROPERTY_EVENT_TIME = "TagEMTime";
+
+    public static final String PROPERTY_STR_ID = "STId";
+
+    public static final String PROPERTY_NTR_ID = "NTId";
+
+    public static final String PROPERTY_PAST_OPERATOR_TYPE = "TagOperatorType";
+
     private DCaseProperties() {
 
     }

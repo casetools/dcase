@@ -41,11 +41,11 @@ public class AbsolutePastOperatorPropertyPage extends PastOperatorPropertyPage {
 	super.changeProperty(element, row, value);
 	try {
 	    switch (row) {
-	    case 4:
+	    case 5:
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_LOWBOUND, value, element);
 		break;
-	    case 5:
+	    case 6:
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_UPPBOUND, value, element);
 		break;

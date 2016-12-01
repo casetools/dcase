@@ -16,13 +16,20 @@
 			<id>modelio</id>
 			<url>http://repository.modelio.org</url>
 		</repository>
+		
 		 <repository>        
             <id>rcase</id>
             <url>https://github.com/ualegre/rcase/</url>
     	</repository>
+
 		 <repository>        
             <id>contextmodeller</id>
             <url>https://github.com/deankramer/ContextModeller</url>
+    	</repository>
+    	
+    	<repository>        
+            <id>m2uppaal</id>
+            <url>https://github.com/ualegre/m2uppaal/</url>
     	</repository>
 	</repositories>
 
@@ -68,13 +75,12 @@
 		   <version>0.2.0</version>
            <scope>compile</scope>
     	</dependency>
-    	
-    	<dependency>
-		    <groupId>org.jdom</groupId>
-		    <artifactId>jdom2</artifactId>
-		    <version>2.0.6</version>
-		</dependency>
-    	
+    	    	
+		<dependency>
+    		<groupId>edu.casetools.dcase</groupId>
+    		<artifactId>m2uppaal</artifactId>
+    		<version>0.0.4</version> 
+    	</dependency>
 	</dependencies>
 
 

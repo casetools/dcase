@@ -50,6 +50,10 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE, value, element);
 		break;
+	    case 4:
+		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+			DCaseProperties.PROPERTY_PAST_OPERATOR_TYPE, value, element);
+		break;
 	    default:
 		break;
 	    }
@@ -79,6 +83,12 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagStateValue"), property,
 		new String[] { I18nMessageService.getString("Ui.PastOperator.Property.TagStateValue.True"),
 			I18nMessageService.getString("Ui.PastOperator.Property.TagStateValue.False") });
+
+	// TagStateValue
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PAST_OPERATOR_TYPE);
+	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagType"), property,
+		new String[] { I18nMessageService.getString("Ui.PastOperator.Property.TagType.Strong"),
+			I18nMessageService.getString("Ui.PastOperator.Property.TagType.Weak") });
 
     }
 

@@ -2,10 +2,11 @@
 <Module id="${project.name}" class="edu.casetools.dcase.module.impl.DCaseModule" binaryversion="3.5.00" version="${project.version}" schema-level="2" uid="3c0ff0e0-6c77-4298-bd2d-d54abb2f93f5">
     <ClassPath>
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
+        <PathEntry path="lib/jdom2-2.0.6.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
         <PathEntry path="lib/rcase-0.2.5.jar"/>
         <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
-        <PathEntry path="lib/jdom2-2.0.6.jar"/>
+        <PathEntry path="lib/m2uppaal-0.0.4.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
@@ -34,6 +35,7 @@
                 <Icon path="res/icons/consequent_16.png"/>
                 <Image path="res/icons/consequent_16.png"/>
                 <TagTypes>
+                    <TagType name="TagEMId" uid="8ff1624b-2712-495d-95bb-07de00969ed6" label="%EventMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagEMStateName" uid="c1047b0b-de34-44ab-b26c-efeafc92563f" label="%EventMessageStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagEMStateValue" uid="df182182-de92-457f-9d81-0c1fbc2e0718" label="$EventMessageStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagEMTime" uid="1e2f6d82-a922-4eac-a505-52c6659d7938" label="$EventMessageStereotype.properties.time" parameter-card="1" is-hidden="false" is-signed="false"/>
@@ -53,9 +55,10 @@
                 <Icon path=""/>
                 <Image path=""/>
                 <TagTypes>
-                    <TagType name="TagOperatorId" uid="a83112a4-2733-413f-8e2d-75e939ce71b9" label="%ImmediatePastOperatorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagOStateName" uid="4ed11d56-8ff1-4d90-947f-773b3670e874" label="$ImmediatePastOperatorStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagOStateValue" uid="7dc7729e-2dba-437e-92ba-ed5dae9f0ba6" label="$ImmediatePastOperatorStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagOperatorId" uid="a83112a4-2733-413f-8e2d-75e939ce71b9" label="%PastOperatorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagOperatorType" uid="7884cadb-dd59-41bf-ba2e-93f1ed4cff75" label="%PastOperatorStereotype.properties.type" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagOStateName" uid="4ed11d56-8ff1-4d90-947f-773b3670e874" label="$PastOperatorStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagOStateValue" uid="7dc7729e-2dba-437e-92ba-ed5dae9f0ba6" label="$PastOperatorStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="ImmediatePastOperatorStereotype" metaclass="Class" is-hidden="false" label="%ImmediatePastOperatorStereotype.label" uid="a49e00c7-8102-46ec-af9f-422b5d19a97d">
@@ -120,10 +123,16 @@
             <Stereotype name="SameTimeStereotype" metaclass="Dependency" is-hidden="false" label="%SameTimeStereotype.label" uid="0bdf2349-ff7f-4e8f-a439-b0aca9b69fe5">
                 <Icon path="res/icons/str_16.png"/>
                 <Image path="res/icons/str_16.png"/>
+                <TagTypes>
+                    <TagType name="STId" uid="40b90b45-0fa2-408c-97d0-76b22eaa6e17" label="%SameTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
             </Stereotype>
             <Stereotype name="NextTimeStereotype" metaclass="Dependency" is-hidden="false" label="%NextTimeStereotype.label" uid="d2a2ca9f-0197-44b6-8a12-c5d9e271c48f">
                 <Icon path="res/icons/ntr_16.png"/>
                 <Image path="res/icons/ntr_16.png"/>
+                <TagTypes>
+                    <TagType name="NTId" uid="b612539b-a234-44e5-a93b-03aadaa87a19" label="%NextTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
             </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
                 <TagTypes>

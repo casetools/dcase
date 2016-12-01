@@ -40,7 +40,7 @@ public class ImmediatePastOperatorPropertyPage extends PastOperatorPropertyPage 
     public void changeProperty(ModelElement element, int row, String value) {
 	super.changeProperty(element, row, value);
 	try {
-	    if (row == 4)
+	    if (row == 5)
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_BOUND, value, element);
 
