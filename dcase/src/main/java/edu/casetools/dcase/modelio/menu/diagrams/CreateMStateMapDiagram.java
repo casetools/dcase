@@ -49,7 +49,7 @@ public class CreateMStateMapDiagram extends CreateStaticDiagram {
 
 	String name = I18nMessageService.getString("Ui.Command.CreateMMapDiagramDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createDiagram(selectedElements, session, name,
-		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_STATE_MAP);
+		DCaseStereotypes.DIAGRAM_M_STATE_MAP);
 	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_M_RULES);
 	return diagram;
     }

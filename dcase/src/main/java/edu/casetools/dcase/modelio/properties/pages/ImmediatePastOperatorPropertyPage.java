@@ -42,7 +42,7 @@ public class ImmediatePastOperatorPropertyPage extends PastOperatorPropertyPage 
 	try {
 	    if (row == 5)
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_PAST_OPERATOR_BOUND, value, element);
+			DCaseProperties.PAST_OPERATOR_BOUND, value, element);
 
 	} catch (AssertionFailedException e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
@@ -54,7 +54,7 @@ public class ImmediatePastOperatorPropertyPage extends PastOperatorPropertyPage 
     public void update(ModelElement element, IModulePropertyTable table) {
 	super.update(element, table);
 
-	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PAST_OPERATOR_BOUND,
+	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PAST_OPERATOR_BOUND,
 		element);
 	table.addProperty(I18nMessageService.getString("Ui.ImmediatePastOperator.Property.TagBound"), string);
 

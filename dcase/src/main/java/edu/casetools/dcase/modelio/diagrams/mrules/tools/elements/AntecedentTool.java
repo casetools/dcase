@@ -49,7 +49,7 @@ public class AntecedentTool extends ElementTool {
 	String name = I18nMessageService.getString("Names.Antecedent");
 
 	return DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
-		DCaseStereotypes.STEREOTYPE_ANTECEDENT);
+		DCaseStereotypes.ANTECEDENT);
     }
 
     /*

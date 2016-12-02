@@ -114,40 +114,40 @@ public class PropertyManager {
 
     private void getPropertyPages(IMetamodelExtensions extensions, Stereotype ster) {
 
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONTEXT_INFORMATION_MESSAGE,
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.CONTEXT_INFORMATION_MESSAGE,
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 			.getMClass(CommunicationMessage.class)))) {
 	    this.propertyPage = new ContextInformationMessagePropertyPage();
 	}
 
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_STATE,
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STATE,
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 			.getMClass(Class.class)))) {
 	    this.propertyPage = new StatePropertyPage();
 	}
 
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ANTECEDENT,
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.ANTECEDENT,
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 			.getMClass(Class.class)))) {
-	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME,
-		    DCaseProperties.PROPERTY_ANTECEDENT_STATE_VALUE);
+	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.ANTECEDENT_STATE_NAME,
+		    DCaseProperties.ANTECEDENT_STATE_VALUE);
 	}
 
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONSEQUENT,
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.CONSEQUENT,
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 			.getMClass(Class.class)))) {
-	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME,
-		    DCaseProperties.PROPERTY_CONSEQUENT_STATE_VALUE);
+	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.CONSEQUENT_STATE_NAME,
+		    DCaseProperties.CONSEQUENT_STATE_VALUE);
 	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_IMMEDIATE_PAST_OPERATOR, DCaseModule.getInstance().getModuleContext()
+		DCaseStereotypes.IMMEDIATE_PAST_OPERATOR, DCaseModule.getInstance().getModuleContext()
 			.getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
 	    this.propertyPage = new ImmediatePastOperatorPropertyPage();
 	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR, DCaseModule.getInstance().getModuleContext()
+		DCaseStereotypes.ABSOLUTE_PAST_OPERATOR, DCaseModule.getInstance().getModuleContext()
 			.getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
 	    this.propertyPage = new AbsolutePastOperatorPropertyPage();
 	}

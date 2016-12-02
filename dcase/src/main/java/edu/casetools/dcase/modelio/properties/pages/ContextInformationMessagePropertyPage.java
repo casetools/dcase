@@ -49,23 +49,23 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 		break;
 	    case 2:
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_MESSAGE_ID, value, element);
+			DCaseProperties.MESSAGE_ID, value, element);
 		break;
 	    case 3:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_RESPONSIBILITY,
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.MESSAGE_RESPONSIBILITY,
 			value);
 		break;
 	    case 4:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_REGULARITY, value);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.MESSAGE_REGULARITY, value);
 		break;
 	    case 5:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_FREQUENCY, value);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.MESSAGE_FREQUENCY, value);
 		break;
 	    case 6:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_SYNCHRONICITY, value);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.MESSAGE_SYNCHRONICITY, value);
 		break;
 	    case 7:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_SITUATIONAL_PARAMETER,
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.MESSAGE_SITUATIONAL_PARAMETER,
 			value);
 		refreshLinks(element, value);
 		break;
@@ -92,11 +92,11 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 	table.addProperty(DCaseProperties.PROPERTY_NAME, element.getName());
 
 	// TagId
-	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MESSAGE_ID, element);
+	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.MESSAGE_ID, element);
 	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagId"), string);
 
 	// TagResponsibility
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_RESPONSIBILITY);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.MESSAGE_RESPONSIBILITY);
 	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagResponsibility"),
 		property,
 		new String[] {
@@ -104,7 +104,7 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 			I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagResponsibility.Push") });
 
 	// TagRegularity
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_REGULARITY);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.MESSAGE_REGULARITY);
 	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagRegularity"), property,
 		new String[] {
 			I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagRegularity.Regular"),
@@ -112,11 +112,11 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 				.getString("Ui.ContextInformationMessage.Property.TagRegularity.Irregular") });
 
 	// TagFrequency
-	string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MESSAGE_FREQUENCY, element);
+	string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.MESSAGE_FREQUENCY, element);
 	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagFrequency"), string);
 
 	// TagSynchronicity
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_SYNCHRONICITY);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.MESSAGE_SYNCHRONICITY);
 	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagSynchronicity"),
 		property,
 		new String[] {
@@ -127,7 +127,7 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
 	// TagContextAttribute
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME,
-		DCaseProperties.PROPERTY_MESSAGE_SITUATIONAL_PARAMETER);
+		DCaseProperties.MESSAGE_SITUATIONAL_PARAMETER);
 	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagContextAttribute"),
 		property, PropertiesUtils.getInstance().getAllElements(RCasePeerModule.MODULE_NAME,
 			RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE, "Ui.None"));

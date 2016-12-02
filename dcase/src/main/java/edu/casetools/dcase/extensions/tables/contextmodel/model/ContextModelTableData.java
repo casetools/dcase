@@ -76,9 +76,9 @@ public class ContextModelTableData implements Serializable {
 	String[] columnNames = { "Table.MessagesTable.Header.Name", "Table.MessagesTable.Header.Id",
 		"Table.MessagesTable.Header.Responsibility", "Table.MessagesTable.Header.Regularity",
 		"Table.MessagesTable.Header.Frequency", "Table.MessagesTable.Header.Synchronicity" };
-	String[] properties = { DCaseProperties.PROPERTY_NAME, DCaseProperties.PROPERTY_MESSAGE_ID,
-		DCaseProperties.PROPERTY_MESSAGE_RESPONSIBILITY, DCaseProperties.PROPERTY_MESSAGE_REGULARITY,
-		DCaseProperties.PROPERTY_MESSAGE_FREQUENCY, DCaseProperties.PROPERTY_MESSAGE_SYNCHRONICITY };
+	String[] properties = { DCaseProperties.PROPERTY_NAME, DCaseProperties.MESSAGE_ID,
+		DCaseProperties.MESSAGE_RESPONSIBILITY, DCaseProperties.MESSAGE_REGULARITY,
+		DCaseProperties.MESSAGE_FREQUENCY, DCaseProperties.MESSAGE_SYNCHRONICITY };
 	DataTypes[] dataTypes = { DataTypes.STRING_TYPE, DataTypes.STRING_TYPE, DataTypes.COMBOBOX_TYPE,
 		DataTypes.COMBOBOX_TYPE, DataTypes.STRING_TYPE, DataTypes.COMBOBOX_TYPE };
 
@@ -161,7 +161,7 @@ public class ContextModelTableData implements Serializable {
 	dataList = new ArrayList<>();
 	ArrayList<MObject> list = new ArrayList<>();
 	list = (ArrayList<MObject>) TableUtils.getInstance().getAllElementsStereotypedAs(list,
-		DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONTEXT_INFORMATION_MESSAGE);
+		DCasePeerModule.MODULE_NAME, DCaseStereotypes.CONTEXT_INFORMATION_MESSAGE);
 	setContextAttributes(list);
     }
 

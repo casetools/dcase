@@ -52,27 +52,27 @@ public class MdData {
 
     private void loadDiagramElements() {
 	states = TableUtils.getInstance().getAllElementsStereotypedAs(states, DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_STATE);
-	updateIDs(states, DCaseProperties.PROPERTY_STATE_ID);
+		DCaseStereotypes.STATE);
+	updateIDs(states, DCaseProperties.STATE_ID);
 
 	bops = TableUtils.getInstance().getAllElementsStereotypedAs(bops, DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
-	updateIDs(bops, DCaseProperties.PROPERTY_PAST_OPERATOR_ID);
+		DCaseStereotypes.PAST_OPERATOR);
+	updateIDs(bops, DCaseProperties.PAST_OPERATOR_ID);
 
 	strs = TableUtils.getInstance().getAllElementsStereotypedAs(strs, DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_SAME_TIME);
-	updateIDs(strs, DCaseProperties.PROPERTY_STR_ID);
+		DCaseStereotypes.SAME_TIME);
+	updateIDs(strs, DCaseProperties.STR_ID);
 
 	ntrs = TableUtils.getInstance().getAllElementsStereotypedAs(ntrs, DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_NEXT_TIME);
-	updateIDs(ntrs, DCaseProperties.PROPERTY_NTR_ID);
+		DCaseStereotypes.NEXT_TIME);
+	updateIDs(ntrs, DCaseProperties.NTR_ID);
 
 	events = TableUtils.getInstance().getAllElementsStereotypedAs(events, DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_EVENT);
-	updateIDs(events, DCaseProperties.PROPERTY_EVENT_ID);
+		DCaseStereotypes.EVENT);
+	updateIDs(events, DCaseProperties.EVENT_ID);
 
 	antecedentGroups = TableUtils.getInstance().getAllElementsStereotypedAs(antecedentGroups,
-		DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP);
+		DCasePeerModule.MODULE_NAME, DCaseStereotypes.ANTECEDENT_GROUP);
 
     }
 
@@ -107,11 +107,11 @@ public class MdData {
 	for (MObject operator : bops) {
 	    BoundedOperator bop = new BoundedOperator();
 	    bop.setId(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_PAST_OPERATOR_ID));
+		    DCaseProperties.PAST_OPERATOR_ID));
 	    bop.setStateId(getStateId(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME)));
+		    DCaseProperties.PAST_OPERATOR_STATE_NAME)));
 	    bop.setStatus(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE));
+		    DCaseProperties.PAST_OPERATOR_STATE_VALUE));
 	    addBop(operator, bop);
 
 	}
@@ -119,9 +119,9 @@ public class MdData {
     }
 
     private void addBop(MObject operator, BoundedOperator bop) {
-	if (checkStereotype(operator, DCaseStereotypes.STEREOTYPE_IMMEDIATE_PAST_OPERATOR)) {
+	if (checkStereotype(operator, DCaseStereotypes.IMMEDIATE_PAST_OPERATOR)) {
 	    bop = setImmediatePastOperator(operator, bop);
-	} else if (checkStereotype(operator, DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR)) {
+	} else if (checkStereotype(operator, DCaseStereotypes.ABSOLUTE_PAST_OPERATOR)) {
 	    bop = setAbsolutePastOperator(operator, bop);
 	}
 	data.getBops().add(bop);
@@ -130,12 +130,12 @@ public class MdData {
 
     private BoundedOperator setAbsolutePastOperator(MObject operator, BoundedOperator bop) {
 	String type = ((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		DCaseProperties.PROPERTY_PAST_OPERATOR_TYPE);
+		DCaseProperties.PAST_OPERATOR_TYPE);
 	setAbsolutePastOperatorType(bop, type);
 	bop.setLowBound(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		DCaseProperties.PROPERTY_PAST_OPERATOR_LOWBOUND));
+		DCaseProperties.PAST_OPERATOR_LOWBOUND));
 	bop.setLowBound(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		DCaseProperties.PROPERTY_PAST_OPERATOR_UPPBOUND));
+		DCaseProperties.PAST_OPERATOR_UPPBOUND));
 	return bop;
     }
 
@@ -149,10 +149,10 @@ public class MdData {
 
     private BoundedOperator setImmediatePastOperator(MObject operator, BoundedOperator bop) {
 	String type = ((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		DCaseProperties.PROPERTY_PAST_OPERATOR_TYPE);
+		DCaseProperties.PAST_OPERATOR_TYPE);
 	setAbsolutePastOperatorType(bop, type);
 	bop.setLowBound(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		DCaseProperties.PROPERTY_PAST_OPERATOR_BOUND));
+		DCaseProperties.PAST_OPERATOR_BOUND));
 	return bop;
     }
 
@@ -172,8 +172,8 @@ public class MdData {
 	    if ((relation instanceof ModelElement) && isRule(relation)) {
 		consequent = ((Dependency) relation).getDependsOn();
 		if ((consequent instanceof ModelElement) && isConsequent(consequent))
-		    return getRuleElement(consequent, DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME,
-			    DCaseProperties.PROPERTY_CONSEQUENT_STATE_VALUE);
+		    return getRuleElement(consequent, DCaseProperties.CONSEQUENT_STATE_NAME,
+			    DCaseProperties.CONSEQUENT_STATE_VALUE);
 	    }
 	}
 	return null;
@@ -181,29 +181,29 @@ public class MdData {
 
     private boolean isConsequent(MObject relation) {
 	return ((ModelElement) relation).isStereotyped(DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_CONSEQUENT);
+		DCaseStereotypes.CONSEQUENT);
     }
 
     private boolean isRule(MObject relation) {
 	return ((ModelElement) relation).isStereotyped(DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_SAME_TIME)
+		DCaseStereotypes.SAME_TIME)
 		|| ((ModelElement) relation).isStereotyped(DCasePeerModule.MODULE_NAME,
-			DCaseStereotypes.STEREOTYPE_NEXT_TIME);
+			DCaseStereotypes.NEXT_TIME);
     }
 
     private List<RuleElement> getAntecedents(MObject antecedentGroup) {
 	List<RuleElement> list = new ArrayList<>();
 	for (MObject antecedent : antecedentGroup.getCompositionChildren()) {
 	    if ((antecedent instanceof ModelElement) && isAntecedent(antecedent)) {
-		list.add(getRuleElement(antecedent, DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME,
-			DCaseProperties.PROPERTY_ANTECEDENT_STATE_VALUE));
+		list.add(getRuleElement(antecedent, DCaseProperties.ANTECEDENT_STATE_NAME,
+			DCaseProperties.ANTECEDENT_STATE_VALUE));
 	    }
 	}
 	return list;
     }
 
     private boolean isAntecedent(MObject antecedent) {
-	return checkStereotype(antecedent, DCaseStereotypes.STEREOTYPE_ANTECEDENT);
+	return checkStereotype(antecedent, DCaseStereotypes.ANTECEDENT);
     }
 
     private RuleElement getRuleElement(MObject element, String name, String value) {
@@ -218,17 +218,17 @@ public class MdData {
 
     private String getStateId(String stateName) {
 	ModelElement element = (ModelElement) ModelioUtils.getInstance().getElementByName(stateName);
-	if (element != null && element.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_STATE))
-	    return element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_ID);
+	if (element != null && element.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STATE))
+	    return element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.STATE_ID);
 	else
 	    return stateName;
     }
 
     private void addRule(MObject antecedentGroup, Rule rule) {
-	if (isRule(antecedentGroup, DCaseStereotypes.STEREOTYPE_SAME_TIME)) {
+	if (isRule(antecedentGroup, DCaseStereotypes.SAME_TIME)) {
 	    rule.setId(getRuleId(antecedentGroup));
 	    data.getStrs().add(rule);
-	} else if (isRule(antecedentGroup, DCaseStereotypes.STEREOTYPE_NEXT_TIME)) {
+	} else if (isRule(antecedentGroup, DCaseStereotypes.NEXT_TIME)) {
 	    rule.setId(getRuleId(antecedentGroup));
 	    data.getNtrs().add(rule);
 	}
@@ -236,13 +236,13 @@ public class MdData {
 
     private String getRuleId(MObject antecedentGroup) {
 	for (MObject element : antecedentGroup.getCompositionChildren()) {
-	    if ((element instanceof ModelElement) && checkStereotype(element, DCaseStereotypes.STEREOTYPE_SAME_TIME)) {
+	    if ((element instanceof ModelElement) && checkStereotype(element, DCaseStereotypes.SAME_TIME)) {
 		return ((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_STR_ID);
+			DCaseProperties.STR_ID);
 	    }
-	    if ((element instanceof ModelElement) && checkStereotype(element, DCaseStereotypes.STEREOTYPE_NEXT_TIME)) {
+	    if ((element instanceof ModelElement) && checkStereotype(element, DCaseStereotypes.NEXT_TIME)) {
 		return ((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_NTR_ID);
+			DCaseProperties.NTR_ID);
 	    }
 	}
 	return "-1";
@@ -264,13 +264,13 @@ public class MdData {
     private void getEvents() {
 	for (MObject event : events) {
 	    Event e = new Event();
-	    e.setId(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_EVENT_ID));
+	    e.setId(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.EVENT_ID));
 	    e.setStateId(getStateId(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_EVENT_STATE_NAME)));
+		    DCaseProperties.EVENT_STATE_NAME)));
 	    e.setTime(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_EVENT_TIME));
+		    DCaseProperties.EVENT_TIME));
 	    e.setStateValue(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_EVENT_STATE_VALUE));
+		    DCaseProperties.EVENT_STATE_VALUE));
 
 	}
     }
@@ -278,11 +278,11 @@ public class MdData {
     private void getStates() {
 	for (MObject state : states) {
 	    State s = new State();
-	    s.setId(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_ID));
+	    s.setId(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.STATE_ID));
 	    s.setInitialValue(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_STATE_INITIAL_VALUE));
+		    DCaseProperties.STATE_INITIAL_VALUE));
 	    s.setName(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_STATE_NAME));
+		    DCaseProperties.STATE_NAME));
 	    data.getStates().add(s);
 	}
     }

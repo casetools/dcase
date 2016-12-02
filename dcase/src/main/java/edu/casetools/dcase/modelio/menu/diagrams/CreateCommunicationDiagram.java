@@ -47,7 +47,7 @@ public class CreateCommunicationDiagram extends CreateBehaviourDiagram {
     protected CommunicationDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 	String name = I18nMessageService.getString("Ui.Command.CreateCommunicationDiagram.Label");
 	return DiagramUtils.getInstance().createAndAddCommunicationDiagram(selectedElements, session, name,
-		DCaseStereotypes.STEREOTYPE_DIAGRAM_COMMUNICATION);
+		DCaseStereotypes.DIAGRAM_COMMUNICATION);
     }
 
     /*

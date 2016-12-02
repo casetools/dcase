@@ -82,7 +82,7 @@ public class MStateMapDiagramCustomizer extends DiagramCustomizer implements IDi
 
     private org.eclipse.gef.palette.PaletteEntry createNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
-	String[] toolNames = new String[] { RCaseTools.TOOL_CONTEXT_ATTRIBUTE, DCaseTools.TOOL_STATE };
+	String[] toolNames = new String[] { RCaseTools.TOOL_CONTEXT_ATTRIBUTE, DCaseTools.STATE };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 

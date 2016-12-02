@@ -40,14 +40,14 @@ public class EventMessageTool extends MessageTool {
     @Override
     protected Message createOwnCommunicationMessage(IModelingSession session, ModelElement model, ModelElement owner)
 	    throws ExtensionNotFoundException {
-	return DiagramUtils.getInstance().createMessage(session, model, owner, DCaseStereotypes.STEREOTYPE_EVENT);
+	return DiagramUtils.getInstance().createMessage(session, model, owner, DCaseStereotypes.EVENT);
     }
 
     @Override
     public boolean acceptFirstElement(IDiagramHandle representation, IDiagramGraphic target) {
 	if (target.getElement() instanceof ModelElement) {
 	    return ((ModelElement) target.getElement()).isStereotyped(DCasePeerModule.MODULE_NAME,
-		    DCaseStereotypes.STEREOTYPE_EVENTS_SIMULATOR);
+		    DCaseStereotypes.EVENTS_SIMULATOR);
 	} else
 	    return false;
     }
@@ -56,7 +56,7 @@ public class EventMessageTool extends MessageTool {
     public boolean acceptSecondElement(IDiagramHandle representation, IDiagramGraphic source, IDiagramGraphic target) {
 	if (target.getElement() instanceof ModelElement) {
 	    return ((ModelElement) target.getElement()).isStereotyped(DCasePeerModule.MODULE_NAME,
-		    DCaseStereotypes.STEREOTYPE_M_SYSTEM);
+		    DCaseStereotypes.M_SYSTEM);
 	} else
 	    return false;
     }

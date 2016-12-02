@@ -53,22 +53,22 @@ public class StateTool extends ElementTool {
 	String name = I18nMessageService.getString("Names.State");
 
 	MObject state = DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
-		DCaseStereotypes.STEREOTYPE_STATE);
+		DCaseStereotypes.STATE);
 
 	state = initializeValues(state);
 
 	DiagramUtils.getInstance().setFreeProperty((ModelElement) state, DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_STATE, DCaseProperties.PROPERTY_STATE_ID);
+		DCaseStereotypes.STATE, DCaseProperties.STATE_ID);
 
 	return state;
     }
 
     private MObject initializeValues(MObject state) {
 	try {
-	    ((ModelElement) state).putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INDEPENDENT,
+	    ((ModelElement) state).putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.STATE_INDEPENDENT,
 		    I18nMessageService.getString("Ui.State.Property.TagIndependent.False"));
 	    ((ModelElement) state).putTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_STATE_INITIAL_VALUE,
+		    DCaseProperties.STATE_INITIAL_VALUE,
 		    I18nMessageService.getString("Ui.State.Property.TagInitialValue.False"));
 	} catch (ExtensionNotFoundException e) {
 	    // TODO Auto-generated catch block

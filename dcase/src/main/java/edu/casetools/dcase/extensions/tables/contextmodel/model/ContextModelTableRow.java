@@ -22,19 +22,19 @@ public class ContextModelTableRow {
 	values = new ArrayList<>();
 	values.add(element.getName());
 	// TagId
-	values.add(PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MESSAGE_ID, element));
+	values.add(PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.MESSAGE_ID, element));
 
 	// TagResponsibility
-	values.add(getTag(DCaseProperties.PROPERTY_MESSAGE_RESPONSIBILITY));
+	values.add(getTag(DCaseProperties.MESSAGE_RESPONSIBILITY));
 
 	// TagRegularity
-	values.add(getTag(DCaseProperties.PROPERTY_MESSAGE_REGULARITY));
+	values.add(getTag(DCaseProperties.MESSAGE_REGULARITY));
 
 	// TagFrequency
-	values.add(PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MESSAGE_FREQUENCY, element));
+	values.add(PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.MESSAGE_FREQUENCY, element));
 
 	// TagSynchronicity
-	values.add(getTag(DCaseProperties.PROPERTY_MESSAGE_SYNCHRONICITY));
+	values.add(getTag(DCaseProperties.MESSAGE_SYNCHRONICITY));
 
     }
 

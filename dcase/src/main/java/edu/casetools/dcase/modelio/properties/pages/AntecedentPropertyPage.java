@@ -74,7 +74,7 @@ public class AntecedentPropertyPage implements IPropertyContent {
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyName);
 	table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateName"), property,
 		PropertiesUtils.getInstance().getAllElements(DCasePeerModule.MODULE_NAME,
-			DCaseStereotypes.STEREOTYPE_STATE, "Ui.None"));
+			DCaseStereotypes.STATE, "Ui.None"));
 
 	// TagStateValue
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyValue);

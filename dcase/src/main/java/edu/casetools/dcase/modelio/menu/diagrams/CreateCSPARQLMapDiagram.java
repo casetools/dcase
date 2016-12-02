@@ -49,7 +49,7 @@ public class CreateCSPARQLMapDiagram extends CreateStaticDiagram {
 
 	String name = I18nMessageService.getString("Ui.Command.CreateCSPARQLMapDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createDiagram(selectedElements, session, name,
-		DCaseStereotypes.STEREOTYPE_DIAGRAM_CSPARQL_RULES);
+		DCaseStereotypes.DIAGRAM_CSPARQL_RULES);
 	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_CSPARQL_RULES);
 	return diagram;
     }

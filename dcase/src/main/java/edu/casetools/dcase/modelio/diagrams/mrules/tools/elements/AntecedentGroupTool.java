@@ -49,7 +49,7 @@ public class AntecedentGroupTool extends ElementTool {
 	String name = I18nMessageService.getString("Names.AntecedentGroup");
 
 	return DiagramUtils.getInstance().createPackage(adaptElement(element), session, name,
-		DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP);
+		DCaseStereotypes.ANTECEDENT_GROUP);
     }
 
     /*

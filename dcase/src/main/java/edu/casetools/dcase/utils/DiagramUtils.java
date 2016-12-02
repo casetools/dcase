@@ -357,13 +357,11 @@ public class DiagramUtils {
      */
     public Message createMessage(IModelingSession session, ModelElement source, ModelElement target,
 	    String stereotypeName) {
-	Message createdElement = session.getModel().createMessage("", MessageSort.ASYNCCALL);
 
-	MessageEnd me = session.getModel().createExecutionOccurenceSpecification();
 
-	createdElement.setReceiveEvent(me);
-	createdElement.setSendEvent(me);
+	MessageEnd createdElement = session.getModel().createExecutionOccurenceSpecification();
 	createdElement.setOwnerTemplateParameter(source.getOwnerTemplateParameter());
+	session.getModel().createMessage(MessageSort.ASYNCCALL)
 
 	try {
 	    createdElement.addStereotype(DCasePeerModule.MODULE_NAME, stereotypeName);

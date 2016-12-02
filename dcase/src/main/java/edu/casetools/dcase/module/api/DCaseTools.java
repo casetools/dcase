@@ -26,18 +26,18 @@ package edu.casetools.dcase.module.api;
 public class DCaseTools {
 
     // Elements
-    public static final String TOOL_CONTEXT_INFORMATION_MESSAGE = "ContextInformationMessageTool";
-    public static final String TOOL_ANTECEDENT_GROUP = "AntecedentGroupTool";
-    public static final String TOOL_ANTECEDENT = "AntecedentTool";
-    public static final String TOOL_CONSEQUENT = "ConsequentTool";
-    public static final String TOOL_STATE = "StateTool";
-    public static final String TOOL_SAME_TIME = "SameTimeTool";
-    public static final String TOOL_NEXT_TIME = "NextTimeTool";
-    public static final String TOOL_IMMEDIATE_PAST_OPERATOR = "ImmediatePastOperatorTool";
-    public static final String TOOL_ABSOLUTE_PAST_OPERATOR = "AbsolutePastOperatorTool";
-    public static final String TOOL_EVENT_MESSAGE = "EventMessageTool";
-    public static final String TOOL_MSYSTEM = "MSystemTool";
-    public static final String TOOL_EVENTS_SIMULATOR = "EventSimulatorTool";
+    public static final String CONTEXT_INFORMATION_MESSAGE = "ContextInformationMessageTool";
+    public static final String ANTECEDENT_GROUP = "AntecedentGroupTool";
+    public static final String ANTECEDENT = "AntecedentTool";
+    public static final String CONSEQUENT = "ConsequentTool";
+    public static final String STATE = "StateTool";
+    public static final String SAME_TIME = "SameTimeTool";
+    public static final String NEXT_TIME = "NextTimeTool";
+    public static final String IMMEDIATE_PAST_OPERATOR = "ImmediatePastOperatorTool";
+    public static final String ABSOLUTE_PAST_OPERATOR = "AbsolutePastOperatorTool";
+    public static final String EVENT_MESSAGE = "EventMessageTool";
+    public static final String MSYSTEM = "MSystemTool";
+    public static final String EVENTS_SIMULATOR = "EventSimulatorTool";
 
     private DCaseTools() {
 

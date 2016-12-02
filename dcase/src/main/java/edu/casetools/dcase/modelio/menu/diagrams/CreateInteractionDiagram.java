@@ -48,7 +48,7 @@ public class CreateInteractionDiagram extends CreateBehaviourDiagram {
     protected SequenceDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 	String name = I18nMessageService.getString("Ui.Command.CreateSequenceDiagram.Label");
 	SequenceDiagram diagram = DiagramUtils.getInstance().createAndAddSequenceDiagram(selectedElements, session,
-		name, DCaseStereotypes.STEREOTYPE_DIAGRAM_INTERACTION);
+		name, DCaseStereotypes.DIAGRAM_INTERACTION);
 	diagram = (SequenceDiagram) addStyle(diagram, DCaseResources.STYLE_INTERACTION_DIAGRAM);
 	return diagram;
     }

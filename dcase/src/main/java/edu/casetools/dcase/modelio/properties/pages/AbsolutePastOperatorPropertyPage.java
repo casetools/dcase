@@ -43,11 +43,11 @@ public class AbsolutePastOperatorPropertyPage extends PastOperatorPropertyPage {
 	    switch (row) {
 	    case 5:
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_PAST_OPERATOR_LOWBOUND, value, element);
+			DCaseProperties.PAST_OPERATOR_LOWBOUND, value, element);
 		break;
 	    case 6:
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_PAST_OPERATOR_UPPBOUND, value, element);
+			DCaseProperties.PAST_OPERATOR_UPPBOUND, value, element);
 		break;
 	    default:
 		break;
@@ -62,11 +62,11 @@ public class AbsolutePastOperatorPropertyPage extends PastOperatorPropertyPage {
     public void update(ModelElement element, IModulePropertyTable table) {
 	super.update(element, table);
 
-	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PAST_OPERATOR_LOWBOUND,
+	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PAST_OPERATOR_LOWBOUND,
 		element);
 	table.addProperty(I18nMessageService.getString("Ui.AbsolutePastOperator.Property.TagLowBound"), string);
 
-	string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PAST_OPERATOR_UPPBOUND, element);
+	string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PAST_OPERATOR_UPPBOUND, element);
 	table.addProperty(I18nMessageService.getString("Ui.AbsolutePastOperator.Property.TagUppBound"), string);
 
     }

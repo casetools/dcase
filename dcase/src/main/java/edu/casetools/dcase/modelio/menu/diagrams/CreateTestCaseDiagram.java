@@ -48,7 +48,7 @@ public class CreateTestCaseDiagram extends CreateBehaviourDiagram {
     protected SequenceDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 	String name = I18nMessageService.getString("Ui.Command.CreateTestCaseDiagram.Label");
 	SequenceDiagram diagram = DiagramUtils.getInstance().createAndAddSequenceDiagram(selectedElements, session,
-		name, DCaseStereotypes.STEREOTYPE_DIAGRAM_M_TEST_CASE);
+		name, DCaseStereotypes.DIAGRAM_M_TEST_CASE);
 	diagram = (SequenceDiagram) addStyle(diagram, DCaseResources.STYLE_INTERACTION_DIAGRAM);
 	return diagram;
     }

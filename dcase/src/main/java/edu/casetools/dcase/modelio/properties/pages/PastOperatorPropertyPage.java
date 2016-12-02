@@ -44,15 +44,15 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 	    switch (row) {
 	    case 2:
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME, value, element);
+			DCaseProperties.PAST_OPERATOR_STATE_NAME, value, element);
 		break;
 	    case 3:
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE, value, element);
+			DCaseProperties.PAST_OPERATOR_STATE_VALUE, value, element);
 		break;
 	    case 4:
 		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_PAST_OPERATOR_TYPE, value, element);
+			DCaseProperties.PAST_OPERATOR_TYPE, value, element);
 		break;
 	    default:
 		break;
@@ -68,24 +68,24 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 	String property;
 
 	// TagId
-	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PAST_OPERATOR_ID,
+	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PAST_OPERATOR_ID,
 		element);
 	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagId"), string);
 
 	// TagStateName
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PAST_OPERATOR_STATE_NAME);
 	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagStateName"), property,
 		PropertiesUtils.getInstance().getAllElements(DCasePeerModule.MODULE_NAME,
-			DCaseStereotypes.STEREOTYPE_STATE, "Ui.None"));
+			DCaseStereotypes.STATE, "Ui.None"));
 
 	// TagStateValue
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PAST_OPERATOR_STATE_VALUE);
 	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagStateValue"), property,
 		new String[] { I18nMessageService.getString("Ui.PastOperator.Property.TagStateValue.True"),
 			I18nMessageService.getString("Ui.PastOperator.Property.TagStateValue.False") });
 
 	// TagStateValue
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PAST_OPERATOR_TYPE);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PAST_OPERATOR_TYPE);
 	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagType"), property,
 		new String[] { I18nMessageService.getString("Ui.PastOperator.Property.TagType.Strong"),
 			I18nMessageService.getString("Ui.PastOperator.Property.TagType.Weak") });

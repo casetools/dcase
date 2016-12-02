@@ -62,10 +62,10 @@ public class EventSimulatorTool extends LifelineTool {
 	    CommunicationChannel channel = (CommunicationChannel) owner;
 	    CommunicationNode origin = channel.getStart();
 	    DiagramUtils.getInstance().createDependency(origin, message,
-		    DCaseStereotypes.STEREOTYPE_DEPENDENCY_PRODUCE);
+		    DCaseStereotypes.DEPENDENCY_PRODUCE);
 	    CommunicationNode target = channel.getEnd();
 	    DiagramUtils.getInstance().createDependency(target, message,
-		    DCaseStereotypes.STEREOTYPE_DEPENDENCY_CONSUME);
+		    DCaseStereotypes.DEPENDENCY_CONSUME);
 	}
     }
 
@@ -90,7 +90,7 @@ public class EventSimulatorTool extends LifelineTool {
 	Lifeline lifeline = null;
 	try {
 	    lifeline = DiagramUtils.getInstance().createLifeline(element, session,
-		    I18nMessageService.getString("Names.EventsSimulator"), DCaseStereotypes.STEREOTYPE_EVENTS_SIMULATOR);
+		    I18nMessageService.getString("Names.EventsSimulator"), DCaseStereotypes.EVENTS_SIMULATOR);
 	} catch (ExtensionNotFoundException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();

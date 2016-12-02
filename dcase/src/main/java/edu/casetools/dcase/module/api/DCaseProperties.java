@@ -37,59 +37,59 @@ public class DCaseProperties {
      * Context Information Message related properties
      **************************************************************************/
     // Situational Parameter
-    public static final String PROPERTY_MESSAGE_ID = "CETagId";
+    public static final String MESSAGE_ID = "CETagId";
 
-    public static final String PROPERTY_MESSAGE_RESPONSIBILITY = "TagResponsibility";
+    public static final String MESSAGE_RESPONSIBILITY = "TagResponsibility";
 
-    public static final String PROPERTY_MESSAGE_REGULARITY = "TagRegularity";
+    public static final String MESSAGE_REGULARITY = "TagRegularity";
 
-    public static final String PROPERTY_MESSAGE_FREQUENCY = "TagFrequency";
+    public static final String MESSAGE_FREQUENCY = "TagFrequency";
 
-    public static final String PROPERTY_MESSAGE_SYNCHRONICITY = "TagSynchronicity";
+    public static final String MESSAGE_SYNCHRONICITY = "TagSynchronicity";
 
-    public static final String PROPERTY_MESSAGE_SITUATIONAL_PARAMETER = "TagContextAttribute";
+    public static final String MESSAGE_SITUATIONAL_PARAMETER = "TagContextAttribute";
 
-    public static final String PROPERTY_STATE_ID = "TagStateId";
+    public static final String STATE_ID = "TagStateId";
 
-    public static final String PROPERTY_STATE_NAME = "TagStateName";
+    public static final String STATE_NAME = "TagStateName";
 
-    public static final String PROPERTY_STATE_INDEPENDENT = "TagStateIndpendent";
+    public static final String STATE_INDEPENDENT = "TagStateIndpendent";
 
-    public static final String PROPERTY_STATE_INITIAL_VALUE = "TagStateInitial";
+    public static final String STATE_INITIAL_VALUE = "TagStateInitial";
 
-    public static final String PROPERTY_ANTECEDENT_STATE_NAME = "TagAntecedentName";
+    public static final String ANTECEDENT_STATE_NAME = "TagAntecedentName";
 
-    public static final String PROPERTY_ANTECEDENT_STATE_VALUE = "TagAntecedentValue";
+    public static final String ANTECEDENT_STATE_VALUE = "TagAntecedentValue";
 
-    public static final String PROPERTY_CONSEQUENT_STATE_NAME = "TagConsequentName";
+    public static final String CONSEQUENT_STATE_NAME = "TagConsequentName";
 
-    public static final String PROPERTY_CONSEQUENT_STATE_VALUE = "TagConsequentValue";
+    public static final String CONSEQUENT_STATE_VALUE = "TagConsequentValue";
 
-    public static final String PROPERTY_PAST_OPERATOR_ID = "TagOperatorId";
+    public static final String PAST_OPERATOR_ID = "TagOperatorId";
 
-    public static final String PROPERTY_PAST_OPERATOR_STATE_NAME = "TagOStateName";
+    public static final String PAST_OPERATOR_STATE_NAME = "TagOStateName";
 
-    public static final String PROPERTY_PAST_OPERATOR_STATE_VALUE = "TagOStateValue";
+    public static final String PAST_OPERATOR_STATE_VALUE = "TagOStateValue";
 
-    public static final String PROPERTY_PAST_OPERATOR_BOUND = "TagBound";
+    public static final String PAST_OPERATOR_BOUND = "TagBound";
 
-    public static final String PROPERTY_PAST_OPERATOR_LOWBOUND = "TagLowBound";
+    public static final String PAST_OPERATOR_LOWBOUND = "TagLowBound";
 
-    public static final String PROPERTY_PAST_OPERATOR_UPPBOUND = "TagUppBound";
+    public static final String PAST_OPERATOR_UPPBOUND = "TagUppBound";
 
-    public static final String PROPERTY_EVENT_ID = "TagEMId";
+    public static final String EVENT_ID = "TagEMId";
 
-    public static final String PROPERTY_EVENT_STATE_NAME = "TagEMStateName";
+    public static final String EVENT_STATE_NAME = "TagEMStateName";
 
-    public static final String PROPERTY_EVENT_STATE_VALUE = "TagEMStateValue";
+    public static final String EVENT_STATE_VALUE = "TagEMStateValue";
 
-    public static final String PROPERTY_EVENT_TIME = "TagEMTime";
+    public static final String EVENT_TIME = "TagEMTime";
 
-    public static final String PROPERTY_STR_ID = "STId";
+    public static final String STR_ID = "STId";
 
-    public static final String PROPERTY_NTR_ID = "NTId";
+    public static final String NTR_ID = "NTId";
 
-    public static final String PROPERTY_PAST_OPERATOR_TYPE = "TagOperatorType";
+    public static final String PAST_OPERATOR_TYPE = "TagOperatorType";
 
     private DCaseProperties() {
 

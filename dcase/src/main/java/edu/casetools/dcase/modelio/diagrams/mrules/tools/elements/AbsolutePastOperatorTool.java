@@ -58,12 +58,12 @@ public class AbsolutePastOperatorTool extends ElementTool {
 	String name = I18nMessageService.getString("Names.Absolute");
 
 	MObject auxiliarElement = DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
-		DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR);
+		DCaseStereotypes.ABSOLUTE_PAST_OPERATOR);
 
 	addPastOperatorStereotype(auxiliarElement);
 
 	DiagramUtils.getInstance().setFreeProperty((ModelElement) auxiliarElement, DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_PAST_OPERATOR, DCaseProperties.PROPERTY_PAST_OPERATOR_ID);
+		DCaseStereotypes.PAST_OPERATOR, DCaseProperties.PAST_OPERATOR_ID);
 
 	return auxiliarElement;
     }
@@ -71,7 +71,7 @@ public class AbsolutePastOperatorTool extends ElementTool {
     private void addPastOperatorStereotype(MObject auxiliarElement) {
 	try {
 	    ((ModelElement) auxiliarElement).addStereotype(DCasePeerModule.MODULE_NAME,
-		    DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
+		    DCaseStereotypes.PAST_OPERATOR);
 	} catch (ExtensionNotFoundException e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
 	}

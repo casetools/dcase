@@ -69,7 +69,7 @@ public class MSystemTool extends LifelineTool {
 	Lifeline lifeline = null;
 	try {
 	    lifeline = DiagramUtils.getInstance().createLifeline(element, session,
-		    I18nMessageService.getString("Names.MSystem"), DCaseStereotypes.STEREOTYPE_M_SYSTEM);
+		    I18nMessageService.getString("Names.MSystem"), DCaseStereotypes.M_SYSTEM);
 	} catch (ExtensionNotFoundException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
@@ -82,10 +82,10 @@ public class MSystemTool extends LifelineTool {
 	    CommunicationChannel channel = (CommunicationChannel) owner;
 	    CommunicationNode origin = channel.getStart();
 	    DiagramUtils.getInstance().createDependency(origin, message,
-		    DCaseStereotypes.STEREOTYPE_DEPENDENCY_PRODUCE);
+		    DCaseStereotypes.DEPENDENCY_PRODUCE);
 	    CommunicationNode target = channel.getEnd();
 	    DiagramUtils.getInstance().createDependency(target, message,
-		    DCaseStereotypes.STEREOTYPE_DEPENDENCY_CONSUME);
+		    DCaseStereotypes.DEPENDENCY_CONSUME);
 	}
     }
 

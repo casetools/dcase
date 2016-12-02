@@ -46,10 +46,10 @@ public class StatePropertyPage implements IPropertyContent {
 		element.setName(value);
 		break;
 	    case 3:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INDEPENDENT, value);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.STATE_INDEPENDENT, value);
 		break;
 	    case 4:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INITIAL_VALUE, value);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.STATE_INITIAL_VALUE, value);
 		break;
 	    default:
 		break;
@@ -65,20 +65,20 @@ public class StatePropertyPage implements IPropertyContent {
 	String property;
 
 	// TagId
-	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_STATE_ID, element);
+	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.STATE_ID, element);
 	table.addProperty(I18nMessageService.getString("Ui.State.Property.TagId"), string);
 
 	// State Name
 	table.addProperty(I18nMessageService.getString("Ui.State.Property.TagName"), element.getName());
 
 	// Independent
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INDEPENDENT);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.STATE_INDEPENDENT);
 	table.addProperty(I18nMessageService.getString("Ui.State.Property.TagIndependent"), property,
 		new String[] { I18nMessageService.getString("Ui.State.Property.TagIndependent.False"),
 			I18nMessageService.getString("Ui.State.Property.TagIndependent.True") });
 
 	// Initial Value
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_INITIAL_VALUE);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.STATE_INITIAL_VALUE);
 	table.addProperty(I18nMessageService.getString("Ui.State.Property.TagInitialValue"), property,
 		new String[] { I18nMessageService.getString("Ui.State.Property.TagInitialValue.False"),
 			I18nMessageService.getString("Ui.State.Property.TagInitialValue.True") });

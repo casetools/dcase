@@ -49,7 +49,7 @@ public class ConsequentTool extends ElementTool {
 	String name = I18nMessageService.getString("Names.Consequent");
 
 	return DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
-		DCaseStereotypes.STEREOTYPE_CONSEQUENT);
+		DCaseStereotypes.CONSEQUENT);
     }
 
     /*

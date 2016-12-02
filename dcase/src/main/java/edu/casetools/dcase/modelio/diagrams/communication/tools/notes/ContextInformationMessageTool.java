@@ -62,7 +62,7 @@ public class ContextInformationMessageTool extends CommunicationMessageTool {
     protected CommunicationMessage createOwnCommunicationMessage(IUmlModel model, ModelElement owner)
 	    throws ExtensionNotFoundException {
 	CommunicationMessage message = DiagramUtils.getInstance().createCommunicationMessage(model, owner,
-		DCaseStereotypes.STEREOTYPE_CONTEXT_INFORMATION_MESSAGE);
+		DCaseStereotypes.CONTEXT_INFORMATION_MESSAGE);
 	createContextMessageDependencies(owner, message);
 	return message;
     }
@@ -72,10 +72,10 @@ public class ContextInformationMessageTool extends CommunicationMessageTool {
 	    CommunicationChannel channel = (CommunicationChannel) owner;
 	    CommunicationNode origin = channel.getStart();
 	    DiagramUtils.getInstance().createDependency(origin, message,
-		    DCaseStereotypes.STEREOTYPE_DEPENDENCY_PRODUCE);
+		    DCaseStereotypes.DEPENDENCY_PRODUCE);
 	    CommunicationNode target = channel.getEnd();
 	    DiagramUtils.getInstance().createDependency(target, message,
-		    DCaseStereotypes.STEREOTYPE_DEPENDENCY_CONSUME);
+		    DCaseStereotypes.DEPENDENCY_CONSUME);
 	}
     }
 

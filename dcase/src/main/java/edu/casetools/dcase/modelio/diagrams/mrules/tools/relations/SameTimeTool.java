@@ -44,7 +44,7 @@ public class SameTimeTool extends RelationTool {
      */
     @Override
     public boolean acceptFirstElement(IDiagramHandle representation, IDiagramGraphic target) {
-	return acceptElement(target, DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP);
+	return acceptElement(target, DCaseStereotypes.ANTECEDENT_GROUP);
     }
 
     /*
@@ -58,7 +58,7 @@ public class SameTimeTool extends RelationTool {
      */
     @Override
     public boolean acceptSecondElement(IDiagramHandle representation, IDiagramGraphic source, IDiagramGraphic target) {
-	return acceptElement(target, DCaseStereotypes.STEREOTYPE_CONSEQUENT);
+	return acceptElement(target, DCaseStereotypes.CONSEQUENT);
     }
 
     /*
@@ -71,7 +71,7 @@ public class SameTimeTool extends RelationTool {
     @Override
     public Dependency createDependency(ModelElement originElement, ModelElement targetElement) {
 	return DiagramUtils.getInstance().createDependency(originElement, targetElement,
-		DCaseStereotypes.STEREOTYPE_SAME_TIME);
+		DCaseStereotypes.SAME_TIME);
     }
 
 }

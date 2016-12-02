@@ -83,15 +83,15 @@ public class MRulesDiagramCustomizer extends DiagramCustomizer implements IDiagr
 
     private org.eclipse.gef.palette.PaletteEntry createLinksGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Links");
-	String[] toolNames = new String[] { DCaseTools.TOOL_SAME_TIME, DCaseTools.TOOL_NEXT_TIME };
+	String[] toolNames = new String[] { DCaseTools.SAME_TIME, DCaseTools.NEXT_TIME };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
     private org.eclipse.gef.palette.PaletteEntry createNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
-	String[] toolNames = new String[] { DCaseTools.TOOL_ANTECEDENT_GROUP, DCaseTools.TOOL_ANTECEDENT,
-		DCaseTools.TOOL_IMMEDIATE_PAST_OPERATOR, DCaseTools.TOOL_ABSOLUTE_PAST_OPERATOR,
-		DCaseTools.TOOL_CONSEQUENT };
+	String[] toolNames = new String[] { DCaseTools.ANTECEDENT_GROUP, DCaseTools.ANTECEDENT,
+		DCaseTools.IMMEDIATE_PAST_OPERATOR, DCaseTools.ABSOLUTE_PAST_OPERATOR,
+		DCaseTools.CONSEQUENT };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
