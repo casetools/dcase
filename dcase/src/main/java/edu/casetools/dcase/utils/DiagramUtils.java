@@ -34,7 +34,14 @@ import org.modelio.metamodel.factory.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationChannel;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationInteraction;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationMessage;
+import org.modelio.metamodel.uml.behavior.interactionModel.ExecutionOccurenceSpecification;
 import org.modelio.metamodel.uml.behavior.interactionModel.Interaction;
+import org.modelio.metamodel.uml.behavior.interactionModel.InteractionFragment;
+import org.modelio.metamodel.uml.behavior.interactionModel.InteractionUse;
+import org.modelio.metamodel.uml.behavior.interactionModel.Lifeline;
+import org.modelio.metamodel.uml.behavior.interactionModel.Message;
+import org.modelio.metamodel.uml.behavior.interactionModel.MessageEnd;
+import org.modelio.metamodel.uml.behavior.interactionModel.MessageSort;
 import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Note;
@@ -337,6 +344,67 @@ public class DiagramUtils {
 	return createdElement;
     }
 
+    /**
+     * Creates the dependency.
+     *
+     * @param origin
+     *            the origin
+     * @param target
+     *            the target
+     * @param stereotypeName
+     *            the stereotype
+     * @return the dependency
+     */
+    public Message createMessage(IModelingSession session, ModelElement source, ModelElement target,
+	    String stereotypeName) {
+	Message createdElement = session.getModel().createMessage("", MessageSort.ASYNCCALL);
+
+	MessageEnd me = session.getModel().createExecutionOccurenceSpecification();
+
+	createdElement.setReceiveEvent(me);
+	createdElement.setSendEvent(me);
+	createdElement.setOwnerTemplateParameter(source.getOwnerTemplateParameter());
+
+	try {
+	    createdElement.addStereotype(DCasePeerModule.MODULE_NAME, stereotypeName);
+	} catch (ExtensionNotFoundException e) {
+	    logger.log(Level.SEVERE, e.getMessage(), e);
+	}
+	DiagramUtils.getInstance().setFreeName(createdElement, I18nMessageService.getString("Ui.Message.Name"));
+
+	return createdElement;
+    }
+
+    private void checkForLifeline(final Lifeline lifeline) {
+	// For the whole lifeline, compare its fragments to the creation message
+	// end on itself, if any
+	ExecutionOccurenceSpecification createMessageEnd = null;
+
+	for (InteractionFragment fragment : lifeline.getCoveredBy()) {
+	    if (fragment instanceof ExecutionOccurenceSpecification) {
+		ExecutionOccurenceSpecification eos = (ExecutionOccurenceSpecification) fragment;
+		if (eos.getReceivedMessage() != null) {
+		    Message receivedMessage = eos.getReceivedMessage();
+		    if (receivedMessage.getSortOfMessage() == MessageSort.CREATEMESSAGE) {
+			// we found a creation message end on the lifeline
+			createMessageEnd = eos;
+			break;
+		    }
+		}
+	    }
+	}
+
+	if (createMessageEnd != null) {
+	    int createLine = createMessageEnd.getLineNumber();
+	    for (InteractionFragment fragment : lifeline.getCoveredBy()) {
+		if ((fragment.getLineNumber() < createLine) || ((fragment instanceof InteractionUse)
+			&& (((InteractionUse) fragment).getEndLineNumber() < createLine))) {
+		    Message destroyMessage = createMessageEnd.getReceivedMessage();
+		}
+	    }
+	}
+    }
+
     public StaticDiagram createDiagram(List<MObject> selectedElements, IModelingSession session, String name,
 	    String stereotypeName) {
 	Stereotype stereotype = session.getMetamodelExtensions().getStereotype(stereotypeName,
@@ -374,6 +442,19 @@ public class DiagramUtils {
 	    return createdElement;
 	}
 	return null;
+    }
+
+    public Lifeline createLifeline(MObject owner, IModelingSession session, String name, String stereotypeName)
+	    throws ExtensionNotFoundException {
+
+	Lifeline createdElement = session.getModel().createLifeline();
+	if (owner instanceof Interaction) {
+	    createdElement.setOwner((Interaction) owner);
+	}
+	createdElement.addStereotype(DCasePeerModule.MODULE_NAME, stereotypeName);
+	DiagramUtils.getInstance().setFreeName(createdElement, name);
+	return createdElement;
+
     }
 
 }

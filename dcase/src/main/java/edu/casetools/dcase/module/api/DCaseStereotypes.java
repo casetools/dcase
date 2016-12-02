@@ -9,7 +9,8 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String STEREOTYPE_STATE = "StateStereotype";
 
     public static final String STEREOTYPE_EVENT = "EventMessageStereotype";
-    public static final String STEREOTYPE_MESSAGE = "ContextInformationMessageStereotype";
+    public static final String STEREOTYPE_EVENTS_SIMULATOR = "EventsSimulatorStereotype";
+    public static final String STEREOTYPE_CONTEXT_INFORMATION_MESSAGE = "ContextInformationMessageStereotype";
 
     // Relations
     public static final String STEREOTYPE_SAME_TIME = "SameTimeStereotype";
@@ -26,5 +27,7 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String STEREOTYPE_IMMEDIATE_PAST_OPERATOR = "ImmediatePastOperatorStereotype";
     public static final String STEREOTYPE_DIAGRAM_M_STATE_MAP = "MStateMapDiagramStereotype";
     public static final String STEREOTYPE_PAST_OPERATOR = "PastOperatorStereotype";
+    public static final String STEREOTYPE_M_SYSTEM = "MStereotype";
+    public static final String STEREOTYPE_DIAGRAM_M_TEST_CASE = "TestCaseDiagramStereotype";
 
 }

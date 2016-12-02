@@ -114,7 +114,7 @@ public class PropertyManager {
 
     private void getPropertyPages(IMetamodelExtensions extensions, Stereotype ster) {
 
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE,
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONTEXT_INFORMATION_MESSAGE,
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 			.getMClass(CommunicationMessage.class)))) {
 	    this.propertyPage = new ContextInformationMessagePropertyPage();

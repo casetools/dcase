@@ -264,7 +264,6 @@ public class MdData {
     private void getEvents() {
 	for (MObject event : events) {
 	    Event e = new Event();
-	    // This code is incomplete
 	    e.setId(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_EVENT_ID));
 	    e.setStateId(getStateId(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_EVENT_STATE_NAME)));

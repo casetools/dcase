@@ -10,9 +10,19 @@
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
+            <Stereotype name="MStereotype" metaclass="Lifeline" is-hidden="false" label="%MStereotype.label" uid="b5fe6db8-214a-4ac8-a545-3878dfd7ba1b">
+                <Icon path="res/icons/lifeline_16.png"/>
+                <Image path="res/icons/lifeline_16.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="EventsSimulatorStereotype" metaclass="Lifeline" is-hidden="false" label="%EventsSimulatorStereotype.label" uid="efd152c2-6bd5-41ee-8035-b362b2d9fe18">
+                <Icon path="res/icons/lifeline_16.png"/>
+                <Image path="res/icons/lifeline_16.png"/>
+                <TagTypes/>
+            </Stereotype>
             <Stereotype name="AntecedentGroupStereotype" metaclass="Package" is-hidden="false" label="%AntecedentGroupStereotype.label" uid="f88594e0-4b76-49de-af7f-307282c9f5de">
                 <Icon path="res/icons/antecedent_group_16.png"/>
-                <Image path="res/icons/antecedent_group_64.png"/>
+                <Image path="res/icons/antecedent_group_16.png"/>
                 <TagTypes/>
             </Stereotype>
             <Stereotype name="ConsequentStereotype" metaclass="Class" is-hidden="false" label="%ConsequentStereotype.label" uid="90c10322-a899-4adf-b2c3-ebfa3fa4d4c9">
@@ -31,7 +41,7 @@
                     <TagType name="TagAntecedentValue" uid="284eaec6-7709-4338-8a8e-a247e80f1403" label="$AntecedentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="EventMessageStereotype" metaclass="Class" is-hidden="false" label="%EventMessageStereotype.label" uid="09d9a59c-ae7e-480b-a2fe-26694827bf54">
+            <Stereotype name="EventMessageStereotype" metaclass="Dependency" is-hidden="false" label="%EventMessageStereotype.label" uid="09d9a59c-ae7e-480b-a2fe-26694827bf54">
                 <Icon path="res/icons/consequent_16.png"/>
                 <Image path="res/icons/consequent_16.png"/>
                 <TagTypes>
@@ -116,6 +126,10 @@
                 <Icon path="%MRulesDiagramStereotype.image"/>
                 <Image path="%MRulesDiagramStereotype.image"/>
             </Stereotype>
+            <Stereotype name="TestCaseDiagramStereotype" metaclass="SequenceDiagram" is-hidden="false" label="%TestCaseDiagramStereotype.label" uid="333fc919-17f5-4d9c-bc25-06e5e2e7ff3c">
+                <Icon path="%TestCaseDiagramStereotype.image"/>
+                <Image path="%TestCaseDiagramStereotype.image"/>
+            </Stereotype>
             <Stereotype name="MStateMapDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%MStateMapDiagramStereotype.label" uid="996ead08-eaf0-4208-85ea-51a16133912e">
                 <Icon path="%MStateMapDiagramStereotype.image"/>
                 <Image path="%MStateMapDiagramStereotype.image"/>
@@ -143,6 +157,10 @@
     </Profiles>
     <Gui>
         <Commands>
+            <Command id="CreateTestCaseDiagram" label="%CreateTestCaseDiagram.label" tooltip="%CreateTestCaseDiagram.tooltip" image="%CreateTestCaseDiagram.image" group="%CreateTestCaseDiagram.group" modify-model="true" group-image="%CreateTestCaseDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateTestCaseDiagram"/>
+            </Command>
             <Command id="CreateMStateMapDiagram" label="%CreateMStateMapDiagram.label" tooltip="%CreateMStateMapDiagram.tooltip" image="%CreateMStateMapDiagram.image" group="%CreateMStateMapDiagram.group" modify-model="true" group-image="%CreateMStateMapDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateMStateMapDiagram"/>
@@ -227,11 +245,30 @@
                     <HParameter name="stereotype" value="NextTimeStereotype"/>
                 </Handler>
             </Tool>
+            <Tool id="MSystemTool" label="%MSystemTool.label" tooltip="%MSystemTool.tooltip" image="%MSystemTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.testcase.tools.nodes.MSystemTool">
+                    <HParameter name="metaclass" value="Lifeline"/>
+                    <HParameter name="stereotype" value="MSystemStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="EventSimulatorTool" label="%EventSimulatorTool.label" tooltip="%EventSimulatorTool.tooltip" image="%EventSimulatorTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.testcase.tools.nodes.EventSimulatorTool">
+                    <HParameter name="metaclass" value="Lifeline"/>
+                    <HParameter name="stereotype" value="EventsSimulatorStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="EventMessageTool" label="%EventMessageTool.label" tooltip="%EventMessageTool.tooltip" image="%EventMessageTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.testcase.tools.messages.EventMessageTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="EventMessageStereotype"/>
+                </Handler>
+            </Tool>
         </Tools>
         <ContextualMenu>
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateCommunicationDiagram"/>
             <CommandRef refid="CreateCSPARQLMapDiagram"/>
+            <CommandRef refid="CreateTestCaseDiagram"/>
             <CommandRef refid="CreateMStateMapDiagram"/>
             <CommandRef refid="CreateMRulesDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
@@ -257,6 +294,10 @@
             <DiagramType base-diagram="StaticDiagram" stereotype="MStateMapDiagramStereotype">
                 <Palette keepBasePalette="false"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.mstatemap.MStateMapDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="SequenceDiagram" stereotype="TestCaseDiagramStereotype">
+                <Palette keepBasePalette="true"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.testcase.TestCaseDiagramCustomizer"/>
             </DiagramType>
         </Diagrams>
         <Views>

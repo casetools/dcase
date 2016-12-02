@@ -112,7 +112,7 @@ public class ModelioTableUtils {
 		ModelElement modelElement = (ModelElement) child;
 		if (!modelElement.getCompositionChildren().isEmpty())
 		    auxiliarList = getMessagesFromComInteraction(auxiliarList, modelElement);
-		if (modelElement.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE)) {
+		if (modelElement.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONTEXT_INFORMATION_MESSAGE)) {
 		    auxiliarList.add(child);
 		}
 	    }

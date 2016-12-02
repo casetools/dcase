@@ -42,7 +42,7 @@ public class CommunicationDiagramCustomizer extends DiagramCustomizer implements
 
     private PaletteDrawer createNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ContextCommunicationPaletteGroup.Nodes");
-	String[] toolNames = new String[] { "CREATE_COMMUNICATIONNODE", DCaseTools.TOOL_MESSAGE,
+	String[] toolNames = new String[] { "CREATE_COMMUNICATIONNODE", DCaseTools.TOOL_CONTEXT_INFORMATION_MESSAGE,
 		"CREATE_COMMUNICATIONMESSAGE" };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }

@@ -26,7 +26,7 @@ package edu.casetools.dcase.module.api;
 public class DCaseTools {
 
     // Elements
-    public static final String TOOL_MESSAGE = "ContextInformationMessageTool";
+    public static final String TOOL_CONTEXT_INFORMATION_MESSAGE = "ContextInformationMessageTool";
     public static final String TOOL_ANTECEDENT_GROUP = "AntecedentGroupTool";
     public static final String TOOL_ANTECEDENT = "AntecedentTool";
     public static final String TOOL_CONSEQUENT = "ConsequentTool";
@@ -35,6 +35,9 @@ public class DCaseTools {
     public static final String TOOL_NEXT_TIME = "NextTimeTool";
     public static final String TOOL_IMMEDIATE_PAST_OPERATOR = "ImmediatePastOperatorTool";
     public static final String TOOL_ABSOLUTE_PAST_OPERATOR = "AbsolutePastOperatorTool";
+    public static final String TOOL_EVENT_MESSAGE = "EventMessageTool";
+    public static final String TOOL_MSYSTEM = "MSystemTool";
+    public static final String TOOL_EVENTS_SIMULATOR = "EventSimulatorTool";
 
     private DCaseTools() {
 
