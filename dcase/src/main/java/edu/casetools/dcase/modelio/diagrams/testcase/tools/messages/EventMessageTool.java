@@ -42,7 +42,7 @@ public class EventMessageTool extends MessageTool {
     protected Message createOwnCommunicationMessage(IModelingSession session, ModelElement model, ModelElement owner)
 	    throws ExtensionNotFoundException {
 	return DiagramUtils.getInstance().createMessage(session, (Lifeline) model, (Lifeline) owner,
-		DCaseStereotypes.EVENT);
+		DCaseStereotypes.EVENT, 20, 40);
     }
 
     @Override

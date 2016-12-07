@@ -352,39 +352,26 @@ public class DiagramUtils {
      *            the stereotype
      * @return the dependency
      */
-    public Message createMessage(IModelingSession session, Lifeline source, Lifeline target, String stereotypeName) {
+    public Message createMessage(IModelingSession session, Lifeline source, Lifeline target, String stereotypeName,
+	    int sourceTime, int targetTime) {
 	//////////
 
 	// MESSAGE START
 	Interaction sourceInteraction = source.getOwner();
 	ExecutionOccurenceSpecification messageStart = session.getModel().createExecutionOccurenceSpecification();
 	messageStart.getCovered().add(source);
-	messageStart.setLineNumber(20);
+	messageStart.setLineNumber(sourceTime);
 	messageStart.setEnclosingInteraction(sourceInteraction);
 
-	// Unmask all this stuff
-	// final GmAbstractDiagram gmDiagram = sourceModel.getDiagram();
-	// GmNodeModel sourceNode = gmDiagram.unmask(sourceModel, messageStart,
-	// new Rectangle(0, 0, -1, -1));
-	// messageStart.setLineNumber(sourceTime);
-
-	////////
-	///////////////
-	Interaction targetInteraction = target.getOwner();
-
-	// targetExecutionStart and targetExecutionEnd are the start and end of
-	// the Execution on the target lifeline.
-	// targetExecutionStart is also the end of the Message on the target
-	// lifeline.
-
 	// TARGET EXECUTION START
+	Interaction targetInteraction = target.getOwner();
 	ExecutionOccurenceSpecification targetExecutionStart = session.getModel()
 		.createExecutionOccurenceSpecification();
 	targetExecutionStart.getCovered().add(target);
 	targetExecutionStart.setEnclosingInteraction(targetInteraction);
-	Message theMessage = session.getModel().createMessage();
 
-	// source.inOb.setSentMessage(theMessage);
+	// MESSAGE
+	Message theMessage = session.getModel().createMessage();
 	theMessage.setSendEvent(messageStart);
 	targetExecutionStart.setReceivedMessage(theMessage);
 	theMessage.setSortOfMessage(MessageSort.ASYNCCALL);
@@ -396,73 +383,16 @@ public class DiagramUtils {
 	}
 
 	DiagramUtils.getInstance().setFreeName(theMessage, I18nMessageService.getString("Ui.Message.Name"));
-	targetExecutionStart.setLineNumber(20);
+	targetExecutionStart.setLineNumber(sourceTime);
 
-	// Unmask all this stuff
-	// final GmAbstractDiagram gmDiagram = targetModel.getDiagram();
-	// GmNodeModel targetNode = gmDiagram.unmask(targetModel,
-	// targetExecutionStart, new Rectangle(0,
-	// 0,
-	// -1,
-	// -1));
-	// GmLink unmaskedLink = gmDiagram.unmaskLink(theMessage, source.inGm,
-	// targetNode, new GmPath());
-	// if (this.request != null && unmaskedLink != null) {
-	// this.request.getCreatedObjectsToSelect().add(unmaskedLink);
-	// }
-
-	// ----------------------------
 	// TARGET EXECUTION END
 
 	ExecutionOccurenceSpecification targetExecutionEnd = session.getModel().createExecutionOccurenceSpecification();
 	targetExecutionEnd.getCovered().add(target);
 	targetExecutionEnd.setEnclosingInteraction(targetInteraction);
-	targetExecutionEnd.setLineNumber(40);
-
-	// ExecutionSpecification targetExecution =
-	// session.getModel().createExecutionSpecification();
-	// targetExecution.getCovered().add(target);
-	// targetExecution.setEnclosingInteraction(targetInteraction);
-	// targetExecution.setStart(targetExecutionStart);
-	// targetExecution.setFinish(targetExecutionEnd);
+	targetExecutionEnd.setLineNumber(targetTime);
 
 	theMessage.setReceiveEvent(targetExecutionEnd);
-
-	// gmDiagram.unmask(targetModel, targetExecution, new Rectangle(0, 0,
-	// -1, -1));
-	// gmDiagram.unmask(targetModel, targetExecutionEnd, new Rectangle(0, 0,
-	// -1, -1));
-	// targetExecution.setLineNumber(targetTime);
-	// targetExecutionEnd.setLineNumber(targetTime +
-	// DEFAULT_EXECUTION_DURATION);
-	//
-	// if (source.inOb instanceof ExecutionOccurenceSpecification &&
-	// (type == MessageType.InnerExecutionSynchronous || type ==
-	// MessageType.SimpleSynchronous)) {
-	// // synchronous message starting on an Execution start: automagically
-	// create the reply message.
-	// ExecutionOccurenceSpecification replyEnd;
-	// if (source.inOb instanceof ExecutionOccurenceSpecification &&
-	// ((ExecutionOccurenceSpecification) source.inOb).getStarted() != null)
-	// {
-	// replyEnd = ((ExecutionOccurenceSpecification)
-	// source.inOb).getStarted().getFinish();
-	// } else {
-	// replyEnd = this.modelFactory.createExecutionOccurenceSpecification();
-	// replyEnd.getCovered().add(((ExecutionOccurenceSpecification)
-	// source.inOb).getCovered().get(0));
-	// replyEnd.setEnclosingInteraction(interaction);
-	// }
-	//
-	// Message theReplyMessage = this.modelFactory.createMessage();
-	// targetExecutionEnd.setSentMessage(theReplyMessage);
-	// replyEnd.setReceivedMessage(theReplyMessage);
-	// setMessageSortAndKind(MessageType.Reply, theReplyMessage);
-	//
-	// replyEnd.setLineNumber(targetTime + DEFAULT_EXECUTION_DURATION);
-	// }
-
-	///////////////
 
 	return theMessage;
     }

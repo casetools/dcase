@@ -41,7 +41,7 @@
                     <TagType name="TagAntecedentValue" uid="284eaec6-7709-4338-8a8e-a247e80f1403" label="$AntecedentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="EventMessageStereotype" metaclass="Dependency" is-hidden="false" label="%EventMessageStereotype.label" uid="09d9a59c-ae7e-480b-a2fe-26694827bf54">
+            <Stereotype name="EventMessageStereotype" metaclass="Message" is-hidden="false" label="%EventMessageStereotype.label" uid="09d9a59c-ae7e-480b-a2fe-26694827bf54">
                 <Icon path="res/icons/consequent_16.png"/>
                 <Image path="res/icons/consequent_16.png"/>
                 <TagTypes>
@@ -259,7 +259,7 @@
             </Tool>
             <Tool id="EventMessageTool" label="%EventMessageTool.label" tooltip="%EventMessageTool.tooltip" image="%EventMessageTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.testcase.tools.messages.EventMessageTool">
-                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="metaclass" value="Message"/>
                     <HParameter name="stereotype" value="EventMessageStereotype"/>
                 </Handler>
             </Tool>
