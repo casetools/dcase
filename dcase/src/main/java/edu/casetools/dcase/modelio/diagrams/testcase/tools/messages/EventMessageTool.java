@@ -24,6 +24,7 @@ import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramHandle;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.metamodel.factory.ExtensionNotFoundException;
+import org.modelio.metamodel.uml.behavior.interactionModel.Lifeline;
 import org.modelio.metamodel.uml.behavior.interactionModel.Message;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
@@ -40,7 +41,8 @@ public class EventMessageTool extends MessageTool {
     @Override
     protected Message createOwnCommunicationMessage(IModelingSession session, ModelElement model, ModelElement owner)
 	    throws ExtensionNotFoundException {
-	return DiagramUtils.getInstance().createMessage(session, model, owner, DCaseStereotypes.EVENT);
+	return DiagramUtils.getInstance().createMessage(session, (Lifeline) model, (Lifeline) owner,
+		DCaseStereotypes.EVENT);
     }
 
     @Override

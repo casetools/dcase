@@ -36,11 +36,8 @@ import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationIntera
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationMessage;
 import org.modelio.metamodel.uml.behavior.interactionModel.ExecutionOccurenceSpecification;
 import org.modelio.metamodel.uml.behavior.interactionModel.Interaction;
-import org.modelio.metamodel.uml.behavior.interactionModel.InteractionFragment;
-import org.modelio.metamodel.uml.behavior.interactionModel.InteractionUse;
 import org.modelio.metamodel.uml.behavior.interactionModel.Lifeline;
 import org.modelio.metamodel.uml.behavior.interactionModel.Message;
-import org.modelio.metamodel.uml.behavior.interactionModel.MessageEnd;
 import org.modelio.metamodel.uml.behavior.interactionModel.MessageSort;
 import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
@@ -355,52 +352,119 @@ public class DiagramUtils {
      *            the stereotype
      * @return the dependency
      */
-    public Message createMessage(IModelingSession session, ModelElement source, ModelElement target,
-	    String stereotypeName) {
+    public Message createMessage(IModelingSession session, Lifeline source, Lifeline target, String stereotypeName) {
+	//////////
 
+	// MESSAGE START
+	Interaction sourceInteraction = source.getOwner();
+	ExecutionOccurenceSpecification messageStart = session.getModel().createExecutionOccurenceSpecification();
+	messageStart.getCovered().add(source);
+	messageStart.setLineNumber(20);
+	messageStart.setEnclosingInteraction(sourceInteraction);
 
-	MessageEnd createdElement = session.getModel().createExecutionOccurenceSpecification();
-	createdElement.setOwnerTemplateParameter(source.getOwnerTemplateParameter());
-	session.getModel().createMessage(MessageSort.ASYNCCALL)
+	// Unmask all this stuff
+	// final GmAbstractDiagram gmDiagram = sourceModel.getDiagram();
+	// GmNodeModel sourceNode = gmDiagram.unmask(sourceModel, messageStart,
+	// new Rectangle(0, 0, -1, -1));
+	// messageStart.setLineNumber(sourceTime);
+
+	////////
+	///////////////
+	Interaction targetInteraction = target.getOwner();
+
+	// targetExecutionStart and targetExecutionEnd are the start and end of
+	// the Execution on the target lifeline.
+	// targetExecutionStart is also the end of the Message on the target
+	// lifeline.
+
+	// TARGET EXECUTION START
+	ExecutionOccurenceSpecification targetExecutionStart = session.getModel()
+		.createExecutionOccurenceSpecification();
+	targetExecutionStart.getCovered().add(target);
+	targetExecutionStart.setEnclosingInteraction(targetInteraction);
+	Message theMessage = session.getModel().createMessage();
+
+	// source.inOb.setSentMessage(theMessage);
+	theMessage.setSendEvent(messageStart);
+	targetExecutionStart.setReceivedMessage(theMessage);
+	theMessage.setSortOfMessage(MessageSort.ASYNCCALL);
 
 	try {
-	    createdElement.addStereotype(DCasePeerModule.MODULE_NAME, stereotypeName);
+	    theMessage.addStereotype(DCasePeerModule.MODULE_NAME, stereotypeName);
 	} catch (ExtensionNotFoundException e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
 	}
-	DiagramUtils.getInstance().setFreeName(createdElement, I18nMessageService.getString("Ui.Message.Name"));
 
-	return createdElement;
-    }
+	DiagramUtils.getInstance().setFreeName(theMessage, I18nMessageService.getString("Ui.Message.Name"));
+	targetExecutionStart.setLineNumber(20);
 
-    private void checkForLifeline(final Lifeline lifeline) {
-	// For the whole lifeline, compare its fragments to the creation message
-	// end on itself, if any
-	ExecutionOccurenceSpecification createMessageEnd = null;
+	// Unmask all this stuff
+	// final GmAbstractDiagram gmDiagram = targetModel.getDiagram();
+	// GmNodeModel targetNode = gmDiagram.unmask(targetModel,
+	// targetExecutionStart, new Rectangle(0,
+	// 0,
+	// -1,
+	// -1));
+	// GmLink unmaskedLink = gmDiagram.unmaskLink(theMessage, source.inGm,
+	// targetNode, new GmPath());
+	// if (this.request != null && unmaskedLink != null) {
+	// this.request.getCreatedObjectsToSelect().add(unmaskedLink);
+	// }
 
-	for (InteractionFragment fragment : lifeline.getCoveredBy()) {
-	    if (fragment instanceof ExecutionOccurenceSpecification) {
-		ExecutionOccurenceSpecification eos = (ExecutionOccurenceSpecification) fragment;
-		if (eos.getReceivedMessage() != null) {
-		    Message receivedMessage = eos.getReceivedMessage();
-		    if (receivedMessage.getSortOfMessage() == MessageSort.CREATEMESSAGE) {
-			// we found a creation message end on the lifeline
-			createMessageEnd = eos;
-			break;
-		    }
-		}
-	    }
-	}
+	// ----------------------------
+	// TARGET EXECUTION END
 
-	if (createMessageEnd != null) {
-	    int createLine = createMessageEnd.getLineNumber();
-	    for (InteractionFragment fragment : lifeline.getCoveredBy()) {
-		if ((fragment.getLineNumber() < createLine) || ((fragment instanceof InteractionUse)
-			&& (((InteractionUse) fragment).getEndLineNumber() < createLine))) {
-		    Message destroyMessage = createMessageEnd.getReceivedMessage();
-		}
-	    }
-	}
+	ExecutionOccurenceSpecification targetExecutionEnd = session.getModel().createExecutionOccurenceSpecification();
+	targetExecutionEnd.getCovered().add(target);
+	targetExecutionEnd.setEnclosingInteraction(targetInteraction);
+	targetExecutionEnd.setLineNumber(40);
+
+	// ExecutionSpecification targetExecution =
+	// session.getModel().createExecutionSpecification();
+	// targetExecution.getCovered().add(target);
+	// targetExecution.setEnclosingInteraction(targetInteraction);
+	// targetExecution.setStart(targetExecutionStart);
+	// targetExecution.setFinish(targetExecutionEnd);
+
+	theMessage.setReceiveEvent(targetExecutionEnd);
+
+	// gmDiagram.unmask(targetModel, targetExecution, new Rectangle(0, 0,
+	// -1, -1));
+	// gmDiagram.unmask(targetModel, targetExecutionEnd, new Rectangle(0, 0,
+	// -1, -1));
+	// targetExecution.setLineNumber(targetTime);
+	// targetExecutionEnd.setLineNumber(targetTime +
+	// DEFAULT_EXECUTION_DURATION);
+	//
+	// if (source.inOb instanceof ExecutionOccurenceSpecification &&
+	// (type == MessageType.InnerExecutionSynchronous || type ==
+	// MessageType.SimpleSynchronous)) {
+	// // synchronous message starting on an Execution start: automagically
+	// create the reply message.
+	// ExecutionOccurenceSpecification replyEnd;
+	// if (source.inOb instanceof ExecutionOccurenceSpecification &&
+	// ((ExecutionOccurenceSpecification) source.inOb).getStarted() != null)
+	// {
+	// replyEnd = ((ExecutionOccurenceSpecification)
+	// source.inOb).getStarted().getFinish();
+	// } else {
+	// replyEnd = this.modelFactory.createExecutionOccurenceSpecification();
+	// replyEnd.getCovered().add(((ExecutionOccurenceSpecification)
+	// source.inOb).getCovered().get(0));
+	// replyEnd.setEnclosingInteraction(interaction);
+	// }
+	//
+	// Message theReplyMessage = this.modelFactory.createMessage();
+	// targetExecutionEnd.setSentMessage(theReplyMessage);
+	// replyEnd.setReceivedMessage(theReplyMessage);
+	// setMessageSortAndKind(MessageType.Reply, theReplyMessage);
+	//
+	// replyEnd.setLineNumber(targetTime + DEFAULT_EXECUTION_DURATION);
+	// }
+
+	///////////////
+
+	return theMessage;
     }
 
     public StaticDiagram createDiagram(List<MObject> selectedElements, IModelingSession session, String name,
