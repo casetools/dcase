@@ -49,7 +49,7 @@ public class TestCaseDiagramCustomizer extends DiagramCustomizer implements IDia
 
     private org.eclipse.gef.palette.PaletteEntry createNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
-	String[] toolNames = new String[] { DCaseTools.MSYSTEM, DCaseTools.EVENTS_SIMULATOR };
+	String[] toolNames = new String[] { DCaseTools.EVENTS_SIMULATOR, DCaseTools.MSYSTEM };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
