@@ -29,6 +29,7 @@ import org.modelio.metamodel.uml.behavior.interactionModel.Message;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
 import edu.casetools.dcase.modelio.diagrams.MessageTool;
+import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.DiagramUtils;
@@ -41,8 +42,11 @@ public class EventMessageTool extends MessageTool {
     @Override
     protected Message createOwnCommunicationMessage(IModelingSession session, ModelElement model, ModelElement owner)
 	    throws ExtensionNotFoundException {
-	return DiagramUtils.getInstance().createMessage(session, (Lifeline) model, (Lifeline) owner,
-		DCaseStereotypes.EVENT, 20, 40);
+	Message m = DiagramUtils.getInstance().createMessage(session, (Lifeline) model, (Lifeline) owner,
+		DCaseStereotypes.EVENT, 50, 100);
+	DiagramUtils.getInstance().setFreeProperty((ModelElement) m, DCasePeerModule.MODULE_NAME,
+		DCaseStereotypes.EVENT, DCaseProperties.TEST_CASE_MESSAGE_ID);
+	return m;
     }
 
     @Override

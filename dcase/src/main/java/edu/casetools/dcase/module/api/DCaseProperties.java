@@ -91,6 +91,14 @@ public class DCaseProperties {
 
     public static final String PAST_OPERATOR_TYPE = "TagOperatorType";
 
+    public static final String TEST_CASE_MESSAGE_ID = "TagEMId";
+
+    public static final String TEST_CASE_MESSAGE_STATE_NAME = "TagEMStateName";
+
+    public static final String TEST_CASE_MESSAGE_STATE_VALUE = "TagEMStateValue";
+
+    public static final String TEST_CASE_MESSAGE_TIME = "TagEMTime";
+
     private DCaseProperties() {
 
     }
