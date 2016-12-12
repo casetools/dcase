@@ -1,4 +1,4 @@
-package edu.casetools.dcase.extensions.io.md2uppaal;
+package edu.casetools.dcase.extensions.io.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -180,15 +180,12 @@ public class MdData {
     }
 
     private boolean isConsequent(MObject relation) {
-	return ((ModelElement) relation).isStereotyped(DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.CONSEQUENT);
+	return ((ModelElement) relation).isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.CONSEQUENT);
     }
 
     private boolean isRule(MObject relation) {
-	return ((ModelElement) relation).isStereotyped(DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.SAME_TIME)
-		|| ((ModelElement) relation).isStereotyped(DCasePeerModule.MODULE_NAME,
-			DCaseStereotypes.NEXT_TIME);
+	return ((ModelElement) relation).isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.SAME_TIME)
+		|| ((ModelElement) relation).isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.NEXT_TIME);
     }
 
     private List<RuleElement> getAntecedents(MObject antecedentGroup) {
@@ -237,12 +234,10 @@ public class MdData {
     private String getRuleId(MObject antecedentGroup) {
 	for (MObject element : antecedentGroup.getCompositionChildren()) {
 	    if ((element instanceof ModelElement) && checkStereotype(element, DCaseStereotypes.SAME_TIME)) {
-		return ((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.STR_ID);
+		return ((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.STR_ID);
 	    }
 	    if ((element instanceof ModelElement) && checkStereotype(element, DCaseStereotypes.NEXT_TIME)) {
-		return ((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.NTR_ID);
+		return ((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.NTR_ID);
 	    }
 	}
 	return "-1";
@@ -265,13 +260,12 @@ public class MdData {
 	for (MObject event : events) {
 	    Event e = new Event();
 	    e.setId(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.EVENT_ID));
-	    e.setStateId(getStateId(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.EVENT_STATE_NAME)));
-	    e.setTime(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.EVENT_TIME));
-	    e.setStateValue(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.EVENT_STATE_VALUE));
-
+	    e.setStateId(getStateId(
+		    ((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.EVENT_STATE_NAME)));
+	    e.setTime(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.EVENT_TIME));
+	    e.setStateValue(
+		    ((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.EVENT_STATE_VALUE));
+	    data.getEvents().add(e);
 	}
     }
 
@@ -281,8 +275,7 @@ public class MdData {
 	    s.setId(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.STATE_ID));
 	    s.setInitialValue(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.STATE_INITIAL_VALUE));
-	    s.setName(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.STATE_NAME));
+	    s.setName(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.STATE_NAME));
 	    data.getStates().add(s);
 	}
     }

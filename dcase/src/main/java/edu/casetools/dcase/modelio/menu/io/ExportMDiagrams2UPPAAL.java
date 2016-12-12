@@ -13,7 +13,7 @@ import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.io.md2uppaal.MdData;
+import edu.casetools.dcase.extensions.io.data.MdData;
 import edu.casetools.dcase.m2uppaal.M2Uppaal;
 
 public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {

@@ -355,7 +355,6 @@ public class DiagramUtils {
     public Message createMessage(IModelingSession session, Lifeline source, Lifeline target, String stereotypeName,
 	    int sourceTime, int targetTime) {
 	//////////
-
 	// MESSAGE START
 	Interaction sourceInteraction = source.getOwner();
 	ExecutionOccurenceSpecification messageStart = session.getModel().createExecutionOccurenceSpecification();
