@@ -2,6 +2,7 @@ package edu.casetools.dcase.modelio.menu.io;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -14,7 +15,11 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.extensions.io.data.MdData;
+import edu.casetools.dcase.extensions.io.data.MdTestCase;
 import edu.casetools.dcase.m2uppaal.M2Uppaal;
+import edu.casetools.dcase.module.api.DCaseStereotypes;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.dcase.utils.ModelioUtils;
 
 public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 
@@ -45,20 +50,38 @@ public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 
 	ModelElement modelelt = (ModelElement) selectedElements.get(0);
 
-	FileDialog dialog = showDialog(modelelt);
-	String fileLocation = dialog.open();
-	// if (!modelelt.isStereotyped(Utils.CONTEXT_MODELLER,
-	// Utils.CONTEXT_MODEL)) {
-	// MessageDialog.openError(null, "Error", "Element is not a Context
-	// Model");
-	// return;
-	// }
-	checkIfExists(fileLocation);
-	translate(fileLocation);
+	createTestCases(modelelt);
 
     }
 
-    private FileDialog showDialog(ModelElement modelelt) {
+    private void createTestCases(ModelElement modelelt) {
+	List<MObject> testCases = getSelectedTestCases(modelelt);
+
+	for (MObject test : testCases) {
+	    FileDialog dialog = showDialog(modelelt, test.getName());
+	    String fileLocation = dialog.open();
+	    checkIfExists(fileLocation);
+	    translate(fileLocation, new MdTestCase(test));
+	}
+    }
+
+    private List<MObject> getSelectedTestCases(ModelElement modelelt) {
+	List<MObject> allElements = new ArrayList<>();
+	List<MObject> testCases = new ArrayList<>();
+	allElements = ModelioUtils.getInstance().getElementsFromMObject((ArrayList<MObject>) allElements,
+		(MObject) modelelt);
+	for (MObject element : allElements) {
+	    if (element instanceof ModelElement) {
+		if (((ModelElement) element).isStereotyped(DCasePeerModule.MODULE_NAME,
+			DCaseStereotypes.TEST_CASE_INTERACTION)) {
+		    testCases.add(element);
+		}
+	    }
+	}
+	return testCases;
+    }
+
+    private FileDialog showDialog(ModelElement modelelt, String name) {
 	FileDialog dialog = new FileDialog(Display.getCurrent().getActiveShell(), SWT.SAVE);
 	dialog.setFilterNames(new String[] { "Text Files", "All Files (*.*)" });
 	dialog.setFilterExtensions(new String[] { "*.txt", "*.*" }); // Windows
@@ -66,13 +89,13 @@ public class ExportMDiagrams2UPPAAL extends DefaultModuleCommandHandler {
 	// cards
 	dialog.setFilterPath(System.getProperty("user.home") + "/Desktop"); // Windows
 									    // path
-	dialog.setFileName(modelelt.getName() + "_UPPAAL.xml");
+	dialog.setFileName(modelelt.getName() + "_" + name + "_UPPAAL.xml");
 	return dialog;
     }
 
-    private void translate(String fileLocation) {
+    private void translate(String fileLocation, MdTestCase testCase) {
 	try {
-	    MdData data = new MdData();
+	    MdData data = new MdData(testCase);
 	    new M2Uppaal().translate(fileLocation, data.getMData());
 	    MessageDialog.openInformation(null, "Model Exported", "Model exported to C-SPARQL at:\n" + fileLocation);
 	} catch (IOException e) {

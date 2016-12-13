@@ -30,7 +30,6 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
 import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
-import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.PropertiesUtils;
@@ -42,18 +41,8 @@ public class TestCasePropertyPage implements IPropertyContent {
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
-	    switch (row) {
-	    case 2:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.TEST_CASE_MESSAGE_STATE_NAME, value);
-		break;
-	    case 3:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.TEST_CASE_MESSAGE_STATE_VALUE, value);
-		break;
-	    case 4:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.TEST_CASE_MESSAGE_TIME, value);
-		break;
-	    default:
-		break;
+	    if (row == 1) {
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.TEST_CASE_EXECUTION_TIME, value);
 	    }
 	} catch (ExtensionNotFoundException | AssertionFailedException e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
@@ -65,25 +54,10 @@ public class TestCasePropertyPage implements IPropertyContent {
     public void update(ModelElement element, IModulePropertyTable table) {
 	String property;
 
-	// Id
-	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.TEST_CASE_MESSAGE_ID, element);
-	table.addProperty(I18nMessageService.getString("Ui.TestCase.Message.Property.TagId"), property);
+	// Execution time
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.TEST_CASE_EXECUTION_TIME, element);
+	table.addProperty(I18nMessageService.getString("Ui.TestCase.Property.ExecutionTime"), property);
 
-	// State Name
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.TEST_CASE_MESSAGE_STATE_NAME);
-	table.addProperty(I18nMessageService.getString("Ui.TestCase.Message..Property.TagStateName"), property,
-		PropertiesUtils.getInstance().getAllElements(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STATE,
-			"Ui.None"));
-
-	// State Value
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.TEST_CASE_MESSAGE_STATE_VALUE);
-	table.addProperty(I18nMessageService.getString("Ui.TestCase.Message..Property.TagStateValue"), property,
-		new String[] { I18nMessageService.getString("Ui.TestCase.Message..Property.TagStateValue.False"),
-			I18nMessageService.getString("Ui.TestCase.Message..Property.TagStateValue.True") });
-
-	// Time of the event
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.TEST_CASE_MESSAGE_TIME);
-	table.addProperty(I18nMessageService.getString("Ui.TestCase.Message..Property.TagTime"), property);
     }
 
 }

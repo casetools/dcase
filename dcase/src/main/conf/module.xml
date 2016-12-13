@@ -15,6 +15,13 @@
                 <Image path="res/icons/lifeline_16.png"/>
                 <TagTypes/>
             </Stereotype>
+            <Stereotype name="TestCaseInteractionStereotype" metaclass="Interaction" is-hidden="false" label="%TestCaseInteractionStereotype.label" uid="1bfde140-6638-4f8b-b20b-5e666d1f179b">
+                <Icon path="res/icons/interaction_16.png"/>
+                <Image path="res/icons/interaction_16.png"/>
+                <TagTypes>
+                    <TagType name="TestExecutionTime" uid="56a34566-2e53-4d05-b744-de3a668250f6" label="%TestCaseDiagramStereotype.image.properties.executionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
             <Stereotype name="EventsSimulatorStereotype" metaclass="Lifeline" is-hidden="false" label="%EventsSimulatorStereotype.label" uid="efd152c2-6bd5-41ee-8035-b362b2d9fe18">
                 <Icon path="res/icons/lifeline_16.png"/>
                 <Image path="res/icons/lifeline_16.png"/>

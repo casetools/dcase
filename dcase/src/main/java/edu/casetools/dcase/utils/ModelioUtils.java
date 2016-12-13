@@ -73,7 +73,7 @@ public class ModelioUtils {
 	return vector;
     }
 
-    private ArrayList<MObject> getElementsFromMObject(ArrayList<MObject> vector, MObject project) {
+    public ArrayList<MObject> getElementsFromMObject(ArrayList<MObject> vector, MObject project) {
 	ArrayList<MObject> auxiliarVector = vector;
 	for (MObject child : project.getCompositionChildren()) {
 

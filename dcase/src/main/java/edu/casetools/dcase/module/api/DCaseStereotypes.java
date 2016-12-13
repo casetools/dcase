@@ -29,5 +29,6 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String PAST_OPERATOR = "PastOperatorStereotype";
     public static final String M_SYSTEM = "MStereotype";
     public static final String DIAGRAM_M_TEST_CASE = "TestCaseDiagramStereotype";
+    public static final String TEST_CASE_INTERACTION = "TestCaseInteractionStereotype";
 
 }

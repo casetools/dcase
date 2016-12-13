@@ -99,6 +99,8 @@ public class DCaseProperties {
 
     public static final String TEST_CASE_MESSAGE_TIME = "TagEMTime";
 
+    public static final String TEST_CASE_EXECUTION_TIME = "TestExecutionTime";
+
     private DCaseProperties() {
 
     }

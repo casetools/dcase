@@ -156,13 +156,19 @@ public class DiagramUtils {
     }
 
     public SequenceDiagram createAndAddSequenceDiagram(List<MObject> selectedElements, IModelingSession session,
-	    String diagramName, String stereotype) {
+	    String diagramName, String stereotype, String interactionStereotype) {
 	Interaction interaction;
 	for (MObject owner : selectedElements) {
 	    if (owner instanceof Interaction)
 		interaction = (Interaction) owner;
 	    else
 		interaction = createInteraction((ModelElement) owner, session);
+	    try {
+		interaction.addStereotype(DCasePeerModule.MODULE_NAME, interactionStereotype);
+	    } catch (ExtensionNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	    }
 
 	    if (!findOwnedCollaborations(interaction))
 		createCollaboration(interaction, session);

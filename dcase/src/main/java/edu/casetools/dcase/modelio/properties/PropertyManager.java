@@ -25,6 +25,7 @@ import java.util.List;
 import org.modelio.api.modelio.model.IMetamodelExtensions;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationMessage;
+import org.modelio.metamodel.uml.behavior.interactionModel.Interaction;
 import org.modelio.metamodel.uml.behavior.interactionModel.Message;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
@@ -35,6 +36,7 @@ import edu.casetools.dcase.modelio.properties.pages.AntecedentPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ContextInformationMessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.TestCaseMessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.TestCasePropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
@@ -158,6 +160,12 @@ public class PropertyManager {
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.EVENT,
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 			.getMClass(Message.class)))) {
+	    this.propertyPage = new TestCaseMessagePropertyPage();
+	}
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.TEST_CASE_INTERACTION,
+		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+			.getMClass(Interaction.class)))) {
 	    this.propertyPage = new TestCasePropertyPage();
 	}
 

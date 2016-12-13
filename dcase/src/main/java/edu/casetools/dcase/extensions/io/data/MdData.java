@@ -22,23 +22,37 @@ import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.ModelioUtils;
+import edu.casetools.dcase.utils.PropertiesUtils;
 import edu.casetools.dcase.utils.tables.TableUtils;
 import uk.ac.mdx.ie.contextmodeller.i18n.I18nMessageService;
 
 public class MdData {
-
+    private MdTestCase testCase;
     private List<MObject> states;
     private List<MObject> bops;
     private List<MObject> antecedentGroups;
     private List<MObject> strs;
     private List<MObject> ntrs;
-    private List<MObject> events;
     private MData data;
 
-    public MdData() {
+    public MdData(MdTestCase testCase) {
+	this.testCase = testCase;
 	data = new MData();
+	setMaxInteraction();
 	initialiseLists();
 	loadDiagramElements();
+    }
+
+    private void setMaxInteraction() {
+	try {
+	    String tag = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.TEST_CASE_EXECUTION_TIME,
+		    (ModelElement) testCase.getTestCase());
+	    int value = Integer.parseInt(tag);
+	    data.setMaxIteration(value);
+	} catch (NumberFormatException e) {
+	    e.printStackTrace();
+	}
+
     }
 
     private void initialiseLists() {
@@ -47,10 +61,10 @@ public class MdData {
 	antecedentGroups = new ArrayList<>();
 	strs = new ArrayList<>();
 	ntrs = new ArrayList<>();
-	events = new ArrayList<>();
     }
 
     private void loadDiagramElements() {
+
 	states = TableUtils.getInstance().getAllElementsStereotypedAs(states, DCasePeerModule.MODULE_NAME,
 		DCaseStereotypes.STATE);
 	updateIDs(states, DCaseProperties.STATE_ID);
@@ -67,9 +81,7 @@ public class MdData {
 		DCaseStereotypes.NEXT_TIME);
 	updateIDs(ntrs, DCaseProperties.NTR_ID);
 
-	events = TableUtils.getInstance().getAllElementsStereotypedAs(events, DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.EVENT);
-	updateIDs(events, DCaseProperties.EVENT_ID);
+	updateIDs(testCase.getEvents(), DCaseProperties.EVENT_ID);
 
 	antecedentGroups = TableUtils.getInstance().getAllElementsStereotypedAs(antecedentGroups,
 		DCasePeerModule.MODULE_NAME, DCaseStereotypes.ANTECEDENT_GROUP);
@@ -257,7 +269,7 @@ public class MdData {
     }
 
     private void getEvents() {
-	for (MObject event : events) {
+	for (MObject event : testCase.getEvents()) {
 	    Event e = new Event();
 	    e.setId(((ModelElement) event).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.EVENT_ID));
 	    e.setStateId(getStateId(
