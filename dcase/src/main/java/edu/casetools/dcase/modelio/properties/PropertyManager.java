@@ -24,6 +24,7 @@ import java.util.List;
 
 import org.modelio.api.modelio.model.IMetamodelExtensions;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
+import org.modelio.metamodel.diagrams.StaticDiagram;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationMessage;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
@@ -33,6 +34,7 @@ import edu.casetools.dcase.modelio.properties.pages.AbsolutePastOperatorProperty
 import edu.casetools.dcase.modelio.properties.pages.AntecedentPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ContextInformationMessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
@@ -131,6 +133,12 @@ public class PropertyManager {
 			.getMClass(Class.class)))) {
 	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME,
 		    DCaseProperties.PROPERTY_ANTECEDENT_STATE_VALUE);
+	}
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
+		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES, DCaseModule.getInstance().getModuleContext()
+			.getModelioServices().getMetamodelService().getMetamodel().getMClass(StaticDiagram.class)))) {
+	    this.propertyPage = new RuleDiagramPropertyPage();
 	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONSEQUENT,

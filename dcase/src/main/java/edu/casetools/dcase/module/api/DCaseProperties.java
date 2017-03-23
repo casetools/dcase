@@ -91,6 +91,8 @@ public class DCaseProperties {
 
     public static final String PROPERTY_PAST_OPERATOR_TYPE = "TagOperatorType";
 
+    public static final String PROPERTY_MAX_EXECUTION_TIME = "ExecutionTime";
+
     private DCaseProperties() {
 
     }

@@ -6,7 +6,7 @@
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
         <PathEntry path="lib/rcase-0.2.5.jar"/>
         <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
-        <PathEntry path="lib/m2uppaal-0.0.4.jar"/>
+        <PathEntry path="lib/m2nusmv-0.2.0.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
@@ -115,6 +115,9 @@
             <Stereotype name="MRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%MRulesDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="%MRulesDiagramStereotype.image"/>
                 <Image path="%MRulesDiagramStereotype.image"/>
+                <TagTypes>
+                    <TagType name="ExecutionTime" uid="9aa00951-9869-499d-afa5-b04de5acb6c4" label="%MRulesDiagramStereotype.properties.ExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
             </Stereotype>
             <Stereotype name="MStateMapDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%MStateMapDiagramStereotype.label" uid="996ead08-eaf0-4208-85ea-51a16133912e">
                 <Icon path="%MStateMapDiagramStereotype.image"/>
@@ -167,9 +170,9 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.tables.OpenMessagesTable"/>
             </Command>
-            <Command id="MDiagrams2UPPAAL" label="%MDiagrams2UPPAAL.label" tooltip="%MDiagrams2UPPAAL.tooltip" image="%MDiagrams2UPPAAL.image" group="%MDiagrams2UPPAAL.group" modify-model="true" group-image="%MDiagrams2UPPAAL.groupimage">
+            <Command id="MDiagrams2NuSMV" label="%MDiagrams2NuSMV.label" tooltip="%MDiagrams2NuSMV.tooltip" image="%MDiagrams2NuSMV.image" group="%MDiagrams2NuSMV.group" modify-model="true" group-image="%MDiagrams2NuSMV.groupimage">
                 <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.io.ExportMDiagrams2UPPAAL"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.ExportMDiagrams2NuSMV"/>
             </Command>
         </Commands>
         <Tools>
@@ -235,7 +238,7 @@
             <CommandRef refid="CreateMStateMapDiagram"/>
             <CommandRef refid="CreateMRulesDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
-            <CommandRef refid="MDiagrams2UPPAAL"/>
+            <CommandRef refid="MDiagrams2NuSMV"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="SequenceDiagram" stereotype="InteractionDiagramStereotype">
