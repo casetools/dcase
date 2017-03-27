@@ -2,9 +2,10 @@
 <Module id="${project.name}" class="edu.casetools.dcase.module.impl.DCaseModule" binaryversion="3.5.00" version="${project.version}" schema-level="2" uid="3c0ff0e0-6c77-4298-bd2d-d54abb2f93f5">
     <ClassPath>
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
+        <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
         <PathEntry path="lib/rcase-0.2.3.jar"/>
-        <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
+        <PathEntry path="lib/javapoet-1.8.0.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
@@ -69,6 +70,10 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.tables.OpenMessagesTable"/>
             </Command>
+            <Command id="GenerateACLCode" label="%GenerateACLCode.label" tooltip="%GenerateACLCode.tooltip" image="%GenerateACLCode.image" group="%GenerateACLCode.group" modify-model="true" group-image="%GenerateACLCode.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateACLCode"/>
+            </Command>
         </Commands>
         <Tools>
             <Tool id="ContextInformationMessageTool" label="%ContextInformationMessageTool.label" tooltip="%ContextInformationMessageTool.tooltip" image="%ContextInformationMessageTool.image">
@@ -83,6 +88,7 @@
             <CommandRef refid="CreateCommunicationDiagram"/>
             <CommandRef refid="CreateContextRulesDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
+            <CommandRef refid="GenerateACLCode"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="SequenceDiagram" stereotype="InteractionDiagramStereotype">

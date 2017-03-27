@@ -6,7 +6,7 @@
 	<!-- definition -->
 	<groupId>edu.casetools</groupId>
 	<artifactId>dcase</artifactId>
-	<version>0.3.0</version>
+	<version>0.4.0</version>
 
 	<name>DCase</name>
 
@@ -62,12 +62,12 @@
            <scope>compile</scope>
     	</dependency>
     	
-    	<dependency>       
-		   <groupId>uk.ac.mdx.ie</groupId>
-		   <artifactId>contextmodeller</artifactId>
-		   <version>0.2.0</version>
-           <scope>compile</scope>
-    	</dependency>
+    	
+		<dependency>
+		    <groupId>com.squareup</groupId>
+		    <artifactId>javapoet</artifactId>
+		    <version>1.8.0</version>
+		</dependency>
     	
 	</dependencies>
 

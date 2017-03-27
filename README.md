@@ -9,7 +9,7 @@ that aids the design of a Context-Aware System (C-AS).
 
 ### Third party libraries and icons
 * see [LIBRARIES](https://github.com/casetools/dcase/blob/master/LIBRARIES.md) file
-* Icons are made by Freepik from [Flaticon] (www.flaticon.com) 
+* Icons are made by Freepik, GraphicsBay and Amit Jakhu. Downloaded from [Flaticon] (www.flaticon.com)
 
 ## License 
 * see [LICENSE](https://github.com/casetools/dcase/blob/master/LICENSE.md) file

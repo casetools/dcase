@@ -121,4 +121,15 @@ public class ModelioUtils {
 	return null;
     }
 
+    public String getProjectName() {
+	IModelingSession session = Modelio.getInstance().getModelingSession();
+	for (MObject rootObj : session.getModel().getModelRoots()) {
+	    if (((rootObj instanceof GeneralClass) || (rootObj instanceof Project))
+		    && (!rootObj.getName().equals(LOCAL_MODULE))) {
+		return rootObj.getName();
+	    }
+	}
+	return "";
+    }
+
 }
