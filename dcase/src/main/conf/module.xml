@@ -170,9 +170,13 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.tables.OpenMessagesTable"/>
             </Command>
-            <Command id="MDiagrams2NuSMV" label="%MDiagrams2NuSMV.label" tooltip="%MDiagrams2NuSMV.tooltip" image="%MDiagrams2NuSMV.image" group="%MDiagrams2NuSMV.group" modify-model="true" group-image="%MDiagrams2NuSMV.groupimage">
+            <Command id="GenerateNuSMV" label="%GenerateNuSMV.label" tooltip="%GenerateNuSMV.tooltip" image="%GenerateNuSMV.image" group="%GenerateNuSMV.group" modify-model="true" group-image="%GenerateNuSMV.groupimage">
                 <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.io.ExportMDiagrams2NuSMV"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateNuSMV"/>
+            </Command>
+            <Command id="GenerateMCode" label="%GenerateMCode.label" tooltip="%GenerateMCode.tooltip" image="%GenerateMCode.image" group="%GenerateMCode.group" modify-model="true" group-image="%GenerateMCode.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateM"/>
             </Command>
         </Commands>
         <Tools>
@@ -238,7 +242,8 @@
             <CommandRef refid="CreateMStateMapDiagram"/>
             <CommandRef refid="CreateMRulesDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
-            <CommandRef refid="MDiagrams2NuSMV"/>
+            <CommandRef refid="GenerateNuSMV"/>
+            <CommandRef refid="GenerateMCode"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="SequenceDiagram" stereotype="InteractionDiagramStereotype">

@@ -1,12 +1,10 @@
 package edu.casetools.dcase.modelio.menu.io;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
@@ -18,17 +16,19 @@ import edu.casetools.dcase.m2nusmv.M2NuSMV;
 import edu.casetools.dcase.m2nusmv.data.MData;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
+import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.dcase.utils.IOUtils;
 import edu.casetools.dcase.utils.PropertiesUtils;
 
-public class ExportMDiagrams2NuSMV extends DefaultModuleCommandHandler {
+public class GenerateNuSMV extends DefaultModuleCommandHandler {
 
     M2NuSMV m2nusmv;
 
     /**
      * Constructor.
      */
-    public ExportMDiagrams2NuSMV() {
+    public GenerateNuSMV() {
 	super();
     }
 
@@ -50,26 +50,45 @@ public class ExportMDiagrams2NuSMV extends DefaultModuleCommandHandler {
     @Override
     public void actionPerformed(List<MObject> selectedElements, IModule module) {
 
-	ModelElement modelelt = (ModelElement) selectedElements.get(0);
+	if (selectedElements.size() > 1) {
+	    MessageDialog.openInformation(null, "Code generation cancelled",
+		    "More than one elements were selected. To generate the NuSMV model right click on an M Rule Diagram and then click on "
+			    + I18nMessageService.getString("Module.ModuleLabel") + " -> "
+			    + I18nMessageService.getString("Module.Export") + " -> "
+			    + I18nMessageService.getString("Module.NuSMV"));
 
-	FileDialog dialog = showDialog(modelelt);
-	String fileLocation = dialog.open();
-	int maxExecutionTime = getMaxExecutionTime(selectedElements);
-	if (maxExecutionTime > 0) {
-	    checkIfExists(fileLocation);
-	    translate(fileLocation, maxExecutionTime);
+	} else {
+	    if (((ModelElement) selectedElements.get(0)).isStereotyped(DCasePeerModule.MODULE_NAME,
+		    DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES))
+		generateNuSMVModel(selectedElements.get(0));
+	    else
+		MessageDialog.openInformation(null, "Code generation cancelled",
+			"The element selected is not an M Rule Diagram. To generate the NuSMV model right click on an M Rule Diagram and then click on "
+				+ I18nMessageService.getString("Module.ModuleLabel") + " -> "
+				+ I18nMessageService.getString("Module.Export") + " -> "
+				+ I18nMessageService.getString("Module.NuSMV"));
+
 	}
 
     }
 
-    private int getMaxExecutionTime(List<MObject> selectedElements) {
-	String maxExecutionTime = "";
-	for (MObject element : selectedElements) {
-	    if (((ModelElement) element).isStereotyped(DCasePeerModule.MODULE_NAME,
-		    DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES))
-		maxExecutionTime = PropertiesUtils.getInstance()
-			.getTaggedValue(DCaseProperties.PROPERTY_MAX_EXECUTION_TIME, (ModelElement) element);
+    private void generateNuSMVModel(MObject element) {
+	FileDialog dialog = IOUtils.getInstance().getFileDialog(((ModelElement) element).getName() + "_NuSMV.smv",
+		new String[] { "*.txt", "*.smv", "*.*" }, SWT.SAVE);
+	String fileLocation = dialog.open();
+	int maxExecutionTime = getMaxExecutionTime(element);
+	if ((maxExecutionTime > 0) && (!IOUtils.getInstance().checkIfExists(fileLocation))) {
+	    translate(fileLocation, maxExecutionTime);
 	}
+    }
+
+    private int getMaxExecutionTime(MObject element) {
+	String maxExecutionTime = "";
+
+	if (((ModelElement) element).isStereotyped(DCasePeerModule.MODULE_NAME,
+		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES))
+	    maxExecutionTime = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MAX_EXECUTION_TIME,
+		    (ModelElement) element);
 
 	return handleResult(maxExecutionTime);
     }
@@ -101,23 +120,11 @@ public class ExportMDiagrams2NuSMV extends DefaultModuleCommandHandler {
 	return time;
     }
 
-    private FileDialog showDialog(ModelElement modelelt) {
-	FileDialog dialog = new FileDialog(Display.getCurrent().getActiveShell(), SWT.SAVE);
-	dialog.setFilterNames(new String[] { "Text Files", "All Files (*.*)" });
-	dialog.setFilterExtensions(new String[] { "*.txt", "*.smv", "*.*" }); // Windows
-	// wild
-	// cards
-	dialog.setFilterPath(System.getProperty("user.home") + "/Desktop"); // Windows
-									    // path
-	dialog.setFileName(modelelt.getName() + "_NuSMV.smv");
-	return dialog;
-    }
-
     private void translate(String fileLocation, int maxExecutionTime) {
 	try {
 	    m2nusmv = new M2NuSMV();
 	    m2nusmv.writeModel(getData(fileLocation, maxExecutionTime));
-	    MessageDialog.openInformation(null, "Model Exported", "Model exported to C-SPARQL at:\n" + fileLocation);
+	    MessageDialog.openInformation(null, "Model Exported", "Model exported to NuSMV at:\n" + fileLocation);
 	} catch (IOException e) {
 	    MessageDialog.openInformation(null, "I/O Exception", "File:" + fileLocation + " \n" + e.getMessage());
 	    e.printStackTrace();
@@ -131,17 +138,6 @@ public class ExportMDiagrams2NuSMV extends DefaultModuleCommandHandler {
 	mdata.setFilePath(fileLocation);
 	mdata.setMaxIteration(maxExecutionTime);
 	return mdata;
-    }
-
-    private void checkIfExists(String fileLocation) {
-	File newFile = new File(fileLocation);
-
-	if (newFile.exists()) {
-	    if (!MessageDialog.openConfirm(null, "Confirm Export",
-		    "File already exists.\nDo you want to replace it?\n")) {
-		return;
-	    }
-	}
     }
 
 }

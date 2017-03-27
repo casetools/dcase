@@ -18,10 +18,10 @@ import edu.casetools.dcase.m2nusmv.data.elements.RuleElement;
 import edu.casetools.dcase.m2nusmv.data.elements.State;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
+import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.tables.TableUtils;
-import uk.ac.mdx.ie.contextmodeller.i18n.I18nMessageService;
 
 public class MdData {
 
@@ -104,6 +104,8 @@ public class MdData {
 	    BoundedOperator bop = new BoundedOperator();
 	    bop.setId(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_PAST_OPERATOR_ID));
+	    bop.setOperatorName("bop" + ((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_PAST_OPERATOR_ID));
 	    bop.setStateName(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME));
 	    bop.setStatus(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
@@ -127,28 +129,50 @@ public class MdData {
     private BoundedOperator setAbsolutePastOperator(MObject operator, BoundedOperator bop) {
 	String type = ((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_PAST_OPERATOR_TYPE);
-	setAbsolutePastOperatorType(bop, type);
+	bop.setOperatorName("bop" + ((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_PAST_OPERATOR_ID));
+	bop = setAbsolutePastOperatorType(bop, type);
 	bop.setLowBound(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_PAST_OPERATOR_LOWBOUND));
-	bop.setLowBound(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
+	bop.setUppBound(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_PAST_OPERATOR_UPPBOUND));
+	bop.setStateName(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME));
+	bop.setStatus(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE));
 	return bop;
     }
 
-    private void setAbsolutePastOperatorType(BoundedOperator bop, String type) {
+    private BoundedOperator setAbsolutePastOperatorType(BoundedOperator bop, String type) {
 	if (type.equals(I18nMessageService.getString("Ui.PastOperator.Property.TagType.Strong"))) {
 	    bop.setType(BOP_TYPE.STRONG_ABSOLUTE_PAST);
 	} else if (type.equals(I18nMessageService.getString("Ui.PastOperator.Property.TagType.Weak"))) {
 	    bop.setType(BOP_TYPE.WEAK_ABSOLUTE_PAST);
 	}
+	return bop;
+    }
+
+    private BoundedOperator setImmediatePastOperatorType(BoundedOperator bop, String type) {
+	if (type.equals(I18nMessageService.getString("Ui.PastOperator.Property.TagType.Strong"))) {
+	    bop.setType(BOP_TYPE.STRONG_IMMEDIATE_PAST);
+	} else if (type.equals(I18nMessageService.getString("Ui.PastOperator.Property.TagType.Weak"))) {
+	    bop.setType(BOP_TYPE.WEAK_IMMEDIATE_PAST);
+	}
+	return bop;
     }
 
     private BoundedOperator setImmediatePastOperator(MObject operator, BoundedOperator bop) {
 	String type = ((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_PAST_OPERATOR_TYPE);
-	setAbsolutePastOperatorType(bop, type);
+	bop.setOperatorName("bop" + ((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_PAST_OPERATOR_ID));
+	bop = setImmediatePastOperatorType(bop, type);
 	bop.setLowBound(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_PAST_OPERATOR_BOUND));
+	bop.setStateName(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME));
+	bop.setStatus(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE));
 	return bop;
     }
 
@@ -156,6 +180,7 @@ public class MdData {
 	for (MObject antecedentGroup : antecedentGroups) {
 	    Rule rule = new Rule();
 	    rule.setAntecedents(getAntecedents(antecedentGroup));
+	    rule.setBops(getRuleBops(antecedentGroup));
 	    rule.setConsequent(getConsequent(antecedentGroup));
 	    addRule(antecedentGroup, rule);
 	}
@@ -198,8 +223,32 @@ public class MdData {
 	return list;
     }
 
+    private List<BoundedOperator> getRuleBops(MObject antecedentGroup) {
+	List<BoundedOperator> list = new ArrayList<>();
+	for (MObject antecedent : antecedentGroup.getCompositionChildren()) {
+	    if ((antecedent instanceof ModelElement) && isBop(antecedent)) {
+		list.add(getRuleBop(antecedent));
+	    }
+	}
+	return list;
+    }
+
+    private BoundedOperator getRuleBop(MObject operator) {
+	BoundedOperator bop = new BoundedOperator();
+	if (checkStereotype(operator, DCaseStereotypes.STEREOTYPE_IMMEDIATE_PAST_OPERATOR)) {
+	    bop = setImmediatePastOperator(operator, bop);
+	} else if (checkStereotype(operator, DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR)) {
+	    bop = setAbsolutePastOperator(operator, bop);
+	}
+	return bop;
+    }
+
     private boolean isAntecedent(MObject antecedent) {
 	return checkStereotype(antecedent, DCaseStereotypes.STEREOTYPE_ANTECEDENT);
+    }
+
+    private boolean isBop(MObject antecedent) {
+	return checkStereotype(antecedent, DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
     }
 
     private RuleElement getRuleElement(MObject element, String name, String value) {
@@ -254,12 +303,13 @@ public class MdData {
 	for (MObject state : states) {
 	    String independence = ((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_STATE_INDEPENDENT);
-	    State auxState = createState(true, state);
-	    data.getStates().add(auxState);
+	    State auxState = createState(false, state);
+
 	    if ((independence != null) && (independence.equalsIgnoreCase("TRUE"))) {
+		auxState = createState(true, state);
 		data.getIndependentStates().add(auxState);
 	    }
-
+	    data.getStates().add(auxState);
 	}
 
     }
