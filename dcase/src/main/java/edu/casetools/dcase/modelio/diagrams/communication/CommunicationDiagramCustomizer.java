@@ -5,17 +5,15 @@ import java.util.Map;
 
 import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteRoot;
-import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.diagram.IDiagramCustomizer;
 import org.modelio.api.modelio.diagram.IDiagramService;
 import org.modelio.api.modelio.diagram.tools.PaletteEntry;
 import org.modelio.api.module.IModule;
 
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
 import edu.casetools.dcase.modelio.diagrams.DiagramCustomizer;
 import edu.casetools.dcase.module.api.DCaseTools;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 
 public class CommunicationDiagramCustomizer extends DiagramCustomizer implements IDiagramCustomizer {
 
@@ -32,7 +30,8 @@ public class CommunicationDiagramCustomizer extends DiagramCustomizer implements
      */
     @Override
     public void fillPalette(PaletteRoot paletteRoot) {
-	IDiagramService toolRegistry = Modelio.getInstance().getDiagramService();
+	IDiagramService toolRegistry = DCaseModule.getInstance().getModuleContext().getModelioServices()
+		.getDiagramService();
 	paletteRoot.add(createNodesGroup(toolRegistry));
 	paletteRoot.add(createLinkGroup(toolRegistry));
 	paletteRoot.add(createInformationFlowGroup(toolRegistry));
@@ -69,22 +68,6 @@ public class CommunicationDiagramCustomizer extends DiagramCustomizer implements
     }
 
     /**
-     * Creates the note and constraint and dependency group.
-     * 
-     * @param imageService
-     *            service used to get metaclasses bitmaps.
-     * @return The created group.
-     */
-    @objid("7a1a5af2-55b6-11e2-877f-002564c97630")
-    private PaletteDrawer createCommonGroup(IDiagramService toolRegistry) {
-	// common group
-	String groupName = I18nMessageService.getString("ContextCommunicationPaletteGroup.Common");
-	String[] toolNames = new String[] { "CREATE_NOTE", "CREATE_CONSTRAINT", "CREATE_EXTERNDOCUMENT",
-		"CREATE_DEPENDENCY", "CREATE_TRACEABILITY", "CREATE_RELATED_DIAGRAM_LINK" };
-	return createGroup(groupName, toolNames, toolRegistry, 0);
-    }
-
-    /**
      * Create the link group, containing tools to create CommunicationChannels.
      * 
      * @param toolRegistry
@@ -106,8 +89,10 @@ public class CommunicationDiagramCustomizer extends DiagramCustomizer implements
 
     @Override
     public void initialize(IModule arg0, List<PaletteEntry> arg1, Map<String, String> arg2, boolean arg3) {
-	// TODO Auto-generated method stub
-
+	/*
+	 * The communication diagram customizer does not need an initialization
+	 * method, but is forced by the ancestors to have one
+	 */
     }
 
 }

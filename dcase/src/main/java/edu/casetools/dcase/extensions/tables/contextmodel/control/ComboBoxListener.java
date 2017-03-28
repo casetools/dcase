@@ -28,7 +28,6 @@ import javax.swing.JComboBox;
 import edu.casetools.dcase.extensions.tables.contextmodel.ContextModelTable;
 import edu.casetools.dcase.extensions.tables.contextmodel.model.ContextModelTableData;
 
-// TODO: Auto-generated Javadoc
 /**
  * The listener interface for receiving comboBox events. The class that is
  * interested in processing a comboBox event implements this interface, and the

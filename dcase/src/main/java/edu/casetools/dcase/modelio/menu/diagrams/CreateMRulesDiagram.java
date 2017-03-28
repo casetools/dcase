@@ -36,7 +36,7 @@ import edu.casetools.dcase.utils.DiagramUtils;
 /**
  * The Class CreateRequirementsDiagram creates a Requirements Diagram.
  */
-public class CreateContextRulesDiagram extends CreateStaticDiagram {
+public class CreateMRulesDiagram extends CreateStaticDiagram {
 
     /*
      * (non-Javadoc)
@@ -47,10 +47,10 @@ public class CreateContextRulesDiagram extends CreateStaticDiagram {
     @Override
     protected StaticDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 
-	String name = I18nMessageService.getString("Ui.Command.CreateContextRulesDiagram.Label");
+	String name = I18nMessageService.getString("Ui.Command.CreateMRulesDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createDiagram(selectedElements, session, name,
-		DCaseStereotypes.STEREOTYPE_DIAGRAM_CONTEXT_RULES);
-	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_CONTEXT_RULES);
+		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES);
+	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_M_RULES);
 	return diagram;
     }
 

@@ -20,11 +20,11 @@
  */
 package edu.casetools.dcase.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.IUmlModel;
 import org.modelio.metamodel.diagrams.CommunicationDiagram;
@@ -39,14 +39,17 @@ import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Note;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
+import org.modelio.metamodel.uml.statik.Class;
 import org.modelio.metamodel.uml.statik.Collaboration;
 import org.modelio.metamodel.uml.statik.NameSpace;
+import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.dcase.utils.tables.TableUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DiagramUtils.
  */
@@ -78,13 +81,57 @@ public class DiagramUtils {
     public void setFreeName(ModelElement element, String testedName) {
 	List<MObject> nameList = ModelioUtils.getInstance().getAllElements();
 	String extension = "";
-	int i = 1;
+	int i = 0;
 	while (nameExists(nameList, testedName + extension)) {
 	    extension = Integer.toString(i);
 	    i++;
 	}
 
 	element.setName(testedName + extension);
+    }
+
+    /**
+     * Sets the free name.
+     *
+     * @param element
+     *            the element
+     * @param testedName
+     *            the tested name
+     */
+    public void setFreeProperty(ModelElement element, String moduleName, String stereotypeName, String propertyName) {
+	List<MObject> elementsList = new ArrayList<>();
+	elementsList = TableUtils.getInstance().getAllElementsStereotypedAs(elementsList, moduleName, stereotypeName);
+
+	int i = 0;
+	while (propertyExists(elementsList, Integer.toString(i), moduleName, propertyName)) {
+	    i++;
+	}
+
+	try {
+	    element.putTagValue(moduleName, propertyName, Integer.toString(i));
+	} catch (ExtensionNotFoundException e) {
+	    logger.log(Level.SEVERE, e.getMessage(), e);
+	}
+    }
+
+    /**
+     * Name exists.
+     *
+     * @param elementsList
+     *            the name list
+     * @param name
+     *            the name
+     * @return true, if successful
+     */
+    public boolean propertyExists(List<MObject> elementsList, String name, String moduleName, String propertyName) {
+
+	for (MObject object : elementsList) {
+	    String propertyValue = ((ModelElement) object).getTagValue(moduleName, propertyName);
+	    if (propertyValue != null && propertyValue.equals(name))
+		return true;
+	}
+
+	return false;
     }
 
     /**
@@ -118,7 +165,7 @@ public class DiagramUtils {
 
 	    SequenceDiagram diagram = createSequenceDiagram(diagramName, stereotype, interaction, session);
 
-	    Modelio.getInstance().getEditionService().openEditor(diagram);
+	    DCaseModule.getInstance().getModuleContext().getModelioServices().getEditionService().openEditor(diagram);
 
 	    return diagram;
 	}
@@ -132,8 +179,8 @@ public class DiagramUtils {
 	DiagramUtils.getInstance().setFreeName(diagram, diagramName);
 	try {
 	    Stereotype sysSeqSter = session.getMetamodelExtensions().getStereotype(DCasePeerModule.MODULE_NAME,
-		    stereotype,
-		    Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(SequenceDiagram.class));
+		    stereotype, DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService()
+			    .getMetamodel().getMClass(SequenceDiagram.class));
 	    diagram.getExtension().add(sysSeqSter);
 	} catch (Exception e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
@@ -218,8 +265,8 @@ public class DiagramUtils {
      */
     public Dependency createDependency(ModelElement origin, ModelElement target, String stereotype) {
 	try {
-	    Dependency dependency = Modelio.getInstance().getModelingSession().getModel().createDependency(origin,
-		    target, DCasePeerModule.MODULE_NAME, stereotype);
+	    Dependency dependency = DCaseModule.getInstance().getModuleContext().getModelingSession().getModel()
+		    .createDependency(origin, target, DCasePeerModule.MODULE_NAME, stereotype);
 	    dependency.setName("");
 	    return dependency;
 	} catch (ExtensionNotFoundException e) {
@@ -242,7 +289,7 @@ public class DiagramUtils {
 
 	    CommunicationDiagram diagram = createCommunicationDiagram(name, stereotype, interaction, session);
 
-	    Modelio.getInstance().getEditionService().openEditor(diagram);
+	    DCaseModule.getInstance().getModuleContext().getModelioServices().getEditionService().openEditor(diagram);
 
 	    return diagram;
 	}
@@ -251,8 +298,9 @@ public class DiagramUtils {
 
     private CommunicationInteraction createCommunicationInteraction(ModelElement owner, IModelingSession session) {
 	CommunicationInteraction interaction;
-	interaction = (CommunicationInteraction) session.getModel().createElement(Modelio.getInstance()
-		.getMetamodelService().getMetamodel().getMClass(CommunicationInteraction.class).getName());
+	interaction = (CommunicationInteraction) session.getModel()
+		.createElement(DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService()
+			.getMetamodel().getMClass(CommunicationInteraction.class).getName());
 	interaction.setOwner((NameSpace) owner);
 	DiagramUtils.getInstance().setFreeName(interaction,
 		I18nMessageService.getString("Ui.Create.Communication.Interaction.Name"));
@@ -267,8 +315,8 @@ public class DiagramUtils {
 	DiagramUtils.getInstance().setFreeName(diagram, diagramName);
 	try {
 	    Stereotype sysSeqSter = session.getMetamodelExtensions().getStereotype(DCasePeerModule.MODULE_NAME,
-		    stereotype,
-		    Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(CommunicationDiagram.class));
+		    stereotype, DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService()
+			    .getMetamodel().getMClass(CommunicationDiagram.class));
 	    diagram.getExtension().add(sysSeqSter);
 	} catch (Exception e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
@@ -292,12 +340,38 @@ public class DiagramUtils {
     public StaticDiagram createDiagram(List<MObject> selectedElements, IModelingSession session, String name,
 	    String stereotypeName) {
 	Stereotype stereotype = session.getMetamodelExtensions().getStereotype(stereotypeName,
-		Modelio.getInstance().getMetamodelService().getMetamodel().getMClass(StaticDiagram.class));
+		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+			.getMClass(StaticDiagram.class));
 	for (MObject element : selectedElements) {
 	    StaticDiagram diagram;
 	    diagram = session.getModel().createStaticDiagram(name, (ModelElement) element, stereotype);
 	    DiagramUtils.getInstance().setFreeName(diagram, name);
 	    return diagram;
+	}
+	return null;
+    }
+
+    public Class createClass(List<MObject> selectedElements, IModelingSession session, String name,
+	    String stereotypeName) {
+	Stereotype stereotype = session.getMetamodelExtensions().getStereotype(stereotypeName, DCaseModule.getInstance()
+		.getModuleContext().getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class));
+	for (MObject element : selectedElements) {
+	    Class createdElement = session.getModel().createClass(name, (NameSpace) element, stereotype);
+	    DiagramUtils.getInstance().setFreeName(createdElement, name);
+	    return createdElement;
+	}
+	return null;
+    }
+
+    public Package createPackage(List<MObject> selectedElements, IModelingSession session, String name,
+	    String stereotypeName) {
+	Stereotype stereotype = session.getMetamodelExtensions().getStereotype(stereotypeName, DCaseModule.getInstance()
+		.getModuleContext().getModelioServices().getMetamodelService().getMetamodel().getMClass(Package.class));
+
+	for (MObject element : selectedElements) {
+	    Package createdElement = session.getModel().createPackage(name, (NameSpace) element, stereotype);
+	    DiagramUtils.getInstance().setFreeName(createdElement, name);
+	    return createdElement;
 	}
 	return null;
     }

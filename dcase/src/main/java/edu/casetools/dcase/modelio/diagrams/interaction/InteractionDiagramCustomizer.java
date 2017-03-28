@@ -25,7 +25,10 @@ public class InteractionDiagramCustomizer extends DiagramCustomizer implements I
      */
     @Override
     public void fillPalette(PaletteRoot paletteRoot) {
-	// TODO Implement the palette method or remove the class
+	/*
+	 * The interaction diagram customizer does not need a method for filling
+	 * its pallete, but is forced by the ancestors to have one
+	 */
     }
 
     /*
@@ -50,8 +53,10 @@ public class InteractionDiagramCustomizer extends DiagramCustomizer implements I
 
     @Override
     public void initialize(IModule arg0, List<PaletteEntry> arg1, Map<String, String> arg2, boolean arg3) {
-	// TODO Auto-generated method stub
-
+	/*
+	 * The interaction diagram customizer does not need an initialization
+	 * method, but is forced by the ancestors to have one
+	 */
     }
 
 }

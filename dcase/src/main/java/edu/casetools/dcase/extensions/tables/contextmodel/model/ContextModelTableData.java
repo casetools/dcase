@@ -37,7 +37,6 @@ import edu.casetools.dcase.utils.ModelioUtils;
 import edu.casetools.dcase.utils.tables.ModelioTableUtils;
 import edu.casetools.dcase.utils.tables.TableUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DependencyTableData.
  */
@@ -47,6 +46,8 @@ public class ContextModelTableData implements Serializable {
      * 
      */
     private static final long serialVersionUID = -191731257462245537L;
+
+    private String scope;
 
     /** The data list. */
     protected ArrayList<ContextModelTableRow> dataList;
@@ -66,8 +67,6 @@ public class ContextModelTableData implements Serializable {
     public void setHeaders(List<TableHeaderData> headers) {
 	this.headers = (ArrayList<TableHeaderData>) headers;
     }
-
-    private String scope;
 
     /**
      * Instantiates a new dependency table data.
@@ -151,9 +150,9 @@ public class ContextModelTableData implements Serializable {
 	setContextAttributes(messages);
     }
 
-    private void setContextAttributes(ArrayList<MObject> ContextAttributes) {
-	for (int i = 0; i < ContextAttributes.size(); i++) {
-	    ContextModelTableRow row = new ContextModelTableRow(ContextAttributes.get(i));
+    private void setContextAttributes(ArrayList<MObject> contextAttribute) {
+	for (int i = 0; i < contextAttribute.size(); i++) {
+	    ContextModelTableRow row = new ContextModelTableRow(contextAttribute.get(i));
 	    dataList.add(row);
 	}
     }

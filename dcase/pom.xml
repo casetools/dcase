@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- definition -->
 	<groupId>edu.casetools</groupId>
 	<artifactId>dcase</artifactId>
-	<version>0.4.0</version>
+	<version>0.5.0</version>
 
 	<name>DCase</name>
 
@@ -16,14 +16,27 @@
 			<id>modelio</id>
 			<url>http://repository.modelio.org</url>
 		</repository>
+		
 		 <repository>        
             <id>rcase</id>
             <url>https://github.com/ualegre/rcase/</url>
     	</repository>
+    	
+    	<repository>        
+            <id>mreasoner</id>
+            <url>https://github.com/ualegre/mreasoner/</url>
+    	</repository>
+
 		 <repository>        
             <id>contextmodeller</id>
             <url>https://github.com/deankramer/ContextModeller</url>
     	</repository>
+    	
+    	<repository>        
+            <id>m2nusmv</id>
+            <url>https://github.com/ualegre/m2nusmv/</url>
+    	</repository>
+    	
 	</repositories>
 
 	<pluginRepositories>
@@ -58,7 +71,7 @@
 		<dependency>       
            <groupId>edu.casetools</groupId>
            <artifactId>rcase</artifactId>
-           <version>0.2.3</version>
+           <version>0.2.5</version>
            <scope>compile</scope>
     	</dependency>
     	
@@ -69,6 +82,13 @@
 		    <version>1.8.0</version>
 		</dependency>
     	
+    	<dependency>
+		    <groupId>edu.casetools.dcase</groupId>
+		    <artifactId>m2nusmv</artifactId>
+		    <version>0.2.0</version>
+		</dependency>
+			
+		
 	</dependencies>
 
 

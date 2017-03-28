@@ -28,10 +28,6 @@ public class DCasePeerModule implements IDCasePeerModule {
 	this.peerConfiguration = peerConfiguration;
     }
 
-    public void init() {
-
-    }
-
     /**
      * @see org.modelio.api.module.IPeerModule#getConfiguration()
      */

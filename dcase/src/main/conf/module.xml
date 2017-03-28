@@ -2,13 +2,81 @@
 <Module id="${project.name}" class="edu.casetools.dcase.module.impl.DCaseModule" binaryversion="3.5.00" version="${project.version}" schema-level="2" uid="3c0ff0e0-6c77-4298-bd2d-d54abb2f93f5">
     <ClassPath>
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
+        <PathEntry path="lib/jdom2-2.0.6.jar"/>
         <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
-        <PathEntry path="lib/rcase-0.2.3.jar"/>
+        <PathEntry path="lib/rcase-0.2.5.jar"/>
         <PathEntry path="lib/javapoet-1.8.0.jar"/>
+        <PathEntry path="lib/m2nusmv-0.2.0.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
+            <Stereotype name="AntecedentGroupStereotype" metaclass="Package" is-hidden="false" label="%AntecedentGroupStereotype.label" uid="f88594e0-4b76-49de-af7f-307282c9f5de">
+                <Icon path="res/icons/antecedent_group_16.png"/>
+                <Image path="res/icons/antecedent_group_64.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="ConsequentStereotype" metaclass="Class" is-hidden="false" label="%ConsequentStereotype.label" uid="90c10322-a899-4adf-b2c3-ebfa3fa4d4c9">
+                <Icon path="res/icons/consequent_16.png"/>
+                <Image path="res/icons/consequent_16.png"/>
+                <TagTypes>
+                    <TagType name="TagConsequentName" uid="6798fd29-9ea4-45df-a02f-77c5d006c859" label="%ConsequentStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagConsequentValue" uid="2aa941a5-713e-40bc-bc90-e2a554183f0b" label="$ConsequentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="AntecedentStereotype" metaclass="Class" is-hidden="false" label="%AntecedentStereotype.label" uid="847fba72-b841-4a9b-ba29-f3ce45ea6b3b">
+                <Icon path="res/icons/antecedent_16.png"/>
+                <Image path="res/icons/antecedent_16.png"/>
+                <TagTypes>
+                    <TagType name="TagAntecedentName" uid="dc9a616a-b06e-42ad-8ebc-7056562e62c4" label="%AntecedentStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagAntecedentValue" uid="284eaec6-7709-4338-8a8e-a247e80f1403" label="$AntecedentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="EventMessageStereotype" metaclass="Class" is-hidden="false" label="%EventMessageStereotype.label" uid="09d9a59c-ae7e-480b-a2fe-26694827bf54">
+                <Icon path="res/icons/consequent_16.png"/>
+                <Image path="res/icons/consequent_16.png"/>
+                <TagTypes>
+                    <TagType name="TagEMId" uid="8ff1624b-2712-495d-95bb-07de00969ed6" label="%EventMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagEMStateName" uid="c1047b0b-de34-44ab-b26c-efeafc92563f" label="%EventMessageStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagEMStateValue" uid="df182182-de92-457f-9d81-0c1fbc2e0718" label="$EventMessageStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagEMTime" uid="1e2f6d82-a922-4eac-a505-52c6659d7938" label="$EventMessageStereotype.properties.time" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="b506e386-cb84-42a1-b19d-49dbb5a18540">
+                <Icon path="res/icons/state_16.png"/>
+                <Image path="res/icons/state_32.png"/>
+                <TagTypes>
+                    <TagType name="TagStateId" uid="ae51d5d2-e151-42ca-a557-c7ef6fdcfe0e" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateName" uid="9a595946-8a33-419f-8751-4de45141c20a" label="$StateStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateIndpendent" uid="ce140ef3-0e6c-4a31-ab35-3b9edc49d648" label="%StateStereotype.properties.independent" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateInitial" uid="5961398c-4ae6-4bfa-a1d6-5f39f3d77f01" label="$StateStereotype.properties.initial" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="PastOperatorStereotype" metaclass="Class" is-hidden="false" label="%PastOperatorStereotype.label" uid="8d90834f-66fc-41c3-86ea-27652123d22a">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="TagOperatorId" uid="a83112a4-2733-413f-8e2d-75e939ce71b9" label="%PastOperatorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagOperatorType" uid="7884cadb-dd59-41bf-ba2e-93f1ed4cff75" label="%PastOperatorStereotype.properties.type" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagOStateName" uid="4ed11d56-8ff1-4d90-947f-773b3670e874" label="$PastOperatorStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagOStateValue" uid="7dc7729e-2dba-437e-92ba-ed5dae9f0ba6" label="$PastOperatorStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="ImmediatePastOperatorStereotype" metaclass="Class" is-hidden="false" label="%ImmediatePastOperatorStereotype.label" uid="a49e00c7-8102-46ec-af9f-422b5d19a97d">
+                <Icon path="res/icons/immediate_16.png"/>
+                <Image path="res/icons/immediate_16.png"/>
+                <TagTypes>
+                    <TagType name="TagBound" uid="b14b46e3-2d91-42a4-a916-84d3ec87d75b" label="$ImmediatePastOperatorStereotype.properties.bound" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="AbsolutePastOperatorStereotype" metaclass="Class" is-hidden="false" label="%AbsolutePastOperatorStereotype.label" uid="b3ad2321-46a7-463a-ba7f-b60f82e40c37">
+                <Icon path="res/icons/absolute_16.png"/>
+                <Image path="res/icons/absolute_16.png"/>
+                <TagTypes>
+                    <TagType name="TagLowBound" uid="383a7f35-f28e-4089-b40c-12beb6be4f62" label="$AbsolutePastOperatorStereotype.properties.lowbound" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagUppBound" uid="d55233cf-043e-40fc-b273-dcd5c8dd6494" label="$AbsolutePastOperatorStereotype.properties.uppbound" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
             <Stereotype name="ContextInformationMessageStereotype" metaclass="CommunicationMessage" is-hidden="false" label="%ContextInformationMessageStereotype.label" uid="25ad856f-5c3c-44f3-be0e-d717bf7a79d4">
                 <Icon path="%ContextInformationMessageStereotype.image"/>
                 <Image path="%ContextInformationMessageStereotype.image"/>
@@ -41,9 +109,34 @@
                 <TagTypes/>
                 <NoteTypes/>
             </Stereotype>
-            <Stereotype name="ContextRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ContextRulesDiagramStereotype.label" uid="faa0cd25-150b-48ad-83b4-9b3af765abf9">
-                <Icon path="%ContextRulesDiagramStereotype.image"/>
-                <Image path="%ContextRulesDiagramStereotype.image"/>
+            <Stereotype name="CSPARQLMapDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%CSPARQLMapDiagramStereotype.label" uid="faa0cd25-150b-48ad-83b4-9b3af765abf9">
+                <Icon path="%CSPARQLMapDiagramStereotype.image"/>
+                <Image path="%CSPARQLMapDiagramStereotype.image"/>
+            </Stereotype>
+            <Stereotype name="MRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%MRulesDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
+                <Icon path="%MRulesDiagramStereotype.image"/>
+                <Image path="%MRulesDiagramStereotype.image"/>
+                <TagTypes>
+                    <TagType name="ExecutionTime" uid="9aa00951-9869-499d-afa5-b04de5acb6c4" label="%MRulesDiagramStereotype.properties.ExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="MStateMapDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%MStateMapDiagramStereotype.label" uid="996ead08-eaf0-4208-85ea-51a16133912e">
+                <Icon path="%MStateMapDiagramStereotype.image"/>
+                <Image path="%MStateMapDiagramStereotype.image"/>
+            </Stereotype>
+            <Stereotype name="SameTimeStereotype" metaclass="Dependency" is-hidden="false" label="%SameTimeStereotype.label" uid="0bdf2349-ff7f-4e8f-a439-b0aca9b69fe5">
+                <Icon path="res/icons/str_16.png"/>
+                <Image path="res/icons/str_16.png"/>
+                <TagTypes>
+                    <TagType name="STId" uid="40b90b45-0fa2-408c-97d0-76b22eaa6e17" label="%SameTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="NextTimeStereotype" metaclass="Dependency" is-hidden="false" label="%NextTimeStereotype.label" uid="d2a2ca9f-0197-44b6-8a12-c5d9e271c48f">
+                <Icon path="res/icons/ntr_16.png"/>
+                <Image path="res/icons/ntr_16.png"/>
+                <TagTypes>
+                    <TagType name="NTId" uid="b612539b-a234-44e5-a93b-03aadaa87a19" label="%NextTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
             </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
                 <TagTypes>
@@ -54,6 +147,14 @@
     </Profiles>
     <Gui>
         <Commands>
+            <Command id="CreateMStateMapDiagram" label="%CreateMStateMapDiagram.label" tooltip="%CreateMStateMapDiagram.tooltip" image="%CreateMStateMapDiagram.image" group="%CreateMStateMapDiagram.group" modify-model="true" group-image="%CreateMStateMapDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateMStateMapDiagram"/>
+            </Command>
+            <Command id="CreateMRulesDiagram" label="%CreateMRulesDiagram.label" tooltip="%CreateMRulesDiagram.tooltip" image="%CreateMRulesDiagram.image" group="%CreateMRulesDiagram.group" modify-model="true" group-image="%CreateMRulesDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateMRulesDiagram"/>
+            </Command>
             <Command id="CreateInteractionDiagram" label="%CreateInteractionDiagram.label" tooltip="%CreateInteractionDiagram.tooltip" image="%CreateInteractionDiagram.image" group="%CreateInteractionDiagram.group" modify-model="true" group-image="%CreateInteractionDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateInteractionDiagram"/>
@@ -62,10 +163,6 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateCommunicationDiagram"/>
             </Command>
-            <Command id="CreateContextRulesDiagram" label="%CreateContextRulesDiagram.label" tooltip="%CreateContextRulesDiagram.tooltip" image="%CreateContextRulesDiagram.image" group="%CreateContextRulesDiagram.group" modify-model="true" group-image="%CreateContextRulesDiagram.groupimage">
-                <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateContextRulesDiagram"/>
-            </Command>
             <Command id="OpenContextInformationMessagesTable" label="%OpenContextInformationMessagesTable.label" tooltip="%OpenContextInformationMessagesTable.tooltip" image="%OpenContextInformationMessagesTable.image" group="%OpenContextInformationMessagesTable.group" modify-model="true" group-image="%OpenContextInformationMessagesTable.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.tables.OpenMessagesTable"/>
@@ -73,6 +170,14 @@
             <Command id="GenerateACLCode" label="%GenerateACLCode.label" tooltip="%GenerateACLCode.tooltip" image="%GenerateACLCode.image" group="%GenerateACLCode.group" modify-model="true" group-image="%GenerateACLCode.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateACLCode"/>
+            </Command>
+            <Command id="GenerateNuSMV" label="%GenerateNuSMV.label" tooltip="%GenerateNuSMV.tooltip" image="%GenerateNuSMV.image" group="%GenerateNuSMV.group" modify-model="true" group-image="%GenerateNuSMV.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateNuSMV"/>
+            </Command>
+            <Command id="GenerateMCode" label="%GenerateMCode.label" tooltip="%GenerateMCode.tooltip" image="%GenerateMCode.image" group="%GenerateMCode.group" modify-model="true" group-image="%GenerateMCode.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateM"/>
             </Command>
         </Commands>
         <Tools>
@@ -86,8 +191,12 @@
         <ContextualMenu>
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateCommunicationDiagram"/>
-            <CommandRef refid="CreateContextRulesDiagram"/>
+            <CommandRef refid="CreateCSPARQLMapDiagram"/>
+            <CommandRef refid="CreateMStateMapDiagram"/>
+            <CommandRef refid="CreateMRulesDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
+            <CommandRef refid="GenerateNuSMV"/>
+            <CommandRef refid="GenerateMCode"/>
             <CommandRef refid="GenerateACLCode"/>
         </ContextualMenu>
         <Diagrams>
@@ -99,9 +208,17 @@
                 <Palette keepBasePalette="true"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.communication.CommunicationDiagramCustomizer"/>
             </DiagramType>
-            <DiagramType base-diagram="StaticDiagram" stereotype="ContextRulesDiagramStereotype">
+            <DiagramType base-diagram="StaticDiagram" stereotype="CSPARQLMapDiagramStereotype">
                 <Palette keepBasePalette="true"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.rules.ContextRulesDiagramCustomizer"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.csparqlrules.CSPARQLMapDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="StaticDiagram" stereotype="MRulesDiagramStereotype">
+                <Palette keepBasePalette="false"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.MRulesDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="StaticDiagram" stereotype="MStateMapDiagramStereotype">
+                <Palette keepBasePalette="false"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mstatemap.MStateMapDiagramCustomizer"/>
             </DiagramType>
         </Diagrams>
         <Views>

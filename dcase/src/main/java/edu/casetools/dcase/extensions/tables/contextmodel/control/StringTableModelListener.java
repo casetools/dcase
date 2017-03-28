@@ -23,7 +23,6 @@ package edu.casetools.dcase.extensions.tables.contextmodel.control;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
-import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
@@ -33,6 +32,7 @@ import edu.casetools.dcase.extensions.tables.contextmodel.model.ContextModelTabl
 import edu.casetools.dcase.extensions.tables.contextmodel.view.ContextModelTablePanel;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.PropertiesUtils;
 
@@ -51,15 +51,15 @@ public class StringTableModelListener implements TableModelListener {
 	    int column = event.getColumn();
 	    int row = event.getFirstRow();
 	    ContextModelTableData data = this.tablePanel.getTableModel().getData();
-	    ModelElement ContextAttribute = data.getDataList().get(column).getContextAttribute();
+	    ModelElement contextAttribute = data.getDataList().get(column).getContextAttribute();
 
 	    String tagName = data.getHeaders().get(column).getTagName();
 	    String newValue = data.getDataList().get(row).get(column).toString();
 
 	    if (row == 0 && tagName.equals(DCaseProperties.PROPERTY_NAME)) {
-		updateNameChanges(newValue, ContextAttribute);
+		updateNameChanges(newValue, contextAttribute);
 	    } else {
-		updateTagChanges(tagName, newValue, ContextAttribute);
+		updateTagChanges(tagName, newValue, contextAttribute);
 	    }
 
 	    selectInterval(column, row);
@@ -68,7 +68,8 @@ public class StringTableModelListener implements TableModelListener {
     }
 
     private void updateNameChanges(String value, ModelElement element) {
-	IModelingSession session = Modelio.getInstance().getModelingSession();
+
+	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 	ITransaction transaction = session.createTransaction(
 		I18nMessageService.getString("Info.Session.Create", new String[] { " Update Name" }));
 	element.setName(value);
@@ -78,7 +79,7 @@ public class StringTableModelListener implements TableModelListener {
 
     private void updateTagChanges(String tagName, String value, MObject element) {
 	ITransaction transaction = null;
-	IModelingSession session = Modelio.getInstance().getModelingSession();
+	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 	try {
 	    transaction = session.createTransaction(
 		    I18nMessageService.getString("Info.Session.Create", new String[] { "Update Property" }));

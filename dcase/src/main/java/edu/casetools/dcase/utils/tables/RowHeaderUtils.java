@@ -28,7 +28,6 @@ import javax.swing.JTable;
 
 import edu.casetools.dcase.extensions.tables.headers.RowHeadersTableModel;
 
-// TODO: Auto-generated Javadoc
 /**
  * TalbeRowUtilities. Utility for adding a row column to a JTable
  * 

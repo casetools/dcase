@@ -4,18 +4,15 @@ D-CASE (Design for Context-Aware Systems Engineering), a module for Modelio (htt
 that aids the design of a Context-Aware System (C-AS).
  
 ## Download
-* [Version 0.2.1](https://github.com/casetools/dcase)
+* [Latest Version](https://github.com/casetools/dcase)
 * Other Versions
 
 ### Third party libraries and icons
 * see [LIBRARIES](https://github.com/casetools/dcase/blob/master/LIBRARIES.md) file
-* Icons are made by Freepik, GraphicsBay and Amit Jakhu. Downloaded from [Flaticon] (www.flaticon.com)
+* Icons are made by Freepik, GraphicsBay, Ocha and Amit Jakhu. Downloaded from [Flaticon] (www.flaticon.com)
 
 ## License 
 * see [LICENSE](https://github.com/casetools/dcase/blob/master/LICENSE.md) file
-
-## Version 
-* Version 0.2.1
 
 ## How-to use this code
 * see [INSTRUCTIONS](https://github.com/casetools/dcase/blob/master/INSTRUCTIONS.md) file

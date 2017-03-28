@@ -1,5 +1,8 @@
 package edu.casetools.dcase.utils;
 
+import java.io.File;
+
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 
@@ -29,6 +32,19 @@ public class IOUtils {
 									    // path
 	dialog.setFileName(filename);
 	return dialog;
+    }
+
+    public boolean checkIfExists(String fileLocation) {
+	File newFile = new File(fileLocation);
+
+	if (newFile.exists()) {
+	    if (MessageDialog.openConfirm(null, "Confirm Export",
+		    "File already exists.\nDo you want to replace it?\n")) {
+		return false;
+	    } else
+		return true;
+	}
+	return false;
     }
 
 }
