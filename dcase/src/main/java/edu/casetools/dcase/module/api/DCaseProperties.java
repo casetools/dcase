@@ -49,14 +49,6 @@ public class DCaseProperties {
 
     public static final String PROPERTY_MESSAGE_SITUATIONAL_PARAMETER = "TagContextAttribute";
 
-    public static final String PROPERTY_STATE_ID = "TagStateId";
-
-    public static final String PROPERTY_STATE_NAME = "TagStateName";
-
-    public static final String PROPERTY_STATE_INDEPENDENT = "TagStateIndpendent";
-
-    public static final String PROPERTY_STATE_INITIAL_VALUE = "TagStateInitial";
-
     public static final String PROPERTY_ANTECEDENT_STATE_NAME = "TagAntecedentName";
 
     public static final String PROPERTY_ANTECEDENT_STATE_VALUE = "TagAntecedentValue";
@@ -92,6 +84,36 @@ public class DCaseProperties {
     public static final String PROPERTY_PAST_OPERATOR_TYPE = "TagOperatorType";
 
     public static final String PROPERTY_MAX_EXECUTION_TIME = "ExecutionTime";
+
+    /****************************************************************************
+     * Generic Context Related Properties
+     **************************************************************************/
+
+    public static final String PROPERTY_GENERIC_CONTEXT_TYPE = "TagContextType";
+
+    /****************************************************************************
+     * ACL Context Related Properties
+     **************************************************************************/
+
+    public static final String PROPERTY_CONTEXT_ID = "CETagId";
+
+    public static final String PROPERTY_CONTEXT_RESPONSIBILITY = "TagResponsibility";
+
+    public static final String PROPERTY_CONTEXT_FREQUENCY = "TagFrequency";
+
+    public static final String PROPERTY_CONTEXT_LIBTYPE = "TagLibType";
+
+    /****************************************************************************
+     * M State Context Related Properties
+     **************************************************************************/
+
+    public static final String PROPERTY_STATE_ID = "TagStateId";
+
+    public static final String PROPERTY_STATE_NAME = "TagStateName";
+
+    public static final String PROPERTY_STATE_INDEPENDENT = "TagStateIndpendent";
+
+    public static final String PROPERTY_STATE_INITIAL_VALUE = "TagStateInitial";
 
     private DCaseProperties() {
 

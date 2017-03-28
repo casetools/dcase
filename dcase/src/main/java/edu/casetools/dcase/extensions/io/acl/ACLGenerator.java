@@ -22,12 +22,12 @@ import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 
+import edu.casetools.dcase.module.api.DCaseProperties;
+import edu.casetools.dcase.module.api.DCaseStereotypes;
+import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.ModelioUtils;
-import edu.casetools.rcase.module.api.RCaseProperties;
-import edu.casetools.rcase.module.api.RCaseStereotypes;
-import edu.casetools.rcase.module.i18n.I18nMessageService;
-import edu.casetools.rcase.module.impl.RCasePeerModule;
-import edu.casetools.rcase.utils.tables.TableUtils;
+import edu.casetools.dcase.utils.tables.TableUtils;
 
 public class ACLGenerator {
 
@@ -37,16 +37,15 @@ public class ACLGenerator {
 
 	List<MObject> contextAttributeList = new ArrayList<>();
 	contextAttributeList = TableUtils.getInstance().getAllElementsStereotypedAs(contextAttributeList,
-		RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE);
+		DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ACL_CONTEXT);
 	for (MObject contextAttribute : contextAttributeList) {
-	    String type = ((ModelElement) contextAttribute).getTagValue(RCasePeerModule.MODULE_NAME,
-		    RCaseProperties.PROPERTY_CONTEXT_RESPONSIBILITY);
-	    if (type.equals(I18nMessageService.getString("Ui.ContextAttribute.Property.TagResponsibility.Pull"))) {
-		String frequency = ((ModelElement) contextAttribute).getTagValue(RCasePeerModule.MODULE_NAME,
-			RCaseProperties.PROPERTY_CONTEXT_FREQUENCY);
+	    String type = ((ModelElement) contextAttribute).getTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_CONTEXT_RESPONSIBILITY);
+	    if (type.equals(I18nMessageService.getString("Ui.ACLContext.Property.TagResponsibility.Pull"))) {
+		String frequency = ((ModelElement) contextAttribute).getTagValue(DCasePeerModule.MODULE_NAME,
+			DCaseProperties.PROPERTY_CONTEXT_FREQUENCY);
 		generatePullObserver(contextAttribute, folder, frequency);
-	    } else if (type
-		    .equals(I18nMessageService.getString("Ui.ContextAttribute.Property.TagResponsibility.Push"))) {
+	    } else if (type.equals(I18nMessageService.getString("Ui.ACLContext.Property.TagResponsibility.Push"))) {
 		generatePushObserver(contextAttribute, folder);
 	    }
 
@@ -55,6 +54,7 @@ public class ACLGenerator {
 	if (!contextAttributeList.isEmpty()) {
 	    generateReceiver(folder);
 	}
+
     }
 
     private void generateReceiver(String folder) {
@@ -161,17 +161,17 @@ public class ACLGenerator {
     }
 
     private void generatePushObserver(MObject contextAttribute, String folder) {
-	String type = ((ModelElement) contextAttribute).getTagValue(RCasePeerModule.MODULE_NAME,
-		RCaseProperties.PROPERTY_CONTEXT_LIBTYPE);
-	if (type.equals(I18nMessageService.getString("Ui.ContextAttribute.Property.TagLibType.Sensor"))) {
+	String type = ((ModelElement) contextAttribute).getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_CONTEXT_LIBTYPE);
+	if (type.equals(I18nMessageService.getString("Ui.ACLContext.Property.TagLibType.Sensor"))) {
 	    generateSensorObserver(contextAttribute, folder);
-	} else if (type.equals(I18nMessageService.getString("Ui.ContextAttribute.Property.TagLibType.Location"))) {
+	} else if (type.equals(I18nMessageService.getString("Ui.ACLContext.Property.TagLibType.Location"))) {
 	    generateLocationObserver(contextAttribute, folder);
-	} else if (type.equals(I18nMessageService.getString("Ui.ContextAttribute.Property.TagLibType.Broadcast"))) {
+	} else if (type.equals(I18nMessageService.getString("Ui.ACLContext.Property.TagLibType.Broadcast"))) {
 	    generateBroadcastObserver(contextAttribute, folder);
-	} else if (type.equals(I18nMessageService.getString("Ui.ContextAttribute.Property.TagLibType.Bluetooth"))) {
+	} else if (type.equals(I18nMessageService.getString("Ui.ACLContext.Property.TagLibType.Bluetooth"))) {
 	    generateBluetoothObserver(contextAttribute, folder);
-	} else if (type.equals(I18nMessageService.getString("Ui.ContextAttribute.Property.TagLibType.None"))) {
+	} else if (type.equals(I18nMessageService.getString("Ui.ACLContext.Property.TagLibType.None"))) {
 	    generatePushObserverClass(contextAttribute, folder);
 	}
     }

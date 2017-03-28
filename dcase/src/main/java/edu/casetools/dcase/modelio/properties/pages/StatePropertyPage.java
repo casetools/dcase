@@ -42,6 +42,9 @@ public class StatePropertyPage implements IPropertyContent {
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
 	    switch (row) {
+	    case 1:
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_ID, value);
+		break;
 	    case 2:
 		element.setName(value);
 		break;

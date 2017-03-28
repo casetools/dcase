@@ -109,10 +109,6 @@
                 <TagTypes/>
                 <NoteTypes/>
             </Stereotype>
-            <Stereotype name="CSPARQLMapDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%CSPARQLMapDiagramStereotype.label" uid="faa0cd25-150b-48ad-83b4-9b3af765abf9">
-                <Icon path="%CSPARQLMapDiagramStereotype.image"/>
-                <Image path="%CSPARQLMapDiagramStereotype.image"/>
-            </Stereotype>
             <Stereotype name="MRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%MRulesDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="%MRulesDiagramStereotype.image"/>
                 <Image path="%MRulesDiagramStereotype.image"/>
@@ -129,6 +125,23 @@
                 <Image path="res/icons/str_16.png"/>
                 <TagTypes>
                     <TagType name="STId" uid="40b90b45-0fa2-408c-97d0-76b22eaa6e17" label="%SameTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="GenericContextStereotype" metaclass="Class" is-hidden="false" label="%GenericContextStereotype.label" uid="47e5a553-be68-4bbb-9b1d-8215e2a2349b">
+                <Icon path="res/icons/generic_16.png"/>
+                <Image path="res/icons/generic_16.png"/>
+                <TagTypes>
+                    <TagType name="TagContextType" uid="55fe5203-2845-4f37-8504-15b2d0074663" label="%GenericContextStereotype.properties.contexttype" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="ACLContextStereotype" metaclass="Class" is-hidden="false" label="%ACLContextStereotype.label" uid="fbbabc50-3efb-412f-b7dc-216d40ef3da2">
+                <Icon path="res/icons/acl_stereotype_16.png"/>
+                <Image path="res/icons/acl_stereotype_64.png"/>
+                <TagTypes>
+                    <TagType name="CETagId" uid="06f58260-5368-4e6f-86fb-ba49aa2d849f" label="%ACLContextStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagResponsibility" uid="8a60b3dd-1504-4ad1-b02c-91c88e531389" label="%ACLContextStereotype.properties.responsibility" parameter-card="2" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagFrequency" uid="7babf2ed-dae7-4d3c-aa3e-b7358e0b8995" label="%ACLContextStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagLibType" uid="cd52cf7a-f9e2-4289-b6a2-9f6d8fd408c7" label="%ACLContextStereotype.properties.libType" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="NextTimeStereotype" metaclass="Dependency" is-hidden="false" label="%NextTimeStereotype.label" uid="d2a2ca9f-0197-44b6-8a12-c5d9e271c48f">
@@ -187,11 +200,58 @@
                     <HParameter name="stereotype" value="ContextInformationMessageStereotype"/>
                 </Handler>
             </Tool>
+            <Tool id="AntecedentGroupTool" label="%AntecedentGroupTool.label" tooltip="%AntecedentGroupTool.tooltip" image="%AntecedentGroupTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.AntecedentGroupTool">
+                    <HParameter name="metaclass" value="Package"/>
+                    <HParameter name="stereotype" value="AntecedentGroupStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="AntecedentTool" label="%AntecedentTool.label" tooltip="%AntecedentTool.tooltip" image="%AntecedentTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.AntecedentTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="AntecedentStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="ConsequentTool" label="%ConsequentTool.label" tooltip="%ConsequentTool.tooltip" image="%ConsequentTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.ConsequentTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="ConsequentStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="ImmediatePastOperatorTool" label="%ImmediatePastOperatorTool.label" tooltip="%ImmediatePastOperatorTool.tooltip" image="%ImmediatePastOperatorTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.ImmediatePastOperatorTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="ImmediatePastOperatorStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="AbsolutePastOperatorTool" label="%AbsolutePastOperatorTool.label" tooltip="%AbsolutePastOperatorTool.tooltip" image="%AbsolutePastOperatorTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.AbsolutePastOperatorTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="AbsolutePastOperatorStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="StateTool" label="%StateTool.label" tooltip="%StateTool.tooltip" image="%StateTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mstatemap.tools.elements.StateTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="StateStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="SameTimeTool" label="%SameTimeTool.label" tooltip="%SameTimeTool.tooltip" image="%SameTimeTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.relations.SameTimeTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="SameTimeStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="NextTimeTool" label="%NextTimeTool.label" tooltip="%NextTimeTool.tooltip" image="%NextTimeTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.relations.NextTimeTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="NextTimeStereotype"/>
+                </Handler>
+            </Tool>
         </Tools>
         <ContextualMenu>
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateCommunicationDiagram"/>
-            <CommandRef refid="CreateCSPARQLMapDiagram"/>
             <CommandRef refid="CreateMStateMapDiagram"/>
             <CommandRef refid="CreateMRulesDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
@@ -207,10 +267,6 @@
             <DiagramType base-diagram="CommunicationDiagram" stereotype="CommunicationDiagramStereotype">
                 <Palette keepBasePalette="true"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.communication.CommunicationDiagramCustomizer"/>
-            </DiagramType>
-            <DiagramType base-diagram="StaticDiagram" stereotype="CSPARQLMapDiagramStereotype">
-                <Palette keepBasePalette="true"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.csparqlrules.CSPARQLMapDiagramCustomizer"/>
             </DiagramType>
             <DiagramType base-diagram="StaticDiagram" stereotype="MRulesDiagramStereotype">
                 <Palette keepBasePalette="false"/>

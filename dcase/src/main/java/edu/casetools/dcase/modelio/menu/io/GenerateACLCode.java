@@ -2,6 +2,7 @@ package edu.casetools.dcase.modelio.menu.io;
 
 import java.util.List;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.modelio.api.module.IModule;
@@ -18,7 +19,7 @@ public class GenerateACLCode extends DefaultModuleCommandHandler {
 	String path = dialog.open();
 	ACLGenerator generator = new ACLGenerator();
 	generator.generateACLTemplates(path);
-
+	MessageDialog.openInformation(null, "Model Exported", "Android code skeleton generated at:\n" + path);
     }
 
 }

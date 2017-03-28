@@ -22,25 +22,34 @@ package edu.casetools.dcase.modelio.properties;
 
 import java.util.List;
 
+import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.model.IMetamodelExtensions;
+import org.modelio.api.modelio.model.IModelingSession;
+import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.diagrams.StaticDiagram;
+import org.modelio.metamodel.factory.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationMessage;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.Class;
 
+import edu.casetools.dcase.modelio.properties.pages.ACLContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AbsolutePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AntecedentPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ContextInformationMessagePropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.GenericContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
+import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.module.api.RCaseStereotypes;
+import edu.casetools.rcase.module.impl.RCasePeerModule;
 
 /**
  * The Class PropertyManager manages all the property pages.
@@ -105,6 +114,24 @@ public class PropertyManager {
 	this.propertyPage = null;
 	extensions = DCaseModule.getInstance().getModuleContext().getModelingSession().getMetamodelExtensions();
 	sterList = PropertiesUtils.getInstance().computePropertyList(element);
+	updateStereotypes(element);
+    }
+
+    private void updateStereotypes(ModelElement element) {
+
+	if (element.isStereotyped(RCasePeerModule.MODULE_NAME, RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE)) {
+	    if (!element.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_GENERIC_CONTEXT)) {
+		try {
+		    IModelingSession session = Modelio.getInstance().getModelingSession();
+		    ITransaction transaction = session.createTransaction(
+			    I18nMessageService.getString("Info.Session.Create", new String[] { "" }));
+		    element.addStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_GENERIC_CONTEXT);
+		    transaction.commit();
+		} catch (ExtensionNotFoundException e) {
+		    e.printStackTrace();
+		}
+	    }
+	}
     }
 
     private void updatePropertyPage(ModelElement element, IModulePropertyTable table) {
@@ -115,6 +142,12 @@ public class PropertyManager {
     }
 
     private void getPropertyPages(IMetamodelExtensions extensions, Stereotype ster) {
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
+		DCaseStereotypes.STEREOTYPE_GENERIC_CONTEXT, DCaseModule.getInstance().getModuleContext()
+			.getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
+	    this.propertyPage = new GenericContextPropertyPage();
+	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE,
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
@@ -158,6 +191,12 @@ public class PropertyManager {
 		DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR, DCaseModule.getInstance().getModuleContext()
 			.getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
 	    this.propertyPage = new AbsolutePastOperatorPropertyPage();
+	}
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ACL_CONTEXT,
+		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+			.getMClass(Class.class)))) {
+	    this.propertyPage = new ACLContextPropertyPage();
 	}
 
     }
