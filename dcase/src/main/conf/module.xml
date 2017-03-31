@@ -81,7 +81,7 @@
                 <Icon path="%ContextInformationMessageStereotype.image"/>
                 <Image path="%ContextInformationMessageStereotype.image"/>
                 <TagTypes>
-                    <TagType name="CETagId" uid="f09597f9-4954-4e9e-bc9a-eaa41795cba7" label="%ContextInformationMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="CIMTagId" uid="f09597f9-4954-4e9e-bc9a-eaa41795cba7" label="%ContextInformationMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagResponsibility" uid="bb76ef80-add9-4b1f-8234-467e32e89fff" label="%ContextInformationMessageStereotype.properties.responsibility" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagRegularity" uid="5ed5cdae-cd6c-47d8-931c-40d423500f5e" label="%ContextInformationMessageStereotype.properties.regularity" parameter-card="2" is-hidden="false" is-signed="false"/>
                     <TagType name="TagFrequency" uid="d29eb85f-d81c-47ba-85c4-e70ebb5d9a7d" label="%ContextInformationMessageStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
@@ -134,7 +134,7 @@
                 <Icon path="res/icons/acl_stereotype_16.png"/>
                 <Image path="res/icons/acl_stereotype_64.png"/>
                 <TagTypes>
-                    <TagType name="CETagId" uid="06f58260-5368-4e6f-86fb-ba49aa2d849f" label="%ACLContextStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="ACLTagId" uid="06f58260-5368-4e6f-86fb-ba49aa2d849f" label="%ACLContextStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagResponsibility" uid="8a60b3dd-1504-4ad1-b02c-91c88e531389" label="%ACLContextStereotype.properties.responsibility" parameter-card="2" is-hidden="false" is-signed="false"/>
                     <TagType name="TagFrequency" uid="7babf2ed-dae7-4d3c-aa3e-b7358e0b8995" label="%ACLContextStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagLibType" uid="cd52cf7a-f9e2-4289-b6a2-9f6d8fd408c7" label="%ACLContextStereotype.properties.libType" parameter-card="1" is-hidden="false" is-signed="false"/>

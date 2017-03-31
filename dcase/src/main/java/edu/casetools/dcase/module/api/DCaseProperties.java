@@ -37,7 +37,7 @@ public class DCaseProperties {
      * Context Information Message related properties
      **************************************************************************/
     // Situational Parameter
-    public static final String PROPERTY_MESSAGE_ID = "CETagId";
+    public static final String PROPERTY_MESSAGE_ID = "CIMTagId";
 
     public static final String PROPERTY_MESSAGE_RESPONSIBILITY = "TagResponsibility";
 
@@ -95,7 +95,7 @@ public class DCaseProperties {
      * ACL Context Related Properties
      **************************************************************************/
 
-    public static final String PROPERTY_CONTEXT_ID = "CETagId";
+    public static final String PROPERTY_CONTEXT_ID = "ACLTagId";
 
     public static final String PROPERTY_CONTEXT_RESPONSIBILITY = "TagResponsibility";
 

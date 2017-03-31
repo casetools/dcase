@@ -34,7 +34,7 @@ import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.utils.DiagramUtils;
 
 /**
- * The Class ContextNoteTool is the tool for creating a Context Note.
+ * The Class CommunicationMessageTool is the tool for creating a Context Note.
  */
 public class ContextInformationMessageTool extends CommunicationMessageTool {
 

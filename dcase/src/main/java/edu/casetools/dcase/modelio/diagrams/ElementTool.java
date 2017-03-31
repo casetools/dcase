@@ -35,8 +35,8 @@ import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.metamodel.diagrams.AbstractDiagram;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
+import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
-import edu.casetools.rcase.module.i18n.I18nMessageService;
 
 /**
  * The Class ElementTool has the common methods to create the tool of a diagram
