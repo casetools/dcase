@@ -6,7 +6,7 @@
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
         <PathEntry path="lib/rcase-0.2.5.jar"/>
         <PathEntry path="lib/javapoet-1.8.0.jar"/>
-        <PathEntry path="lib/m2nusmv-0.2.0.jar"/>
+        <PathEntry path="lib/m2nusmv-0.2.1.jar"/>
         <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
     </ClassPath>
     <Profiles>
@@ -147,6 +147,20 @@
                     <TagType name="NTId" uid="b612539b-a234-44e5-a93b-03aadaa87a19" label="%NextTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
+            <Stereotype name="VerificationDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%VerificationDiagramStereotype.label" uid="895d5dde-c72c-44d9-aed7-55b9725343d4">
+                <Icon path="%VerificationDiagramStereotype.image"/>
+                <Image path="%VerificationDiagramStereotype.image"/>
+            </Stereotype>
+            <Stereotype name="SpecificationSetStereotype" metaclass="Package" is-hidden="false" label="%SpecificationSetStereotype.label" uid="b05ce34e-a392-4595-a6e9-a62ac73b7ed7">
+                <Icon path="res/icons/requirements_container_16.png"/>
+                <Image path="%RequirementTool.image"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="SpecificationStereotype" metaclass="Class" is-hidden="false" label="%SpecificationStereotype.label" uid="79f54ab4-7e5c-4936-b794-bbf1629a73e4">
+                <Icon path="res/icons/spec_16.png"/>
+                <Image path="res/icons/spec_64.png"/>
+                <TagTypes/>
+            </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
                 <TagTypes>
                     <TagType name="TagName" uid="eb5615f7-28bd-4314-913a-9bccf7e0bf12" label="Name" parameter-card="1" is-hidden="false" is-signed="false"/>
@@ -183,6 +197,10 @@
             <Command id="GenerateMCode" label="%GenerateMCode.label" tooltip="%GenerateMCode.tooltip" image="%GenerateMCode.image" group="%GenerateMCode.group" modify-model="true" group-image="%GenerateMCode.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateM"/>
+            </Command>
+            <Command id="CreateVerificationDiagram" label="%CreateVerificationDiagram.label" tooltip="%CreateVerificationDiagram.tooltip" image="%CreateVerificationDiagram.image" group="%CreateVerificationDiagram.group" modify-model="true" group-image="%CreateVerificationDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateVerificationDiagram"/>
             </Command>
         </Commands>
         <Tools>
@@ -234,11 +252,24 @@
                     <HParameter name="stereotype" value="NextTimeStereotype"/>
                 </Handler>
             </Tool>
+            <Tool id="SpecificationSetTool" label="%SpecificationSetTool.label" tooltip="%SpecificationSetTool.tooltip" image="%SpecificationSetTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.test.tools.elements.SpecificationSetTool">
+                    <HParameter name="metaclass" value="Package"/>
+                    <HParameter name="stereotype" value="SpecificationSetStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="SpecificationTool" label="%SpecificationTool.label" tooltip="%SpecificationTool.tooltip" image="%SpecificationTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.test.tools.elements.SpecificationTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="SpecificationStereotype"/>
+                </Handler>
+            </Tool>
         </Tools>
         <ContextualMenu>
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateCommunicationDiagram"/>
             <CommandRef refid="CreateMRulesDiagram"/>
+            <CommandRef refid="CreateVerificationDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
             <CommandRef refid="GenerateNuSMV"/>
             <CommandRef refid="GenerateMCode"/>
@@ -256,6 +287,10 @@
             <DiagramType base-diagram="StaticDiagram" stereotype="MRulesDiagramStereotype">
                 <Palette keepBasePalette="false"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.MRulesDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="StaticDiagram" stereotype="VerificationDiagramStereotype">
+                <Palette keepBasePalette="false"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.test.VerificationDiagramCustomizer"/>
             </DiagramType>
         </Diagrams>
         <Views>

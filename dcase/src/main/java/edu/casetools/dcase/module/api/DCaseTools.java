@@ -35,6 +35,8 @@ public class DCaseTools {
     public static final String TOOL_NEXT_TIME = "NextTimeTool";
     public static final String TOOL_IMMEDIATE_PAST_OPERATOR = "ImmediatePastOperatorTool";
     public static final String TOOL_ABSOLUTE_PAST_OPERATOR = "AbsolutePastOperatorTool";
+    public static final String TOOL_SPECIFICATION = "SpecificationTool";
+    public static final String TOOL_SPECIFICATION_SET = "SpecificationSetTool";
 
     private DCaseTools() {
 
