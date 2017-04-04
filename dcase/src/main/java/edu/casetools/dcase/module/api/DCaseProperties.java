@@ -83,7 +83,19 @@ public class DCaseProperties {
 
     public static final String PROPERTY_PAST_OPERATOR_TYPE = "TagOperatorType";
 
-    public static final String PROPERTY_MAX_EXECUTION_TIME = "ExecutionTime";
+    /****************************************************************************
+     * Rule Diagram Related Properties
+     **************************************************************************/
+
+    public static final String PROPERTY_MAX_EXECUTION_TIME = "TagExecutionTime";
+    public static final String PROPERTY_SPECIFICATION_DIAGRAM = "TagSpecification";
+
+    /****************************************************************************
+     * Specification Related Properties
+     **************************************************************************/
+
+    public static final String PROPERTY_SPECIFICATION_TYPE = "TagSpecType";
+    public static final String PROPERTY_SPECIFICATION = "TagSpec";
 
     /****************************************************************************
      * Generic Context Related Properties

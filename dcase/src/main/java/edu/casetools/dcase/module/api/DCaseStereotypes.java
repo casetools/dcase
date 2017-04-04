@@ -29,6 +29,6 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String STEREOTYPE_PAST_OPERATOR = "PastOperatorStereotype";
     public static final String STEREOTYPE_ACL_CONTEXT = "ACLContextStereotype";
     public static final String STEREOTYPE_GENERIC_CONTEXT = "GenericContextStereotype";
-    public static final String STEREOTYPE_DIAGRAM_TEST = "VerificationDiagramStereotype";
+    public static final String STEREOTYPE_DIAGRAM_SPECIFICATION = "SpecificationDiagramStereotype";
 
 }

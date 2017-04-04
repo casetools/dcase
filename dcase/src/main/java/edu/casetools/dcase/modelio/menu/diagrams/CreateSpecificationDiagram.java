@@ -36,7 +36,7 @@ import edu.casetools.dcase.utils.DiagramUtils;
 /**
  * The Class CreateRequirementsDiagram creates a Requirements Diagram.
  */
-public class CreateVerificationDiagram extends CreateStaticDiagram {
+public class CreateSpecificationDiagram extends CreateStaticDiagram {
 
     /*
      * (non-Javadoc)
@@ -47,9 +47,9 @@ public class CreateVerificationDiagram extends CreateStaticDiagram {
     @Override
     protected StaticDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 
-	String name = I18nMessageService.getString("Ui.Command.Create.CreateVerificationDiagram.Label");
+	String name = I18nMessageService.getString("Ui.Command.Create.CreateSpecificationDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createDiagram(selectedElements, session, name,
-		DCaseStereotypes.STEREOTYPE_DIAGRAM_TEST);
+		DCaseStereotypes.STEREOTYPE_DIAGRAM_SPECIFICATION);
 	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_TEST_DIAGRAM);
 	return diagram;
     }

@@ -113,7 +113,8 @@
                 <Icon path="%MRulesDiagramStereotype.image"/>
                 <Image path="%MRulesDiagramStereotype.image"/>
                 <TagTypes>
-                    <TagType name="ExecutionTime" uid="9aa00951-9869-499d-afa5-b04de5acb6c4" label="%MRulesDiagramStereotype.properties.ExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagExecutionTime" uid="9aa00951-9869-499d-afa5-b04de5acb6c4" label="%MRulesDiagramStereotype.properties.ExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagSpecification" uid="338cc637-e954-4c8c-a1ae-c5984619b9b7" label="%MRulesDiagramStereotype.properties.Specification" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="SameTimeStereotype" metaclass="Dependency" is-hidden="false" label="%SameTimeStereotype.label" uid="0bdf2349-ff7f-4e8f-a439-b0aca9b69fe5">
@@ -147,9 +148,9 @@
                     <TagType name="NTId" uid="b612539b-a234-44e5-a93b-03aadaa87a19" label="%NextTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="VerificationDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%VerificationDiagramStereotype.label" uid="895d5dde-c72c-44d9-aed7-55b9725343d4">
-                <Icon path="%VerificationDiagramStereotype.image"/>
-                <Image path="%VerificationDiagramStereotype.image"/>
+            <Stereotype name="SpecificationDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%SpecificationDiagramStereotype.label" uid="895d5dde-c72c-44d9-aed7-55b9725343d4">
+                <Icon path="%SpecificationDiagramStereotype.image"/>
+                <Image path="%SpecificationDiagramStereotype.image"/>
             </Stereotype>
             <Stereotype name="SpecificationSetStereotype" metaclass="Package" is-hidden="false" label="%SpecificationSetStereotype.label" uid="b05ce34e-a392-4595-a6e9-a62ac73b7ed7">
                 <Icon path="res/icons/requirements_container_16.png"/>
@@ -159,7 +160,10 @@
             <Stereotype name="SpecificationStereotype" metaclass="Class" is-hidden="false" label="%SpecificationStereotype.label" uid="79f54ab4-7e5c-4936-b794-bbf1629a73e4">
                 <Icon path="res/icons/spec_16.png"/>
                 <Image path="res/icons/spec_64.png"/>
-                <TagTypes/>
+                <TagTypes>
+                    <TagType name="TagSpecType" uid="707b3a2f-221c-4b30-853f-6b82e396bde0" label="%SpecificationStereotype.properties.SpecificationType" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagSpec" uid="818ac013-fd0d-49a8-b865-d3a12d54c044" label="%SpecificationStereotype.properties.Specification" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
             </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
                 <TagTypes>
@@ -198,9 +202,9 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateM"/>
             </Command>
-            <Command id="CreateVerificationDiagram" label="%CreateVerificationDiagram.label" tooltip="%CreateVerificationDiagram.tooltip" image="%CreateVerificationDiagram.image" group="%CreateVerificationDiagram.group" modify-model="true" group-image="%CreateVerificationDiagram.groupimage">
+            <Command id="CreateSpecificationDiagram" label="%CreateSpecificationDiagram.label" tooltip="%CreateSpecificationDiagram.tooltip" image="%CreateSpecificationDiagram.image" group="%CreateSpecificationDiagram.group" modify-model="true" group-image="%CreateSpecificationDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateVerificationDiagram"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateSpecificationDiagram"/>
             </Command>
         </Commands>
         <Tools>
@@ -269,7 +273,7 @@
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateCommunicationDiagram"/>
             <CommandRef refid="CreateMRulesDiagram"/>
-            <CommandRef refid="CreateVerificationDiagram"/>
+            <CommandRef refid="CreateSpecificationDiagram"/>
             <CommandRef refid="OpenContextInformationMessagesTable"/>
             <CommandRef refid="GenerateNuSMV"/>
             <CommandRef refid="GenerateMCode"/>
@@ -288,9 +292,9 @@
                 <Palette keepBasePalette="false"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.MRulesDiagramCustomizer"/>
             </DiagramType>
-            <DiagramType base-diagram="StaticDiagram" stereotype="VerificationDiagramStereotype">
+            <DiagramType base-diagram="StaticDiagram" stereotype="SpecificationDiagramStereotype">
                 <Palette keepBasePalette="false"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.test.VerificationDiagramCustomizer"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.test.SpecificationDiagramCustomizer"/>
             </DiagramType>
         </Diagrams>
         <Views>

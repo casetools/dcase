@@ -41,6 +41,7 @@ import edu.casetools.dcase.modelio.properties.pages.ContextInformationMessagePro
 import edu.casetools.dcase.modelio.properties.pages.GenericContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.SpecificationPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
@@ -197,6 +198,12 @@ public class PropertyManager {
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 			.getMClass(Class.class)))) {
 	    this.propertyPage = new ACLContextPropertyPage();
+	}
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_SPECIFICATION,
+		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+			.getMClass(Class.class)))) {
+	    this.propertyPage = new SpecificationPropertyPage();
 	}
 
     }

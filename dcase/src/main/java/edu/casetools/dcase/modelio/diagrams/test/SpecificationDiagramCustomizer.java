@@ -40,7 +40,7 @@ import edu.casetools.rcase.module.api.RCaseTools;
  * The Class RequirementDiagramCustomizer customizes the palette of the
  * Requirements Diagram.
  */
-public class VerificationDiagramCustomizer extends DiagramCustomizer implements IDiagramCustomizer {
+public class SpecificationDiagramCustomizer extends DiagramCustomizer implements IDiagramCustomizer {
 
     /*
      * (non-Javadoc)
