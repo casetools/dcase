@@ -68,7 +68,9 @@ public class SpecificationPropertyPage implements IPropertyContent {
 		new String[] { I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.None"),
 			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.CTL"),
 			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.LTL"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.PSL") });
+			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.PSL"),
+			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Invariant"),
+			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Compute") });
 
 	// TagSpecification
 	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_SPECIFICATION, element);

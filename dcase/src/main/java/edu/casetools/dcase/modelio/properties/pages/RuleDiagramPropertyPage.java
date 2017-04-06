@@ -31,7 +31,6 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
 import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
-import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.PropertiesUtils;
@@ -46,9 +45,6 @@ public class RuleDiagramPropertyPage implements IPropertyContent {
 	    switch (row) {
 	    case 1:
 		changeExecutionTimeProperty(element, value);
-		break;
-	    case 2:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SPECIFICATION_DIAGRAM, value);
 		break;
 	    default:
 		break;
@@ -78,11 +74,6 @@ public class RuleDiagramPropertyPage implements IPropertyContent {
 	String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MAX_EXECUTION_TIME,
 		element);
 	table.addProperty(I18nMessageService.getString("Ui.RuleDiagram.Property.ExecutionTime"), string);
-
-	string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_SPECIFICATION_DIAGRAM, element);
-	table.addProperty(I18nMessageService.getString("Ui.RuleDiagram.Property.SpecificationDiagram"), string,
-		PropertiesUtils.getInstance().getAllElements(DCasePeerModule.MODULE_NAME,
-			DCaseStereotypes.STEREOTYPE_DIAGRAM_SPECIFICATION, "Ui.None"));
 
     }
 

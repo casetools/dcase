@@ -6,7 +6,7 @@
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
         <PathEntry path="lib/rcase-0.2.5.jar"/>
         <PathEntry path="lib/javapoet-1.8.0.jar"/>
-        <PathEntry path="lib/m2nusmv-0.2.1.jar"/>
+        <PathEntry path="lib/m2nusmv-0.2.2.jar"/>
         <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
     </ClassPath>
     <Profiles>
@@ -114,7 +114,6 @@
                 <Image path="%MRulesDiagramStereotype.image"/>
                 <TagTypes>
                     <TagType name="TagExecutionTime" uid="9aa00951-9869-499d-afa5-b04de5acb6c4" label="%MRulesDiagramStereotype.properties.ExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagSpecification" uid="338cc637-e954-4c8c-a1ae-c5984619b9b7" label="%MRulesDiagramStereotype.properties.Specification" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="SameTimeStereotype" metaclass="Dependency" is-hidden="false" label="%SameTimeStereotype.label" uid="0bdf2349-ff7f-4e8f-a439-b0aca9b69fe5">

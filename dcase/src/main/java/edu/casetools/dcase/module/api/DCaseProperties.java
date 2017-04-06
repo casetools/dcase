@@ -88,7 +88,6 @@ public class DCaseProperties {
      **************************************************************************/
 
     public static final String PROPERTY_MAX_EXECUTION_TIME = "TagExecutionTime";
-    public static final String PROPERTY_SPECIFICATION_DIAGRAM = "TagSpecification";
 
     /****************************************************************************
      * Specification Related Properties

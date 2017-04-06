@@ -134,7 +134,7 @@ public class ACLGenerator {
 		.addParameter(androidContext, "c").addStatement("super($N,$N,\"$N\")", "c", frequency, mainClassName)
 		.addJavadoc(
 			"\t//Include your variables here\n\t//This is an example for checking the external storage\n\n    private final static long SIZE_KB = 1024L;\n    private final static long SIZE_MB = SIZE_KB * SIZE_KB;\n    private long mCurrentSpace;\n\n")
-		.build();
+		.addComment("mCurrentSpace = 0;").build();
 
 	MethodSpec checkContext = MethodSpec.methodBuilder("checkContext").addModifiers(Modifier.PUBLIC)
 		.addAnnotation(Override.class).returns(void.class).addComment("Object object) {")

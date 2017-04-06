@@ -134,6 +134,7 @@ public class GenerateNuSMV extends DefaultModuleCommandHandler {
     private MData getData(String fileLocation, int maxExecutionTime) {
 	MdData mddata = new MdData();
 	mddata.loadDiagramElements();
+	mddata.loadSpecifications();
 	MData mdata = mddata.getMData();
 	mdata.setFilePath(fileLocation);
 	mdata.setMaxIteration(maxExecutionTime);

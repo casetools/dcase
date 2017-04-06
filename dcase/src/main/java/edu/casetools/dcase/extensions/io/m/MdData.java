@@ -15,12 +15,15 @@ import edu.casetools.dcase.m2nusmv.data.elements.BoundedOperator;
 import edu.casetools.dcase.m2nusmv.data.elements.BoundedOperator.BOP_TYPE;
 import edu.casetools.dcase.m2nusmv.data.elements.Rule;
 import edu.casetools.dcase.m2nusmv.data.elements.RuleElement;
+import edu.casetools.dcase.m2nusmv.data.elements.Specification;
+import edu.casetools.dcase.m2nusmv.data.elements.Specification.TYPE;
 import edu.casetools.dcase.m2nusmv.data.elements.State;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.dcase.utils.ModelioUtils;
 import edu.casetools.dcase.utils.tables.TableUtils;
 
 public class MdData {
@@ -31,6 +34,7 @@ public class MdData {
     private List<MObject> strs;
     private List<MObject> ntrs;
     private List<MObject> events;
+    private List<MObject> specifications;
     private MData data;
 
     public MdData() {
@@ -45,9 +49,11 @@ public class MdData {
 	strs = new ArrayList<>();
 	ntrs = new ArrayList<>();
 	events = new ArrayList<>();
+	specifications = new ArrayList<>();
     }
 
     public void loadDiagramElements() {
+
 	states = TableUtils.getInstance().getAllElementsStereotypedAs(states, DCasePeerModule.MODULE_NAME,
 		DCaseStereotypes.STEREOTYPE_STATE);
 	updateIDs(states, DCaseProperties.PROPERTY_STATE_ID);
@@ -73,6 +79,19 @@ public class MdData {
 
     }
 
+    public void loadSpecifications() {
+	List<MObject> diagramElements = new ArrayList<>();
+	diagramElements = ModelioUtils.getInstance().getAllElements();
+
+	for (MObject diagramElement : diagramElements) {
+
+	    if ((diagramElement instanceof ModelElement) && ((ModelElement) diagramElement)
+		    .isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_SPECIFICATION)) {
+		specifications.add(diagramElement);
+	    }
+	}
+    }
+
     private void updateIDs(List<MObject> list, String property) {
 	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 	ITransaction transaction = session
@@ -95,12 +114,50 @@ public class MdData {
 	getStates();
 	getRules();
 	getBops();
+	getSpecifications();
 
 	return data;
     }
 
+    private void getSpecifications() {
+	int index = 0;
+	for (MObject operator : specifications) {
+	    Specification specification = new Specification();
+	    specification.setId(Integer.toString(index));
+	    specification.setSpec(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_SPECIFICATION));
+	    specification.setType(getSpecType(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_SPECIFICATION_TYPE)));
+	    index++;
+	    data.getSpecifications().add(specification);
+
+	}
+
+    }
+
+    private TYPE getSpecType(String tagValue) {
+	TYPE type = null;
+	if (tagValue.equals(I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.CTL"))) {
+	    type = TYPE.CTL;
+	} else if (tagValue
+		.equals(I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.LTL"))) {
+	    type = TYPE.LTL;
+	} else if (tagValue
+		.equals(I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.PSL"))) {
+	    type = TYPE.PSL;
+	} else if (tagValue
+		.equals(I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Invariant"))) {
+	    type = TYPE.INVARIANT;
+	} else if (tagValue
+		.equals(I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Compute"))) {
+	    type = TYPE.COMPUTE;
+	}
+	return type;
+    }
+
     private void getBops() {
 	for (MObject operator : bops) {
+
 	    BoundedOperator bop = new BoundedOperator();
 	    bop.setId(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_PAST_OPERATOR_ID));
