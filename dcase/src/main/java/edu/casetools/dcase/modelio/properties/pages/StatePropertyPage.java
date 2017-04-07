@@ -20,6 +20,7 @@
  */
 package edu.casetools.dcase.modelio.properties.pages;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,11 +28,14 @@ import org.eclipse.core.runtime.AssertionFailedException;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.factory.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
+import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
+import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.dcase.utils.ModelioUtils;
 import edu.casetools.dcase.utils.PropertiesUtils;
 
 public class StatePropertyPage implements IPropertyContent {
@@ -46,6 +50,7 @@ public class StatePropertyPage implements IPropertyContent {
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_ID, value);
 		break;
 	    case 2:
+		updateValue(element, value);
 		element.setName(value);
 		break;
 	    case 3:
@@ -59,6 +64,23 @@ public class StatePropertyPage implements IPropertyContent {
 	    }
 	} catch (ExtensionNotFoundException | AssertionFailedException e) {
 	    logger.log(Level.SEVERE, e.getMessage(), e);
+	}
+
+    }
+
+    private void updateValue(ModelElement element, String value) {
+	String currentName = element.getName();
+	List<MObject> elements = ModelioUtils.getInstance().getAllElements();
+	for (MObject aux : elements) {
+	    if (aux instanceof ModelElement) {
+		boolean isAntecedent = ((ModelElement) aux).isStereotyped(DCasePeerModule.MODULE_NAME,
+			DCaseStereotypes.STEREOTYPE_ANTECEDENT);
+		if (isAntecedent && currentName.equals(((ModelElement) aux).getTagValue(DCasePeerModule.MODULE_NAME,
+			DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME))) {
+		    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+			    DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME, value, (ModelElement) aux);
+		}
+	    }
 	}
 
     }
