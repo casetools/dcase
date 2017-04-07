@@ -77,18 +77,44 @@ public class StatePropertyPage implements IPropertyContent {
 			DCaseStereotypes.STEREOTYPE_ANTECEDENT);
 		boolean isConsequent = ((ModelElement) aux).isStereotyped(DCasePeerModule.MODULE_NAME,
 			DCaseStereotypes.STEREOTYPE_CONSEQUENT);
-		if (isAntecedent && currentName.equals(((ModelElement) aux).getTagValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME))) {
-		    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			    DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME, value, (ModelElement) aux);
-		} else if (isConsequent && currentName.equals(((ModelElement) aux)
-			.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME))) {
-		    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
-			    DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME, value, (ModelElement) aux);
+		boolean isPastOperator = ((ModelElement) aux).isStereotyped(DCasePeerModule.MODULE_NAME,
+			DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
+
+		if (isAntecedent) {
+		    updateAntecedent(value, currentName, aux);
+		} else if (isConsequent) {
+		    updateConsequent(value, currentName, aux);
+		} else if (isPastOperator) {
+		    updatePastOperator(value, currentName, aux);
+
 		}
 	    }
 	}
 
+    }
+
+    private void updatePastOperator(String value, String currentName, MObject aux) {
+	if (currentName.equals(((ModelElement) aux).getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME))) {
+	    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME, value, (ModelElement) aux);
+	}
+    }
+
+    private void updateConsequent(String value, String currentName, MObject aux) {
+	if (currentName.equals(((ModelElement) aux).getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME))) {
+	    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME, value, (ModelElement) aux);
+	}
+    }
+
+    private void updateAntecedent(String value, String currentName, MObject aux) {
+	if (currentName.equals(((ModelElement) aux).getTagValue(DCasePeerModule.MODULE_NAME,
+		DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME))) {
+	    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME, value, (ModelElement) aux);
+	}
     }
 
     @Override
