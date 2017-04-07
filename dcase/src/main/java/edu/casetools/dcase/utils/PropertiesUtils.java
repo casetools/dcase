@@ -49,7 +49,7 @@ import edu.casetools.dcase.utils.tables.TableUtils;
  * The Class PropertiesUtils.
  */
 public class PropertiesUtils {
-    private static final Logger logger = Logger.getLogger(PropertiesUtils.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PropertiesUtils.class.getName()); // NOPMD by Unai on 07/04/17 19:09
     private static PropertiesUtils instance = null;
     private static final String SEPARATOR_ELEMENT = ";";
     private static final String SEPARATOR_NAMESPACE = "::";
@@ -208,7 +208,7 @@ public class PropertiesUtils {
 	    try {
 		tag = model.createTaggedValue(modulename, name, element);
 	    } catch (ExtensionNotFoundException e) {
-		logger.log(Level.WARNING, e.getMessage(), e);
+		LOGGER.log(Level.WARNING, e.getMessage(), e);
 	    }
 
 	}
@@ -266,7 +266,7 @@ public class PropertiesUtils {
 	    if (!taggedValue.getDefinition().getParamNumber().equals(ZERO))
 		setTaggedValue(name, element, values);
 	} catch (ExtensionNotFoundException e) {
-	    logger.log(Level.WARNING, e.getMessage(), e);
+	    LOGGER.log(Level.WARNING, e.getMessage(), e);
 	}
     }
 
@@ -357,7 +357,7 @@ public class PropertiesUtils {
 	    try {
 		model.createDependency(elt, related, modulelink, stereotypeLink);
 	    } catch (ExtensionNotFoundException e) {
-		logger.log(Level.WARNING, e.getMessage(), e);
+		LOGGER.log(Level.WARNING, e.getMessage(), e);
 	    }
 
 	}
@@ -443,7 +443,7 @@ public class PropertiesUtils {
 	    session.getModel().createDependency(element, contextAttribute, "ModelerModule", "trace");
 	    transaction.commit();
 	} catch (ExtensionNotFoundException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	} finally {
 	    transaction.close();
 	}

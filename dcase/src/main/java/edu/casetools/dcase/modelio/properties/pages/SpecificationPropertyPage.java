@@ -36,7 +36,7 @@ import edu.casetools.dcase.utils.PropertiesUtils;
 
 public class SpecificationPropertyPage implements IPropertyContent {
 
-    private static final Logger logger = Logger.getLogger(SpecificationPropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SpecificationPropertyPage.class.getName());
 
     // TODO Reduce the complexity of the switch case
     @Override
@@ -53,7 +53,7 @@ public class SpecificationPropertyPage implements IPropertyContent {
 		break;
 	    }
 	} catch (ExtensionNotFoundException | AssertionFailedException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 
     }

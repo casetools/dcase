@@ -48,7 +48,7 @@ import edu.casetools.dcase.module.impl.DCasePeerModule;
  */
 public abstract class RelationTool extends DefaultLinkTool {
 
-    private static final Logger logger = Logger.getLogger(RelationTool.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(RelationTool.class.getName());
 
     /**
      * Creates the customized dependency.
@@ -106,7 +106,7 @@ public abstract class RelationTool extends DefaultLinkTool {
 	    try {
 		link.setPath(path);
 	    } catch (InvalidPointsPathException | InvalidSourcePointException | InvalidDestinationPointException e) {
-		logger.log(Level.SEVERE, e.getMessage(), e);
+		LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	    }
 	}
     }

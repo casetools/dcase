@@ -37,7 +37,7 @@ import edu.casetools.dcase.utils.PropertiesUtils;
 
 public class GenericContextPropertyPage implements IPropertyContent {
 
-    private static final Logger logger = Logger.getLogger(GenericContextPropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(GenericContextPropertyPage.class.getName());
 
     // TODO Reduce the complexity of the switch case
     @Override
@@ -52,7 +52,7 @@ public class GenericContextPropertyPage implements IPropertyContent {
 		break;
 	    }
 	} catch (AssertionFailedException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 
 	updateStereotypes(element, value);

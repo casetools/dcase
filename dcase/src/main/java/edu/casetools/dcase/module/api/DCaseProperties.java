@@ -25,7 +25,7 @@ package edu.casetools.dcase.module.api;
  * the property pages.
  */
 
-public class DCaseProperties {
+public final class DCaseProperties {
 
     /****************************************************************************
      * Common properties

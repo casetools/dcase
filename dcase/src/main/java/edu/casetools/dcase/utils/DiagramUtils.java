@@ -54,7 +54,7 @@ import edu.casetools.dcase.utils.tables.TableUtils;
  * The Class DiagramUtils.
  */
 public class DiagramUtils {
-    private static final Logger logger = Logger.getLogger(DiagramUtils.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(DiagramUtils.class.getName());
     private static final String LOCALS = "Ui.Collaboration.Locals";
     private static DiagramUtils instance = null;
 
@@ -110,7 +110,7 @@ public class DiagramUtils {
 	try {
 	    element.putTagValue(moduleName, propertyName, Integer.toString(i));
 	} catch (ExtensionNotFoundException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
     }
 
@@ -183,7 +183,7 @@ public class DiagramUtils {
 			    .getMetamodel().getMClass(SequenceDiagram.class));
 	    diagram.getExtension().add(sysSeqSter);
 	} catch (Exception e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 	return diagram;
     }
@@ -270,7 +270,7 @@ public class DiagramUtils {
 	    dependency.setName("");
 	    return dependency;
 	} catch (ExtensionNotFoundException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 	return null;
     }
@@ -319,7 +319,7 @@ public class DiagramUtils {
 			    .getMetamodel().getMClass(CommunicationDiagram.class));
 	    diagram.getExtension().add(sysSeqSter);
 	} catch (Exception e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 	return diagram;
     }
@@ -331,7 +331,7 @@ public class DiagramUtils {
 	try {
 	    createdElement.addStereotype(DCasePeerModule.MODULE_NAME, stereotypeName);
 	} catch (ExtensionNotFoundException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 	DiagramUtils.getInstance().setFreeName(createdElement, I18nMessageService.getString("Ui.Message.Name"));
 	return createdElement;

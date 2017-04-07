@@ -51,7 +51,7 @@ public class ImmediatePastOperatorTool extends ElementTool {
      * org.modelio.vcore.smkernel.mapi.MObject)
      */
 
-    private static final Logger logger = Logger.getLogger(ImmediatePastOperatorTool.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ImmediatePastOperatorTool.class.getName());
 
     @Override
     public MObject createOwnElement(IModelingSession session, MObject element) {
@@ -90,7 +90,7 @@ public class ImmediatePastOperatorTool extends ElementTool {
 	    ((ModelElement) auxiliarElement).addStereotype(DCasePeerModule.MODULE_NAME,
 		    DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
 	} catch (ExtensionNotFoundException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 	;
     }

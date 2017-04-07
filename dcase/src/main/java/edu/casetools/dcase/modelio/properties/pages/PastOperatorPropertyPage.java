@@ -36,7 +36,7 @@ import edu.casetools.dcase.utils.PropertiesUtils;
 
 public class PastOperatorPropertyPage implements IPropertyContent {
 
-    private static final Logger logger = Logger.getLogger(PastOperatorPropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PastOperatorPropertyPage.class.getName());
 
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
@@ -58,7 +58,7 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 		break;
 	    }
 	} catch (AssertionFailedException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 
     }

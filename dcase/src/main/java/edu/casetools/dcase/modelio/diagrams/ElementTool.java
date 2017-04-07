@@ -43,7 +43,7 @@ import edu.casetools.dcase.module.impl.DCaseModule;
  * element.
  */
 public abstract class ElementTool extends DefaultBoxTool {
-    private static final Logger logger = Logger.getLogger(ElementTool.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ElementTool.class.getName());
 
     /**
      * Represent as an image.
@@ -108,7 +108,7 @@ public abstract class ElementTool extends DefaultBoxTool {
 	try {
 	    transaction.close();
 	} catch (NullPointerException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
     }
 

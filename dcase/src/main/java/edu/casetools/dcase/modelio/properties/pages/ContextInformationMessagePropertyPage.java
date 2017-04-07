@@ -38,7 +38,7 @@ import edu.casetools.rcase.module.impl.RCasePeerModule;
 
 public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
-    private static final Logger logger = Logger.getLogger(ContextInformationMessagePropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ContextInformationMessagePropertyPage.class.getName());
 
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
@@ -73,7 +73,7 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 		break;
 	    }
 	} catch (ExtensionNotFoundException | AssertionFailedException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 
     }

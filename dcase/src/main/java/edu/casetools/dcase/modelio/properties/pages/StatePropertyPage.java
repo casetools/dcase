@@ -40,7 +40,7 @@ import edu.casetools.dcase.utils.PropertiesUtils;
 
 public class StatePropertyPage implements IPropertyContent {
 
-    private static final Logger logger = Logger.getLogger(StatePropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(StatePropertyPage.class.getName());
 
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
@@ -63,7 +63,7 @@ public class StatePropertyPage implements IPropertyContent {
 		break;
 	    }
 	} catch (ExtensionNotFoundException | AssertionFailedException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 
     }

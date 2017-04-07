@@ -37,7 +37,7 @@ import edu.casetools.dcase.utils.PropertiesUtils;
 
 public class RuleDiagramPropertyPage implements IPropertyContent {
 
-    private static final Logger logger = Logger.getLogger(RuleDiagramPropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(RuleDiagramPropertyPage.class.getName());
 
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
@@ -50,7 +50,7 @@ public class RuleDiagramPropertyPage implements IPropertyContent {
 		break;
 	    }
 	} catch (ExtensionNotFoundException | AssertionFailedException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 
     }

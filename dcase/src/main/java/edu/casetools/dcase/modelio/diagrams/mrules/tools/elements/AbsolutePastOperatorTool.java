@@ -51,7 +51,7 @@ public class AbsolutePastOperatorTool extends ElementTool {
      * org.modelio.vcore.smkernel.mapi.MObject)
      */
 
-    private static final Logger logger = Logger.getLogger(AbsolutePastOperatorTool.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(AbsolutePastOperatorTool.class.getName());
 
     @Override
     public MObject createOwnElement(IModelingSession session, MObject element) {
@@ -90,7 +90,7 @@ public class AbsolutePastOperatorTool extends ElementTool {
 	    ((ModelElement) auxiliarElement).addStereotype(DCasePeerModule.MODULE_NAME,
 		    DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
 	} catch (ExtensionNotFoundException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 	;
     }
@@ -104,7 +104,7 @@ public class AbsolutePastOperatorTool extends ElementTool {
     @Override
     protected List<IDiagramGraphic> representAsImage(List<IDiagramGraphic> graph) {
 
-	if ((null != graph) && (!graph.isEmpty()) && (graph.get(0) instanceof IDiagramNode)) {
+	if (null != graph && !graph.isEmpty() && (graph.get(0) instanceof IDiagramNode)) {
 	    IDiagramNode dnode = (IDiagramNode) graph.get(0);
 	    dnode.setProperty("REPMODE", "SIMPLE");
 	    dnode.setProperty("FILLCOLOR", "255,255,255");

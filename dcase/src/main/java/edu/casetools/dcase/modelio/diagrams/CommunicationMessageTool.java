@@ -46,7 +46,7 @@ import edu.casetools.dcase.module.impl.DCaseModule;
  */
 public abstract class CommunicationMessageTool extends DefaultAttachedBoxTool {
 
-    private static final Logger logger = Logger.getLogger(CommunicationMessageTool.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(CommunicationMessageTool.class.getName());
 
     /**
      * Default method to accept the Note when creating it.
@@ -62,7 +62,7 @@ public abstract class CommunicationMessageTool extends DefaultAttachedBoxTool {
      */
     protected boolean defaultAcceptElement(IDiagramHandle representation, IDiagramGraphic targetNode) { // NOSONAR
 	MObject target = targetNode.getElement();
-	return (target instanceof ModelElement) && (target.getStatus().isModifiable());
+	return (target instanceof ModelElement) && target.getStatus().isModifiable();
     }
 
     /*
@@ -92,7 +92,7 @@ public abstract class CommunicationMessageTool extends DefaultAttachedBoxTool {
 	    transaction.commit();
 	    transaction.close();
 	} catch (ExtensionNotFoundException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	} finally {
 	    transaction.close();
 	}
@@ -122,6 +122,7 @@ public abstract class CommunicationMessageTool extends DefaultAttachedBoxTool {
      */
     @Override
     public void actionPerformedInDiagram(IDiagramHandle arg0, Rectangle arg1) {
+
     }
 
 }

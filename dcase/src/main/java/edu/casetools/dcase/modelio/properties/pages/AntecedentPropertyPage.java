@@ -36,7 +36,7 @@ import edu.casetools.dcase.utils.PropertiesUtils;
 
 public class AntecedentPropertyPage implements IPropertyContent {
 
-    private static final Logger logger = Logger.getLogger(AntecedentPropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(AntecedentPropertyPage.class.getName());
 
     private final String propertyName;
     private final String propertyValue;
@@ -61,7 +61,7 @@ public class AntecedentPropertyPage implements IPropertyContent {
 		break;
 	    }
 	} catch (ExtensionNotFoundException | AssertionFailedException e) {
-	    logger.log(Level.SEVERE, e.getMessage(), e);
+	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
 	}
 
     }

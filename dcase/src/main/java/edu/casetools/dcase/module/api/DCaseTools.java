@@ -23,7 +23,7 @@ package edu.casetools.dcase.module.api;
 /**
  * The Class DCaseTools contains the name of the tools.
  */
-public class DCaseTools {
+public final class DCaseTools {
 
     // Elements
     public static final String TOOL_MESSAGE = "ContextInformationMessageTool";
