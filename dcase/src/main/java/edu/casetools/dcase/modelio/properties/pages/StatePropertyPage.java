@@ -75,10 +75,16 @@ public class StatePropertyPage implements IPropertyContent {
 	    if (aux instanceof ModelElement) {
 		boolean isAntecedent = ((ModelElement) aux).isStereotyped(DCasePeerModule.MODULE_NAME,
 			DCaseStereotypes.STEREOTYPE_ANTECEDENT);
+		boolean isConsequent = ((ModelElement) aux).isStereotyped(DCasePeerModule.MODULE_NAME,
+			DCaseStereotypes.STEREOTYPE_CONSEQUENT);
 		if (isAntecedent && currentName.equals(((ModelElement) aux).getTagValue(DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME))) {
 		    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
 			    DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME, value, (ModelElement) aux);
+		} else if (isConsequent && currentName.equals(((ModelElement) aux)
+			.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME))) {
+		    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+			    DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME, value, (ModelElement) aux);
 		}
 	    }
 	}
