@@ -25,11 +25,15 @@ import java.util.List;
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramNode;
 import org.modelio.api.modelio.model.IModelingSession;
+import org.modelio.metamodel.factory.ExtensionNotFoundException;
+import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.modelio.diagrams.ElementTool;
+import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.DiagramUtils;
 
 /**
@@ -47,9 +51,21 @@ public class SpecificationTool extends ElementTool {
     @Override
     public MObject createOwnElement(IModelingSession session, MObject element) {
 	String name = I18nMessageService.getString("Names.Specification");
-
-	return DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
+	MObject specification = DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_SPECIFICATION);
+	return setDefaultValues(specification);
+    }
+
+    private MObject setDefaultValues(MObject specification) {
+	try {
+	    ((ModelElement) specification).putTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_SPECIFICATION_TYPE,
+		    I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.CTL"));
+	} catch (ExtensionNotFoundException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
+	return specification;
     }
 
     /*
