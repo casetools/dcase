@@ -22,7 +22,6 @@ package edu.casetools.dcase.modelio.properties;
 
 import java.util.List;
 
-import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.model.IMetamodelExtensions;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.ITransaction;
@@ -123,7 +122,7 @@ public class PropertyManager {
 	if (element.isStereotyped(RCasePeerModule.MODULE_NAME, RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE)) {
 	    if (!element.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_GENERIC_CONTEXT)) {
 		try {
-		    IModelingSession session = Modelio.getInstance().getModelingSession();
+		    IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 		    ITransaction transaction = session.createTransaction(
 			    I18nMessageService.getString("Info.Session.Create", new String[] { "" }));
 		    element.addStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_GENERIC_CONTEXT);

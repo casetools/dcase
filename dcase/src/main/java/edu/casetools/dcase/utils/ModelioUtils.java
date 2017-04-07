@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.metamodel.mda.Project;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
@@ -32,7 +31,8 @@ import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.GeneralClass;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-// TODO: Auto-generated Javadoc
+import edu.casetools.dcase.module.impl.DCaseModule;
+
 /**
  * The Class ModelioUtils.
  */
@@ -59,7 +59,7 @@ public class ModelioUtils {
      */
     public List<MObject> getAllElements() {
 	ArrayList<MObject> vector = new ArrayList<>();
-	IModelingSession session = Modelio.getInstance().getModelingSession();
+	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 	for (MObject rootObj : session.getModel().getModelRoots()) {
 	    if (((rootObj instanceof GeneralClass) || (rootObj instanceof Project))
 		    && (!rootObj.getName().equals(LOCAL_MODULE))) {
@@ -122,7 +122,7 @@ public class ModelioUtils {
     }
 
     public String getProjectName() {
-	IModelingSession session = Modelio.getInstance().getModelingSession();
+	IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
 	for (MObject rootObj : session.getModel().getModelRoots()) {
 	    if (((rootObj instanceof GeneralClass) || (rootObj instanceof Project))
 		    && (!rootObj.getName().equals(LOCAL_MODULE))) {
