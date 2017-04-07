@@ -34,6 +34,7 @@ public class DCaseModule extends AbstractJavaModule {
 	super(moduleContext);
 	this.session = new DCaseSession(this);
 	this.peerModule = new DCasePeerModule(this, moduleContext.getPeerConfiguration());
+	this.peerModule.init();
 	instance = this;
     }
 

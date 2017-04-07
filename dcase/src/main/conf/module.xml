@@ -256,13 +256,13 @@
                 </Handler>
             </Tool>
             <Tool id="SpecificationSetTool" label="%SpecificationSetTool.label" tooltip="%SpecificationSetTool.tooltip" image="%SpecificationSetTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.test.tools.elements.SpecificationSetTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.spec.tools.elements.SpecificationSetTool">
                     <HParameter name="metaclass" value="Package"/>
                     <HParameter name="stereotype" value="SpecificationSetStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="SpecificationTool" label="%SpecificationTool.label" tooltip="%SpecificationTool.tooltip" image="%SpecificationTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.test.tools.elements.SpecificationTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.spec.tools.elements.SpecificationTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="SpecificationStereotype"/>
                 </Handler>
@@ -293,7 +293,7 @@
             </DiagramType>
             <DiagramType base-diagram="StaticDiagram" stereotype="SpecificationDiagramStereotype">
                 <Palette keepBasePalette="false"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.test.SpecificationDiagramCustomizer"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.spec.SpecificationDiagramCustomizer"/>
             </DiagramType>
         </Diagrams>
         <Views>

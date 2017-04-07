@@ -18,7 +18,7 @@
  * along with Modelio.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package edu.casetools.dcase.modelio.diagrams.test.tools.elements;
+package edu.casetools.dcase.modelio.diagrams.spec.tools.elements;
 
 import java.util.List;
 

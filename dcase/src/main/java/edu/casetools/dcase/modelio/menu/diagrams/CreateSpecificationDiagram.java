@@ -50,7 +50,7 @@ public class CreateSpecificationDiagram extends CreateStaticDiagram {
 	String name = I18nMessageService.getString("Ui.Command.Create.CreateSpecificationDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createDiagram(selectedElements, session, name,
 		DCaseStereotypes.STEREOTYPE_DIAGRAM_SPECIFICATION);
-	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_TEST_DIAGRAM);
+	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_SPECIFICATION_DIAGRAM);
 	return diagram;
     }
 

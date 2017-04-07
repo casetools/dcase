@@ -3,7 +3,9 @@ package edu.casetools.dcase.module.impl;
 import org.modelio.api.module.context.configuration.IModuleAPIConfiguration;
 import org.modelio.vbasic.version.Version;
 
+import edu.casetools.dcase.module.api.DCaseResources;
 import edu.casetools.dcase.module.api.IDCasePeerModule;
+import edu.casetools.rcase.utils.ResourcesManager;
 
 /**
  * Implementation of Module services <br>
@@ -26,6 +28,17 @@ public class DCasePeerModule implements IDCasePeerModule {
 	super();
 	this.module = statModuleModule;
 	this.peerConfiguration = peerConfiguration;
+    }
+
+    public void init() {
+	ResourcesManager.getInstance().setJMDAC(module);
+	initStyles();
+    }
+
+    private void initStyles() {
+	String[] styles = { DCaseResources.STYLE_COMMUNICATION_DIAGRAM, DCaseResources.STYLE_DIAGRAM_M_RULES,
+		DCaseResources.STYLE_INTERACTION_DIAGRAM, DCaseResources.STYLE_SPECIFICATION_DIAGRAM };
+	ResourcesManager.getInstance().registerStyles(styles);
     }
 
     /**
