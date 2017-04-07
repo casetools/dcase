@@ -152,8 +152,8 @@
                 <Image path="%SpecificationDiagramStereotype.image"/>
             </Stereotype>
             <Stereotype name="SpecificationSetStereotype" metaclass="Package" is-hidden="false" label="%SpecificationSetStereotype.label" uid="b05ce34e-a392-4595-a6e9-a62ac73b7ed7">
-                <Icon path="res/icons/requirements_container_16.png"/>
-                <Image path="%RequirementTool.image"/>
+                <Icon path="res/icons/spec_set_16.png"/>
+                <Image path="res/icons/spec_set_16.png"/>
                 <TagTypes/>
             </Stereotype>
             <Stereotype name="SpecificationStereotype" metaclass="Class" is-hidden="false" label="%SpecificationStereotype.label" uid="79f54ab4-7e5c-4936-b794-bbf1629a73e4">
