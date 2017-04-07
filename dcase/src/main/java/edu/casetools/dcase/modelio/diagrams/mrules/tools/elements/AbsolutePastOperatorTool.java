@@ -65,6 +65,23 @@ public class AbsolutePastOperatorTool extends ElementTool {
 	DiagramUtils.getInstance().setFreeProperty((ModelElement) auxiliarElement, DCasePeerModule.MODULE_NAME,
 		DCaseStereotypes.STEREOTYPE_PAST_OPERATOR, DCaseProperties.PROPERTY_PAST_OPERATOR_ID);
 
+	return setDefaultValues(auxiliarElement);
+    }
+
+    private MObject setDefaultValues(MObject auxiliarElement) {
+	try {
+	    ((ModelElement) auxiliarElement).putTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME, I18nMessageService.getString("Ui.None"));
+	    ((ModelElement) auxiliarElement).putTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE,
+		    I18nMessageService.getString("Ui.PastOperator.Property.TagStateValue.False"));
+	    ((ModelElement) auxiliarElement).putTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_PAST_OPERATOR_TYPE,
+		    I18nMessageService.getString("Ui.PastOperator.Property.TagType.Strong"));
+	} catch (ExtensionNotFoundException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
 	return auxiliarElement;
     }
 

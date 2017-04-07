@@ -51,21 +51,21 @@ public class SpecificationTool extends ElementTool {
     @Override
     public MObject createOwnElement(IModelingSession session, MObject element) {
 	String name = I18nMessageService.getString("Names.Specification");
-	MObject specification = DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
+	MObject auxiliarElement = DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_SPECIFICATION);
-	return setDefaultValues(specification);
+	return setDefaultValues(auxiliarElement);
     }
 
-    private MObject setDefaultValues(MObject specification) {
+    private MObject setDefaultValues(MObject auxiliarElement) {
 	try {
-	    ((ModelElement) specification).putTagValue(DCasePeerModule.MODULE_NAME,
+	    ((ModelElement) auxiliarElement).putTagValue(DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_SPECIFICATION_TYPE,
 		    I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.CTL"));
 	} catch (ExtensionNotFoundException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
-	return specification;
+	return auxiliarElement;
     }
 
     /*

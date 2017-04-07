@@ -25,11 +25,15 @@ import java.util.List;
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramNode;
 import org.modelio.api.modelio.model.IModelingSession;
+import org.modelio.metamodel.factory.ExtensionNotFoundException;
+import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.modelio.diagrams.ElementTool;
+import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.DiagramUtils;
 
 /**
@@ -48,8 +52,23 @@ public class AntecedentTool extends ElementTool {
     public MObject createOwnElement(IModelingSession session, MObject element) {
 	String name = I18nMessageService.getString("Names.Antecedent");
 
-	return DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
+	MObject auxiliarElement = DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_ANTECEDENT);
+	return setDefaultValues(auxiliarElement);
+    }
+
+    private MObject setDefaultValues(MObject auxiliarElement) {
+	try {
+	    ((ModelElement) auxiliarElement).putTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME, I18nMessageService.getString("Ui.None"));
+	    ((ModelElement) auxiliarElement).putTagValue(DCasePeerModule.MODULE_NAME,
+		    DCaseProperties.PROPERTY_ANTECEDENT_STATE_VALUE,
+		    I18nMessageService.getString("Ui.Antecedent.Property.TagStateValue.False"));
+	} catch (ExtensionNotFoundException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
+	return auxiliarElement;
     }
 
     /*
