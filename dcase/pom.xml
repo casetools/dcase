@@ -6,7 +6,7 @@
 	<!-- definition -->
 	<groupId>edu.casetools</groupId>
 	<artifactId>dcase</artifactId>
-	<version>0.6.0</version>
+	<version>0.6.1</version>
 
 	<name>DCase</name>
 
@@ -17,22 +17,12 @@
 			<url>http://repository.modelio.org</url>
 		</repository>
 		
-		 <repository>        
-            <id>rcase</id>
-            <url>https://github.com/ualegre/rcase/</url>
-    	</repository>
-    	
-    	<repository>        
-            <id>mreasoner</id>
-            <url>https://github.com/ualegre/mreasoner/</url>
-    	</repository>
-
-		 <repository>        
-            <id>contextmodeller</id>
-            <url>https://github.com/deankramer/ContextModeller</url>
-    	</repository>
-    	
-    	<repository>        
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+		
+		<repository>        
             <id>m2nusmv</id>
             <url>https://github.com/ualegre/m2nusmv/</url>
     	</repository>
@@ -68,13 +58,11 @@
 			<version>3.1</version>
 		</dependency>
 		
-		<dependency>       
-           <groupId>edu.casetools</groupId>
-           <artifactId>rcase</artifactId>
-           <version>0.2.5</version>
-           <scope>compile</scope>
-    	</dependency>
-    	
+		<dependency>
+		    <groupId>com.github.ualegre</groupId>
+		    <artifactId>rcase</artifactId>
+		    <version>v0.2.6</version>
+		</dependency>   	
     	
 		<dependency>
 		    <groupId>com.squareup</groupId>
@@ -85,16 +73,9 @@
     	<dependency>
 		    <groupId>edu.casetools.dcase</groupId>
 		    <artifactId>m2nusmv</artifactId>
-		    <version>0.2.2</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>uk.ac.mdx.ie</groupId>
-			<artifactId>contextmodeller</artifactId>
-			<version>0.2.0</version>
+		    <version>0.2.3</version>
 		</dependency>
 			
-		
 	</dependencies>
 
 

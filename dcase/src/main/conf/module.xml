@@ -3,11 +3,11 @@
     <ClassPath>
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
         <PathEntry path="lib/jdom2-2.0.6.jar"/>
-        <PathEntry path="lib/commons-lang3-3.1.jar"/>
-        <PathEntry path="lib/rcase-0.2.5.jar"/>
-        <PathEntry path="lib/javapoet-1.8.0.jar"/>
-        <PathEntry path="lib/m2nusmv-0.2.2.jar"/>
         <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
+        <PathEntry path="lib/commons-lang3-3.1.jar"/>
+        <PathEntry path="lib/rcase-v0.2.6.jar"/>
+        <PathEntry path="lib/javapoet-1.8.0.jar"/>
+        <PathEntry path="lib/m2nusmv-0.2.3.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">

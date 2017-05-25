@@ -164,7 +164,7 @@ public class MdData {
 	    bop.setOperatorName("bop" + ((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_PAST_OPERATOR_ID));
 	    bop.setStateName(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME));
+		    DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME).replaceAll("\\s+","_"));
 	    bop.setStatus(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE));
 	    addBop(operator, bop);
@@ -194,7 +194,7 @@ public class MdData {
 	bop.setUppBound(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_PAST_OPERATOR_UPPBOUND));
 	bop.setStateName(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME));
+		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME).replaceAll("\\s+","_"));
 	bop.setStatus(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE));
 	return bop;
@@ -227,7 +227,7 @@ public class MdData {
 	bop.setLowBound(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_PAST_OPERATOR_BOUND));
 	bop.setStateName(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
-		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME));
+		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME).replaceAll("\\s+","_"));
 	bop.setStatus(((ModelElement) operator).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE));
 	return bop;
@@ -311,7 +311,7 @@ public class MdData {
     private RuleElement getRuleElement(MObject element, String name, String value) {
 	RuleElement ruleElement = new RuleElement();
 
-	ruleElement.setName(((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME, name));
+	ruleElement.setName(((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME, name).replaceAll("\\s+","_"));
 	ruleElement.setStatus(((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME, value));
 
 	return ruleElement;
@@ -377,7 +377,7 @@ public class MdData {
 	s.setInitialValue(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_STATE_INITIAL_VALUE));
 	s.setIndepedence(independence);
-	s.setName(state.getName());
+	s.setName(state.getName().replaceAll("\\s+","_"));
 	return s;
     }
 

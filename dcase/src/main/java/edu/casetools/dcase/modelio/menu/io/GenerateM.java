@@ -45,7 +45,7 @@ public class GenerateM extends DefaultModuleCommandHandler {
 
     private void generateMCode() {
 	try {
-	    String filename = ModelioUtils.getInstance().getProjectName() + ".mtpl";
+	    String filename = ModelioUtils.getInstance().getProjectName().replaceAll("\\s+","_") + ".mtpl";
 	    FileDialog dialog = IOUtils.getInstance().getFileDialog(filename, new String[] { "*.mtpl", "*.txt" },
 		    SWT.SAVE);
 	    String file = dialog.open();

@@ -16,10 +16,6 @@ public class MGenerator {
     private BufferedWriter writer;
     private MData data;
 
-    public void generateMCode() {
-
-    }
-
     private void initialiseWriter(String file) {
 	try {
 	    filestream = new FileWriter(file);

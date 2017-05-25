@@ -73,7 +73,7 @@ public class GenerateNuSMV extends DefaultModuleCommandHandler {
     }
 
     private void generateNuSMVModel(MObject element) {
-	FileDialog dialog = IOUtils.getInstance().getFileDialog(((ModelElement) element).getName() + "_NuSMV.smv",
+	FileDialog dialog = IOUtils.getInstance().getFileDialog(((ModelElement) element).getName().replaceAll("\\s+","_") + "_NuSMV.smv",
 		new String[] { "*.txt", "*.smv", "*.*" }, SWT.SAVE);
 	String fileLocation = dialog.open();
 	int maxExecutionTime = getMaxExecutionTime(element);
