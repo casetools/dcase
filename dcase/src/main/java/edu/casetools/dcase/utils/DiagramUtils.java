@@ -30,7 +30,7 @@ import org.modelio.api.modelio.model.IUmlModel;
 import org.modelio.metamodel.diagrams.CommunicationDiagram;
 import org.modelio.metamodel.diagrams.SequenceDiagram;
 import org.modelio.metamodel.diagrams.StaticDiagram;
-import org.modelio.metamodel.factory.ExtensionNotFoundException;
+import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationChannel;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationInteraction;
 import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationMessage;
@@ -39,6 +39,7 @@ import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Note;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
+import org.modelio.metamodel.uml.infrastructure.UmlModelElement;
 import org.modelio.metamodel.uml.statik.Class;
 import org.modelio.metamodel.uml.statik.Collaboration;
 import org.modelio.metamodel.uml.statik.NameSpace;
@@ -327,7 +328,7 @@ public class DiagramUtils {
     public CommunicationMessage createCommunicationMessage(IUmlModel model, ModelElement owner, String stereotypeName) {
 	CommunicationMessage createdElement = model.createCommunicationMessage();
 	createdElement.setChannel((CommunicationChannel) owner);
-	createdElement.setOwnerTemplateParameter(owner.getOwnerTemplateParameter());
+	createdElement.setOwnerTemplateParameter(((UmlModelElement) owner).getOwnerTemplateParameter());
 	try {
 	    createdElement.addStereotype(DCasePeerModule.MODULE_NAME, stereotypeName);
 	} catch (ExtensionNotFoundException e) {
