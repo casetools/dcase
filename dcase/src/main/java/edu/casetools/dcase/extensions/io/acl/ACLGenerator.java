@@ -25,9 +25,10 @@ import com.squareup.javapoet.TypeSpec;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.ModelioUtils;
-import edu.casetools.dcase.utils.tables.TableUtils;
+import edu.casetools.rcase.utils.ModelioUtils;
+import edu.casetools.rcase.utils.tables.TableUtils;
 
 public class ACLGenerator {
 
@@ -36,8 +37,8 @@ public class ACLGenerator {
     public void generateACLTemplates(String folder) {
 
 	List<MObject> contextAttributeList = new ArrayList<>();
-	contextAttributeList = TableUtils.getInstance().getAllElementsStereotypedAs(contextAttributeList,
-		DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ACL_CONTEXT);
+	contextAttributeList = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
+		DCasePeerModule.MODULE_NAME, contextAttributeList, DCaseStereotypes.STEREOTYPE_ACL_CONTEXT);
 	for (MObject contextAttribute : contextAttributeList) {
 	    String type = ((ModelElement) contextAttribute).getTagValue(DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_CONTEXT_RESPONSIBILITY);
@@ -60,7 +61,7 @@ public class ACLGenerator {
     private void generateReceiver(String folder) {
 	ClassName contextReceiver = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "ContextReceiver");
 
-	String projectName = ModelioUtils.getInstance().getProjectName().replaceAll("\\s", "");
+	String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
 
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Date date = new Date();
@@ -123,7 +124,7 @@ public class ACLGenerator {
     private void generatePullObserver(MObject contextAttribute, String folder, String frequency) {
 	ClassName pullObserver = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "PullObserver");
 	ClassName androidContext = ClassName.get("android.content", "Context");
-	String projectName = ModelioUtils.getInstance().getProjectName().replaceAll("\\s", "");
+	String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
 	String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
 
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -184,7 +185,7 @@ public class ACLGenerator {
 
 	ClassName locationContext = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "LocationContext");
 	ClassName androidContext = ClassName.get("android.content", "Context");
-	String projectName = ModelioUtils.getInstance().getProjectName().replaceAll("\\s", "");
+	String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
 	String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
 
 	MethodSpec constructor = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
@@ -221,7 +222,7 @@ public class ACLGenerator {
 
 	ClassName sensorContext = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "SensorContext");
 	ClassName androidContext = ClassName.get("android.content", "Context");
-	String projectName = ModelioUtils.getInstance().getProjectName().replaceAll("\\s", "");
+	String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
 	String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
 
 	MethodSpec constructor = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
@@ -265,7 +266,7 @@ public class ACLGenerator {
 
 	ClassName bluetoothContext = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "BluetoothLEDevice");
 	ClassName androidContext = ClassName.get("android.content", "Context");
-	String projectName = ModelioUtils.getInstance().getProjectName().replaceAll("\\s", "");
+	String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
 	String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
 
 	MethodSpec constructor = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
@@ -310,7 +311,7 @@ public class ACLGenerator {
 
 	ClassName broadcastContext = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "BroadcastContext");
 	ClassName androidContext = ClassName.get("android.content", "Context");
-	String projectName = ModelioUtils.getInstance().getProjectName().replaceAll("\\s", "");
+	String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
 	String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
 
 	MethodSpec constructor = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
@@ -354,7 +355,7 @@ public class ACLGenerator {
 
 	ClassName pushObserver = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "PushObserver");
 	ClassName androidContext = ClassName.get("android.content", "Context");
-	String projectName = ModelioUtils.getInstance().getProjectName().replaceAll("\\s", "");
+	String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
 	String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
 
 	MethodSpec constructor = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)

@@ -35,8 +35,10 @@ import edu.casetools.dcase.modelio.diagrams.ElementTool;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.DiagramUtils;
+import edu.casetools.rcase.utils.ElementUtils;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 /**
  * The Class RequirementTool is the tool for creating a Requirement.
@@ -57,12 +59,12 @@ public class ImmediatePastOperatorTool extends ElementTool {
     public MObject createOwnElement(IModelingSession session, MObject element) {
 	String name = I18nMessageService.getString("Names.Immediate");
 
-	MObject auxiliarElement = DiagramUtils.getInstance().createClass(adaptElement(element), session, name,
+	MObject auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_IMMEDIATE_PAST_OPERATOR);
 
 	addPastOperatorStereotype(auxiliarElement);
 
-	DiagramUtils.getInstance().setFreeProperty((ModelElement) auxiliarElement, DCasePeerModule.MODULE_NAME,
+	PropertiesUtils.getInstance().setFreeProperty(DCaseModule.getInstance(), (ModelElement) auxiliarElement, DCasePeerModule.MODULE_NAME,
 		DCaseStereotypes.STEREOTYPE_PAST_OPERATOR, DCaseProperties.PROPERTY_PAST_OPERATOR_ID);
 
 	return setDefaultValues(auxiliarElement);

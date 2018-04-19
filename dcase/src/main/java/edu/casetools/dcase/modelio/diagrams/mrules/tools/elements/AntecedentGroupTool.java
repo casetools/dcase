@@ -30,8 +30,8 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 import edu.casetools.dcase.modelio.diagrams.ElementTool;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
-import edu.casetools.dcase.utils.DiagramUtils;
-
+import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.rcase.utils.ElementUtils;
 /**
  * The Class RequirementTool is the tool for creating a Requirement.
  */
@@ -48,7 +48,7 @@ public class AntecedentGroupTool extends ElementTool {
     public MObject createOwnElement(IModelingSession session, MObject element) {
 	String name = I18nMessageService.getString("Names.AntecedentGroup");
 
-	return DiagramUtils.getInstance().createPackage(adaptElement(element), session, name,
+	return ElementUtils.getInstance().createPackage(DCaseModule.getInstance(), adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP);
     }
 

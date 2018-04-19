@@ -27,12 +27,13 @@ import org.eclipse.core.runtime.AssertionFailedException;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
-import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.modelio.properties.IPropertyContent;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class PastOperatorPropertyPage implements IPropertyContent {
 
@@ -43,15 +44,15 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 	try {
 	    switch (row) {
 	    case 2:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME, value, element);
 		break;
 	    case 3:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE, value, element);
 		break;
 	    case 4:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_TYPE, value, element);
 		break;
 	    default:
@@ -75,7 +76,7 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 	// TagStateName
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME);
 	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagStateName"), property,
-		PropertiesUtils.getInstance().getAllElements(DCasePeerModule.MODULE_NAME,
+		PropertiesUtils.getInstance().getAllElements(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseStereotypes.STEREOTYPE_STATE, "Ui.None"));
 
 	// TagStateValue

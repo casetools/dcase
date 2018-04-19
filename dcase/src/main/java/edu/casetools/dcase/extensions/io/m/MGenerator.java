@@ -8,7 +8,8 @@ import edu.casetools.dcase.m2nusmv.data.MData;
 import edu.casetools.dcase.m2nusmv.data.elements.BoundedOperator;
 import edu.casetools.dcase.m2nusmv.data.elements.Rule;
 import edu.casetools.dcase.m2nusmv.data.elements.State;
-import edu.casetools.dcase.utils.ModelioUtils;
+import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.rcase.utils.ModelioUtils;
 
 public class MGenerator {
 
@@ -165,7 +166,7 @@ public class MGenerator {
     }
 
     private void generateCommentHeader() throws IOException {
-	String projectName = ModelioUtils.getInstance().getProjectName();
+	String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance());
 	writer.append(
 		"/*************************************************************\r\n*\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t *\r\n* This file has been automatically generated as part of the  *\r\n* DCASE module for the project "
 			+ projectName

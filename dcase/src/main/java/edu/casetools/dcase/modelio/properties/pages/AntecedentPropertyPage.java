@@ -28,11 +28,12 @@ import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
-import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.modelio.properties.IPropertyContent;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class AntecedentPropertyPage implements IPropertyContent {
 
@@ -51,7 +52,7 @@ public class AntecedentPropertyPage implements IPropertyContent {
 	try {
 	    switch (row) {
 	    case 1:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME, propertyName, value,
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, propertyName, value,
 			element);
 		break;
 	    case 2:
@@ -73,8 +74,8 @@ public class AntecedentPropertyPage implements IPropertyContent {
 	// TagStateName
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyName);
 	table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateName"), property,
-		PropertiesUtils.getInstance().getAllElements(DCasePeerModule.MODULE_NAME,
-			DCaseStereotypes.STEREOTYPE_STATE, "Ui.None"));
+		PropertiesUtils.getInstance().getAllElements(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
+			DCaseStereotypes.STEREOTYPE_STATE, I18nMessageService.getString("Ui.None")));
 
 	// TagStateValue
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyValue);

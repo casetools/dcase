@@ -21,20 +21,17 @@
 package edu.casetools.dcase.extensions.tables.contextmodel.view;
 
 import java.awt.FontMetrics;
-import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
-import edu.casetools.dcase.extensions.tables.TablePanel;
 import edu.casetools.dcase.extensions.tables.contextmodel.control.StringTableModelListener;
-import edu.casetools.dcase.extensions.tables.contextmodel.model.ContextModelComboBoxTableEditor;
 import edu.casetools.dcase.extensions.tables.contextmodel.model.ContextModelStringTableEditor;
 import edu.casetools.dcase.extensions.tables.contextmodel.model.ContextModelTableData;
 import edu.casetools.dcase.extensions.tables.contextmodel.model.ContextModelTableModel;
 import edu.casetools.dcase.extensions.tables.headers.ColumnHeaderRenderer;
-import edu.casetools.dcase.utils.tables.ModelioTableUtils;
+import edu.casetools.rcase.extensions.tables.TablePanel;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -100,7 +97,7 @@ public class ContextModelTablePanel extends TablePanel {
     }
 
     private void getContextModelTableEditor(TableColumn tableColumn, int column) {
-	List<String> possibleValues;
+	//List<String> possibleValues;
 	switch (column) {
 	case 0:
 	    setStringEditor(tableColumn);
@@ -110,13 +107,13 @@ public class ContextModelTablePanel extends TablePanel {
 	    break;
 	case 2:
 	    // Responsibility
-	    possibleValues = ModelioTableUtils.getInstance().getResponsibilityPossibleValues();
-	    setComboBoxEditor(tableColumn, possibleValues);
+	   // possibleValues = ModelioTableUtils.getInstance().getResponsibilityPossibleValues();
+	    //setComboBoxEditor(tableColumn, possibleValues);
 	    break;
 	case 3:
 	    // Regularity
-	    possibleValues = ModelioTableUtils.getInstance().getRegularityPossibleValues();
-	    setComboBoxEditor(tableColumn, possibleValues);
+	    //possibleValues = ModelioTableUtils.getInstance().getRegularityPossibleValues();
+	    //setComboBoxEditor(tableColumn, possibleValues);
 	    break;
 	case 4:
 	    // Creation Process
@@ -124,8 +121,8 @@ public class ContextModelTablePanel extends TablePanel {
 	    break;
 	case 5:
 	    // Synchronicity
-	    possibleValues = ModelioTableUtils.getInstance().getSynchronicityPossibleValues();
-	    setComboBoxEditor(tableColumn, possibleValues);
+	    //possibleValues = ModelioTableUtils.getInstance().getSynchronicityPossibleValues();
+	    //setComboBoxEditor(tableColumn, possibleValues);
 	    break;
 	default:
 	    break;
@@ -138,11 +135,11 @@ public class ContextModelTablePanel extends TablePanel {
 	tableColumn.setCellEditor(comboBoxEditor);
     }
 
-    private void setComboBoxEditor(TableColumn tableColumn, List<String> possibleValues) {
-	ContextModelComboBoxTableEditor comboBoxEditor;
-	comboBoxEditor = new ContextModelComboBoxTableEditor(possibleValues, this.tableModel);
-	tableColumn.setCellEditor(comboBoxEditor);
-    }
+//    private void setComboBoxEditor(TableColumn tableColumn, List<String> possibleValues) {
+//	ContextModelComboBoxTableEditor comboBoxEditor;
+//	comboBoxEditor = new ContextModelComboBoxTableEditor(possibleValues, this.tableModel);
+//	tableColumn.setCellEditor(comboBoxEditor);
+//    }
 
     /**
      * Refresh.

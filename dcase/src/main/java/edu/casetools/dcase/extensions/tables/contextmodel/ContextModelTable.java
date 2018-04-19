@@ -22,11 +22,11 @@ package edu.casetools.dcase.extensions.tables.contextmodel;
 
 import java.awt.BorderLayout;
 
-import edu.casetools.dcase.extensions.tables.TableWindow;
 import edu.casetools.dcase.extensions.tables.contextmodel.model.ContextModelTableData;
 import edu.casetools.dcase.extensions.tables.contextmodel.view.ContextModelMenu;
 import edu.casetools.dcase.extensions.tables.contextmodel.view.ContextModelTablePanel;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.rcase.extensions.tables.TableWindow;
 
 // TODO: Auto-generated Javadoc
 /**

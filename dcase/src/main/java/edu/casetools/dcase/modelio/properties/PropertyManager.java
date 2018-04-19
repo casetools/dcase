@@ -47,9 +47,11 @@ import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.modelio.properties.CommonPropertyPage;
+import edu.casetools.rcase.modelio.properties.IPropertyContent;
 import edu.casetools.rcase.module.api.RCaseStereotypes;
 import edu.casetools.rcase.module.impl.RCasePeerModule;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 /**
  * The Class PropertyManager manages all the property pages.
@@ -113,7 +115,7 @@ public class PropertyManager {
     private void init(ModelElement element) {
 	this.propertyPage = null;
 	extensions = DCaseModule.getInstance().getModuleContext().getModelingSession().getMetamodelExtensions();
-	sterList = PropertiesUtils.getInstance().computePropertyList(element);
+	sterList = PropertiesUtils.getInstance().computePropertyList(DCasePeerModule.MODULE_NAME, element);
 	updateStereotypes(element);
     }
 

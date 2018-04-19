@@ -23,8 +23,8 @@ import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.ModelioUtils;
-import edu.casetools.dcase.utils.tables.TableUtils;
+import edu.casetools.rcase.utils.ModelioUtils;
+import edu.casetools.rcase.utils.tables.TableUtils;
 
 public class MdData {
 
@@ -54,34 +54,34 @@ public class MdData {
 
     public void loadDiagramElements() {
 
-	states = TableUtils.getInstance().getAllElementsStereotypedAs(states, DCasePeerModule.MODULE_NAME,
+	states = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, states, 
 		DCaseStereotypes.STEREOTYPE_STATE);
 	updateIDs(states, DCaseProperties.PROPERTY_STATE_ID);
 
-	bops = TableUtils.getInstance().getAllElementsStereotypedAs(bops, DCasePeerModule.MODULE_NAME,
+	bops = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, bops, 
 		DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
 	updateIDs(bops, DCaseProperties.PROPERTY_PAST_OPERATOR_ID);
 
-	strs = TableUtils.getInstance().getAllElementsStereotypedAs(strs, DCasePeerModule.MODULE_NAME,
+	strs = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, strs, 
 		DCaseStereotypes.STEREOTYPE_SAME_TIME);
 	updateIDs(strs, DCaseProperties.PROPERTY_STR_ID);
 
-	ntrs = TableUtils.getInstance().getAllElementsStereotypedAs(ntrs, DCasePeerModule.MODULE_NAME,
+	ntrs = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, ntrs, 
 		DCaseStereotypes.STEREOTYPE_NEXT_TIME);
 	updateIDs(ntrs, DCaseProperties.PROPERTY_NTR_ID);
 
-	events = TableUtils.getInstance().getAllElementsStereotypedAs(events, DCasePeerModule.MODULE_NAME,
+	events = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, events, 
 		DCaseStereotypes.STEREOTYPE_EVENT);
 	updateIDs(events, DCaseProperties.PROPERTY_EVENT_ID);
 
-	antecedentGroups = TableUtils.getInstance().getAllElementsStereotypedAs(antecedentGroups,
-		DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP);
+	antecedentGroups = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, 
+			antecedentGroups, DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP);
 
     }
 
     public void loadSpecifications() {
 	List<MObject> diagramElements = new ArrayList<>();
-	diagramElements = ModelioUtils.getInstance().getAllElements();
+	diagramElements = ModelioUtils.getInstance().getAllElements(DCaseModule.getInstance());
 
 	for (MObject diagramElement : diagramElements) {
 

@@ -25,9 +25,11 @@ import org.modelio.api.modelio.diagram.IDiagramHandle;
 import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
-import edu.casetools.dcase.modelio.diagrams.RelationTool;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
-import edu.casetools.dcase.utils.DiagramUtils;
+import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.rcase.modelio.diagrams.RelationTool;
+import edu.casetools.rcase.utils.ElementUtils;
 
 /**
  * The Class CopyTool is the tool for creating a Copy relation.
@@ -44,7 +46,7 @@ public class NextTimeTool extends RelationTool {
      */
     @Override
     public boolean acceptFirstElement(IDiagramHandle representation, IDiagramGraphic target) {
-	return acceptElement(target, DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP);
+	return acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP);
     }
 
     /*
@@ -58,7 +60,7 @@ public class NextTimeTool extends RelationTool {
      */
     @Override
     public boolean acceptSecondElement(IDiagramHandle representation, IDiagramGraphic source, IDiagramGraphic target) {
-	return acceptElement(target, DCaseStereotypes.STEREOTYPE_CONSEQUENT);
+	return acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_CONSEQUENT);
     }
 
     /*
@@ -70,7 +72,7 @@ public class NextTimeTool extends RelationTool {
      */
     @Override
     public Dependency createDependency(ModelElement originElement, ModelElement targetElement) {
-	return DiagramUtils.getInstance().createDependency(originElement, targetElement,
+	return ElementUtils.getInstance().createDependency(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, originElement, targetElement,
 		DCaseStereotypes.STEREOTYPE_NEXT_TIME);
     }
 

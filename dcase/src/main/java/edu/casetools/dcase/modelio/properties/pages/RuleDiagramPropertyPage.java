@@ -29,11 +29,11 @@ import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
-import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.modelio.properties.IPropertyContent;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class RuleDiagramPropertyPage implements IPropertyContent {
 

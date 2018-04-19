@@ -14,9 +14,10 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 import edu.casetools.dcase.extensions.io.m.MGenerator;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.IOUtils;
-import edu.casetools.dcase.utils.ModelioUtils;
+import edu.casetools.rcase.utils.ModelioUtils;
 
 public class GenerateM extends DefaultModuleCommandHandler {
 
@@ -45,7 +46,7 @@ public class GenerateM extends DefaultModuleCommandHandler {
 
     private void generateMCode() {
 	try {
-	    String filename = ModelioUtils.getInstance().getProjectName().replaceAll("\\s+","_") + ".mtpl";
+	    String filename = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s+","_") + ".mtpl";
 	    FileDialog dialog = IOUtils.getInstance().getFileDialog(filename, new String[] { "*.mtpl", "*.txt" },
 		    SWT.SAVE);
 	    String file = dialog.open();

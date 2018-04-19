@@ -30,7 +30,9 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 import edu.casetools.dcase.modelio.menu.CreateBehaviourDiagram;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
-import edu.casetools.dcase.utils.DiagramUtils;
+import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.rcase.utils.DiagramUtils;
 
 /**
  * The Class CreateRequirementsDiagram creates a Requirements Diagram.
@@ -46,7 +48,7 @@ public class CreateCommunicationDiagram extends CreateBehaviourDiagram {
     @Override
     protected CommunicationDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 	String name = I18nMessageService.getString("Ui.Command.CreateCommunicationDiagram.Label");
-	return DiagramUtils.getInstance().createAndAddCommunicationDiagram(selectedElements, session, name,
+	return DiagramUtils.getInstance().createAndAddCommunicationDiagram(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, selectedElements, session, name,
 		DCaseStereotypes.STEREOTYPE_DIAGRAM_COMMUNICATION);
     }
 

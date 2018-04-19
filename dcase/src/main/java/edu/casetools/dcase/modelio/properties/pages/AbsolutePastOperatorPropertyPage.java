@@ -29,8 +29,9 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class AbsolutePastOperatorPropertyPage extends PastOperatorPropertyPage {
 
@@ -42,11 +43,11 @@ public class AbsolutePastOperatorPropertyPage extends PastOperatorPropertyPage {
 	try {
 	    switch (row) {
 	    case 5:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_LOWBOUND, value, element);
 		break;
 	    case 6:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_UPPBOUND, value, element);
 		break;
 	    default:

@@ -19,7 +19,7 @@ import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.dcase.utils.IOUtils;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class GenerateNuSMV extends DefaultModuleCommandHandler {
 

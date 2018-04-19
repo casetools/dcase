@@ -31,7 +31,11 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
 import edu.casetools.dcase.modelio.diagrams.CommunicationMessageTool;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
-import edu.casetools.dcase.utils.DiagramUtils;
+import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.rcase.module.i18n.I18nMessageService;
+import edu.casetools.rcase.utils.DiagramUtils;
+import edu.casetools.rcase.utils.ElementUtils;
 
 /**
  * The Class CommunicationMessageTool is the tool for creating a Context Note.
@@ -61,8 +65,8 @@ public class ContextInformationMessageTool extends CommunicationMessageTool {
     @Override
     protected CommunicationMessage createOwnCommunicationMessage(IUmlModel model, ModelElement owner)
 	    throws ExtensionNotFoundException {
-	CommunicationMessage message = DiagramUtils.getInstance().createCommunicationMessage(model, owner,
-		DCaseStereotypes.STEREOTYPE_MESSAGE);
+	CommunicationMessage message = DiagramUtils.getInstance().createCommunicationMessage(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, model, owner,
+		DCaseStereotypes.STEREOTYPE_MESSAGE, I18nMessageService.getString("Ui.Command.ContextInformationMessage.Label"));
 	createContextMessageDependencies(owner, message);
 	return message;
     }
@@ -71,10 +75,10 @@ public class ContextInformationMessageTool extends CommunicationMessageTool {
 	if (owner instanceof CommunicationChannel) {
 	    CommunicationChannel channel = (CommunicationChannel) owner;
 	    CommunicationNode origin = channel.getStart();
-	    DiagramUtils.getInstance().createDependency(origin, message,
+	    ElementUtils.getInstance().createDependency(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, origin, message,
 		    DCaseStereotypes.STEREOTYPE_DEPENDENCY_PRODUCE);
 	    CommunicationNode target = channel.getEnd();
-	    DiagramUtils.getInstance().createDependency(target, message,
+	    ElementUtils.getInstance().createDependency(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, target, message,
 		    DCaseStereotypes.STEREOTYPE_DEPENDENCY_CONSUME);
 	}
     }

@@ -34,7 +34,7 @@ import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class StringTableModelListener implements TableModelListener {
 
@@ -83,7 +83,7 @@ public class StringTableModelListener implements TableModelListener {
 	try {
 	    transaction = session.createTransaction(
 		    I18nMessageService.getString("Info.Session.Create", new String[] { "Update Property" }));
-	    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME, tagName, value,
+	    PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, tagName, value,
 		    (ModelElement) element);
 	    transaction.commit();
 	    transaction.close();

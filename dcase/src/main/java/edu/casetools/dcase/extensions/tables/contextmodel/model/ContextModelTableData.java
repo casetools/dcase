@@ -24,18 +24,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.tables.headers.DataTypes;
-import edu.casetools.dcase.extensions.tables.headers.TableHeaderData;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.ModelioUtils;
-import edu.casetools.dcase.utils.tables.ModelioTableUtils;
-import edu.casetools.dcase.utils.tables.TableUtils;
+import edu.casetools.rcase.extensions.tables.headers.DataTypes;
+import edu.casetools.rcase.extensions.tables.headers.TableHeaderData;
+import edu.casetools.rcase.utils.tables.TableUtils;
 
 /**
  * The Class DependencyTableData.
@@ -142,10 +140,10 @@ public class ContextModelTableData implements Serializable {
     }
 
     private void updateScope() {
-	MObject element = ModelioUtils.getInstance().getElementByName(scope);
+	//MObject element = ModelioUtils.getInstance().getElementByName(DCaseModule.getInstance(), scope);
 	ArrayList<MObject> messages = new ArrayList<>();
-	messages = (ArrayList<MObject>) ModelioTableUtils.getInstance().getMessagesFromComInteraction(messages,
-		(ModelElement) element);
+	//messages = (ArrayList<MObject>) ModelioTableUtils.getInstance().getMessagesFromComInteraction(messages,
+	//	(ModelElement) element);
 	dataList = new ArrayList<>();
 	setContextAttributes(messages);
     }
@@ -160,8 +158,8 @@ public class ContextModelTableData implements Serializable {
     private void updateAll() {
 	dataList = new ArrayList<>();
 	ArrayList<MObject> list = new ArrayList<>();
-	list = (ArrayList<MObject>) TableUtils.getInstance().getAllElementsStereotypedAs(list,
-		DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE);
+	list = (ArrayList<MObject>) TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, list,
+		 DCaseStereotypes.STEREOTYPE_MESSAGE);
 	setContextAttributes(list);
     }
 

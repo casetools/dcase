@@ -7,7 +7,7 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class ContextModelTableRow {
     ModelElement element;

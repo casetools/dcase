@@ -22,7 +22,6 @@ package edu.casetools.dcase.extensions.tables.contextmodel.view;
 
 import java.awt.FlowLayout;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
@@ -32,14 +31,10 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationInteraction;
-import org.modelio.vcore.smkernel.mapi.MObject;
-
 import edu.casetools.dcase.extensions.tables.contextmodel.ContextModelTable;
 import edu.casetools.dcase.extensions.tables.contextmodel.control.ComboBoxListener;
 import edu.casetools.dcase.extensions.tables.contextmodel.control.ContextModelMenuListener;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
-import edu.casetools.dcase.utils.tables.TableUtils;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -110,14 +105,14 @@ public class ContextModelMenu extends JPanel {
      */
     public String refresh() {
 	List<String> content = new ArrayList<>();
-	Collection<CommunicationInteraction> communicationInteractions;
+	//Collection<CommunicationInteraction> communicationInteractions;
 	content.add(I18nMessageService.getString("Menu.ContextModel.Combobox.All"));
-	communicationInteractions = TableUtils.getInstance().getCommunicationInteractions();
-	if (null != communicationInteractions) {
-	    for (MObject element : communicationInteractions) {
-		content.add(element.getName());
-	    }
-	}
+	//communicationInteractions = TableUtils.getInstance().getCommunicationInteractions(DCasePeerModule.MODULE_NAME);
+//	if (null != communicationInteractions) {
+//	    for (MObject element : communicationInteractions) {
+//		content.add(element.getName());
+//	    }
+//	}
 	return refreshComboBox(content);
 
     }

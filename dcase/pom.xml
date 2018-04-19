@@ -23,6 +23,11 @@
 		</repository>
 		
 		<repository>        
+            <id>rcase</id>
+            <url>https://github.com/ualegre/rcase/</url>
+    	</repository>
+		
+		<repository>        
             <id>m2nusmv</id>
             <url>https://github.com/ualegre/m2nusmv/</url>
     	</repository>
@@ -59,9 +64,9 @@
 		</dependency>
 		
 		<dependency>
-		    <groupId>com.github.ualegre</groupId>
+		    <groupId>edu.casetools</groupId>
 		    <artifactId>rcase</artifactId>
-		    <version>v0.4.0</version>
+		    <version>0.4.3</version>
 		</dependency>   	
     	
 		<dependency>

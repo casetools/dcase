@@ -27,11 +27,12 @@ import org.modelio.api.module.IModule;
 import org.modelio.metamodel.diagrams.StaticDiagram;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.modelio.menu.CreateStaticDiagram;
 import edu.casetools.dcase.module.api.DCaseResources;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
-import edu.casetools.dcase.utils.DiagramUtils;
+import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.rcase.modelio.menu.CreateStaticDiagram;
+import edu.casetools.rcase.utils.DiagramUtils;
 
 /**
  * The Class CreateRequirementsDiagram creates a Requirements Diagram.
@@ -48,7 +49,7 @@ public class CreateMRulesDiagram extends CreateStaticDiagram {
     protected StaticDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 
 	String name = I18nMessageService.getString("Ui.Command.CreateMRulesDiagram.Label");
-	StaticDiagram diagram = DiagramUtils.getInstance().createDiagram(selectedElements, session, name,
+	StaticDiagram diagram = DiagramUtils.getInstance().createStaticDiagram(DCaseModule.getInstance(), selectedElements, session, name,
 		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES);
 	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_M_RULES);
 	return diagram;

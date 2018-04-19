@@ -29,8 +29,9 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class ImmediatePastOperatorPropertyPage extends PastOperatorPropertyPage {
 
@@ -41,7 +42,7 @@ public class ImmediatePastOperatorPropertyPage extends PastOperatorPropertyPage 
 	super.changeProperty(element, row, value);
 	try {
 	    if (row == 5)
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_BOUND, value, element);
 
 	} catch (AssertionFailedException e) {

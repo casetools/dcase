@@ -25,8 +25,8 @@ import java.util.List;
 
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.tables.headers.RowHeadersTableModel;
-import edu.casetools.dcase.utils.tables.TableUtils;
+import edu.casetools.rcase.extensions.tables.headers.RowHeadersTableModel;
+import edu.casetools.rcase.utils.tables.TableUtils;
 
 // TODO: Auto-generated Javadoc
 /**

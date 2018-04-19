@@ -28,13 +28,15 @@ import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
-import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.modelio.properties.IPropertyContent;
 import edu.casetools.rcase.module.api.RCaseStereotypes;
+import edu.casetools.rcase.module.impl.RCaseModule;
 import edu.casetools.rcase.module.impl.RCasePeerModule;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class ContextInformationMessagePropertyPage implements IPropertyContent {
 
@@ -48,7 +50,7 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 		element.setName(value);
 		break;
 	    case 2:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_MESSAGE_ID, value, element);
 		break;
 	    case 3:
@@ -79,9 +81,9 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
     }
 
     private void refreshLinks(ModelElement element, String value) {
-	PropertiesUtils.getInstance().removeOldTracedContextAttributes(element);
+	PropertiesUtils.getInstance().removeOldTracedElements(RCasePeerModule.MODULE_NAME, RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE, element);
 	if (!value.equals(I18nMessageService.getString("Ui.None")))
-	    PropertiesUtils.getInstance().traceElementToContextAttribute(element, value);
+	    PropertiesUtils.getInstance().traceElement(RCaseModule.getInstance(), element, value);
     }
 
     @Override
@@ -129,8 +131,8 @@ public class ContextInformationMessagePropertyPage implements IPropertyContent {
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_MESSAGE_SITUATIONAL_PARAMETER);
 	table.addProperty(I18nMessageService.getString("Ui.ContextInformationMessage.Property.TagContextAttribute"),
-		property, PropertiesUtils.getInstance().getAllElements(RCasePeerModule.MODULE_NAME,
-			RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE, "Ui.None"));
+		property, PropertiesUtils.getInstance().getAllElements(DCaseModule.getInstance(), RCasePeerModule.MODULE_NAME,
+			RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE, I18nMessageService.getString("Ui.None")));
 
     }
 

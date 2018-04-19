@@ -28,11 +28,12 @@ import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
-import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.modelio.properties.IPropertyContent;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class ACLContextPropertyPage implements IPropertyContent {
 
@@ -44,7 +45,7 @@ public class ACLContextPropertyPage implements IPropertyContent {
 	try {
 	    switch (row) {
 	    case 1:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_CONTEXT_ID, value, element);
 		break;
 	    case 2:
@@ -55,7 +56,7 @@ public class ACLContextPropertyPage implements IPropertyContent {
 			value);
 		break;
 	    case 4:
-		PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_CONTEXT_FREQUENCY, value, element);
 		break;
 	    case 5:

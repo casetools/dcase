@@ -30,13 +30,14 @@ import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundExcept
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.modelio.properties.IPropertyContent;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.dcase.utils.ModelioUtils;
-import edu.casetools.dcase.utils.PropertiesUtils;
+import edu.casetools.rcase.modelio.properties.IPropertyContent;
+import edu.casetools.rcase.utils.ModelioUtils;
+import edu.casetools.rcase.utils.PropertiesUtils;
 
 public class StatePropertyPage implements IPropertyContent {
 
@@ -70,7 +71,7 @@ public class StatePropertyPage implements IPropertyContent {
 
     private void updateValue(ModelElement element, String value) {
 	String currentName = element.getName();
-	List<MObject> elements = ModelioUtils.getInstance().getAllElements();
+	List<MObject> elements = ModelioUtils.getInstance().getAllElements(DCaseModule.getInstance());
 	for (MObject aux : elements) {
 	    if (aux instanceof ModelElement) {
 		boolean isAntecedent = ((ModelElement) aux).isStereotyped(DCasePeerModule.MODULE_NAME,
@@ -96,7 +97,7 @@ public class StatePropertyPage implements IPropertyContent {
     private void updatePastOperator(String value, String currentName, MObject aux) {
 	if (currentName.equals(((ModelElement) aux).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME))) {
-	    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+	    PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME, value, (ModelElement) aux);
 	}
     }
@@ -104,7 +105,7 @@ public class StatePropertyPage implements IPropertyContent {
     private void updateConsequent(String value, String currentName, MObject aux) {
 	if (currentName.equals(((ModelElement) aux).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME))) {
-	    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+	    PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME, value, (ModelElement) aux);
 	}
     }
@@ -112,7 +113,7 @@ public class StatePropertyPage implements IPropertyContent {
     private void updateAntecedent(String value, String currentName, MObject aux) {
 	if (currentName.equals(((ModelElement) aux).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME))) {
-	    PropertiesUtils.getInstance().findAndAddValue(DCasePeerModule.MODULE_NAME,
+	    PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 		    DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME, value, (ModelElement) aux);
 	}
     }

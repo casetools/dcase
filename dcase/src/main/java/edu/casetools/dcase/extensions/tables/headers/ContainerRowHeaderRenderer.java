@@ -26,7 +26,8 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-import edu.casetools.dcase.utils.tables.ModelioTableUtils;
+import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.rcase.utils.tables.ModelioTableUtils;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -58,7 +59,7 @@ public class ContainerRowHeaderRenderer implements TableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 	    int row, int column) {
 	if (value instanceof String)
-	    label = ModelioTableUtils.getInstance().createJLabel((String) value);
+	    label = ModelioTableUtils.getInstance().createJLabel(DCaseModule.getInstance(), (String) value);
 
 	if (isSelected) {
 	    label.setForeground(rowHeadersTable.getSelectionForeground());
