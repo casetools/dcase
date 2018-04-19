@@ -61,7 +61,7 @@
 		<dependency>
 		    <groupId>com.github.ualegre</groupId>
 		    <artifactId>rcase</artifactId>
-		    <version>v0.2.6</version>
+		    <version>v0.4.0</version>
 		</dependency>   	
     	
 		<dependency>
