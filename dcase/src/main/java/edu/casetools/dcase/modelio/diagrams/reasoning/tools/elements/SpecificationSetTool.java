@@ -18,29 +18,26 @@
  * along with Modelio.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package edu.casetools.dcase.modelio.diagrams.spec.tools.elements;
+package edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements;
 
 import java.util.List;
 
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramNode;
 import org.modelio.api.modelio.model.IModelingSession;
-import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
-import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.rcase.modelio.diagrams.ElementTool;
-import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
-import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.utils.ElementUtils;
 
 /**
- * The Class RequirementTool is the tool for creating a Requirement.
+ * The Class RequirementContainerTool is the tool for creating a Requirement
+ * Container.
  */
-public class SpecificationTool extends ElementTool {
+public class SpecificationSetTool extends ElementTool {
 
     /*
      * (non-Javadoc)
@@ -51,22 +48,9 @@ public class SpecificationTool extends ElementTool {
      */
     @Override
     public MObject createOwnElement(IModelingSession session, MObject element) {
-	String name = I18nMessageService.getString("Names.Specification");
-	MObject auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
-		DCaseStereotypes.STEREOTYPE_SPECIFICATION);
-	return setDefaultValues(auxiliarElement);
-    }
-
-    private MObject setDefaultValues(MObject auxiliarElement) {
-	try {
-	    ((ModelElement) auxiliarElement).putTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_SPECIFICATION_TYPE,
-		    I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.CTL"));
-	} catch (ExtensionNotFoundException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}
-	return auxiliarElement;
+	String name = I18nMessageService.getString("Names.SpecificationSet");
+	return ElementUtils.getInstance().createPackage(DCaseModule.getInstance(), adaptElement(element), session, name,
+		DCaseStereotypes.STEREOTYPE_SPECIFICATION_SET);
     }
 
     /*
@@ -81,7 +65,7 @@ public class SpecificationTool extends ElementTool {
 	if ((null != graph) && (!graph.isEmpty()) && (graph.get(0) instanceof IDiagramNode)) {
 	    IDiagramNode dnode = (IDiagramNode) graph.get(0);
 	    dnode.setProperty("FILLCOLOR", "231,242,248");
-	    dnode.setProperty("REPMODE", "SIMPLE");
+	    dnode.setProperty("REPMODE", "STRUCTURED");
 	    dnode.setProperty("FILLMODE", "SOLID");
 	    dnode.setProperty("LINECOLOR", "0,0,0");
 	    dnode.setProperty("TEXTCOLOR", "0,0,0");
