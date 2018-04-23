@@ -40,7 +40,7 @@ public final class DCaseTools {
     
     public static final String TOOL_SAME_TIME = "SameTimeTool";
     public static final String TOOL_NEXT_TIME = "NextTimeTool";
-	public static final String TOOL_PRODUCES = "ProducesTool";
+	public static final String TOOL_PRODUCES = "ProduceTool";
 
 
 
