@@ -12,8 +12,8 @@
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
-                <Icon path="%ReasoningDiagramStereotype.image"/>
-                <Image path="%ReasoningDiagramStereotype.image"/>
+                <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
+                <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <TagTypes>
                     <TagType name="TagExecutionTime" uid="9aa00951-9869-499d-afa5-b04de5acb6c4" label="%ReasoningDiagramStereotype.properties.ExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>

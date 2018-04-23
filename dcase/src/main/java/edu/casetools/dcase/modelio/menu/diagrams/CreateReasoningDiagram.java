@@ -48,7 +48,7 @@ public class CreateReasoningDiagram extends CreateStaticDiagram {
     @Override
     protected StaticDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 
-	String name = I18nMessageService.getString("Ui.Command.CreateMRulesDiagram.Label");
+	String name = I18nMessageService.getString("Ui.Command.CreateReasoningDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createStaticDiagram(DCaseModule.getInstance(), selectedElements, session, name,
 		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES);
 	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_M_RULES);
