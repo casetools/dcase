@@ -28,6 +28,7 @@ import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.rcase.modelio.diagrams.ElementTool;
+import edu.casetools.dcase.module.api.DCaseColours;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
@@ -64,11 +65,11 @@ public class SpecificationSetTool extends ElementTool {
 
 	if ((null != graph) && (!graph.isEmpty()) && (graph.get(0) instanceof IDiagramNode)) {
 	    IDiagramNode dnode = (IDiagramNode) graph.get(0);
-	    dnode.setProperty("FILLCOLOR", "231,242,248");
+	    dnode.setProperty("FILLCOLOR", DCaseColours.GRAY0);
 	    dnode.setProperty("REPMODE", "STRUCTURED");
 	    dnode.setProperty("FILLMODE", "SOLID");
-	    dnode.setProperty("LINECOLOR", "0,0,0");
-	    dnode.setProperty("TEXTCOLOR", "0,0,0");
+	    dnode.setProperty("LINECOLOR", DCaseColours.BLACK);
+	    dnode.setProperty("TEXTCOLOR", DCaseColours.BLACK);
 	    dnode.setProperty("INTAUTOUNMASK", "TRUE");
 	    dnode.setProperty("INNERUNMASKFILTER", "ALL");
 	}

@@ -32,6 +32,7 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.rcase.modelio.diagrams.ElementTool;
+import edu.casetools.dcase.module.api.DCaseColours;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
@@ -109,9 +110,9 @@ public class AbsolutePastOperatorTool extends ElementTool {
 	if (null != graph && !graph.isEmpty() && (graph.get(0) instanceof IDiagramNode)) {
 	    IDiagramNode dnode = (IDiagramNode) graph.get(0);
 	    dnode.setProperty("REPMODE", "SIMPLE");
-	    dnode.setProperty("FILLCOLOR", "255,255,255");
+	    dnode.setProperty("FILLCOLOR", DCaseColours.WHITE);
 	    dnode.setProperty("FILLMODE", "SOLID");
-	    dnode.setProperty("LINECOLOR", "0,0,0");
+	    dnode.setProperty("LINECOLOR", DCaseColours.BLACK);
 	    dnode.setProperty("INTAUTOUNMASK", "TRUE");
 	    dnode.setProperty("INNERUNMASKFILTER", "ALL");
 	}
