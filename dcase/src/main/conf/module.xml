@@ -11,12 +11,20 @@
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
+            <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
+                <Icon path="%ReasoningDiagramStereotype.image"/>
+                <Image path="%ReasoningDiagramStereotype.image"/>
+                <TagTypes>
+                    <TagType name="TagExecutionTime" uid="9aa00951-9869-499d-afa5-b04de5acb6c4" label="%ReasoningDiagramStereotype.properties.ExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
             <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="b506e386-cb84-42a1-b19d-49dbb5a18540">
                 <Icon path="res/icons/reasoning/elements/state_16.png"/>
                 <Image path="res/icons/reasoning/elements/state_32.png"/>
                 <TagTypes>
                     <TagType name="TagStateId" uid="ae51d5d2-e151-42ca-a557-c7ef6fdcfe0e" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStateName" uid="9a595946-8a33-419f-8751-4de45141c20a" label="$StateStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateDescription" uid="1b491c2c-b6d4-42ce-a365-14ad6605eb46" label="$StateStereotype.properties.description" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="ContextStateStereotype" metaclass="Class" is-hidden="false" label="%ContextStateStereotype.label" uid="f044b21a-4d82-4e50-9925-e6af0ec92295">
@@ -25,6 +33,16 @@
                 <TagTypes>
                     <TagType name="TagStateIndpendent" uid="ce140ef3-0e6c-4a31-ab35-3b9edc49d648" label="%StateStereotype.properties.independent" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStateInitial" uid="5961398c-4ae6-4bfa-a1d6-5f39f3d77f01" label="$StateStereotype.properties.initial" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateBooleanValue" uid="be649e51-a4c5-4238-ba82-a9daab8b3306" label="$StateStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="InternalTimeStateStereotype" metaclass="Class" is-hidden="false" label="%InternalTimeStateStereotype.label" uid="e90c6b49-b2ec-4814-8404-9110d8832b8b">
+                <Icon path="res/icons/reasoning/elements/internal_time_16.png"/>
+                <Image path="res/icons/reasoning/elements/internal_time_16.png"/>
+                <TagTypes>
+                    <TagType name="TagStateTimeType" uid="7e828c91-d221-4ff6-b800-b601a3953762" label="%StateStereotype.properties.timeType" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateTimeDomain" uid="3dc8d76b-37c9-4968-acc7-747619b3ebf5" label="$StateStereotype.properties.timeDomain" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateTimeValue" uid="cf8f8bba-0f4f-49f5-8e0f-54272e47eda9" label="$StateStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="AntecedentGroupStereotype" metaclass="Package" is-hidden="false" label="%AntecedentGroupStereotype.label" uid="f88594e0-4b76-49de-af7f-307282c9f5de">
@@ -95,18 +113,35 @@
                 <TagTypes/>
                 <NoteTypes/>
             </Stereotype>
-            <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
-                <Icon path="%ReasoningDiagramStereotype.image"/>
-                <Image path="%ReasoningDiagramStereotype.image"/>
-                <TagTypes>
-                    <TagType name="TagExecutionTime" uid="9aa00951-9869-499d-afa5-b04de5acb6c4" label="%ReasoningDiagramStereotype.properties.ExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
             <Stereotype name="SameTimeStereotype" metaclass="Dependency" is-hidden="false" label="%SameTimeStereotype.label" uid="0bdf2349-ff7f-4e8f-a439-b0aca9b69fe5">
                 <Icon path="res/icons/reasoning/elements/str_16.png"/>
                 <Image path="res/icons/reasoning/elements/str_16.png"/>
                 <TagTypes>
                     <TagType name="STId" uid="40b90b45-0fa2-408c-97d0-76b22eaa6e17" label="%SameTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="NextTimeStereotype" metaclass="Dependency" is-hidden="false" label="%NextTimeStereotype.label" uid="d2a2ca9f-0197-44b6-8a12-c5d9e271c48f">
+                <Icon path="res/icons/reasoning/elements/ntr_16.png"/>
+                <Image path="res/icons/reasoning/elements/ntr_16.png"/>
+                <TagTypes>
+                    <TagType name="NTId" uid="b612539b-a234-44e5-a93b-03aadaa87a19" label="%NextTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="SpecificationDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%SpecificationDiagramStereotype.label" uid="895d5dde-c72c-44d9-aed7-55b9725343d4">
+                <Icon path="%SpecificationDiagramStereotype.image"/>
+                <Image path="%SpecificationDiagramStereotype.image"/>
+            </Stereotype>            
+            <Stereotype name="SpecificationSetStereotype" metaclass="Package" is-hidden="false" label="%SpecificationSetStereotype.label" uid="b05ce34e-a392-4595-a6e9-a62ac73b7ed7">
+                <Icon path="res/icons/reasoning/elements/spec_set_16.png"/>
+                <Image path="res/icons/reasoning/elements/spec_set_16.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="SpecificationStereotype" metaclass="Class" is-hidden="false" label="%SpecificationStereotype.label" uid="79f54ab4-7e5c-4936-b794-bbf1629a73e4">
+                <Icon path="res/icons/reasoning/elements/spec_16.png"/>
+                <Image path="res/icons/reasoning/elements/spec_64.png"/>
+                <TagTypes>
+                    <TagType name="TagSpecType" uid="707b3a2f-221c-4b30-853f-6b82e396bde0" label="%SpecificationStereotype.properties.SpecificationType" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagSpec" uid="818ac013-fd0d-49a8-b865-d3a12d54c044" label="%SpecificationStereotype.properties.Specification" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="GenericContextStereotype" metaclass="Class" is-hidden="false" label="%GenericContextStereotype.label" uid="47e5a553-be68-4bbb-9b1d-8215e2a2349b">
@@ -124,30 +159,6 @@
                     <TagType name="TagResponsibility" uid="8a60b3dd-1504-4ad1-b02c-91c88e531389" label="%ACLContextStereotype.properties.responsibility" parameter-card="2" is-hidden="false" is-signed="false"/>
                     <TagType name="TagFrequency" uid="7babf2ed-dae7-4d3c-aa3e-b7358e0b8995" label="%ACLContextStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagLibType" uid="cd52cf7a-f9e2-4289-b6a2-9f6d8fd408c7" label="%ACLContextStereotype.properties.libType" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="NextTimeStereotype" metaclass="Dependency" is-hidden="false" label="%NextTimeStereotype.label" uid="d2a2ca9f-0197-44b6-8a12-c5d9e271c48f">
-                <Icon path="res/icons/reasoning/elements/ntr_16.png"/>
-                <Image path="res/icons/reasoning/elements/ntr_16.png"/>
-                <TagTypes>
-                    <TagType name="NTId" uid="b612539b-a234-44e5-a93b-03aadaa87a19" label="%NextTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="SpecificationDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%SpecificationDiagramStereotype.label" uid="895d5dde-c72c-44d9-aed7-55b9725343d4">
-                <Icon path="%SpecificationDiagramStereotype.image"/>
-                <Image path="%SpecificationDiagramStereotype.image"/>
-            </Stereotype>
-            <Stereotype name="SpecificationSetStereotype" metaclass="Package" is-hidden="false" label="%SpecificationSetStereotype.label" uid="b05ce34e-a392-4595-a6e9-a62ac73b7ed7">
-                <Icon path="res/icons/reasoning/elements/spec_set_16.png"/>
-                <Image path="res/icons/reasoning/elements/spec_set_16.png"/>
-                <TagTypes/>
-            </Stereotype>
-            <Stereotype name="SpecificationStereotype" metaclass="Class" is-hidden="false" label="%SpecificationStereotype.label" uid="79f54ab4-7e5c-4936-b794-bbf1629a73e4">
-                <Icon path="res/icons/reasoning/elements/spec_16.png"/>
-                <Image path="res/icons/reasoning/elements/spec_64.png"/>
-                <TagTypes>
-                    <TagType name="TagSpecType" uid="707b3a2f-221c-4b30-853f-6b82e396bde0" label="%SpecificationStereotype.properties.SpecificationType" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagSpec" uid="818ac013-fd0d-49a8-b865-d3a12d54c044" label="%SpecificationStereotype.properties.Specification" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
@@ -183,8 +194,14 @@
         <Tools>
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.AntecedentGroupTool">
-                    <HParameter name="metaclass" value="Package"/>
-                    <HParameter name="stereotype" value="AntecedentGroupStereotype"/>
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="ContextStateStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="InternalTimeStateTool" label="%InternalTimeStateTool.label" tooltip="%InternalTimeStateTool.tooltip" image="%InternalTimeStateTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.AntecedentGroupTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="InternalTimeStateStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="AntecedentGroupTool" label="%AntecedentGroupTool.label" tooltip="%AntecedentGroupTool.tooltip" image="%AntecedentGroupTool.image">
