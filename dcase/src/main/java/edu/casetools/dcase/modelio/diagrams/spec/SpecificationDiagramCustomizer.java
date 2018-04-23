@@ -84,9 +84,9 @@ public class SpecificationDiagramCustomizer extends DiagramCustomizer implements
 
     private org.eclipse.gef.palette.PaletteEntry createLinksGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Links");
-	String[] toolNames = new String[] { RCaseTools.TOOL_DETECTS, RCaseTools.TOOL_TRIGGERS,
+	String[] toolNames = new String[] { RCaseTools.TOOL_TRACEABILITY, RCaseTools.TOOL_DETECTS, RCaseTools.TOOL_TRIGGERS,
 		RCaseTools.TOOL_PART, RCaseTools.TOOL_COPY, RCaseTools.TOOL_DERIVE, RCaseTools.TOOL_SATISFY,
-		RCaseTools.TOOL_VERIFY, RCaseTools.TOOL_REFINE, RCaseTools.TOOL_TRACEABILITY };
+		RCaseTools.TOOL_VERIFY, RCaseTools.TOOL_REFINE  };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 

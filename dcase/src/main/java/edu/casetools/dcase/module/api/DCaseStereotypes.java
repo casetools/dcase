@@ -34,5 +34,6 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String STEREOTYPE_ACL_CONTEXT = "ACLContextStereotype";
     public static final String STEREOTYPE_GENERIC_CONTEXT = "GenericContextStereotype";
     public static final String STEREOTYPE_DIAGRAM_SPECIFICATION = "SpecificationDiagramStereotype";
+	public static final String STEREOTYPE_PRODUCE = "ProduceStereotype";
 
 }

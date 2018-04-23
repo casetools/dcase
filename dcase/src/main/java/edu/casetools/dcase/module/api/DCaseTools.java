@@ -25,18 +25,24 @@ package edu.casetools.dcase.module.api;
  */
 public final class DCaseTools {
 
-    // Elements
-    public static final String TOOL_MESSAGE = "ContextInformationMessageTool";
+	public static final String TOOL_CONTEXT_STATE = "ContextStateTool";
+	public static final String TOOL_INTERNAL_TIME_STATE = "InternalTimeStateTool";
+	
     public static final String TOOL_ANTECEDENT_GROUP = "AntecedentGroupTool";
     public static final String TOOL_ANTECEDENT = "AntecedentTool";
     public static final String TOOL_CONSEQUENT = "ConsequentTool";
-    public static final String TOOL_STATE = "StateTool";
-    public static final String TOOL_SAME_TIME = "SameTimeTool";
-    public static final String TOOL_NEXT_TIME = "NextTimeTool";
+
     public static final String TOOL_IMMEDIATE_PAST_OPERATOR = "ImmediatePastOperatorTool";
     public static final String TOOL_ABSOLUTE_PAST_OPERATOR = "AbsolutePastOperatorTool";
+    
     public static final String TOOL_SPECIFICATION = "SpecificationTool";
     public static final String TOOL_SPECIFICATION_SET = "SpecificationSetTool";
+    
+    public static final String TOOL_SAME_TIME = "SameTimeTool";
+    public static final String TOOL_NEXT_TIME = "NextTimeTool";
+	public static final String TOOL_PRODUCES = "ProducesTool";
+
+
 
     private DCaseTools() {
 

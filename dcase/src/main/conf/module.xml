@@ -130,7 +130,7 @@
             <Stereotype name="SpecificationDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%SpecificationDiagramStereotype.label" uid="895d5dde-c72c-44d9-aed7-55b9725343d4">
                 <Icon path="%SpecificationDiagramStereotype.image"/>
                 <Image path="%SpecificationDiagramStereotype.image"/>
-            </Stereotype>            
+            </Stereotype>
             <Stereotype name="SpecificationSetStereotype" metaclass="Package" is-hidden="false" label="%SpecificationSetStereotype.label" uid="b05ce34e-a392-4595-a6e9-a62ac73b7ed7">
                 <Icon path="res/icons/reasoning/elements/spec_set_16.png"/>
                 <Image path="res/icons/reasoning/elements/spec_set_16.png"/>
@@ -161,8 +161,7 @@
                     <TagType name="TagLibType" uid="cd52cf7a-f9e2-4289-b6a2-9f6d8fd408c7" label="%ACLContextStereotype.properties.libType" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
-            </MetaclassReference>
+            <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement"/>
         </Profile>
     </Profiles>
     <Gui>
@@ -190,13 +189,13 @@
         </Commands>
         <Tools>
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.AntecedentGroupTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="ContextStateStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="InternalTimeStateTool" label="%InternalTimeStateTool.label" tooltip="%InternalTimeStateTool.tooltip" image="%InternalTimeStateTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.AntecedentGroupTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.InternalTimeStateTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="InternalTimeStateStereotype"/>
                 </Handler>
@@ -241,6 +240,12 @@
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.relations.NextTimeTool">
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="NextTimeStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="ProduceTool" label="%ProduceTool.label" tooltip="%ProduceTool.tooltip" image="%ProduceTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.relations.ProduceTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="ProduceStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="SpecificationSetTool" label="%SpecificationSetTool.label" tooltip="%SpecificationSetTool.tooltip" image="%SpecificationSetTool.image">
