@@ -11,6 +11,22 @@
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
+            <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="b506e386-cb84-42a1-b19d-49dbb5a18540">
+                <Icon path="res/icons/reasoning/elements/state_16.png"/>
+                <Image path="res/icons/reasoning/elements/state_32.png"/>
+                <TagTypes>
+                    <TagType name="TagStateId" uid="ae51d5d2-e151-42ca-a557-c7ef6fdcfe0e" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateName" uid="9a595946-8a33-419f-8751-4de45141c20a" label="$StateStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="ContextStateStereotype" metaclass="Class" is-hidden="false" label="%ContextStateStereotype.label" uid="f044b21a-4d82-4e50-9925-e6af0ec92295">
+                <Icon path="res/icons/reasoning/elements/context_state_16.png"/>
+                <Image path="res/icons/reasoning/elements/context_state_16.png"/>
+                <TagTypes>
+                    <TagType name="TagStateIndpendent" uid="ce140ef3-0e6c-4a31-ab35-3b9edc49d648" label="%StateStereotype.properties.independent" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateInitial" uid="5961398c-4ae6-4bfa-a1d6-5f39f3d77f01" label="$StateStereotype.properties.initial" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
             <Stereotype name="AntecedentGroupStereotype" metaclass="Package" is-hidden="false" label="%AntecedentGroupStereotype.label" uid="f88594e0-4b76-49de-af7f-307282c9f5de">
                 <Icon path="res/icons/reasoning/elements/antecedent_group_16.png"/>
                 <Image path="res/icons/reasoning/elements/antecedent_group_64.png"/>
@@ -40,16 +56,6 @@
                     <TagType name="TagEMStateName" uid="c1047b0b-de34-44ab-b26c-efeafc92563f" label="%EventMessageStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagEMStateValue" uid="df182182-de92-457f-9d81-0c1fbc2e0718" label="$EventMessageStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagEMTime" uid="1e2f6d82-a922-4eac-a505-52c6659d7938" label="$EventMessageStereotype.properties.time" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="b506e386-cb84-42a1-b19d-49dbb5a18540">
-                <Icon path="res/icons/reasoning/elements/state_16.png"/>
-                <Image path="res/icons/reasoning/elements/state_32.png"/>
-                <TagTypes>
-                    <TagType name="TagStateId" uid="ae51d5d2-e151-42ca-a557-c7ef6fdcfe0e" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagStateName" uid="9a595946-8a33-419f-8751-4de45141c20a" label="$StateStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagStateIndpendent" uid="ce140ef3-0e6c-4a31-ab35-3b9edc49d648" label="%StateStereotype.properties.independent" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagStateInitial" uid="5961398c-4ae6-4bfa-a1d6-5f39f3d77f01" label="$StateStereotype.properties.initial" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="PastOperatorStereotype" metaclass="Class" is-hidden="false" label="%PastOperatorStereotype.label" uid="8d90834f-66fc-41c3-86ea-27652123d22a">
@@ -89,11 +95,11 @@
                 <TagTypes/>
                 <NoteTypes/>
             </Stereotype>
-            <Stereotype name="MRulesDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%MRulesDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
-                <Icon path="%MRulesDiagramStereotype.image"/>
-                <Image path="%MRulesDiagramStereotype.image"/>
+            <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
+                <Icon path="%ReasoningDiagramStereotype.image"/>
+                <Image path="%ReasoningDiagramStereotype.image"/>
                 <TagTypes>
-                    <TagType name="TagExecutionTime" uid="9aa00951-9869-499d-afa5-b04de5acb6c4" label="%MRulesDiagramStereotype.properties.ExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagExecutionTime" uid="9aa00951-9869-499d-afa5-b04de5acb6c4" label="%ReasoningDiagramStereotype.properties.ExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="SameTimeStereotype" metaclass="Dependency" is-hidden="false" label="%SameTimeStereotype.label" uid="0bdf2349-ff7f-4e8f-a439-b0aca9b69fe5">
@@ -153,9 +159,9 @@
     </Profiles>
     <Gui>
         <Commands>
-            <Command id="CreateMRulesDiagram" label="%CreateMRulesDiagram.label" tooltip="%CreateMRulesDiagram.tooltip" image="%CreateMRulesDiagram.image" group="%CreateMRulesDiagram.group" modify-model="true" group-image="%CreateMRulesDiagram.groupimage">
+            <Command id="CreateReasoningDiagram" label="%CreateReasoningDiagram.label" tooltip="%CreateReasoningDiagram.tooltip" image="%CreateReasoningDiagram.image" group="%CreateReasoningDiagram.group" modify-model="true" group-image="%CreateReasoningDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateMRulesDiagram"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateReasoningDiagram"/>
             </Command>
             <Command id="CreateSpecificationDiagram" label="%CreateSpecificationDiagram.label" tooltip="%CreateSpecificationDiagram.tooltip" image="%CreateSpecificationDiagram.image" group="%CreateSpecificationDiagram.group" modify-model="true" group-image="%CreateSpecificationDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
@@ -175,44 +181,50 @@
             </Command>
         </Commands>
         <Tools>
+            <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.AntecedentGroupTool">
+                    <HParameter name="metaclass" value="Package"/>
+                    <HParameter name="stereotype" value="AntecedentGroupStereotype"/>
+                </Handler>
+            </Tool>
             <Tool id="AntecedentGroupTool" label="%AntecedentGroupTool.label" tooltip="%AntecedentGroupTool.tooltip" image="%AntecedentGroupTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.AntecedentGroupTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.AntecedentGroupTool">
                     <HParameter name="metaclass" value="Package"/>
                     <HParameter name="stereotype" value="AntecedentGroupStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="AntecedentTool" label="%AntecedentTool.label" tooltip="%AntecedentTool.tooltip" image="%AntecedentTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.AntecedentTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.AntecedentTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="AntecedentStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="ConsequentTool" label="%ConsequentTool.label" tooltip="%ConsequentTool.tooltip" image="%ConsequentTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.ConsequentTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ConsequentTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="ConsequentStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="ImmediatePastOperatorTool" label="%ImmediatePastOperatorTool.label" tooltip="%ImmediatePastOperatorTool.tooltip" image="%ImmediatePastOperatorTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.ImmediatePastOperatorTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ImmediatePastOperatorTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="ImmediatePastOperatorStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="AbsolutePastOperatorTool" label="%AbsolutePastOperatorTool.label" tooltip="%AbsolutePastOperatorTool.tooltip" image="%AbsolutePastOperatorTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.AbsolutePastOperatorTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.AbsolutePastOperatorTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="AbsolutePastOperatorStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="SameTimeTool" label="%SameTimeTool.label" tooltip="%SameTimeTool.tooltip" image="%SameTimeTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.relations.SameTimeTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.relations.SameTimeTool">
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="SameTimeStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="NextTimeTool" label="%NextTimeTool.label" tooltip="%NextTimeTool.tooltip" image="%NextTimeTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.relations.NextTimeTool">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.relations.NextTimeTool">
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="NextTimeStereotype"/>
                 </Handler>
@@ -231,16 +243,16 @@
             </Tool>
         </Tools>
         <ContextualMenu>
-            <CommandRef refid="CreateMRulesDiagram"/>
+            <CommandRef refid="CreateReasoningDiagram"/>
             <CommandRef refid="CreateSpecificationDiagram"/>
             <CommandRef refid="GenerateNuSMV"/>
             <CommandRef refid="GenerateMCode"/>
             <CommandRef refid="GenerateACLCode"/>
         </ContextualMenu>
         <Diagrams>
-            <DiagramType base-diagram="StaticDiagram" stereotype="MRulesDiagramStereotype">
+            <DiagramType base-diagram="StaticDiagram" stereotype="ReasoningDiagramStereotype">
                 <Palette keepBasePalette="false"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.MRulesDiagramCustomizer"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.ReasoningDiagramCustomizer"/>
             </DiagramType>
             <DiagramType base-diagram="StaticDiagram" stereotype="SpecificationDiagramStereotype">
                 <Palette keepBasePalette="false"/>
