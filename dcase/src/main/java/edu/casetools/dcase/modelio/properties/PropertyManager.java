@@ -28,7 +28,6 @@ import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.diagrams.StaticDiagram;
 import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
-import org.modelio.metamodel.uml.behavior.communicationModel.CommunicationMessage;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.Class;
@@ -36,7 +35,6 @@ import org.modelio.metamodel.uml.statik.Class;
 import edu.casetools.dcase.modelio.properties.pages.ACLContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AbsolutePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AntecedentPropertyPage;
-import edu.casetools.dcase.modelio.properties.pages.ContextInformationMessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.GenericContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
@@ -149,12 +147,6 @@ public class PropertyManager {
 		DCaseStereotypes.STEREOTYPE_GENERIC_CONTEXT, DCaseModule.getInstance().getModuleContext()
 			.getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
 	    this.propertyPage = new GenericContextPropertyPage();
-	}
-
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE,
-		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
-			.getMClass(CommunicationMessage.class)))) {
-	    this.propertyPage = new ContextInformationMessagePropertyPage();
 	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_STATE,

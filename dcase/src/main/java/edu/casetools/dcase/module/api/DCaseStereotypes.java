@@ -11,7 +11,6 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String STEREOTYPE_SPECIFICATION = "SpecificationStereotype";
 
     public static final String STEREOTYPE_EVENT = "EventMessageStereotype";
-    public static final String STEREOTYPE_MESSAGE = "ContextInformationMessageStereotype";
 
     // Relations
     public static final String STEREOTYPE_SAME_TIME = "SameTimeStereotype";

@@ -199,12 +199,6 @@
             </Command>
         </Commands>
         <Tools>
-            <Tool id="ContextInformationMessageTool" label="%ContextInformationMessageTool.label" tooltip="%ContextInformationMessageTool.tooltip" image="%ContextInformationMessageTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.communication.tools.notes.ContextInformationMessageTool">
-                    <HParameter name="metaclass" value="CommunicationMessage"/>
-                    <HParameter name="stereotype" value="ContextInformationMessageStereotype"/>
-                </Handler>
-            </Tool>
             <Tool id="AntecedentGroupTool" label="%AntecedentGroupTool.label" tooltip="%AntecedentGroupTool.tooltip" image="%AntecedentGroupTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.tools.elements.AntecedentGroupTool">
                     <HParameter name="metaclass" value="Package"/>
