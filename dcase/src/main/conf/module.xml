@@ -177,10 +177,6 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateInteractionDiagram"/>
             </Command>
-            <Command id="OpenContextInformationMessagesTable" label="%OpenContextInformationMessagesTable.label" tooltip="%OpenContextInformationMessagesTable.tooltip" image="%OpenContextInformationMessagesTable.image" group="%OpenContextInformationMessagesTable.group" modify-model="true" group-image="%OpenContextInformationMessagesTable.groupimage">
-                <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.tables.OpenMessagesTable"/>
-            </Command>
             <Command id="GenerateACLCode" label="%GenerateACLCode.label" tooltip="%GenerateACLCode.tooltip" image="%GenerateACLCode.image" group="%GenerateACLCode.group" modify-model="true" group-image="%GenerateACLCode.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateACLCode"/>
@@ -258,7 +254,6 @@
             <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateMRulesDiagram"/>
             <CommandRef refid="CreateSpecificationDiagram"/>
-            <CommandRef refid="OpenContextInformationMessagesTable"/>
             <CommandRef refid="GenerateNuSMV"/>
             <CommandRef refid="GenerateMCode"/>
             <CommandRef refid="GenerateACLCode"/>
