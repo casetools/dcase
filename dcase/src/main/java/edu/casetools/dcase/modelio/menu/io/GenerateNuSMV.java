@@ -98,7 +98,7 @@ public class GenerateNuSMV extends DefaultModuleCommandHandler {
 	int time = -1;
 	if (maxExecutionTime == null) {
 	    MessageDialog.openError(null, "Execution Time Exception",
-		    "No execution time was provided. Make sure that the diagram is selected when clicking export. Right click on the M Rules Diagram to be exported. The export of the model has been cancelled.\n");
+		    "No execution time was provided. Make sure that the diagram is selected when clicking export. Right click on the Reasoning Diagram to be exported. The export of the model has been cancelled.\n");
 	} else if (maxExecutionTime.equals("")) {
 	    MessageDialog.openError(null, "Execution Time Exception",
 		    "No execution time was provided. Make sure that there is a value on the selected M Rule Diagram. The export of the model has been cancelled.\n");
