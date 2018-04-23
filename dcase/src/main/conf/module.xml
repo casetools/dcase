@@ -162,9 +162,6 @@
                 </TagTypes>
             </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
-                <TagTypes>
-                    <TagType name="TagName" uid="eb5615f7-28bd-4314-913a-9bccf7e0bf12" label="Name" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
             </MetaclassReference>
         </Profile>
     </Profiles>
