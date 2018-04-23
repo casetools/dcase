@@ -12,29 +12,29 @@
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
             <Stereotype name="AntecedentGroupStereotype" metaclass="Package" is-hidden="false" label="%AntecedentGroupStereotype.label" uid="f88594e0-4b76-49de-af7f-307282c9f5de">
-                <Icon path="res/icons/antecedent_group_16.png"/>
-                <Image path="res/icons/antecedent_group_64.png"/>
+                <Icon path="res/icons/reasoning/elements/antecedent_group_16.png"/>
+                <Image path="res/icons/reasoning/elements/antecedent_group_64.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="ConsequentStereotype" metaclass="Class" is-hidden="false" label="%ConsequentStereotype.label" uid="90c10322-a899-4adf-b2c3-ebfa3fa4d4c9">
-                <Icon path="res/icons/consequent_16.png"/>
-                <Image path="res/icons/consequent_16.png"/>
-                <TagTypes>
-                    <TagType name="TagConsequentName" uid="6798fd29-9ea4-45df-a02f-77c5d006c859" label="%ConsequentStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagConsequentValue" uid="2aa941a5-713e-40bc-bc90-e2a554183f0b" label="$ConsequentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
             <Stereotype name="AntecedentStereotype" metaclass="Class" is-hidden="false" label="%AntecedentStereotype.label" uid="847fba72-b841-4a9b-ba29-f3ce45ea6b3b">
-                <Icon path="res/icons/antecedent_16.png"/>
-                <Image path="res/icons/antecedent_16.png"/>
+                <Icon path="res/reasoning/elements/icons/antecedent_16.png"/>
+                <Image path="res/reasoning/elements/icons/antecedent_16.png"/>
                 <TagTypes>
                     <TagType name="TagAntecedentName" uid="dc9a616a-b06e-42ad-8ebc-7056562e62c4" label="%AntecedentStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagAntecedentValue" uid="284eaec6-7709-4338-8a8e-a247e80f1403" label="$AntecedentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
+            <Stereotype name="ConsequentStereotype" metaclass="Class" is-hidden="false" label="%ConsequentStereotype.label" uid="90c10322-a899-4adf-b2c3-ebfa3fa4d4c9">
+                <Icon path="res/icons/reasoning/elements/consequent_16.png"/>
+                <Image path="res/icons/reasoning/elements/consequent_16.png"/>
+                <TagTypes>
+                    <TagType name="TagConsequentName" uid="6798fd29-9ea4-45df-a02f-77c5d006c859" label="%ConsequentStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagConsequentValue" uid="2aa941a5-713e-40bc-bc90-e2a554183f0b" label="$ConsequentStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
             <Stereotype name="EventMessageStereotype" metaclass="Class" is-hidden="false" label="%EventMessageStereotype.label" uid="09d9a59c-ae7e-480b-a2fe-26694827bf54">
-                <Icon path="res/icons/consequent_16.png"/>
-                <Image path="res/icons/consequent_16.png"/>
+                <Icon path="res/icons/reasoning/elements/consequent_16.png"/>
+                <Image path="res/icons/reasoning/elements/consequent_16.png"/>
                 <TagTypes>
                     <TagType name="TagEMId" uid="8ff1624b-2712-495d-95bb-07de00969ed6" label="%EventMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagEMStateName" uid="c1047b0b-de34-44ab-b26c-efeafc92563f" label="%EventMessageStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
@@ -43,8 +43,8 @@
                 </TagTypes>
             </Stereotype>
             <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="b506e386-cb84-42a1-b19d-49dbb5a18540">
-                <Icon path="res/icons/state_16.png"/>
-                <Image path="res/icons/state_32.png"/>
+                <Icon path="res/icons/reasoning/elements/state_16.png"/>
+                <Image path="res/icons/reasoning/elements/state_32.png"/>
                 <TagTypes>
                     <TagType name="TagStateId" uid="ae51d5d2-e151-42ca-a557-c7ef6fdcfe0e" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStateName" uid="9a595946-8a33-419f-8751-4de45141c20a" label="$StateStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
@@ -63,30 +63,18 @@
                 </TagTypes>
             </Stereotype>
             <Stereotype name="ImmediatePastOperatorStereotype" metaclass="Class" is-hidden="false" label="%ImmediatePastOperatorStereotype.label" uid="a49e00c7-8102-46ec-af9f-422b5d19a97d">
-                <Icon path="res/icons/immediate_16.png"/>
-                <Image path="res/icons/immediate_16.png"/>
+                <Icon path="res/icons/reasoning/elements/immediate_16.png"/>
+                <Image path="res/icons/reasoning/elements/immediate_16.png"/>
                 <TagTypes>
                     <TagType name="TagBound" uid="b14b46e3-2d91-42a4-a916-84d3ec87d75b" label="$ImmediatePastOperatorStereotype.properties.bound" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="AbsolutePastOperatorStereotype" metaclass="Class" is-hidden="false" label="%AbsolutePastOperatorStereotype.label" uid="b3ad2321-46a7-463a-ba7f-b60f82e40c37">
-                <Icon path="res/icons/absolute_16.png"/>
-                <Image path="res/icons/absolute_16.png"/>
+                <Icon path="res/icons/reasoning/elements/absolute_16.png"/>
+                <Image path="res/icons/reasoning/elements/absolute_16.png"/>
                 <TagTypes>
                     <TagType name="TagLowBound" uid="383a7f35-f28e-4089-b40c-12beb6be4f62" label="$AbsolutePastOperatorStereotype.properties.lowbound" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagUppBound" uid="d55233cf-043e-40fc-b273-dcd5c8dd6494" label="$AbsolutePastOperatorStereotype.properties.uppbound" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="ContextInformationMessageStereotype" metaclass="CommunicationMessage" is-hidden="false" label="%ContextInformationMessageStereotype.label" uid="25ad856f-5c3c-44f3-be0e-d717bf7a79d4">
-                <Icon path="%ContextInformationMessageStereotype.image"/>
-                <Image path="%ContextInformationMessageStereotype.image"/>
-                <TagTypes>
-                    <TagType name="CIMTagId" uid="f09597f9-4954-4e9e-bc9a-eaa41795cba7" label="%ContextInformationMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagResponsibility" uid="bb76ef80-add9-4b1f-8234-467e32e89fff" label="%ContextInformationMessageStereotype.properties.responsibility" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagRegularity" uid="5ed5cdae-cd6c-47d8-931c-40d423500f5e" label="%ContextInformationMessageStereotype.properties.regularity" parameter-card="2" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagFrequency" uid="d29eb85f-d81c-47ba-85c4-e70ebb5d9a7d" label="%ContextInformationMessageStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagSynchronicity" uid="b6df0eec-68b3-498c-bb8a-913efe9821f8" label="%ContextInformationMessageStereotype.properties.synchronicity" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagContextAttribute" uid="0fb050e1-5267-4c1f-8b42-92a113caded0" label="%ContextInformationMessageStereotype.properties.ContextAttribute" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="ProduceStereotype" metaclass="Dependency" is-hidden="false" label="%ProduceStereotype.label" uid="646d8bd2-6d16-4ea5-a9d1-45ef01aceac6">
@@ -109,8 +97,8 @@
                 </TagTypes>
             </Stereotype>
             <Stereotype name="SameTimeStereotype" metaclass="Dependency" is-hidden="false" label="%SameTimeStereotype.label" uid="0bdf2349-ff7f-4e8f-a439-b0aca9b69fe5">
-                <Icon path="res/icons/str_16.png"/>
-                <Image path="res/icons/str_16.png"/>
+                <Icon path="res/icons/reasoning/elements/str_16.png"/>
+                <Image path="res/icons/reasoning/elements/str_16.png"/>
                 <TagTypes>
                     <TagType name="STId" uid="40b90b45-0fa2-408c-97d0-76b22eaa6e17" label="%SameTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
@@ -133,8 +121,8 @@
                 </TagTypes>
             </Stereotype>
             <Stereotype name="NextTimeStereotype" metaclass="Dependency" is-hidden="false" label="%NextTimeStereotype.label" uid="d2a2ca9f-0197-44b6-8a12-c5d9e271c48f">
-                <Icon path="res/icons/ntr_16.png"/>
-                <Image path="res/icons/ntr_16.png"/>
+                <Icon path="res/icons/reasoning/elements/ntr_16.png"/>
+                <Image path="res/icons/reasoning/elements/ntr_16.png"/>
                 <TagTypes>
                     <TagType name="NTId" uid="b612539b-a234-44e5-a93b-03aadaa87a19" label="%NextTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
@@ -144,13 +132,13 @@
                 <Image path="%SpecificationDiagramStereotype.image"/>
             </Stereotype>
             <Stereotype name="SpecificationSetStereotype" metaclass="Package" is-hidden="false" label="%SpecificationSetStereotype.label" uid="b05ce34e-a392-4595-a6e9-a62ac73b7ed7">
-                <Icon path="res/icons/spec_set_16.png"/>
-                <Image path="res/icons/spec_set_16.png"/>
+                <Icon path="res/icons/reasoning/elements/spec_set_16.png"/>
+                <Image path="res/icons/reasoning/elements/spec_set_16.png"/>
                 <TagTypes/>
             </Stereotype>
             <Stereotype name="SpecificationStereotype" metaclass="Class" is-hidden="false" label="%SpecificationStereotype.label" uid="79f54ab4-7e5c-4936-b794-bbf1629a73e4">
-                <Icon path="res/icons/spec_16.png"/>
-                <Image path="res/icons/spec_64.png"/>
+                <Icon path="res/icons/reasoning/elements/spec_16.png"/>
+                <Image path="res/icons/reasoning/elements/spec_64.png"/>
                 <TagTypes>
                     <TagType name="TagSpecType" uid="707b3a2f-221c-4b30-853f-6b82e396bde0" label="%SpecificationStereotype.properties.SpecificationType" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagSpec" uid="818ac013-fd0d-49a8-b865-d3a12d54c044" label="%SpecificationStereotype.properties.Specification" parameter-card="1" is-hidden="false" is-signed="false"/>
