@@ -27,7 +27,7 @@ import org.modelio.api.modelio.diagram.IDiagramNode;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.modelio.diagrams.ElementTool;
+import edu.casetools.rcase.modelio.diagrams.ElementTool;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
@@ -59,7 +59,7 @@ public class AntecedentGroupTool extends ElementTool {
      * (java.util.List)
      */
     @Override
-    protected List<IDiagramGraphic> representAsImage(List<IDiagramGraphic> graph) {
+    protected List<IDiagramGraphic> representationConfigs(List<IDiagramGraphic> graph) {
 
 	if ((null != graph) && (!graph.isEmpty()) && (graph.get(0) instanceof IDiagramNode)) {
 	    IDiagramNode dnode = (IDiagramNode) graph.get(0);

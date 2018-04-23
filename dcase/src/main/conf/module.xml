@@ -89,10 +89,6 @@
                     <TagType name="TagContextAttribute" uid="0fb050e1-5267-4c1f-8b42-92a113caded0" label="%ContextInformationMessageStereotype.properties.ContextAttribute" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="InteractionDiagramStereotype" metaclass="SequenceDiagram" is-hidden="false" label="%InteractionDiagramStereotype.label" uid="6b01c5f3-529e-486c-aa36-57a7fb4f9b2d">
-                <Icon path="%InteractionDiagramStereotype.image"/>
-                <Image path="%InteractionDiagramStereotype.image"/>
-            </Stereotype>
             <Stereotype name="ProduceStereotype" metaclass="Dependency" is-hidden="false" label="%ProduceStereotype.label" uid="646d8bd2-6d16-4ea5-a9d1-45ef01aceac6">
                 <Icon path="%ProduceStereotype.image"/>
                 <Image path="%ProduceStereotype.image"/>
@@ -173,9 +169,9 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateMRulesDiagram"/>
             </Command>
-            <Command id="CreateInteractionDiagram" label="%CreateInteractionDiagram.label" tooltip="%CreateInteractionDiagram.tooltip" image="%CreateInteractionDiagram.image" group="%CreateInteractionDiagram.group" modify-model="true" group-image="%CreateInteractionDiagram.groupimage">
+            <Command id="CreateSpecificationDiagram" label="%CreateSpecificationDiagram.label" tooltip="%CreateSpecificationDiagram.tooltip" image="%CreateSpecificationDiagram.image" group="%CreateSpecificationDiagram.group" modify-model="true" group-image="%CreateSpecificationDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateInteractionDiagram"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateSpecificationDiagram"/>
             </Command>
             <Command id="GenerateACLCode" label="%GenerateACLCode.label" tooltip="%GenerateACLCode.tooltip" image="%GenerateACLCode.image" group="%GenerateACLCode.group" modify-model="true" group-image="%GenerateACLCode.groupimage">
                 <Scope metaclass="ModelTree"/>
@@ -188,10 +184,6 @@
             <Command id="GenerateMCode" label="%GenerateMCode.label" tooltip="%GenerateMCode.tooltip" image="%GenerateMCode.image" group="%GenerateMCode.group" modify-model="true" group-image="%GenerateMCode.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateM"/>
-            </Command>
-            <Command id="CreateSpecificationDiagram" label="%CreateSpecificationDiagram.label" tooltip="%CreateSpecificationDiagram.tooltip" image="%CreateSpecificationDiagram.image" group="%CreateSpecificationDiagram.group" modify-model="true" group-image="%CreateSpecificationDiagram.groupimage">
-                <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateSpecificationDiagram"/>
             </Command>
         </Commands>
         <Tools>
@@ -251,7 +243,6 @@
             </Tool>
         </Tools>
         <ContextualMenu>
-            <CommandRef refid="CreateInteractionDiagram"/>
             <CommandRef refid="CreateMRulesDiagram"/>
             <CommandRef refid="CreateSpecificationDiagram"/>
             <CommandRef refid="GenerateNuSMV"/>
@@ -259,10 +250,6 @@
             <CommandRef refid="GenerateACLCode"/>
         </ContextualMenu>
         <Diagrams>
-            <DiagramType base-diagram="SequenceDiagram" stereotype="InteractionDiagramStereotype">
-                <Palette keepBasePalette="true"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.interaction.InteractionDiagramCustomizer"/>
-            </DiagramType>
             <DiagramType base-diagram="StaticDiagram" stereotype="MRulesDiagramStereotype">
                 <Palette keepBasePalette="false"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.mrules.MRulesDiagramCustomizer"/>

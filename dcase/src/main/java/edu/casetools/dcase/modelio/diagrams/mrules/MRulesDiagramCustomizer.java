@@ -30,7 +30,7 @@ import org.modelio.api.modelio.diagram.IDiagramService;
 import org.modelio.api.modelio.diagram.tools.PaletteEntry;
 import org.modelio.api.module.IModule;
 
-import edu.casetools.dcase.modelio.diagrams.DiagramCustomizer;
+import edu.casetools.rcase.modelio.diagrams.DiagramCustomizer;
 import edu.casetools.dcase.module.api.DCaseTools;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;

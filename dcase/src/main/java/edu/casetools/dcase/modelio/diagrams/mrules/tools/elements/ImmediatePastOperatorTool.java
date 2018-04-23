@@ -31,7 +31,7 @@ import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundExcept
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.modelio.diagrams.ElementTool;
+import edu.casetools.rcase.modelio.diagrams.ElementTool;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
@@ -104,7 +104,7 @@ public class ImmediatePastOperatorTool extends ElementTool {
      * (java.util.List)
      */
     @Override
-    protected List<IDiagramGraphic> representAsImage(List<IDiagramGraphic> graph) {
+    protected List<IDiagramGraphic> representationConfigs(List<IDiagramGraphic> graph) {
 
 	if ((null != graph) && (!graph.isEmpty()) && (graph.get(0) instanceof IDiagramNode)) {
 	    IDiagramNode dnode = (IDiagramNode) graph.get(0);
@@ -118,5 +118,6 @@ public class ImmediatePastOperatorTool extends ElementTool {
 
 	return graph;
     }
+
 
 }
