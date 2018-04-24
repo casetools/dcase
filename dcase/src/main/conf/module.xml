@@ -186,7 +186,17 @@
                 <Icon path="res/icons/info/elements/info_16.png"/>
                 <Image path="res/icons/info/elements/info_16.png"/>
                 <TagTypes/>
-            </Stereotype>                                               
+            </Stereotype>   
+            <Stereotype name="OptionListStereotype" metaclass="Class" is-hidden="false" label="%OptionListStereotypeStereotype.label" uid="">
+                <Icon path="res/icons/info/elements/list_16.png"/>
+                <Image path="res/icons/info/elements/list_16.png"/>
+                <TagTypes/>
+            </Stereotype>         
+            <Stereotype name="ListItemStereotype" metaclass="Class" is-hidden="false" label="%ListItemStereotypeStereotype.label" uid="">
+                <Icon path="res/icons/info/elements/list_item_16.png"/>
+                <Image path="res/icons/info/elements/list_item_16.png"/>
+                <TagTypes/>
+            </Stereotype>                                                    
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement"/>
         </Profile>
     </Profiles>
