@@ -36,9 +36,6 @@ public final class DCaseProperties {
     /****************************************************************************
      * Context Information Message related properties
      **************************************************************************/
-    // Situational Parameter
-    public static final String PROPERTY_MESSAGE_ID = "CIMTagId";
-
     public static final String PROPERTY_MESSAGE_RESPONSIBILITY = "TagResponsibility";
 
     public static final String PROPERTY_MESSAGE_REGULARITY = "TagRegularity";
@@ -82,6 +79,16 @@ public final class DCaseProperties {
     public static final String PROPERTY_NTR_ID = "NTId";
 
     public static final String PROPERTY_PAST_OPERATOR_TYPE = "TagOperatorType";
+    
+    
+    
+    public static final String PROPERTY_MESSAGE_ID      = "TagMessageId";
+
+    public static final String PROPERTY_MESSAGE_NAME    = "TagMessageName";
+
+    public static final String PROPERTY_MESSAGE_CONTENT = "TagMessageContent";
+    
+    
 
     /****************************************************************************
      * Rule Diagram Related Properties
@@ -125,6 +132,10 @@ public final class DCaseProperties {
     public static final String PROPERTY_STATE_INDEPENDENT = "TagStateIndpendent";
 
     public static final String PROPERTY_STATE_INITIAL_VALUE = "TagStateInitial";
+
+	public static final String PROPERTY_INFO_ID = "TagInfoId";
+	
+	public static final String PROPERTY_INFO_CONTEXT_ATTRIBUTE = "TagInfoContextAttribute";
 
     private DCaseProperties() {
 

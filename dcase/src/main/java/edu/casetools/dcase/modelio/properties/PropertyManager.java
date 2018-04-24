@@ -37,6 +37,8 @@ import edu.casetools.dcase.modelio.properties.pages.AbsolutePastOperatorProperty
 import edu.casetools.dcase.modelio.properties.pages.AntecedentPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.GenericContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.InfoPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.MessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.SpecificationPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
@@ -198,6 +200,18 @@ public class PropertyManager {
 			.getMClass(Class.class)))) {
 	    this.propertyPage = new SpecificationPropertyPage();
 	}
+	
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new MessagePropertyPage();
+		}
+
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_INFO,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new InfoPropertyPage();
+		}	
 
     }
 

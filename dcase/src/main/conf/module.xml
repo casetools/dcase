@@ -34,12 +34,18 @@
             <Stereotype name="MessageStereotype" metaclass="Class" is-hidden="false" label="%MessageStereotype.label" uid="bf01e74a-2f31-4769-893a-26cf87a0fe93">
                 <Icon path="res/icons/info/elements/message_16.png"/>
                 <Image path="res/icons/info/elements/message_16.png"/>
-                <TagTypes/>
+                <TagTypes>
+                    <TagType name="TagMessageId" uid="5aac75f8-1d57-4eb2-a45a-e68a4efe1e31" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMessageContent" uid="2af7733f-95e6-4e0d-bfb5-5386413c1a8b" label="$StateStereotype.properties.description" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
             </Stereotype>
             <Stereotype name="InfoStereotype" metaclass="Class" is-hidden="false" label="%InfoStereotype.label" uid="72498088-de0b-4fce-a239-e9a034fdfe1f">
                 <Icon path="res/icons/info/elements/info_16.png"/>
                 <Image path="res/icons/info/elements/info_16.png"/>
-                <TagTypes/>
+                <TagTypes>
+                    <TagType name="TagInfoId" uid="d89291fa-bd8b-4ee1-8489-11b7575ee492" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagInfoContextAttribute" uid="86b28616-7c90-4e6c-8fe0-45ab8a49b8a4" label="$InfoStereotype.properties.contextattribute" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
             </Stereotype>
             <Stereotype name="OptionListStereotype" metaclass="Class" is-hidden="false" label="%OptionListStereotypeStereotype.label" uid="0a7eef8e-7170-480d-b07d-770e643fa8a7">
                 <Icon path="res/icons/info/elements/list_16.png"/>
