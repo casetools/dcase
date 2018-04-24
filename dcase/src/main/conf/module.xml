@@ -162,6 +162,21 @@
                 <Image path="res/icons/info/info_diagram_16.png"/>
                 <TagTypes/>
             </Stereotype>
+            <Stereotype name="MessageInterfaceStereotype" metaclass="Class" is-hidden="false" label="%MessageInterfaceStereotype.label" uid="">
+                <Icon path="res/icons/info/elements/interface_16.png"/>
+                <Image path="res/icons/info/elements/interface_16.png"/>
+                <TagTypes/>
+            </Stereotype>    
+            <Stereotype name="AndroidMessageInterfaceStereotype" metaclass="Class" is-hidden="false" label="%AndroidMessageInterfaceStereotype.label" uid="">
+                <Icon path="res/icons/info/elements/android_interface_16.png"/>
+                <Image path="res/icons/info/elements/android_interface_16.png"/>
+                <TagTypes/>
+            </Stereotype>    
+            <Stereotype name="JavaMessageInterfaceStereotype" metaclass="Class" is-hidden="false" label="%AndroidMessageInterfaceStereotype.label" uid="">
+                <Icon path="res/icons/info/elements/java_interface_16.png"/>
+                <Image path="res/icons/info/elements/java_interface_16.png"/>
+                <TagTypes/>
+            </Stereotype>                       
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement"/>
         </Profile>
     </Profiles>
