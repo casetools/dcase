@@ -114,18 +114,6 @@
                     <TagType name="TagSpec" uid="818ac013-fd0d-49a8-b865-d3a12d54c044" label="%SpecificationStereotype.properties.Specification" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="ProduceStereotype" metaclass="Dependency" is-hidden="false" label="%ProduceStereotype.label" uid="646d8bd2-6d16-4ea5-a9d1-45ef01aceac6">
-                <Icon path="%ProduceStereotype.image"/>
-                <Image path="%ProduceStereotype.image"/>
-                <TagTypes/>
-                <NoteTypes/>
-            </Stereotype>
-            <Stereotype name="ConsumeStereotype" metaclass="Dependency" is-hidden="false" label="%ConsumeStereotype.label" uid="68fa3182-ba54-4c49-a402-ef307736d75e">
-                <Icon path="%ConsumeStereotype.image"/>
-                <Image path="%ConsumeStereotype.image"/>
-                <TagTypes/>
-                <NoteTypes/>
-            </Stereotype>
             <Stereotype name="SameTimeStereotype" metaclass="Dependency" is-hidden="false" label="%SameTimeStereotype.label" uid="0bdf2349-ff7f-4e8f-a439-b0aca9b69fe5">
                 <Icon path="res/icons/reasoning/elements/str_16.png"/>
                 <Image path="res/icons/reasoning/elements/str_16.png"/>
@@ -139,6 +127,18 @@
                 <TagTypes>
                     <TagType name="NTId" uid="b612539b-a234-44e5-a93b-03aadaa87a19" label="%NextTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
+            </Stereotype>
+            <Stereotype name="ProduceStereotype" metaclass="Dependency" is-hidden="false" label="%ProduceStereotype.label" uid="646d8bd2-6d16-4ea5-a9d1-45ef01aceac6">
+                <Icon path="%ProduceStereotype.image"/>
+                <Image path="%ProduceStereotype.image"/>
+                <TagTypes/>
+                <NoteTypes/>
+            </Stereotype>
+            <Stereotype name="ConsumeStereotype" metaclass="Dependency" is-hidden="false" label="%ConsumeStereotype.label" uid="68fa3182-ba54-4c49-a402-ef307736d75e">
+                <Icon path="%ConsumeStereotype.image"/>
+                <Image path="%ConsumeStereotype.image"/>
+                <TagTypes/>
+                <NoteTypes/>
             </Stereotype>
             <Stereotype name="GenericContextStereotype" metaclass="Class" is-hidden="false" label="%GenericContextStereotype.label" uid="47e5a553-be68-4bbb-9b1d-8215e2a2349b">
                 <Icon path="res/icons/generic_16.png"/>
@@ -157,22 +157,31 @@
                     <TagType name="TagLibType" uid="cd52cf7a-f9e2-4289-b6a2-9f6d8fd408c7" label="%ACLContextStereotype.properties.libType" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
+            <Stereotype name="InformationDisplayDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%InformationDisplayDiagramStereotype.label" uid="f257742d-141f-4bc7-916f-ae290c3985a7">
+                <Icon path="res/icons/info/info_diagram_16.png"/>
+                <Image path="res/icons/info/info_diagram_16.png"/>
+                <TagTypes/>
+            </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement"/>
         </Profile>
     </Profiles>
     <Gui>
         <Commands>
+            <Command id="CreateInfoDisplayDiagram" label="%CreateInfoDisplayDiagram.label" tooltip="%CreateInfoDisplayDiagram.tooltip" image="%CreateInfoDisplayDiagram.image" group="%CreateInfoDisplayDiagram.group" modify-model="true" group-image="%CreateInfoDisplayDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateInfoDisplayDiagram"/>
+            </Command>
             <Command id="CreateReasoningDiagram" label="%CreateReasoningDiagram.label" tooltip="%CreateReasoningDiagram.tooltip" image="%CreateReasoningDiagram.image" group="%CreateReasoningDiagram.group" modify-model="true" group-image="%CreateReasoningDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateReasoningDiagram"/>
             </Command>
-            <Command id="GenerateACLCode" label="%GenerateACLCode.label" tooltip="%GenerateACLCode.tooltip" image="%GenerateACLCode.image" group="%GenerateACLCode.group" modify-model="true" group-image="%GenerateACLCode.groupimage">
-                <Scope metaclass="ModelTree"/>
-                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateACLCode"/>
-            </Command>
             <Command id="GenerateNuSMV" label="%GenerateNuSMV.label" tooltip="%GenerateNuSMV.tooltip" image="%GenerateNuSMV.image" group="%GenerateNuSMV.group" modify-model="true" group-image="%GenerateNuSMV.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateNuSMV"/>
+            </Command>
+            <Command id="GenerateACLCode" label="%GenerateACLCode.label" tooltip="%GenerateACLCode.tooltip" image="%GenerateACLCode.image" group="%GenerateACLCode.group" modify-model="true" group-image="%GenerateACLCode.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateACLCode"/>
             </Command>
             <Command id="GenerateMCode" label="%GenerateMCode.label" tooltip="%GenerateMCode.tooltip" image="%GenerateMCode.image" group="%GenerateMCode.group" modify-model="true" group-image="%GenerateMCode.groupimage">
                 <Scope metaclass="ModelTree"/>
@@ -254,6 +263,7 @@
             </Tool>
         </Tools>
         <ContextualMenu>
+            <CommandRef refid="CreateInfoDisplayDiagram"/>
             <CommandRef refid="CreateReasoningDiagram"/>
             <CommandRef refid="GenerateNuSMV"/>
             <CommandRef refid="GenerateMCode"/>
@@ -263,6 +273,10 @@
             <DiagramType base-diagram="StaticDiagram" stereotype="ReasoningDiagramStereotype">
                 <Palette keepBasePalette="false"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.ReasoningDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="StaticDiagram" stereotype="InformationDisplayDiagramStereotype">
+                <Palette keepBasePalette="false"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.InfoDisplayDiagramCustomizer"/>
             </DiagramType>
         </Diagrams>
         <Views>

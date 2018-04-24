@@ -51,7 +51,7 @@ public class CreateReasoningDiagram extends CreateStaticDiagram {
 	String name = I18nMessageService.getString("Ui.Command.CreateReasoningDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createStaticDiagram(DCaseModule.getInstance(), selectedElements, session, name,
 		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES);
-	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_DIAGRAM_M_RULES);
+	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_REASONING_DIAGRAM);
 	return diagram;
     }
 

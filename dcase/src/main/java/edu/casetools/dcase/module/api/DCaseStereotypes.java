@@ -1,8 +1,14 @@
 package edu.casetools.dcase.module.api;
 
 public class DCaseStereotypes { // NOSONAR The class only contains static
-				// Strings.
-    // Elements
+	
+	
+    // Information Display Diagram
+    public static final String STEREOTYPE_DIAGRAM_INFO_DISPLAY = "InformationDisplayDiagramStereotype"; 
+	
+    // Reasoning Diagram
+    public static final String STEREOTYPE_DIAGRAM_M_RULES = "ReasoningDiagramStereotype";
+	
     public static final String STEREOTYPE_STATE 		= "StateStereotype";
     public static final String STEREOTYPE_CONTEXT_STATE = "ContextStateStereotype";
     public static final String STEREOTYPE_INTERNAL_TIME_STATE = "InternalTimeStateStereotype";
@@ -26,14 +32,15 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     
     public static final String STEREOTYPE_DEPENDENCY_PRODUCE = "ProduceStereotype";
     public static final String STEREOTYPE_DEPENDENCY_CONSUME = "ConsumeStereotype";
-
-    // Diagrams
+   
+    
+    // ///////////////////////////////////// Diagrams
     public static final String STEREOTYPE_DIAGRAM_CSPARQL_RULES = "CSPARQLMapDiagramStereotype";
-    public static final String STEREOTYPE_DIAGRAM_M_RULES = "ReasoningDiagramStereotype";
+
 
     public static final String STEREOTYPE_ACL_CONTEXT = "ACLContextStereotype";
     public static final String STEREOTYPE_GENERIC_CONTEXT = "GenericContextStereotype";
-    public static final String STEREOTYPE_DIAGRAM_SPECIFICATION = "SpecificationDiagramStereotype";
+
 	public static final String STEREOTYPE_PRODUCE = "ProduceStereotype";
 
 }
