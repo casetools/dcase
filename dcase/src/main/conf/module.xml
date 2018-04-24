@@ -242,18 +242,24 @@
                     <HParameter name="stereotype" value="MessageStereotype"/>
                 </Handler>
             </Tool>
-             <Tool id="InfoTool" label="%InfoTool.label" tooltip="%InfoTool.tooltip" image="%InfoTool.image">
+            <Tool id="InfoTool" label="%InfoTool.label" tooltip="%InfoTool.tooltip" image="%InfoTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.elements.InfoTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="InfoStereotype"/>
                 </Handler>
             </Tool>
-             <Tool id="OptionListTool" label="%OptionListTool.label" tooltip="%OptionListTool.tooltip" image="%OptionListTool.image">
+            <Tool id="OptionListTool" label="%OptionListTool.label" tooltip="%OptionListTool.tooltip" image="%OptionListTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.elements.OptionListTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="OptionListStereotype"/>
                 </Handler>
-            </Tool>                         
+            </Tool>
+            <Tool id="ListItemTool" label="%ListItemTool.label" tooltip="%ListItemTool.tooltip" image="%ListItemTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.elements.ListItemTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="ListItemStereotype"/>
+                </Handler>
+            </Tool>
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
