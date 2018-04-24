@@ -176,7 +176,17 @@
                 <Icon path="res/icons/info/elements/java_interface_16.png"/>
                 <Image path="res/icons/info/elements/java_interface_16.png"/>
                 <TagTypes/>
-            </Stereotype>                       
+            </Stereotype>      
+            <Stereotype name="MessageStereotype" metaclass="Class" is-hidden="false" label="%MessageStereotype.label" uid="">
+                <Icon path="res/icons/info/elements/message_16.png"/>
+                <Image path="res/icons/info/elements/message_16.png"/>
+                <TagTypes/>
+            </Stereotype>    
+            <Stereotype name="InfoStereotype" metaclass="Class" is-hidden="false" label="%InfoStereotype.label" uid="">
+                <Icon path="res/icons/info/elements/info_16.png"/>
+                <Image path="res/icons/info/elements/info_16.png"/>
+                <TagTypes/>
+            </Stereotype>                                               
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement"/>
         </Profile>
     </Profiles>
