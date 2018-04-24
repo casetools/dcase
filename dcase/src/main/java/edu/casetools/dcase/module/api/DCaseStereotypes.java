@@ -5,6 +5,13 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 	
     // Information Display Diagram
     public static final String STEREOTYPE_DIAGRAM_INFO_DISPLAY = "InformationDisplayDiagramStereotype"; 
+
+	public static final String STEREOTYPE_ANDROID_MESSAGE_INTERFACE = "AndroidMessageInterfaceStereotype";
+	public static final String STEREOTYPE_JAVA_MESSAGE_INTERFACE 	= "JavaMessageInterfaceStereotype";
+	public static final String STEREOTYPE_MESSAGE_INTERFACE		    = "MessageInterfaceStereotype";
+	
+	public static final String STEREOTYPE_INFO 	  = "InfoStereotype";
+	public static final String STEREOTYPE_MESSAGE = "MessageStereotype";
 	
     // Reasoning Diagram
     public static final String STEREOTYPE_DIAGRAM_M_RULES = "ReasoningDiagramStereotype";

@@ -11,6 +11,46 @@
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">
+            <Stereotype name="InformationDisplayDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%InformationDisplayDiagramStereotype.label" uid="f257742d-141f-4bc7-916f-ae290c3985a7">
+                <Icon path="res/icons/info/info_diagram_16.png"/>
+                <Image path="res/icons/info/info_diagram_16.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="MessageInterfaceStereotype" metaclass="Class" is-hidden="false" label="%MessageInterfaceStereotype.label" uid="ce21e57e-a00b-4327-bfed-a41fd16ce09b">
+                <Icon path="res/icons/info/elements/interface_16.png"/>
+                <Image path="res/icons/info/elements/interface_16.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="AndroidMessageInterfaceStereotype" metaclass="Class" is-hidden="false" label="%AndroidMessageInterfaceStereotype.label" uid="2e3facf8-efb1-4e7e-8143-d1467327ba64">
+                <Icon path="res/icons/info/elements/android_interface_16.png"/>
+                <Image path="res/icons/info/elements/android_interface_16.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="JavaMessageInterfaceStereotype" metaclass="Class" is-hidden="false" label="%AndroidMessageInterfaceStereotype.label" uid="76cf7099-e9f5-444e-8fe3-accc97f21b8f">
+                <Icon path="res/icons/info/elements/java_interface_16.png"/>
+                <Image path="res/icons/info/elements/java_interface_16.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="MessageStereotype" metaclass="Class" is-hidden="false" label="%MessageStereotype.label" uid="bf01e74a-2f31-4769-893a-26cf87a0fe93">
+                <Icon path="res/icons/info/elements/message_16.png"/>
+                <Image path="res/icons/info/elements/message_16.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="InfoStereotype" metaclass="Class" is-hidden="false" label="%InfoStereotype.label" uid="72498088-de0b-4fce-a239-e9a034fdfe1f">
+                <Icon path="res/icons/info/elements/info_16.png"/>
+                <Image path="res/icons/info/elements/info_16.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="OptionListStereotype" metaclass="Class" is-hidden="false" label="%OptionListStereotypeStereotype.label" uid="0a7eef8e-7170-480d-b07d-770e643fa8a7">
+                <Icon path="res/icons/info/elements/list_16.png"/>
+                <Image path="res/icons/info/elements/list_16.png"/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="ListItemStereotype" metaclass="Class" is-hidden="false" label="%ListItemStereotypeStereotype.label" uid="f64e3bdd-6117-4b2b-aba1-66318fc89a55">
+                <Icon path="res/icons/info/elements/list_item_16.png"/>
+                <Image path="res/icons/info/elements/list_item_16.png"/>
+                <TagTypes/>
+            </Stereotype>
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
@@ -157,46 +197,6 @@
                     <TagType name="TagLibType" uid="cd52cf7a-f9e2-4289-b6a2-9f6d8fd408c7" label="%ACLContextStereotype.properties.libType" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="InformationDisplayDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%InformationDisplayDiagramStereotype.label" uid="f257742d-141f-4bc7-916f-ae290c3985a7">
-                <Icon path="res/icons/info/info_diagram_16.png"/>
-                <Image path="res/icons/info/info_diagram_16.png"/>
-                <TagTypes/>
-            </Stereotype>
-            <Stereotype name="MessageInterfaceStereotype" metaclass="Class" is-hidden="false" label="%MessageInterfaceStereotype.label" uid="">
-                <Icon path="res/icons/info/elements/interface_16.png"/>
-                <Image path="res/icons/info/elements/interface_16.png"/>
-                <TagTypes/>
-            </Stereotype>    
-            <Stereotype name="AndroidMessageInterfaceStereotype" metaclass="Class" is-hidden="false" label="%AndroidMessageInterfaceStereotype.label" uid="">
-                <Icon path="res/icons/info/elements/android_interface_16.png"/>
-                <Image path="res/icons/info/elements/android_interface_16.png"/>
-                <TagTypes/>
-            </Stereotype>    
-            <Stereotype name="JavaMessageInterfaceStereotype" metaclass="Class" is-hidden="false" label="%AndroidMessageInterfaceStereotype.label" uid="">
-                <Icon path="res/icons/info/elements/java_interface_16.png"/>
-                <Image path="res/icons/info/elements/java_interface_16.png"/>
-                <TagTypes/>
-            </Stereotype>      
-            <Stereotype name="MessageStereotype" metaclass="Class" is-hidden="false" label="%MessageStereotype.label" uid="">
-                <Icon path="res/icons/info/elements/message_16.png"/>
-                <Image path="res/icons/info/elements/message_16.png"/>
-                <TagTypes/>
-            </Stereotype>    
-            <Stereotype name="InfoStereotype" metaclass="Class" is-hidden="false" label="%InfoStereotype.label" uid="">
-                <Icon path="res/icons/info/elements/info_16.png"/>
-                <Image path="res/icons/info/elements/info_16.png"/>
-                <TagTypes/>
-            </Stereotype>   
-            <Stereotype name="OptionListStereotype" metaclass="Class" is-hidden="false" label="%OptionListStereotypeStereotype.label" uid="">
-                <Icon path="res/icons/info/elements/list_16.png"/>
-                <Image path="res/icons/info/elements/list_16.png"/>
-                <TagTypes/>
-            </Stereotype>         
-            <Stereotype name="ListItemStereotype" metaclass="Class" is-hidden="false" label="%ListItemStereotypeStereotype.label" uid="">
-                <Icon path="res/icons/info/elements/list_item_16.png"/>
-                <Image path="res/icons/info/elements/list_item_16.png"/>
-                <TagTypes/>
-            </Stereotype>                                                    
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement"/>
         </Profile>
     </Profiles>
@@ -224,6 +224,36 @@
             </Command>
         </Commands>
         <Tools>
+            <Tool id="AndroidMessageInterfaceTool" label="%AndroidMessageInterfaceTool.label" tooltip="%AndroidMessageInterfaceTool.tooltip" image="%AndroidMessageInterfaceTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.elements.AndroidMessageInterfaceTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="AndroidMessageInterfaceStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="JavaMessageInterfaceTool" label="%JavaMessageInterfaceTool.label" tooltip="%JavaMessageInterfaceTool.tooltip" image="%JavaMessageInterfaceTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.elements.JavaMessageInterfaceTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="JavaMessageInterfaceStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="MessageTool" label="%MessageTool.label" tooltip="%MessageTool.tooltip" image="%MessageTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.elements.MessageTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="MessageStereotype"/>
+                </Handler>
+            </Tool>
+             <Tool id="InfoTool" label="%InfoTool.label" tooltip="%InfoTool.tooltip" image="%InfoTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.elements.InfoTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="InfoStereotype"/>
+                </Handler>
+            </Tool>
+             <Tool id="OptionListTool" label="%OptionListTool.label" tooltip="%OptionListTool.tooltip" image="%OptionListTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.elements.OptionListTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="OptionListStereotype"/>
+                </Handler>
+            </Tool>                         
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>

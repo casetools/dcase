@@ -30,11 +30,11 @@ import org.modelio.api.modelio.diagram.IDiagramService;
 import org.modelio.api.modelio.diagram.tools.PaletteEntry;
 import org.modelio.api.module.IModule;
 
-import edu.casetools.rcase.modelio.diagrams.DiagramCustomizer;
-import edu.casetools.rcase.module.api.RCaseTools;
 import edu.casetools.dcase.module.api.DCaseTools;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.rcase.modelio.diagrams.DiagramCustomizer;
+import edu.casetools.rcase.module.api.RCaseTools;
 
 /**
  * The Class RequirementDiagramCustomizer customizes the palette of the

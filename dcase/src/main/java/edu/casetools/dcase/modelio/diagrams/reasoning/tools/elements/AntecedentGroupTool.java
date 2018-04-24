@@ -27,11 +27,11 @@ import org.modelio.api.modelio.diagram.IDiagramNode;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.rcase.modelio.diagrams.ElementTool;
 import edu.casetools.dcase.module.api.DCaseColours;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.rcase.modelio.diagrams.ElementTool;
 import edu.casetools.rcase.utils.ElementUtils;
 /**
  * The Class RequirementTool is the tool for creating a Requirement.
