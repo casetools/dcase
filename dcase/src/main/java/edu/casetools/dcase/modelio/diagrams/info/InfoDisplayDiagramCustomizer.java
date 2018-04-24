@@ -84,9 +84,7 @@ public class InfoDisplayDiagramCustomizer extends DiagramCustomizer implements I
 
     private org.eclipse.gef.palette.PaletteEntry createLinksGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Links");
-	String[] toolNames = new String[] { DCaseTools.TOOL_SAME_TIME, DCaseTools.TOOL_NEXT_TIME, DCaseTools.TOOL_PRODUCES, RCaseTools.TOOL_TRACEABILITY, RCaseTools.TOOL_DETECTS, RCaseTools.TOOL_TRIGGERS,
-			RCaseTools.TOOL_PART, RCaseTools.TOOL_COPY, RCaseTools.TOOL_DERIVE, RCaseTools.TOOL_SATISFY,
-			RCaseTools.TOOL_VERIFY, RCaseTools.TOOL_REFINE };
+	String[] toolNames = new String[] { DCaseTools.TOOL_DISPLAYS, DCaseTools.TOOL_RECEIVES, RCaseTools.TOOL_TRACEABILITY};
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 

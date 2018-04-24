@@ -47,6 +47,9 @@ public final class DCaseTools {
 	public static final String TOOL_INFO 					  = "InfoTool";
 	public static final String TOOL_OPTION_LIST 			  = "OptionListTool";
 	public static final String TOOL_LIST_ITEM 				  = "ListItemTool";
+	
+	public static final String TOOL_DISPLAYS = "DisplaysTool";
+	public static final String TOOL_RECEIVES = "ReceivesTool";
 
     private DCaseTools() {
 
