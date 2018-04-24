@@ -84,16 +84,15 @@ public class InfoDisplayDiagramCustomizer extends DiagramCustomizer implements I
 
     private org.eclipse.gef.palette.PaletteEntry createLinksGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Links");
-	String[] toolNames = new String[] { DCaseTools.TOOL_ANDROID_MESSAGE_INTERFACE, DCaseTools.TOOL_JAVA_MESSAGE_INTERFACE, DCaseTools.TOOL_MESSAGE, DCaseTools.TOOL_INFO, DCaseTools.TOOL_OPTION_LIST, DCaseTools.TOOL_LIST_ITEM };
+	String[] toolNames = new String[] { DCaseTools.TOOL_SAME_TIME, DCaseTools.TOOL_NEXT_TIME, DCaseTools.TOOL_PRODUCES, RCaseTools.TOOL_TRACEABILITY, RCaseTools.TOOL_DETECTS, RCaseTools.TOOL_TRIGGERS,
+			RCaseTools.TOOL_PART, RCaseTools.TOOL_COPY, RCaseTools.TOOL_DERIVE, RCaseTools.TOOL_SATISFY,
+			RCaseTools.TOOL_VERIFY, RCaseTools.TOOL_REFINE };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
     private org.eclipse.gef.palette.PaletteEntry createNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
-	String[] toolNames = new String[] { DCaseTools.TOOL_CONTEXT_STATE, DCaseTools.TOOL_INTERNAL_TIME_STATE, DCaseTools.TOOL_ANTECEDENT_GROUP, DCaseTools.TOOL_ANTECEDENT,
-		DCaseTools.TOOL_IMMEDIATE_PAST_OPERATOR, DCaseTools.TOOL_ABSOLUTE_PAST_OPERATOR,
-		DCaseTools.TOOL_CONSEQUENT,  DCaseTools.TOOL_SPECIFICATION, DCaseTools.TOOL_SPECIFICATION_SET,
-		RCaseTools.TOOL_REQUIREMENT, RCaseTools.TOOL_CONTEXT_ATTRIBUTE };
+	String[] toolNames = new String[] { DCaseTools.TOOL_ANDROID_MESSAGE_INTERFACE, DCaseTools.TOOL_JAVA_MESSAGE_INTERFACE, DCaseTools.TOOL_MESSAGE, DCaseTools.TOOL_INFO, DCaseTools.TOOL_OPTION_LIST, DCaseTools.TOOL_LIST_ITEM };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 

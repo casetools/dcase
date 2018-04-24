@@ -51,6 +51,16 @@
                 <Image path="res/icons/info/elements/list_item_16.png"/>
                 <TagTypes/>
             </Stereotype>
+            <Stereotype name="DisplaysStereotype" metaclass="Class" is-hidden="false" label="%DisplaysStereotype.label" uid="">
+                <Icon path="res/icons/info/relations/displays_16.png"/>
+                <Image path="res/icons/info/relations/displays_16.png"/>
+                <TagTypes/>
+            </Stereotype>     
+             <Stereotype name="ReceivesStereotype" metaclass="Class" is-hidden="false" label="%ReceivesStereotype.label" uid="">
+                <Icon path="res/icons/info/relations/receives_16.png"/>
+                <Image path="res/icons/info/relations/receives_16.png"/>
+                <TagTypes/>
+            </Stereotype>           
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
@@ -260,6 +270,18 @@
                     <HParameter name="stereotype" value="ListItemStereotype"/>
                 </Handler>
             </Tool>
+            <Tool id="DisplaysTool" label="%DisplaysTool.label" tooltip="%DisplaysTool.tooltip" image="%DisplaysTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.relations.DisplaysTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="DisplaysStereotype"/>
+                </Handler>
+            </Tool>       
+            <Tool id="ReceivesTool" label="%ReceivesTool.label" tooltip="%ReceivesTool.tooltip" image="%ReceivesTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.relations.ReceivesTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="ReceivesStereotype"/>
+                </Handler>
+            </Tool>               
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>

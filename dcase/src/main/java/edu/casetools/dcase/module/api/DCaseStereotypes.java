@@ -15,6 +15,10 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 	
 	public static final String STEREOTYPE_OPTION_LIST = "OptionListStereotype";
 	public static final String STEREOTYPE_LIST_ITEM   = "ListItemStereotype";
+	
+
+	public static final String STEREOTYPE_RECEIVES = "ReceivesStereotype";
+	public static final String STEREOTYPE_DISPLAYS = "DisplaysStereotype";
 
 	
     // Reasoning Diagram
@@ -53,6 +57,7 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     public static final String STEREOTYPE_GENERIC_CONTEXT = "GenericContextStereotype";
 
 	public static final String STEREOTYPE_PRODUCE = "ProduceStereotype";
+
 
 
 }

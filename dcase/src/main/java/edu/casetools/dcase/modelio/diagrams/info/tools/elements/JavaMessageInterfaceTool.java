@@ -54,7 +54,7 @@ public class JavaMessageInterfaceTool extends ElementTool {
 	String name = I18nMessageService.getString("Names.JavaMessageInterface");
 
 	Class auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
-		DCaseStereotypes.STEREOTYPE_ANDROID_MESSAGE_INTERFACE);
+		DCaseStereotypes.STEREOTYPE_JAVA_MESSAGE_INTERFACE);
 	return addObjectiveStereotype(auxiliarElement);
     }
 
