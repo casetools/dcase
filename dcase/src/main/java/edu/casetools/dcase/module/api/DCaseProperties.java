@@ -136,7 +136,18 @@ public final class DCaseProperties {
 	public static final String PROPERTY_INFO_ID = "TagInfoId";
 	
 	public static final String PROPERTY_INFO_CONTEXT_ATTRIBUTE = "TagInfoContextAttribute";
+	
+	
+	
+	
+	
+	public static final String PROPERTY_SENSOR_ID 			  = "TagSensorId";
+	public static final String PROPERTY_SENSOR_VALUE_TYPE 	  = "TagSensorValueType";
+	public static final String PROPERTY_SENSOR_TYPE 		  = "TagSensorType";
+	public static final String PROPERTY_SENSOR_REGULARITY 	  = "TagSensorRegularity";
+	public static final String PROPERTY_SENSOR_RESPONSIBILITY = "TagSensorResponsibility";
 
+	
     private DCaseProperties() {
 
     }
