@@ -48,7 +48,7 @@ public class CreateInfoDisplayDiagram extends CreateStaticDiagram {
     @Override
     protected StaticDiagram createOwnDiagram(List<MObject> selectedElements, IModelingSession session) {
 
-	String name = I18nMessageService.getString("Ui.Command.Create.CreateSpecificationDiagram.Label");
+	String name = I18nMessageService.getString("Ui.Command.Create.CreateInfoDisplayDiagram.Label");
 	StaticDiagram diagram = DiagramUtils.getInstance().createStaticDiagram(DCaseModule.getInstance(), selectedElements, session, name,
 		DCaseStereotypes.STEREOTYPE_DIAGRAM_INFO_DISPLAY);
 	diagram = (StaticDiagram) addStyle(diagram, DCaseResources.STYLE_INFO_DISPLAY_DIAGRAM);
