@@ -67,11 +67,11 @@
                 <Image path="res/icons/info/relations/receives_16.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="AcquisitionAndModellingDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%AcquisitionAndModellingDiagramStereotype.label" uid="">
+            <Stereotype name="AcquisitionAndModellingDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%AcquisitionAndModellingDiagramStereotype.label" uid="4f27dd46-f8d4-4b73-bfae-ee8c04ed9244">
                 <Icon path="res/icons/acquisition/acquisition_modelling_diagram_16.png"/>
                 <Image path="res/icons/acquisition/acquisition_modelling_diagram_16.png"/>
                 <TagTypes/>
-            </Stereotype>            
+            </Stereotype>
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
@@ -230,7 +230,7 @@
             <Command id="CreateAcquisitionAndModellingDiagram" label="%CreateAcquisitionAndModellingDiagram.label" tooltip="%CreateAcquisitionAndModellingDiagram.tooltip" image="%CreateAcquisitionAndModellingDiagram.image" group="%CreateAcquisitionAndModellingDiagram.group" modify-model="true" group-image="%CreateAcquisitionAndModellingDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateAcquisitionAndModellingDiagram"/>
-            </Command>            
+            </Command>
             <Command id="CreateReasoningDiagram" label="%CreateReasoningDiagram.label" tooltip="%CreateReasoningDiagram.tooltip" image="%CreateReasoningDiagram.image" group="%CreateReasoningDiagram.group" modify-model="true" group-image="%CreateReasoningDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateReasoningDiagram"/>
@@ -372,7 +372,7 @@
         </Tools>
         <ContextualMenu>
             <CommandRef refid="CreateInfoDisplayDiagram"/>
-            <CommandRef refid="CreateAcquisitionAndModellingDiagram"/>       
+            <CommandRef refid="CreateAcquisitionAndModellingDiagram"/>
             <CommandRef refid="GenerateACLCode"/>
             <CommandRef refid="CreateReasoningDiagram"/>
             <CommandRef refid="GenerateNuSMV"/>
@@ -385,8 +385,8 @@
             </DiagramType>
             <DiagramType base-diagram="StaticDiagram" stereotype="AcquisitionAndModellingDiagramStereotype">
                 <Palette keepBasePalette="false"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.AcquisitionAndModellingDiagramCustomizer"/>
-            </DiagramType>            
+                <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.AcquisitionAndModellingDiagramCustomizer"/>
+            </DiagramType>
             <DiagramType base-diagram="StaticDiagram" stereotype="InformationDisplayDiagramStereotype">
                 <Palette keepBasePalette="false"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.info.InfoDisplayDiagramCustomizer"/>
