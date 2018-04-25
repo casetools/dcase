@@ -77,7 +77,7 @@ public class MessagePropertyPage implements IPropertyContent {
 	
 		// TagContent
 		property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_CONTENT);
-		table.addProperty(DCaseProperties.PROPERTY_NAME, property);
+		table.addProperty(I18nMessageService.getString("Ui.Message.Content"), property);
 
     }
 

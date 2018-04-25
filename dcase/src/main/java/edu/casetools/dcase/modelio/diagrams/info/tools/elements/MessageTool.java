@@ -48,7 +48,7 @@ public class MessageTool extends ElementTool {
      */
     @Override
     public MObject createOwnElement(IModelingSession session, MObject element) {
-	String name = I18nMessageService.getString("Names.Info");
+	String name = I18nMessageService.getString("Names.Message");
 
 	return ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 			DCaseStereotypes.STEREOTYPE_MESSAGE);

@@ -20,6 +20,8 @@
  */
 package edu.casetools.dcase.modelio.properties.pages;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,13 +29,18 @@ import org.eclipse.core.runtime.AssertionFailedException;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
+import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.properties.IPropertyContent;
+import edu.casetools.rcase.module.api.RCaseStereotypes;
+import edu.casetools.rcase.module.impl.RCaseModule;
+import edu.casetools.rcase.module.impl.RCasePeerModule;
 import edu.casetools.rcase.utils.PropertiesUtils;
+import edu.casetools.rcase.utils.tables.TableUtils;
 
 public class InfoPropertyPage implements IPropertyContent {
 
@@ -77,8 +84,20 @@ public class InfoPropertyPage implements IPropertyContent {
 	
 		// TagContent
 		property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_INFO_CONTEXT_ATTRIBUTE);
-		table.addProperty(DCaseProperties.PROPERTY_NAME, property);
 
+		table.addProperty(I18nMessageService.getString("Ui.Info.ContextAttribute"), property, getAllContextAttributes());
+		
+    }
+    
+    private String[] getAllContextAttributes(){
+		List<MObject> contextAttributes = new ArrayList<>();
+		List<String>  contextAttributeNames = new ArrayList<>();
+		contextAttributes = TableUtils.getInstance().getAllElementsStereotypedAs(RCaseModule.getInstance(), RCasePeerModule.MODULE_NAME, contextAttributes, RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE);
+		for(MObject contextAttribute: contextAttributes){
+			contextAttributeNames.add(contextAttribute.getName());
+		}
+		return contextAttributeNames.toArray(new String[0]);
+    
     }
 
 }

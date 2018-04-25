@@ -47,12 +47,12 @@
                     <TagType name="TagInfoContextAttribute" uid="86b28616-7c90-4e6c-8fe0-45ab8a49b8a4" label="$InfoStereotype.properties.contextattribute" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="OptionListStereotype" metaclass="Class" is-hidden="false" label="%OptionListStereotypeStereotype.label" uid="0a7eef8e-7170-480d-b07d-770e643fa8a7">
+            <Stereotype name="OptionListStereotype" metaclass="Class" is-hidden="false" label="%OptionListStereotype.label" uid="0a7eef8e-7170-480d-b07d-770e643fa8a7">
                 <Icon path="res/icons/info/elements/list_16.png"/>
                 <Image path="res/icons/info/elements/list_16.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="ListItemStereotype" metaclass="Class" is-hidden="false" label="%ListItemStereotypeStereotype.label" uid="f64e3bdd-6117-4b2b-aba1-66318fc89a55">
+            <Stereotype name="ListItemStereotype" metaclass="Class" is-hidden="false" label="%ListItemStereotype.label" uid="f64e3bdd-6117-4b2b-aba1-66318fc89a55">
                 <Icon path="res/icons/info/elements/list_item_16.png"/>
                 <Image path="res/icons/info/elements/list_item_16.png"/>
                 <TagTypes/>
