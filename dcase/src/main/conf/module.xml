@@ -83,9 +83,9 @@
                     <TagType name="TagSensorRegularity" uid="" label="%SensorStereotype.properties.regularity" parameter-card="1" is-hidden="false" is-signed="false"/>            
                 </TagTypes>
             </Stereotype>    
-            <Stereotype name="PreferenceSensorStereotype" metaclass="Class" is-hidden="false" label="%SensorStereotype.label" uid="">
-                <Icon path="res/icons/acquisition/elements/sensor_16.png"/>
-                <Image path="res/icons/acquisition/elements/sensor_16.png"/>
+            <Stereotype name="PreferenceSensorStereotype" metaclass="Class" is-hidden="false" label="%PreferenceSensorStereotype.label" uid="">
+                <Icon path="res/icons/acquisition/elements/preference_16.png"/>
+                <Image path="res/icons/acquisition/elements/preference_16.png"/>
                 <TagTypes>
                     <TagType name="TagPreferenceSensorMinValue" uid="" label="%PreferenceSensorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagPreferenceSensorMaxValue" uid="" label="$PreferenceSensorStereotype.properties.valuetype" parameter-card="1" is-hidden="false" is-signed="false"/>
