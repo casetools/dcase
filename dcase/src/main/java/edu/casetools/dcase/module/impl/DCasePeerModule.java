@@ -36,7 +36,7 @@ public class DCasePeerModule implements IDCasePeerModule {
     }
 
     private void initStyles() {
-	String[] styles = {DCaseResources.STYLE_REASONING_DIAGRAM, DCaseResources.STYLE_INFO_DISPLAY_DIAGRAM };
+	String[] styles = {DCaseResources.STYLE_INFO_DISPLAY_DIAGRAM, DCaseResources.STYLE_ACQUISITION_MODELLING_DIAGRAM, DCaseResources.STYLE_REASONING_DIAGRAM, DCaseResources.STYLE_DEPLOYMENT_DIAGRAM };
 	ResourcesManager.getInstance().registerStyles(styles);
     }
 

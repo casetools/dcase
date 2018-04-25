@@ -72,6 +72,11 @@
                 <Image path="res/icons/acquisition/acquisition_modelling_diagram_16.png"/>
                 <TagTypes/>
             </Stereotype>
+            <Stereotype name="DeploymentDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%DeploymentDiagramStereotype.label" uid="">
+                <Icon path="res/icons/acquisition/deployment_diagram_16.png"/>
+                <Image path="res/icons/acquisition/deployment_diagram_16.png"/>
+                <TagTypes/>
+            </Stereotype>            
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
@@ -235,6 +240,10 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateReasoningDiagram"/>
             </Command>
+            <Command id="CreateDeploymentDiagram" label="%CreateDeploymentDiagram.label" tooltip="%CreateDeploymentDiagram.tooltip" image="%CreateDeploymentDiagram.image" group="%CreateDeploymentDiagram.group" modify-model="true" group-image="%CreateDeploymentDiagram.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateDeploymentDiagram"/>
+            </Command>            
             <Command id="GenerateNuSMV" label="%GenerateNuSMV.label" tooltip="%GenerateNuSMV.tooltip" image="%GenerateNuSMV.image" group="%GenerateNuSMV.group" modify-model="true" group-image="%GenerateNuSMV.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateNuSMV"/>
@@ -377,19 +386,24 @@
             <CommandRef refid="CreateReasoningDiagram"/>
             <CommandRef refid="GenerateNuSMV"/>
             <CommandRef refid="GenerateMCode"/>
+            <CommandRef refid="CreateDeploymentDiagram"/>
         </ContextualMenu>
-        <Diagrams>
-            <DiagramType base-diagram="StaticDiagram" stereotype="ReasoningDiagramStereotype">
+        <Diagrams> 
+            <DiagramType base-diagram="StaticDiagram" stereotype="InformationDisplayDiagramStereotype">
                 <Palette keepBasePalette="false"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.ReasoningDiagramCustomizer"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.InfoDisplayDiagramCustomizer"/>
             </DiagramType>
             <DiagramType base-diagram="StaticDiagram" stereotype="AcquisitionAndModellingDiagramStereotype">
                 <Palette keepBasePalette="false"/>
                 <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.AcquisitionAndModellingDiagramCustomizer"/>
             </DiagramType>
-            <DiagramType base-diagram="StaticDiagram" stereotype="InformationDisplayDiagramStereotype">
+            <DiagramType base-diagram="StaticDiagram" stereotype="ReasoningDiagramStereotype">
                 <Palette keepBasePalette="false"/>
-                <Handler class="edu.casetools.dcase.modelio.diagrams.info.InfoDisplayDiagramCustomizer"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.ReasoningDiagramCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="StaticDiagram" stereotype="DeploymentDiagramStereotype">
+                <Palette keepBasePalette="false"/>
+                <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.DeploymentDiagramCustomizer"/>
             </DiagramType>
         </Diagrams>
         <Views>

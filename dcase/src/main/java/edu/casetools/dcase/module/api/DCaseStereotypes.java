@@ -60,6 +60,8 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 
 	public static final String STEREOTYPE_DIAGRAM_ACQUISITION_MODELLING = "AcquisitionAndModellingDiagramStereotype";
 
+	public static final String STEREOTYPE_DIAGRAM_DEPLOYMENT = "DeploymentDiagramStereotype";
+
 
 
 }
