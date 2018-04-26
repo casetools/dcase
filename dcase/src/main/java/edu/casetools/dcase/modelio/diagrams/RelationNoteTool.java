@@ -76,7 +76,7 @@ public abstract class RelationNoteTool extends RelationTool {
 	    graphics = representation.unmask(dependency, 0, 0);
 	    
 	    for (IDiagramGraphic graphic : graphics) {
-		createLink(kind, path, graphic);
+	    	createLink(kind, path, graphic);
 	    }
 
 	    representation.save();
