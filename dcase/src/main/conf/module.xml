@@ -72,95 +72,95 @@
                 <Image path="res/icons/acquisition/acquisition_modelling_diagram_16.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="SensorStereotype" metaclass="Class" is-hidden="false" label="%SensorStereotype.label" uid="">
+            <Stereotype name="SensorStereotype" metaclass="Class" is-hidden="false" label="%SensorStereotype.label" uid="dde26f98-2e2b-4d87-893b-8584e9a80cfb">
                 <Icon path="res/icons/acquisition/elements/sensor_16.png"/>
                 <Image path="res/icons/acquisition/elements/sensor_16.png"/>
                 <TagTypes>
-                    <TagType name="TagSensorId" uid="" label="%SensorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagSensorValueType" uid="" label="$SensorStereotype.properties.valuetype" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagSensorType" uid="" label="%SensorStereotype.properties.type" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagSensorResponsibility" uid="" label="$SensorStereotype.properties.responsibility" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagSensorRegularity" uid="" label="%SensorStereotype.properties.regularity" parameter-card="1" is-hidden="false" is-signed="false"/>            
+                    <TagType name="TagSensorId" uid="6ed13264-3f8b-4cd5-8ebc-f275f89247a8" label="%SensorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagSensorValueType" uid="37bf02cc-29d2-41d5-8580-f211e29c946a" label="$SensorStereotype.properties.valuetype" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagSensorType" uid="110e4a3d-5cfa-4c27-ae35-f1d49cedfe52" label="%SensorStereotype.properties.type" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagSensorResponsibility" uid="dbbff55e-5724-4714-8b0b-2496167c8865" label="$SensorStereotype.properties.responsibility" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagSensorRegularity" uid="73408e8b-bcdb-4752-acc6-74fcbb0f5f43" label="%SensorStereotype.properties.regularity" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>    
-            <Stereotype name="PreferenceSensorStereotype" metaclass="Class" is-hidden="false" label="%PreferenceSensorStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="PreferenceSensorStereotype" metaclass="Class" is-hidden="false" label="%PreferenceSensorStereotype.label" uid="8785a40b-536c-4a8f-846d-54e9fd4d3e51">
                 <Icon path="res/icons/acquisition/elements/preference_16.png"/>
                 <Image path="res/icons/acquisition/elements/preference_16.png"/>
                 <TagTypes>
-                    <TagType name="TagPreferenceSensorMinValue" uid="" label="%PreferenceSensorStereotype.properties.minValue" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagPreferenceSensorMaxValue" uid="" label="$PreferenceSensorStereotype.properties.maxValue" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagPreferenceSensorIsBoolean" uid="" label="%PreferenceSensorStereotype.properties.isBoolean" parameter-card="1" is-hidden="false" is-signed="false"/>          
+                    <TagType name="TagPreferenceSensorMinValue" uid="56458ecf-b19d-43bf-8bb1-30cdca441790" label="%PreferenceSensorStereotype.properties.minValue" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagPreferenceSensorMaxValue" uid="0d4a8ca2-de1b-4157-91cf-98dcab34490a" label="$PreferenceSensorStereotype.properties.maxValue" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagPreferenceSensorIsBoolean" uid="f3f6d8d8-ea48-4af0-b736-000b5a2653b9" label="%PreferenceSensorStereotype.properties.isBoolean" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>      
-            <Stereotype name="StationarySensorStereotype" metaclass="Class" is-hidden="false" label="%StationarySensorStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="StationarySensorStereotype" metaclass="Class" is-hidden="false" label="%StationarySensorStereotype.label" uid="69495256-2273-4cd5-a169-060c4e306666">
                 <Icon path="res/icons/acquisition/elements/stationary_16.png"/>
                 <Image path="res/icons/acquisition/elements/stationary_16.png"/>
                 <TagTypes>
-                    <TagType name="TagStationarySensorVeraId" uid="" label="%PreferenceSensorStereotype.properties.veraId" parameter-card="1" is-hidden="false" is-signed="false"/>                
-                    <TagType name="TagStationarySensorMinValue" uid="" label="%PreferenceSensorStereotype.properties.minValue" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagStationarySensorMaxValue" uid="" label="$PreferenceSensorStereotype.properties.maxValue" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagStationarySensorIsBoolean" uid="" label="%PreferenceSensorStereotype.properties.isBoolean" parameter-card="1" is-hidden="false" is-signed="false"/>          
+                    <TagType name="TagStationarySensorVeraId" uid="66e555ad-4748-4767-90e6-51b065f84025" label="%PreferenceSensorStereotype.properties.veraId" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStationarySensorMinValue" uid="f39b7f7d-2719-44fc-b039-d2a937d8a2af" label="%PreferenceSensorStereotype.properties.minValue" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStationarySensorMaxValue" uid="e0d21994-569c-4e37-8019-35a9fb9cbfe8" label="$PreferenceSensorStereotype.properties.maxValue" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStationarySensorIsBoolean" uid="8da0b1a1-b9f2-46e0-85b8-50268806f27f" label="%PreferenceSensorStereotype.properties.isBoolean" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>   
-            <Stereotype name="MobileSensorStereotype" metaclass="Class" is-hidden="false" label="%MobileSensorStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="MobileSensorStereotype" metaclass="Class" is-hidden="false" label="%MobileSensorStereotype.label" uid="0a304868-f0a3-4751-9bfc-aa63ff4f8960">
                 <Icon path="res/icons/acquisition/elements/mobile_16.png"/>
                 <Image path="res/icons/acquisition/elements/mobile_16.png"/>
                 <TagTypes>
-                    <TagType name="TagMobileSensorLibrary" uid="" label="%MobileSensorStereotype.properties.library" parameter-card="1" is-hidden="false" is-signed="false"/>                
-                    <TagType name="TagMobileSensorFrequency" uid="" label="%MobileSensorStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagMobileSensorOntology" uid="" label="%MobileSensorStereotype.properties.ontology" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagMobileSensorData" uid="" label="%MobileSensorStereotype.properties.data" parameter-card="1" is-hidden="false" is-signed="false"/>          
+                    <TagType name="TagMobileSensorLibrary" uid="f280a9d3-b06d-4b1a-ba8e-d3ce528145e7" label="%MobileSensorStereotype.properties.library" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMobileSensorFrequency" uid="152c2f87-7031-4435-b37d-459f74c83a24" label="%MobileSensorStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMobileSensorOntology" uid="cc98ddb0-141d-44dd-a288-67ffd0f09a29" label="%MobileSensorStereotype.properties.ontology" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMobileSensorData" uid="ba94330d-ec58-4c69-8a1e-18ebc6f47070" label="%MobileSensorStereotype.properties.data" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>  
-            <Stereotype name="ModellingRuleStereotype" metaclass="Class" is-hidden="false" label="%MobileSensorStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="ModellingRuleStereotype" metaclass="Class" is-hidden="false" label="%MobileSensorStereotype.label" uid="a5e86ab6-9a01-4f79-8b51-34ae38b73f78">
                 <Icon path="res/icons/acquisition/elements/modelling_rule_16.png"/>
                 <Image path="res/icons/acquisition/elements/modelling_rule_16.png"/>
                 <TagTypes>
-                    <TagType name="TagModellingRuleId" uid="" label="%SensorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>                       
+                    <TagType name="TagModellingRuleId" uid="8bf80512-986e-422e-b90c-2da6d3b578f7" label="%SensorStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>    
-            <Stereotype name="DBModellingRuleStereotype" metaclass="Class" is-hidden="false" label="%DBModellingRuleStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="DBModellingRuleStereotype" metaclass="Class" is-hidden="false" label="%DBModellingRuleStereotype.label" uid="99b11a0f-e322-4c9e-9bca-a46ef246f046">
                 <Icon path="res/icons/acquisition/elements/database_16.png"/>
                 <Image path="res/icons/acquisition/elements/database_16.png"/>
                 <TagTypes>
-                    <TagType name="TagDBModellingRuleRule" uid="" label="%DBModellingRuleStereotype.properties.rule" parameter-card="1" is-hidden="false" is-signed="false"/>                      
+                    <TagType name="TagDBModellingRuleRule" uid="acd67a26-7a7b-4980-b540-6136b90aa6ab" label="%DBModellingRuleStereotype.properties.rule" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>    
-            <Stereotype name="RDFModellingRuleStereotype" metaclass="Class" is-hidden="false" label="%RDFModellingRuleStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="RDFModellingRuleStereotype" metaclass="Class" is-hidden="false" label="%RDFModellingRuleStereotype.label" uid="797e1b67-4f63-43e5-8048-1e43f0bebfc3">
                 <Icon path="res/icons/acquisition/elements/rdf_16.png"/>
                 <Image path="res/icons/acquisition/elements/rdf_16.png"/>
                 <TagTypes>
-                    <TagType name="TagRDFModellingRuleLogicalEvaluations" uid="" label="%RDFModellingRuleStereotype.properties.logicalEvaluations" parameter-card="1" is-hidden="false" is-signed="false"/>                
-                    <TagType name="TagRDFModellingRuleMethod" uid="" label="%RDFModellingRuleStereotype.properties.method" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagRDFModellingRuleMethodTripleVar" uid="" label="$RDFModellingRuleStereotype.properties.methodTripleVar" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagRDFModellingRuleMethodResultExpr" uid="" label="%RDFModellingRuleStereotype.properties.methodResultExpr" parameter-card="1" is-hidden="false" is-signed="false"/>          
+                    <TagType name="TagRDFModellingRuleLogicalEvaluations" uid="c634add5-188d-4ca8-a14e-98e838ac1b2d" label="%RDFModellingRuleStereotype.properties.logicalEvaluations" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagRDFModellingRuleMethod" uid="1bfb3f5a-923e-4e94-8f96-2765d60d6769" label="%RDFModellingRuleStereotype.properties.method" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagRDFModellingRuleMethodTripleVar" uid="f8551963-7824-4369-af12-1c6638fed95d" label="$RDFModellingRuleStereotype.properties.methodTripleVar" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagRDFModellingRuleMethodResultExpr" uid="0beea760-b3e0-47a1-9c9b-415872ad27c1" label="%RDFModellingRuleStereotype.properties.methodResultExpr" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>   
-            <Stereotype name="ObserveStereotype" metaclass="Dependency" is-hidden="false" label="%ObserveStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="ObserveStereotype" metaclass="Dependency" is-hidden="false" label="%ObserveStereotype.label" uid="76025004-7c5d-4edd-8bdb-e299b7952963">
                 <Icon path="res/icons/acquisition/relations/observe_16.png"/>
                 <Image path="res/icons/acquisition/relations/observe_16.png"/>
                 <TagTypes/>
-            </Stereotype>                
-            <Stereotype name="FeedsStereotype" metaclass="Dependency" is-hidden="false" label="%FeedsStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="FeedsStereotype" metaclass="Dependency" is-hidden="false" label="%FeedsStereotype.label" uid="9d400d26-ec5a-4c8e-a6d3-6c8a820fa9e5">
                 <Icon path="res/icons/acquisition/relations/feeds_16.png"/>
                 <Image path="res/icons/acquisition/relations/feeds_16.png"/>
                 <TagTypes/>
-            </Stereotype>     
-            <Stereotype name="FeedsInWindowStereotype" metaclass="Dependency" is-hidden="false" label="%FeedsInWindowStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="FeedsInWindowStereotype" metaclass="Dependency" is-hidden="false" label="%FeedsInWindowStereotype.label" uid="5746017b-2f6d-43f6-8660-a418fb664ffe">
                 <Icon path="res/icons/acquisition/relations/feeds_window_16.png"/>
                 <Image path="res/icons/acquisition/relations/feeds_window_16.png"/>
                 <TagTypes>
-                    <TagType name="SR_stream" uid="" label="%FeedsInWindowStereotype.properties.stream" parameter-card="1" is-hidden="true" is-signed="false"/>
-                    <TagType name="SR_every" uid="" label="%FeedsInWindowStereotype.properties.every" parameter-card="1" is-hidden="true" is-signed="false"/>
-                    <TagType name="SR_for" uid="" label="%FeedsInWindowStereotype.properties.for" parameter-card="1" is-hidden="true" is-signed="false"/>
+                    <TagType name="SR_stream" uid="784617e0-edb8-4b24-baa9-a9c122ecc509" label="%FeedsInWindowStereotype.properties.stream" parameter-card="1" is-hidden="true" is-signed="false"/>
+                    <TagType name="SR_every" uid="5a0570cc-8c9f-4ac9-9d47-4fe7034ef0f6" label="%FeedsInWindowStereotype.properties.every" parameter-card="1" is-hidden="true" is-signed="false"/>
+                    <TagType name="SR_for" uid="cb12875a-9fbb-4dc0-b3df-a29b804b149e" label="%FeedsInWindowStereotype.properties.for" parameter-card="1" is-hidden="true" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>   
+            </Stereotype>
             <Stereotype name="ProduceStereotype" metaclass="Dependency" is-hidden="false" label="%ProduceStereotype.label" uid="646d8bd2-6d16-4ea5-a9d1-45ef01aceac6">
                 <Icon path="%ProduceStereotype.image"/>
                 <Image path="%ProduceStereotype.image"/>
                 <TagTypes/>
                 <NoteTypes/>
-            </Stereotype>                                                                                                    
+            </Stereotype>
             <Stereotype name="DeploymentDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%DeploymentDiagramStereotype.label" uid="cee9aab2-b93c-4190-9fbe-2bd4efadcdd4">
                 <Icon path="res/icons/acquisition/deployment_diagram_16.png"/>
                 <Image path="res/icons/acquisition/deployment_diagram_16.png"/>
@@ -385,6 +385,12 @@
             </Tool>
             <Tool id="ReceivesTool" label="%ReceivesTool.label" tooltip="%ReceivesTool.tooltip" image="%ReceivesTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.relations.ReceivesTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="ReceivesStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="PreferenceSensorTool" label="%PreferenceSensorTool.label" tooltip="%PreferenceSensorTool.tooltip" image="%PreferenceSensorTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.elements.PreferenceSensorTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="ReceivesStereotype"/>
                 </Handler>
