@@ -91,7 +91,17 @@
                     <TagType name="TagPreferenceSensorMaxValue" uid="" label="$PreferenceSensorStereotype.properties.maxValue" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagPreferenceSensorIsBoolean" uid="" label="%PreferenceSensorStereotype.properties.isBoolean" parameter-card="1" is-hidden="false" is-signed="false"/>          
                 </TagTypes>
-            </Stereotype>                      
+            </Stereotype>      
+            <Stereotype name="StationarySensorStereotype" metaclass="Class" is-hidden="false" label="%StationarySensorStereotype.label" uid="">
+                <Icon path="res/icons/acquisition/elements/stationary_16.png"/>
+                <Image path="res/icons/acquisition/elements/stationary_16.png"/>
+                <TagTypes>
+                    <TagType name="TagStationarySensorVeraId" uid="" label="%PreferenceSensorStereotype.properties.veraId" parameter-card="1" is-hidden="false" is-signed="false"/>                
+                    <TagType name="TagStationarySensorMinValue" uid="" label="%PreferenceSensorStereotype.properties.minValue" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStationarySensorMaxValue" uid="" label="$PreferenceSensorStereotype.properties.maxValue" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStationarySensorIsBoolean" uid="" label="%PreferenceSensorStereotype.properties.isBoolean" parameter-card="1" is-hidden="false" is-signed="false"/>          
+                </TagTypes>
+            </Stereotype>                                
             <Stereotype name="DeploymentDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%DeploymentDiagramStereotype.label" uid="cee9aab2-b93c-4190-9fbe-2bd4efadcdd4">
                 <Icon path="res/icons/acquisition/deployment_diagram_16.png"/>
                 <Image path="res/icons/acquisition/deployment_diagram_16.png"/>
