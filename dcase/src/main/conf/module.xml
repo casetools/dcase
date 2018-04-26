@@ -244,7 +244,12 @@
                     <TagType name="TagAndroidReasonerOntologyBase" uid="" label="%AndroidReasonerStereotype.properties.ontologyBase" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagAndroidReasonerStreamIRI" uid="" label="%AndroidReasonerStereotype.properties.streamIRI" parameter-card="1" is-hidden="false" is-signed="false"/>                    
                 </TagTypes>
-            </Stereotype>                                                                               
+            </Stereotype>      
+            <Stereotype name="SourceStereotype" metaclass="Dependency" is-hidden="false" label="%SourceStereotype.label" uid="">
+                <Icon path="res/icons/deployment/relations/source_16.png"/>
+                <Image path="res/icons/deployment/relations/source_16.png"/>
+                <TagTypes/>
+            </Stereotype>                                                                                       
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
