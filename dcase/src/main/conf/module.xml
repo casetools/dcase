@@ -101,7 +101,17 @@
                     <TagType name="TagStationarySensorMaxValue" uid="" label="$PreferenceSensorStereotype.properties.maxValue" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStationarySensorIsBoolean" uid="" label="%PreferenceSensorStereotype.properties.isBoolean" parameter-card="1" is-hidden="false" is-signed="false"/>          
                 </TagTypes>
-            </Stereotype>                                
+            </Stereotype>   
+            <Stereotype name="MobileSensorStereotype" metaclass="Class" is-hidden="false" label="%MobileSensorStereotype.label" uid="">
+                <Icon path="res/icons/acquisition/elements/mobile_16.png"/>
+                <Image path="res/icons/acquisition/elements/mobile_16.png"/>
+                <TagTypes>
+                    <TagType name="TagMobileSensorLibrary" uid="" label="%MobileSensorStereotype.properties.library" parameter-card="1" is-hidden="false" is-signed="false"/>                
+                    <TagType name="TagMobileSensorFrequency" uid="" label="%MobileSensorStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMobileSensorOntology" uid="" label="%MobileSensorStereotype.properties.ontology" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMobileSensorData" uid="" label="%MobileSensorStereotype.properties.data" parameter-card="1" is-hidden="false" is-signed="false"/>          
+                </TagTypes>
+            </Stereotype>                                            
             <Stereotype name="DeploymentDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%DeploymentDiagramStereotype.label" uid="cee9aab2-b93c-4190-9fbe-2bd4efadcdd4">
                 <Icon path="res/icons/acquisition/deployment_diagram_16.png"/>
                 <Image path="res/icons/acquisition/deployment_diagram_16.png"/>
