@@ -136,16 +136,27 @@
                     <TagType name="TagRDFModellingRuleMethodResultExpr" uid="" label="%RDFModellingRuleStereotype.properties.methodResultExpr" parameter-card="1" is-hidden="false" is-signed="false"/>          
                 </TagTypes>
             </Stereotype>   
+            <Stereotype name="ObserveStereotype" metaclass="Dependency" is-hidden="false" label="%ObserveStereotype.label" uid="">
+                <Icon path="res/icons/acquisition/relations/observe_16.png"/>
+                <Image path="res/icons/acquisition/relations/observe_16.png"/>
+                <TagTypes/>
+            </Stereotype>                
             <Stereotype name="FeedsStereotype" metaclass="Dependency" is-hidden="false" label="%FeedsStereotype.label" uid="">
                 <Icon path="res/icons/acquisition/relations/feeds_16.png"/>
                 <Image path="res/icons/acquisition/relations/feeds_16.png"/>
                 <TagTypes/>
             </Stereotype>     
-            <Stereotype name="ObserveStereotype" metaclass="Dependency" is-hidden="false" label="%ObserveStereotype.label" uid="">
-                <Icon path="res/icons/acquisition/relations/observe_16.png"/>
-                <Image path="res/icons/acquisition/relations/observe_16.png"/>
+            <Stereotype name="FeedsInWindowStereotype" metaclass="Dependency" is-hidden="false" label="%FeedsInWindowStereotype.label" uid="">
+                <Icon path="res/icons/acquisition/relations/feeds_window_16.png"/>
+                <Image path="res/icons/acquisition/relations/feeds_window_16.png"/>
                 <TagTypes/>
-            </Stereotype>                                                                                            
+            </Stereotype>   
+            <Stereotype name="ProduceStereotype" metaclass="Dependency" is-hidden="false" label="%ProduceStereotype.label" uid="646d8bd2-6d16-4ea5-a9d1-45ef01aceac6">
+                <Icon path="%ProduceStereotype.image"/>
+                <Image path="%ProduceStereotype.image"/>
+                <TagTypes/>
+                <NoteTypes/>
+            </Stereotype>                                                                                                    
             <Stereotype name="DeploymentDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%DeploymentDiagramStereotype.label" uid="cee9aab2-b93c-4190-9fbe-2bd4efadcdd4">
                 <Icon path="res/icons/acquisition/deployment_diagram_16.png"/>
                 <Image path="res/icons/acquisition/deployment_diagram_16.png"/>
@@ -267,12 +278,6 @@
                 <TagTypes>
                     <TagType name="NTId" uid="b612539b-a234-44e5-a93b-03aadaa87a19" label="%NextTimeStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>
-            <Stereotype name="ProduceStereotype" metaclass="Dependency" is-hidden="false" label="%ProduceStereotype.label" uid="646d8bd2-6d16-4ea5-a9d1-45ef01aceac6">
-                <Icon path="%ProduceStereotype.image"/>
-                <Image path="%ProduceStereotype.image"/>
-                <TagTypes/>
-                <NoteTypes/>
             </Stereotype>
             <Stereotype name="ConsumeStereotype" metaclass="Dependency" is-hidden="false" label="%ConsumeStereotype.label" uid="68fa3182-ba54-4c49-a402-ef307736d75e">
                 <Icon path="%ConsumeStereotype.image"/>
