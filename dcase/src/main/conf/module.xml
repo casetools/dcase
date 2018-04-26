@@ -505,6 +505,12 @@
                     <HParameter name="stereotype" value="FeedsInWindowStereotype"/>
                 </Handler>
             </Tool>
+            <Tool id="VeraActuatorTool" label="%VeraActuatorTool.label" tooltip="%VeraActuatorTool.tooltip" image="%VeraActuatorTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.VeraActuatorTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="VeraActuatorStereotype"/>
+                </Handler>
+            </Tool>            
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
