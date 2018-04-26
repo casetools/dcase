@@ -187,6 +187,7 @@ public final class DCaseProperties {
 	public static final String PROPERTY_VERA_ROUTER_PORT				= "TagVeraRouterPort";
 	public static final String PROPERTY_VERA_ROUTER_USERNAME			= "TagVeraRouterUsername";
 	public static final String PROPERTY_VERA_ROUTER_PASSWORD			= "TagVeraRouterPassword";
+	
     private DCaseProperties() {
 
     }
