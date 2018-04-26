@@ -38,13 +38,13 @@ public class ACLGenerator {
 
 	List<MObject> contextAttributeList = new ArrayList<>();
 	contextAttributeList = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
-		DCasePeerModule.MODULE_NAME, contextAttributeList, DCaseStereotypes.STEREOTYPE_ACL_CONTEXT);
+		DCasePeerModule.MODULE_NAME, contextAttributeList, DCaseStereotypes.STEREOTYPE_MOBILE_SENSOR);
 	for (MObject contextAttribute : contextAttributeList) {
 	    String type = ((ModelElement) contextAttribute).getTagValue(DCasePeerModule.MODULE_NAME,
-		    DCaseProperties.PROPERTY_CONTEXT_RESPONSIBILITY);
+		    DCaseProperties.PROPERTY_SENSOR_RESPONSIBILITY);
 	    if (type.equals(I18nMessageService.getString("Ui.ACLContext.Property.TagResponsibility.Pull"))) {
 		String frequency = ((ModelElement) contextAttribute).getTagValue(DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_CONTEXT_FREQUENCY);
+			DCaseProperties.PROPERTY_MOBILE_SENSOR_FREQUENCY);
 		generatePullObserver(contextAttribute, folder, frequency);
 	    } else if (type.equals(I18nMessageService.getString("Ui.ACLContext.Property.TagResponsibility.Push"))) {
 		generatePushObserver(contextAttribute, folder);
