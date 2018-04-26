@@ -394,7 +394,13 @@
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="ReceivesStereotype"/>
                 </Handler>
-            </Tool>            
+            </Tool>    
+            <Tool id="PreferenceSensorTool" label="%PreferenceSensorTool.label" tooltip="%PreferenceSensorTool.tooltip" image="%PreferenceSensorTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.elements.PreferenceSensorTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="ReceivesStereotype"/>
+                </Handler>
+            </Tool>                        
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
