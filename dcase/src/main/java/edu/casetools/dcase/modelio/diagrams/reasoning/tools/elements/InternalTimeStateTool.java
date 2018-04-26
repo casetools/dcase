@@ -56,7 +56,7 @@ public class InternalTimeStateTool extends ElementTool {
 	Class internalTimeState =  ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_STATE);
 		
-	return addStereotype(internalTimeState);
+	return ElementUtils.getInstance().addStereotype(internalTimeState, DCaseStereotypes.STEREOTYPE_INTERNAL_TIME_STATE);
     }
 
     /*
@@ -79,15 +79,6 @@ public class InternalTimeStateTool extends ElementTool {
 
 	return graph;
     }
-    
-	private Class addStereotype(Class object) {
-		try {
-			object.addStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_INTERNAL_TIME_STATE);
-		} catch (ExtensionNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return object;
-	}
+
 
 }

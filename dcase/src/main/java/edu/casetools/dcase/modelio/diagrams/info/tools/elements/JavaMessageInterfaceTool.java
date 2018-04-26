@@ -54,8 +54,8 @@ public class JavaMessageInterfaceTool extends ElementTool {
 	String name = I18nMessageService.getString("Names.JavaMessageInterface");
 
 	Class auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
-		DCaseStereotypes.STEREOTYPE_JAVA_MESSAGE_INTERFACE);
-	return addObjectiveStereotype(auxiliarElement);
+		DCaseStereotypes.STEREOTYPE_MESSAGE_INTERFACE);
+	return ElementUtils.getInstance().addStereotype(auxiliarElement, DCaseStereotypes.STEREOTYPE_JAVA_MESSAGE_INTERFACE);
     }
 
     /*
@@ -79,15 +79,5 @@ public class JavaMessageInterfaceTool extends ElementTool {
 
 	return graph;
     }
-    
-	private Class addObjectiveStereotype(Class object) {
-		try {
-			object.addStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE_INTERFACE);
-		} catch (ExtensionNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return object;
-	}
 
 }

@@ -58,17 +58,17 @@ public class AbsolutePastOperatorTool extends ElementTool {
 
     @Override
     public MObject createOwnElement(IModelingSession session, MObject element) {
-	String name = I18nMessageService.getString("Names.Absolute");
-
-	MObject auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
-		DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR);
-
-	addPastOperatorStereotype(auxiliarElement);
-
-	PropertiesUtils.getInstance().setFreeProperty(DCaseModule.getInstance(), (ModelElement) auxiliarElement, DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_PAST_OPERATOR, DCaseProperties.PROPERTY_PAST_OPERATOR_ID);
-
-	return setDefaultValues(auxiliarElement);
+		String name = I18nMessageService.getString("Names.Absolute");
+	
+		ModelElement auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
+			DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
+	
+		auxiliarElement = ElementUtils.getInstance().addStereotype(auxiliarElement, DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR);
+	
+		PropertiesUtils.getInstance().setFreeProperty(DCaseModule.getInstance(), (ModelElement) auxiliarElement, DCasePeerModule.MODULE_NAME,
+			DCaseStereotypes.STEREOTYPE_PAST_OPERATOR, DCaseProperties.PROPERTY_PAST_OPERATOR_ID);
+	
+		return setDefaultValues(auxiliarElement);
     }
 
     private MObject setDefaultValues(MObject auxiliarElement) {
@@ -86,16 +86,6 @@ public class AbsolutePastOperatorTool extends ElementTool {
 	    e.printStackTrace();
 	}
 	return auxiliarElement;
-    }
-
-    private void addPastOperatorStereotype(MObject auxiliarElement) {
-	try {
-	    ((ModelElement) auxiliarElement).addStereotype(DCasePeerModule.MODULE_NAME,
-		    DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
-	} catch (ExtensionNotFoundException e) {
-	    LOGGER.log(Level.SEVERE, e.getMessage(), e);
-	}
-	;
     }
 
     /*

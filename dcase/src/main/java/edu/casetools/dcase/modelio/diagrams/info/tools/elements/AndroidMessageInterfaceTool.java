@@ -54,9 +54,9 @@ public class AndroidMessageInterfaceTool extends ElementTool {
 	String name = I18nMessageService.getString("Names.AndroidMessageInterface");
 
 	Class auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
-		DCaseStereotypes.STEREOTYPE_ANDROID_MESSAGE_INTERFACE);
+		DCaseStereotypes.STEREOTYPE_MESSAGE_INTERFACE);
 	
-	return addObjectiveStereotype(auxiliarElement);
+	return ElementUtils.getInstance().addStereotype(auxiliarElement, DCaseStereotypes.STEREOTYPE_ANDROID_MESSAGE_INTERFACE);
     }
 
     /*
@@ -80,15 +80,5 @@ public class AndroidMessageInterfaceTool extends ElementTool {
 
 	return graph;
     }
-    
-	private Class addObjectiveStereotype(Class object) {
-		try {
-			object.addStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MESSAGE_INTERFACE);
-		} catch (ExtensionNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return object;
-	}
 
 }

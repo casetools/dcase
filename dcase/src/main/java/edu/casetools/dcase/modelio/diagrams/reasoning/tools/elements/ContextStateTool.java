@@ -55,7 +55,7 @@ public class ContextStateTool extends ElementTool {
 
 	Class contextState =  ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_STATE);
-	return addStereotype(contextState);
+	return ElementUtils.getInstance().addStereotype(contextState, DCaseStereotypes.STEREOTYPE_CONTEXT_STATE);
     }
 
     /*
@@ -78,15 +78,5 @@ public class ContextStateTool extends ElementTool {
 
 	return graph;
     }
-
-	private Class addStereotype(Class object) {
-		try {
-			object.addStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONTEXT_STATE);
-		} catch (ExtensionNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return object;
-	}
     
 }
