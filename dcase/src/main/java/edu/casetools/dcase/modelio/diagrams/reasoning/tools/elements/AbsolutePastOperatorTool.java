@@ -21,7 +21,6 @@
 package edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramNode;
@@ -52,9 +51,7 @@ public class AbsolutePastOperatorTool extends ElementTool {
      * (org.modelio.api.model.IModelingSession,
      * org.modelio.vcore.smkernel.mapi.MObject)
      */
-
-    private static final Logger LOGGER = Logger.getLogger(AbsolutePastOperatorTool.class.getName());
-
+	
     @Override
     public MObject createOwnElement(IModelingSession session, MObject element) {
 		String name = I18nMessageService.getString("Names.Absolute");
