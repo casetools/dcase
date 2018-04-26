@@ -534,7 +534,13 @@
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="MReasonerStereotype"/>
                 </Handler>
-            </Tool>                                                  
+            </Tool>  
+            <Tool id="AndroidReceiverTool" label="%AndroidReceiverTool.label" tooltip="%AndroidReceiverTool.tooltip" image="%AndroidReceiverTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.AndroidReceiverTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="AndroidReceiverStereotype"/>
+                </Handler>
+            </Tool>                                                             
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
