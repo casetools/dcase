@@ -32,12 +32,10 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.Class;
 
-import edu.casetools.dcase.modelio.properties.pages.ACLContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AbsolutePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AntecedentPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.DBModellingRulePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.FeedsInWindowPropertyPage;
-import edu.casetools.dcase.modelio.properties.pages.GenericContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.InfoPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.MessagePropertyPage;
@@ -48,7 +46,6 @@ import edu.casetools.dcase.modelio.properties.pages.RDFModellingRulePropertyPage
 import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.SensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.SpecificationPropertyPage;
-import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.StationarySensorPropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
@@ -124,25 +121,8 @@ public class PropertyManager {
 	this.propertyPage = null;
 	extensions = DCaseModule.getInstance().getModuleContext().getModelingSession().getMetamodelExtensions();
 	sterList = PropertiesUtils.getInstance().computePropertyList(DCasePeerModule.MODULE_NAME, element);
-	updateStereotypes(element);
     }
 
-    private void updateStereotypes(ModelElement element) {
-
-	if (element.isStereotyped(RCasePeerModule.MODULE_NAME, RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE)) {
-	    if (!element.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_GENERIC_CONTEXT)) {
-		try {
-		    IModelingSession session = DCaseModule.getInstance().getModuleContext().getModelingSession();
-		    ITransaction transaction = session.createTransaction(
-			    I18nMessageService.getString("Info.Session.Create", new String[] { "" }));
-		    element.addStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_GENERIC_CONTEXT);
-		    transaction.commit();
-		} catch (ExtensionNotFoundException e) {
-		    e.printStackTrace();
-		}
-	    }
-	}
-    }
 
     private void updatePropertyPage(ModelElement element, IModulePropertyTable table) {
 	if (null != this.propertyPage) {
@@ -153,18 +133,6 @@ public class PropertyManager {
 
     private void getPropertyPages(IMetamodelExtensions extensions, Stereotype ster) {
 
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_GENERIC_CONTEXT, DCaseModule.getInstance().getModuleContext()
-			.getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
-	    this.propertyPage = new GenericContextPropertyPage();
-	}
-
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_STATE,
-		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
-			.getMClass(Class.class)))) {
-	    this.propertyPage = new StatePropertyPage();
-	}
-
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ANTECEDENT,
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 			.getMClass(Class.class)))) {
@@ -173,7 +141,7 @@ public class PropertyManager {
 	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES, DCaseModule.getInstance().getModuleContext()
+		DCaseStereotypes.STEREOTYPE_DIAGRAM_REASONING, DCaseModule.getInstance().getModuleContext()
 			.getModelioServices().getMetamodelService().getMetamodel().getMClass(StaticDiagram.class)))) {
 	    this.propertyPage = new RuleDiagramPropertyPage();
 	}
@@ -195,12 +163,6 @@ public class PropertyManager {
 		DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR, DCaseModule.getInstance().getModuleContext()
 			.getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
 	    this.propertyPage = new AbsolutePastOperatorPropertyPage();
-	}
-
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ACL_CONTEXT,
-		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
-			.getMClass(Class.class)))) {
-	    this.propertyPage = new ACLContextPropertyPage();
 	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_SPECIFICATION,

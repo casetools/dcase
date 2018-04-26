@@ -22,9 +22,8 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 
 	
     // Reasoning Diagram
-    public static final String STEREOTYPE_DIAGRAM_M_RULES = "ReasoningDiagramStereotype";
+    public static final String STEREOTYPE_DIAGRAM_REASONING = "ReasoningDiagramStereotype";
 	
-    public static final String STEREOTYPE_STATE 		= "StateStereotype";
     public static final String STEREOTYPE_CONTEXT_STATE = "ContextStateStereotype";
     public static final String STEREOTYPE_INTERNAL_TIME_STATE = "InternalTimeStateStereotype";
 	
@@ -52,10 +51,6 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
     // ///////////////////////////////////// Diagrams
     public static final String STEREOTYPE_DIAGRAM_CSPARQL_RULES = "CSPARQLMapDiagramStereotype";
 
-
-    public static final String STEREOTYPE_ACL_CONTEXT = "ACLContextStereotype";
-    public static final String STEREOTYPE_GENERIC_CONTEXT = "GenericContextStereotype";
-
 	public static final String STEREOTYPE_PRODUCE = "ProduceStereotype";
 
 	public static final String STEREOTYPE_DIAGRAM_ACQUISITION_MODELLING = "AcquisitionAndModellingDiagramStereotype";
@@ -72,6 +67,8 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 	public static final String STEREOTYPE_OBSERVE = "ObserveStereotype";
 	public static final String STEREOTYPE_FEEDS = "FeedsStereotype";
 	public static final String STEREOTYPE_FEEDS_IN_WINDOW = "FeedsInWindowStereotype";
+
+	public static final String STEREOTYPE_STATE = "StateStereotype";
 
 
 }

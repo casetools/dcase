@@ -44,19 +44,19 @@ public class MobileSensorPropertyPage implements IPropertyContent {
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
 	    switch (row) {
-	    case 1:
+	    case 7:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_MOBILE_SENSOR_LIBRARY, value, element);
 		break;
-	    case 2:
+	    case 8:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_MOBILE_SENSOR_FREQUENCY, value, element);
 		break;
-	    case 3:
+	    case 9:
 			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MOBILE_SENSOR_ONTOLOGY,
 					value);
 		break;
-	    case 4:
+	    case 10:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MOBILE_SENSOR_DATA,
 			value);
 		break;

@@ -43,7 +43,7 @@ public class DBModellingRulePropertyPage implements IPropertyContent {
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
 	    switch (row) {
-	    case 1:
+	    case 3:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_DB_MODELLING_RULE_RULE, value);
 		break;
 	    default:

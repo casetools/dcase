@@ -123,7 +123,7 @@
                 <Icon path="res/icons/acquisition/elements/database_16.png"/>
                 <Image path="res/icons/acquisition/elements/database_16.png"/>
                 <TagTypes>
-                    <TagType name="TagDBModellingRuleRule" uid="acd67a26-7a7b-4980-b540-6136b90aa6ab" label="%DBModellingRuleStereotype.properties.rule" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagDBModellingRuleRule" uid="" label="%DBModellingRuleStereotype.properties.rule" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="RDFModellingRuleStereotype" metaclass="Class" is-hidden="false" label="%RDFModellingRuleStereotype.label" uid="797e1b67-4f63-43e5-8048-1e43f0bebfc3">
@@ -176,11 +176,7 @@
             <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="b506e386-cb84-42a1-b19d-49dbb5a18540">
                 <Icon path="res/icons/reasoning/elements/state_16.png"/>
                 <Image path="res/icons/reasoning/elements/state_32.png"/>
-                <TagTypes>
-                    <TagType name="TagStateId" uid="ae51d5d2-e151-42ca-a557-c7ef6fdcfe0e" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagStateName" uid="9a595946-8a33-419f-8751-4de45141c20a" label="$StateStereotype.properties.state" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagStateDescription" uid="1b491c2c-b6d4-42ce-a365-14ad6605eb46" label="$StateStereotype.properties.description" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
+                <TagTypes/>                
             </Stereotype>
             <Stereotype name="ContextStateStereotype" metaclass="Class" is-hidden="false" label="%ContextStateStereotype.label" uid="f044b21a-4d82-4e50-9925-e6af0ec92295">
                 <Icon path="res/icons/reasoning/elements/context_state_16.png"/>
@@ -289,23 +285,6 @@
                 <TagTypes/>
                 <NoteTypes/>
             </Stereotype>
-            <Stereotype name="GenericContextStereotype" metaclass="Class" is-hidden="false" label="%GenericContextStereotype.label" uid="47e5a553-be68-4bbb-9b1d-8215e2a2349b">
-                <Icon path="res/icons/generic_16.png"/>
-                <Image path="res/icons/generic_16.png"/>
-                <TagTypes>
-                    <TagType name="TagContextType" uid="55fe5203-2845-4f37-8504-15b2d0074663" label="%GenericContextStereotype.properties.contexttype" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="ACLContextStereotype" metaclass="Class" is-hidden="false" label="%ACLContextStereotype.label" uid="fbbabc50-3efb-412f-b7dc-216d40ef3da2">
-                <Icon path="res/icons/acl_stereotype_16.png"/>
-                <Image path="res/icons/acl_stereotype_64.png"/>
-                <TagTypes>
-                    <TagType name="ACLTagId" uid="06f58260-5368-4e6f-86fb-ba49aa2d849f" label="%ACLContextStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagResponsibility" uid="8a60b3dd-1504-4ad1-b02c-91c88e531389" label="%ACLContextStereotype.properties.responsibility" parameter-card="2" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagFrequency" uid="7babf2ed-dae7-4d3c-aa3e-b7358e0b8995" label="%ACLContextStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagLibType" uid="cd52cf7a-f9e2-4289-b6a2-9f6d8fd408c7" label="%ACLContextStereotype.properties.libType" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
             <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement"/>
         </Profile>
     </Profiles>
@@ -394,49 +373,49 @@
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="PreferenceSensorStereotype"/>
                 </Handler>
-            </Tool>    
+            </Tool>
             <Tool id="StationarySensorTool" label="%StationarySensorTool.label" tooltip="%StationarySensorTool.tooltip" image="%StationarySensorTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.elements.StationarySensorTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="StationarySensorStereotype"/>
                 </Handler>
-            </Tool>    
+            </Tool>
             <Tool id="MobileSensorTool" label="%MobileSensorTool.label" tooltip="%MobileSensorTool.tooltip" image="%MobileSensorTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.elements.MobileSensorTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="MobileSensorStereotype"/>
                 </Handler>
-            </Tool>  
+            </Tool>
             <Tool id="DBModellingRuleTool" label="%DBModellingRuleTool.label" tooltip="%DBModellingRuleTool.tooltip" image="%DBModellingRuleTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.elements.DBModellingRuleTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="DBModellingRuleStereotype"/>
                 </Handler>
-            </Tool>       
+            </Tool>
             <Tool id="RDFModellingRuleTool" label="%RDFModellingRuleTool.label" tooltip="%RDFModellingRuleTool.tooltip" image="%RDFModellingRuleTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.elements.RDFModellingRuleTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="RDFModellingRuleStereotype"/>
                 </Handler>
-            </Tool>       
+            </Tool>
             <Tool id="ObserveTool" label="%ObserveTool.label" tooltip="%ObserveTool.tooltip" image="%ObserveTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.relations.ObserveTool">
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="ObserveStereotype"/>
                 </Handler>
-            </Tool>    
+            </Tool>
             <Tool id="FeedsTool" label="%FeedsTool.label" tooltip="%FeedsTool.tooltip" image="%FeedsTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.relations.FeedsTool">
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="FeedsStereotype"/>
                 </Handler>
-            </Tool>     
+            </Tool>
             <Tool id="FeedsInWindowTool" label="%FeedsInWindowTool.label" tooltip="%FeedsInWindowTool.tooltip" image="%FeedsInWindowTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.relations.FeedsInWindowTool">
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="FeedsInWindowStereotype"/>
                 </Handler>
-            </Tool>                                                   
+            </Tool>
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>

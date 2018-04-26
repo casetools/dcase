@@ -159,9 +159,9 @@ public final class DCaseProperties {
 	public static final String PROPERTY_STATIONARY_SENSOR_IS_BOOLEAN 	  = "TagStationarySensorIsBoolean";
 
 	public static final String PROPERTY_MOBILE_SENSOR_LIBRARY 	 	  = "TagStationarySensorVeraId";
-	public static final String PROPERTY_MOBILE_SENSOR_FREQUENCY      = "TagStationarySensorMaxValue";
-	public static final String PROPERTY_MOBILE_SENSOR_ONTOLOGY 	  = "TagStationarySensorMinValue";
-	public static final String PROPERTY_MOBILE_SENSOR_DATA 		  = "TagStationarySensorIsBoolean";
+	public static final String PROPERTY_MOBILE_SENSOR_FREQUENCY       = "TagStationarySensorMaxValue";
+	public static final String PROPERTY_MOBILE_SENSOR_ONTOLOGY 	  	  = "TagStationarySensorMinValue";
+	public static final String PROPERTY_MOBILE_SENSOR_DATA 		  	  = "TagStationarySensorIsBoolean";
 
 	public static final String PROPERTY_MODELLING_RULE_ID		  = "TagModellingRuleId";
 	
