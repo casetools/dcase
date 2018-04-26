@@ -522,7 +522,13 @@
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="JavaActuatorStereotype"/>
                 </Handler>
-            </Tool>                                
+            </Tool>         
+            <Tool id="MDatabaseTool" label="%MDatabaseTool.label" tooltip="%MDatabaseTool.tooltip" image="%MDatabaseTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.MDatabaseTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="MDatabaseStereotype"/>
+                </Handler>
+            </Tool>                                      
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
