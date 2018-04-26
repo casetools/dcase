@@ -42,7 +42,7 @@ public class RDFModellingRulePropertyPage implements IPropertyContent {
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
-	    switch (row) {
+	    switch (row-1) {
 	    case 1:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_LOGICAL_EVALUATIONS, value);
 		break;

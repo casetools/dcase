@@ -43,16 +43,16 @@ public class PreferenceSensorPropertyPage implements IPropertyContent {
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
-	    switch (row) {
-	    case 7:
+	    switch (row-1) {
+	    case 1:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MIN_VALUE, value, element);
 		break;
-	    case 8:
+	    case 2:
 			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MAX_VALUE,
 					value);
 		break;
-	    case 9:
+	    case 3:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PREFERENCE_SENSOR_IS_BOOLEAN,
 			value);
 		break;

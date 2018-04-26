@@ -42,8 +42,8 @@ public class DBModellingRulePropertyPage implements IPropertyContent {
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
-	    switch (row) {
-	    case 3:
+	    switch (row-1) {
+	    case 1:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_DB_MODELLING_RULE_RULE, value);
 		break;
 	    default:
