@@ -60,6 +60,15 @@ public final class DCaseTools {
 	public static final String TOOL_FEEDS 		  			  = "FeedsTool";
 	public static final String TOOL_FEEDS_IN_WINDOW 		  = "FeedsInWindowTool";
 	
+	public static final String TOOL_VERA_ACTUATOR    	  	  = "VeraActuatorTool";
+	public static final String TOOL_ANDROID_ACTUATOR		  = "AndroidActuatorTool";
+	public static final String TOOL_JAVA_ACTUATOR			  = "JavaActuatorTool";
+	public static final String TOOL_M_DATABASE 		  		  = "MDatabaseTool";
+	public static final String TOOL_M_REASONER 		  		  = "MReasonerTool";
+	public static final String TOOL_ANDROID_RECEIVER  		  = "AndroidReceiverTool";
+	public static final String TOOL_ANDROID_REASONER		  = "AndroidReasonerTool";
+	public static final String TOOL_SOURCE		     		  = "SourceTool";
+	public static final String TOOL_CONTROLS 			 	  = "ControlsTool";	
     private DCaseTools() {
 
     }
