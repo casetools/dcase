@@ -418,7 +418,13 @@
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="RDFModellingRuleStereotype"/>
                 </Handler>
-            </Tool>                         
+            </Tool>       
+            <Tool id="ObserveTool" label="%ObserveTool.label" tooltip="%ObserveTool.tooltip" image="%ObserveTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.relations.ObserveTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="ObserveStereotype"/>
+                </Handler>
+            </Tool>                                 
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
