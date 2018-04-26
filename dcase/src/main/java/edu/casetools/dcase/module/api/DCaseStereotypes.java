@@ -77,5 +77,6 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 	public static final String STEREOTYPE_JAVA_ACTUATOR = "JavaActuatorStereotype";	
 
 	public static final String STEREOTYPE_DEVICE = "DeviceStereotype";	
+	public static final String STEREOTYPE_VERA_ROUTER = "VeraRouterStereotype";	
 	
 }
