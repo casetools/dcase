@@ -46,7 +46,7 @@ public class ProduceTool extends RelationTool {
      */
     @Override
     public boolean acceptFirstElement(IDiagramHandle representation, IDiagramGraphic target) {
-	return acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP);
+	return acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_MODELLING_RULE);
     }
 
     /*
