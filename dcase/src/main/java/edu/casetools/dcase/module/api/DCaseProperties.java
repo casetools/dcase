@@ -146,6 +146,15 @@ public final class DCaseProperties {
 	public static final String PROPERTY_SENSOR_TYPE 		  = "TagSensorType";
 	public static final String PROPERTY_SENSOR_REGULARITY 	  = "TagSensorRegularity";
 	public static final String PROPERTY_SENSOR_RESPONSIBILITY = "TagSensorResponsibility";
+	
+	public static final String PROPERTY_PREFERENCE_SENSOR_MAX_VALUE 	  = "TagPreferenceSensorMaxValue";
+	public static final String PROPERTY_PREFERENCE_SENSOR_MIN_VALUE 	  = "TagPreferenceSensorMinValue";
+	public static final String PROPERTY_PREFERENCE_SENSOR_IS_BOOLEAN 	  = "TagPreferenceSensorIsBoolean";
+	
+	public static final String PROPERTY_STATIONARY_SENSOR_VERA_ID 	 	  = "TagStationarySensorVeraId";
+	public static final String PROPERTY_STATIONARY_SENSOR_MAX_VALUE	      = "TagStationarySensorMaxValue";
+	public static final String PROPERTY_STATIONARY_SENSOR_MIN_VALUE 	  = "TagStationarySensorMinValue";
+	public static final String PROPERTY_STATIONARY_SENSOR_IS_BOOLEAN 	  = "TagStationarySensorIsBoolean";
 
 	
     private DCaseProperties() {
