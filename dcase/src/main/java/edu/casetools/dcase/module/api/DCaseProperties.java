@@ -163,6 +163,8 @@ public final class DCaseProperties {
 
 	public static final String PROPERTY_MODELLING_RULE_ID		  = "TagModellingRuleId";
 	
+	public static final String PROPERTY_DB_MODELLING_RULE_RULE 	  = "TagDBModellingRuleRule";
+	
     private DCaseProperties() {
 
     }
