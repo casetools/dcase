@@ -69,8 +69,9 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 	public static final String STEREOTYPE_MODELLING_RULE = "ModellingRuleStereotype";
 	public static final String STEREOTYPE_DB_MODELLING_RULE = "DBModellingRuleStereotype";
 	public static final String STEREOTYPE_RDF_MODELLING_RULE = "RDFModellingRuleStereotype";
-	public static final String STEREOTYPE_PREFERENCE_OBSERVE = "ObserveStereotype";
-	public static final String STEREOTYPE_PREFERENCE_FEEDS = "FeedsStereotype";
-	public static final String STEREOTYPE_PREFERENCE_FEEDS_IN_WINDOW = "FeedsInWindowStereotype";
+	public static final String STEREOTYPE_OBSERVE = "ObserveStereotype";
+	public static final String STEREOTYPE_FEEDS = "FeedsStereotype";
+	public static final String STEREOTYPE_FEEDS_IN_WINDOW = "FeedsInWindowStereotype";
+
 
 }
