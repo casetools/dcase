@@ -400,7 +400,13 @@
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="StationarySensorStereotype"/>
                 </Handler>
-            </Tool>                        
+            </Tool>    
+            <Tool id="MobileSensorTool" label="%MobileSensorTool.label" tooltip="%MobileSensorTool.tooltip" image="%MobileSensorTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.elements.MobileSensorTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="MobileSensorStereotype"/>
+                </Handler>
+            </Tool>  
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
