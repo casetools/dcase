@@ -32,7 +32,7 @@ public class GenerateM extends DefaultModuleCommandHandler {
 
 	} else {
 	    if (((ModelElement) arg0.get(0)).isStereotyped(DCasePeerModule.MODULE_NAME,
-		    DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES))
+		    DCaseStereotypes.STEREOTYPE_DIAGRAM_REASONING))
 		generateMCode();
 	    else
 		MessageDialog.openInformation(null, "Code generation cancelled",

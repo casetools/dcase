@@ -59,7 +59,7 @@ public class GenerateNuSMV extends DefaultModuleCommandHandler {
 
 	} else {
 	    if (((ModelElement) selectedElements.get(0)).isStereotyped(DCasePeerModule.MODULE_NAME,
-		    DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES))
+		    DCaseStereotypes.STEREOTYPE_DIAGRAM_REASONING))
 		generateNuSMVModel(selectedElements.get(0));
 	    else
 		MessageDialog.openInformation(null, "Code generation cancelled",
@@ -86,7 +86,7 @@ public class GenerateNuSMV extends DefaultModuleCommandHandler {
 	String maxExecutionTime = "";
 
 	if (((ModelElement) element).isStereotyped(DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_DIAGRAM_M_RULES))
+		DCaseStereotypes.STEREOTYPE_DIAGRAM_REASONING))
 	    maxExecutionTime = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MAX_EXECUTION_TIME,
 		    (ModelElement) element);
 
