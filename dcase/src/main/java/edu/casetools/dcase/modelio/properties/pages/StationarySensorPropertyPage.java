@@ -43,20 +43,20 @@ public class StationarySensorPropertyPage implements IPropertyContent {
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
-	    switch (row) {
-	    case 7:
+	    switch (row-1) {
+	    case 1:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_STATIONARY_SENSOR_VERA_ID, value, element);
 		break;
-	    case 8:
+	    case 2:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_STATIONARY_SENSOR_MIN_VALUE, value, element);
 		break;
-	    case 9:
+	    case 3:
 			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATIONARY_SENSOR_MAX_VALUE,
 					value);
 		break;
-	    case 10:
+	    case 4:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATIONARY_SENSOR_IS_BOOLEAN,
 			value);
 		break;
