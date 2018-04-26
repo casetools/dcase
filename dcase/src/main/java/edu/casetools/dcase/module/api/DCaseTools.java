@@ -50,7 +50,16 @@ public final class DCaseTools {
 	
 	public static final String TOOL_DISPLAYS 				  = "DisplaysTool";
 	public static final String TOOL_RECEIVES 				  = "ReceivesTool";
-
+	
+	public static final String TOOL_PREFERENCE_SENSOR    	  = "PreferenceSensorTool";
+	public static final String TOOL_STATIONARY_SENSOR		  = "StationarySensorTool";
+	public static final String TOOL_MOBILE_SENSOR			  = "MobileSensorTool";
+	public static final String TOOL_DB_MODELLING_RULE 		  = "DBModellingRuleTool";
+	public static final String TOOL_RDF_MODELLING_RULE 		  = "RDFModellingRuleTool";
+	public static final String TOOL_OBSERVE 		  		  = "ObserveTool";
+	public static final String TOOL_FEEDS 		  			  = "FeedsTool";
+	public static final String TOOL_FEEDS_IN_WINDOW 		  = "FeedsInWindowTool";
+	
     private DCaseTools() {
 
     }
