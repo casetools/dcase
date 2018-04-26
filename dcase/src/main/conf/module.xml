@@ -140,7 +140,12 @@
                 <Icon path="res/icons/acquisition/relations/feeds_16.png"/>
                 <Image path="res/icons/acquisition/relations/feeds_16.png"/>
                 <TagTypes/>
-            </Stereotype>                                                                                  
+            </Stereotype>     
+            <Stereotype name="ObserveStereotype" metaclass="Dependency" is-hidden="false" label="%ObserveStereotype.label" uid="">
+                <Icon path="res/icons/acquisition/relations/observe_16.png"/>
+                <Image path="res/icons/acquisition/relations/observe_16.png"/>
+                <TagTypes/>
+            </Stereotype>                                                                                            
             <Stereotype name="DeploymentDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%DeploymentDiagramStereotype.label" uid="cee9aab2-b93c-4190-9fbe-2bd4efadcdd4">
                 <Icon path="res/icons/acquisition/deployment_diagram_16.png"/>
                 <Image path="res/icons/acquisition/deployment_diagram_16.png"/>
