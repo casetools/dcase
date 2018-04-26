@@ -392,13 +392,13 @@
             <Tool id="PreferenceSensorTool" label="%PreferenceSensorTool.label" tooltip="%PreferenceSensorTool.tooltip" image="%PreferenceSensorTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.elements.PreferenceSensorTool">
                     <HParameter name="metaclass" value="Class"/>
-                    <HParameter name="stereotype" value="ReceivesStereotype"/>
+                    <HParameter name="stereotype" value="PreferenceSensorStereotype"/>
                 </Handler>
             </Tool>    
-            <Tool id="PreferenceSensorTool" label="%PreferenceSensorTool.label" tooltip="%PreferenceSensorTool.tooltip" image="%PreferenceSensorTool.image">
-                <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.elements.PreferenceSensorTool">
+            <Tool id="StationarySensorTool" label="%StationarySensorTool.label" tooltip="%StationarySensorTool.tooltip" image="%StationarySensorTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.elements.StationarySensorTool">
                     <HParameter name="metaclass" value="Class"/>
-                    <HParameter name="stereotype" value="ReceivesStereotype"/>
+                    <HParameter name="stereotype" value="StationarySensorStereotype"/>
                 </Handler>
             </Tool>                        
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
