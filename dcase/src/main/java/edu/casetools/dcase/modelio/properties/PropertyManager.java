@@ -23,11 +23,8 @@ package edu.casetools.dcase.modelio.properties;
 import java.util.List;
 
 import org.modelio.api.modelio.model.IMetamodelExtensions;
-import org.modelio.api.modelio.model.IModelingSession;
-import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.diagrams.StaticDiagram;
-import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.Class;
@@ -49,13 +46,10 @@ import edu.casetools.dcase.modelio.properties.pages.SpecificationPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.StationarySensorPropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
-import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.properties.CommonPropertyPage;
 import edu.casetools.rcase.modelio.properties.IPropertyContent;
-import edu.casetools.rcase.module.api.RCaseStereotypes;
-import edu.casetools.rcase.module.impl.RCasePeerModule;
 import edu.casetools.rcase.utils.PropertiesUtils;
 
 /**
