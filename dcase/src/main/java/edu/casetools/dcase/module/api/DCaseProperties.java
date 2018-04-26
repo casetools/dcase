@@ -183,10 +183,10 @@ public final class DCaseProperties {
 	public static final String PROPERTY_VERA_ACTUATOR_SERVICE_ID	 = "TagVeraActuatorServiceId";
 	public static final String PROPERTY_VERA_ACTUATOR_ACTION_COMMAND = "TagVeraActuatorActionCommand";	
 	
-	public static final String PROPERTY_VERA_ROUTER_VERA_ID				= "TagVeraRouterVeraId";
-	public static final String PROPERTY_VERA_ROUTER_MAX_VALUE			= "TagVeraRouterMaxValue";
-	public static final String PROPERTY_VERA_ROUTER_MIN_VALUE			= "TagVeraRouterMinValue";
-	public static final String PROPERTY_VERA_ROUTER_IS_BOOLEAN			= "TagVeraRouterIsBoolean";
+	public static final String PROPERTY_VERA_ROUTER_HOSTNAME			= "TagVeraRouterHostname";
+	public static final String PROPERTY_VERA_ROUTER_PORT				= "TagVeraRouterPort";
+	public static final String PROPERTY_VERA_ROUTER_USERNAME			= "TagVeraRouterUsername";
+	public static final String PROPERTY_VERA_ROUTER_PASSWORD			= "TagVeraRouterPassword";
     private DCaseProperties() {
 
     }

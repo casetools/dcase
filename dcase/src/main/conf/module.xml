@@ -200,10 +200,10 @@
                 <Icon path="res/icons/deployment/elements/vera_router_16.png"/>
                 <Image path="res/icons/deployment/elements/vera_router_16.png"/>
                 <TagTypes>
-                    <TagType name="TagVeraRouterVeraId" uid="" label="%PreferenceSensorStereotype.properties.veraId" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagVeraRouterMinValue" uid="" label="%PreferenceSensorStereotype.properties.minValue" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagVeraRouterMaxValue" uid="" label="%PreferenceSensorStereotype.properties.maxValue" parameter-card="1" is-hidden="false" is-signed="false"/>                    
-                    <TagType name="TagVeraRouterIsBoolean" uid="" label="%PreferenceSensorStereotype.properties.isBoolean" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                    <TagType name="TagVeraRouterHostname" uid="" label="%VeraRouterStereotype.properties.hostname" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagVeraRouterPort" uid="" label="%VeraRouterStereotype.properties.port" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagVeraRouterUsername" uid="" label="%VeraRouterStereotype.properties.username" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                    <TagType name="TagVeraRouterPassword" uid="" label="%VeraRouterStereotype.properties.password" parameter-card="1" is-hidden="false" is-signed="false"/>                    
                 </TagTypes>
             </Stereotype>                               
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
