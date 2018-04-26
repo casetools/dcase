@@ -81,6 +81,9 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 	
 	public static final String STEREOTYPE_SOFTWARE_COMPONENT = "SoftwareComponentStereotype";
 	public static final String STEREOTYPE_M_DATABASE		 = "MDatabaseStereotype";
+	public static final String STEREOTYPE_M_REASONER		 = "MReasonerStereotype";	
 	public static final String STEREOTYPE_ANDROID_RECEIVER	 = "AndroidReceiverStereotype";
 	public static final String STEREOTYPE_ANDROID_REASONER 	 = "AndroidReasonerStereotype";
+
+
 }

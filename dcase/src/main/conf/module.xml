@@ -528,7 +528,13 @@
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="MDatabaseStereotype"/>
                 </Handler>
-            </Tool>                                      
+            </Tool>   
+            <Tool id="MReasonerTool" label="%MReasonerTool.label" tooltip="%MReasonerTool.tooltip" image="%MReasonerTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.MReasonerTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="MReasonerStereotype"/>
+                </Handler>
+            </Tool>                                                  
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
