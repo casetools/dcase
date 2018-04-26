@@ -43,6 +43,7 @@ import edu.casetools.dcase.modelio.properties.pages.MessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.MobileSensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ModellingRulePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.PreferenceSensorPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.RDFModellingRulePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.SensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.SpecificationPropertyPage;
@@ -250,6 +251,11 @@ public class PropertyManager {
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new DBModellingRulePropertyPage();
 		}			
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_RDF_MODELLING_RULE,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new RDFModellingRulePropertyPage();
+		}		
     }
 
 }
