@@ -40,6 +40,7 @@ import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropert
 import edu.casetools.dcase.modelio.properties.pages.InfoPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.MessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.SensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.SpecificationPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
@@ -213,6 +214,12 @@ public class PropertyManager {
 		    this.propertyPage = new InfoPropertyPage();
 		}	
 
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_SENSOR,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new SensorPropertyPage();
+		}	
+	
     }
 
 }
