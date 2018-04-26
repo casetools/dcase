@@ -160,6 +160,8 @@ public final class DCaseProperties {
 	public static final String PROPERTY_MOBILE_SENSOR_VERA_FREQUENCY      = "TagStationarySensorMaxValue";
 	public static final String PROPERTY_MOBILE_SENSOR_VERA_ONTOLOGY 	  = "TagStationarySensorMinValue";
 	public static final String PROPERTY_MOBILE_SENSOR_VERA_DATA 		  = "TagStationarySensorIsBoolean";
+
+	public static final String PROPERTY_MODELLING_RULE_ID		  = "TagModellingRuleId";
 	
     private DCaseProperties() {
 
