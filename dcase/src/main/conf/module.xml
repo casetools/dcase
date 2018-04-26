@@ -221,7 +221,17 @@
                     <TagType name="TagMDatabaseUsername" uid="" label="%MDatabaseStereotype.properties.username" parameter-card="1" is-hidden="false" is-signed="false"/>                    
                     <TagType name="TagMDatabasePassword" uid="" label="%MDatabaseStereotype.properties.password" parameter-card="1" is-hidden="false" is-signed="false"/>                    
                 </TagTypes>
-            </Stereotype>                                                       
+            </Stereotype>         
+            <Stereotype name="MReasonerStereotype" metaclass="Class" is-hidden="false" label="%MReasonerStereotype.label" uid="">
+                <Icon path="res/icons/deployment/elements/m_16.png"/>
+                <Image path="res/icons/deployment/elements/m_16.png"/>
+                <TagTypes>
+                    <TagType name="TagMReasonerFixedIterationTime" uid="" label="%MReasonerStereotype.properties.fixedIterationTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMReasonerIterationTime" uid="" label="%MReasonerStereotype.properties.iterationTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMReasonerHasMaxExecutionTime" uid="" label="%MReasonerStereotype.properties.hasMaxExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                    <TagType name="TagMReasonerMaxExecutionTime" uid="" label="%MReasonerStereotype.properties.maxExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                </TagTypes>
+            </Stereotype>                                                                
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>

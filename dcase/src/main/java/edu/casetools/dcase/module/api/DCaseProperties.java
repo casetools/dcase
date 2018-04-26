@@ -194,7 +194,10 @@ public final class DCaseProperties {
 	public static final String PROPERTY_M_DATABASE_USERNAME		= "TagMDatabaseUsername";
 	public static final String PROPERTY_M_DATABASE_PASSWORD		= "TagMDatabasePassword";
 
-	
+	public static final String PROPERTY_M_REASONER_FIXED_ITERATION_TIME = "TagMReasonerFixedIterationTime";
+	public static final String PROPERTY_M_REASONER_ITERATION_TIME 		= "TagMReasonerIterationTime";	
+	public static final String PROPERTY_M_REASONER_HAS_MAX_EXECUTION_TIME 		= "TagMReasonerHasMaxExecutionTime";	
+	public static final String PROPERTY_M_REASONER_MAX_EXECUTION_TIME 		= "TagMReasonerMaxExecutionTime";	
     private DCaseProperties() {
 
     }
