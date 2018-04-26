@@ -166,26 +166,31 @@
                 <Image path="res/icons/acquisition/deployment_diagram_16.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="ActuatorStereotype" metaclass="Class" is-hidden="false" label="%ActuatorStereotype.label" uid="">
+            <Stereotype name="ActuatorStereotype" metaclass="Class" is-hidden="false" label="%ActuatorStereotype.label" uid="6c041068-ea62-422f-b5f2-82e400f9561d">
                 <Icon path="res/icons/deployment/elements/actuator_16.png"/>
                 <Image path="res/icons/deployment/elements/actuator_16.png"/>
                 <TagTypes>
-                    <TagType name="TagActuatorConfigs" uid="" label="%ActuatorStereotype.properties.configs" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagActuatorConfigs" uid="fc0978d6-7275-451a-a87e-5e11147601a7" label="%ActuatorStereotype.properties.configs" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>    
-            <Stereotype name="VeraActuatorStereotype" metaclass="Class" is-hidden="false" label="%VeraActuatorStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="VeraActuatorStereotype" metaclass="Class" is-hidden="false" label="%VeraActuatorStereotype.label" uid="0c658fbb-5ce0-4a21-82a9-00934de5b040">
                 <Icon path="res/icons/deployment/elements/vera_16.png"/>
                 <Image path="res/icons/deployment/elements/vera_16.png"/>
                 <TagTypes>
-                    <TagType name="TagVeraActuatorServiceId" uid="" label="%VeraActuatorStereotype.properties.serviceId" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagVeraActuatorActionCommand" uid="" label="%VeraActuatorStereotype.properties.actionCommand" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                    <TagType name="TagVeraActuatorServiceId" uid="3a2ac543-251f-4a4b-8058-7640f102503a" label="%VeraActuatorStereotype.properties.serviceId" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagVeraActuatorActionCommand" uid="c79bc408-79a9-4a1d-a36d-cd7fc768666e" label="%VeraActuatorStereotype.properties.actionCommand" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype> 
-            <Stereotype name="AndroidActuatorStereotype" metaclass="Class" is-hidden="false" label="%AndroidActuatorStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="AndroidActuatorStereotype" metaclass="Class" is-hidden="false" label="%AndroidActuatorStereotype.label" uid="649480bc-56af-443e-b117-d2afc79373d6">
                 <Icon path="res/icons/deployment/elements/android_actuator_16.png"/>
                 <Image path="res/icons/deployment/elements/android_actuator_16.png"/>
                 <TagTypes/>
-            </Stereotype>                                    
+            </Stereotype>
+            <Stereotype name="JavaActuatorStereotype" metaclass="Class" is-hidden="false" label="%JavaActuatorStereotype.label" uid="b5230505-56cc-4042-a1c7-79d508c8973a">
+                <Icon path="res/icons/deployment/elements/java_actuator_16.png"/>
+                <Image path="res/icons/deployment/elements/java_actuator_16.png"/>
+                <TagTypes/>
+            </Stereotype>
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
