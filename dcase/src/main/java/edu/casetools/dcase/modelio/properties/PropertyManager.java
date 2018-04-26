@@ -35,6 +35,7 @@ import org.modelio.metamodel.uml.statik.Class;
 import edu.casetools.dcase.modelio.properties.pages.ACLContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AbsolutePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AntecedentPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.DBModellingRulePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.GenericContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.InfoPropertyPage;
@@ -243,6 +244,11 @@ public class PropertyManager {
 			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new ModellingRulePropertyPage();
+		}		
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_DB_MODELLING_RULE,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new DBModellingRulePropertyPage();
 		}			
     }
 
