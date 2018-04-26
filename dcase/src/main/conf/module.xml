@@ -180,7 +180,12 @@
                     <TagType name="TagVeraActuatorServiceId" uid="" label="%VeraActuatorStereotype.properties.serviceId" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagVeraActuatorActionCommand" uid="" label="%VeraActuatorStereotype.properties.actionCommand" parameter-card="1" is-hidden="false" is-signed="false"/>                    
                 </TagTypes>
-            </Stereotype>                      
+            </Stereotype> 
+            <Stereotype name="AndroidActuatorStereotype" metaclass="Class" is-hidden="false" label="%AndroidActuatorStereotype.label" uid="">
+                <Icon path="res/icons/deployment/elements/android_actuator_16.png"/>
+                <Image path="res/icons/deployment/elements/android_actuator_16.png"/>
+                <TagTypes/>
+            </Stereotype>                                    
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
