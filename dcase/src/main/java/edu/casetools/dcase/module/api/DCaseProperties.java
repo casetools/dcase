@@ -198,6 +198,9 @@ public final class DCaseProperties {
 	public static final String PROPERTY_M_REASONER_ITERATION_TIME 		= "TagMReasonerIterationTime";	
 	public static final String PROPERTY_M_REASONER_HAS_MAX_EXECUTION_TIME 		= "TagMReasonerHasMaxExecutionTime";	
 	public static final String PROPERTY_M_REASONER_MAX_EXECUTION_TIME 		= "TagMReasonerMaxExecutionTime";	
+	
+	public static final String PROPERTY_ANDROID_REASONER_ONTOLOGY 		= "TagAndroidReasonerOntologyBase";	
+	public static final String PROPERTY_ANDROID_REASONER_STREAM_IRI		= "TagAndroidReasonerStreamIRI";
     private DCaseProperties() {
 
     }
