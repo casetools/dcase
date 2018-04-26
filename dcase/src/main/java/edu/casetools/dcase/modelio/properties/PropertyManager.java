@@ -36,6 +36,7 @@ import edu.casetools.dcase.modelio.properties.pages.ACLContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AbsolutePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.AntecedentPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.DBModellingRulePropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.FeedsInWindowPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.GenericContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.InfoPropertyPage;
@@ -256,6 +257,11 @@ public class PropertyManager {
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new RDFModellingRulePropertyPage();
 		}		
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_FEEDS_IN_WINDOW,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new FeedsInWindowPropertyPage();
+		}			
     }
 
 }
