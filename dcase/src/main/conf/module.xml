@@ -57,12 +57,12 @@
                 <Image path="res/icons/info/elements/list_item_16.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="DisplaysStereotype" metaclass="Class" is-hidden="false" label="%DisplaysStereotype.label" uid="e43a0880-84dd-41cd-a3f2-491fd998437b">
+            <Stereotype name="DisplaysStereotype" metaclass="Dependency" is-hidden="false" label="%DisplaysStereotype.label" uid="e43a0880-84dd-41cd-a3f2-491fd998437b">
                 <Icon path="res/icons/info/relations/displays_16.png"/>
                 <Image path="res/icons/info/relations/displays_16.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="ReceivesStereotype" metaclass="Class" is-hidden="false" label="%ReceivesStereotype.label" uid="cd7d971d-1e19-4292-b986-42085ca6d454">
+            <Stereotype name="ReceivesStereotype" metaclass="Dependency" is-hidden="false" label="%ReceivesStereotype.label" uid="cd7d971d-1e19-4292-b986-42085ca6d454">
                 <Icon path="res/icons/info/relations/receives_16.png"/>
                 <Image path="res/icons/info/relations/receives_16.png"/>
                 <TagTypes/>
@@ -369,7 +369,7 @@
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="ReceivesStereotype"/>
                 </Handler>
-            </Tool>
+            </Tool>            
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
