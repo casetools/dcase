@@ -84,13 +84,14 @@ public class AcquisitionAndModellingDiagramCustomizer extends DiagramCustomizer 
 
     private org.eclipse.gef.palette.PaletteEntry createLinksGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Links");
-	String[] toolNames = new String[] { DCaseTools.TOOL_DISPLAYS, DCaseTools.TOOL_RECEIVES, RCaseTools.TOOL_TRACEABILITY};
+	String[] toolNames = new String[] { DCaseTools.TOOL_OBSERVE, DCaseTools.TOOL_FEEDS, DCaseTools.TOOL_FEEDS_IN_WINDOW, DCaseTools.TOOL_PRODUCES};
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
     private org.eclipse.gef.palette.PaletteEntry createNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
-	String[] toolNames = new String[] { DCaseTools.TOOL_ANDROID_MESSAGE_INTERFACE, DCaseTools.TOOL_JAVA_MESSAGE_INTERFACE, DCaseTools.TOOL_MESSAGE, DCaseTools.TOOL_INFO, DCaseTools.TOOL_OPTION_LIST, DCaseTools.TOOL_LIST_ITEM };
+	String[] toolNames = new String[] { DCaseTools.TOOL_STATIONARY_SENSOR, DCaseTools.TOOL_MOBILE_SENSOR, DCaseTools.TOOL_PREFERENCE_SENSOR, 
+			DCaseTools.TOOL_DB_MODELLING_RULE, DCaseTools.TOOL_RDF_MODELLING_RULE, DCaseTools.TOOL_CONTEXT_STATE, RCaseTools.TOOL_CONTEXT_ATTRIBUTE };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
