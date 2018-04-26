@@ -123,7 +123,7 @@
                 <Icon path="res/icons/acquisition/elements/database_16.png"/>
                 <Image path="res/icons/acquisition/elements/database_16.png"/>
                 <TagTypes>
-                    <TagType name="TagDBModellingRuleRule" uid="" label="%DBModellingRuleStereotype.properties.rule" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagDBModellingRuleRule" uid="3338c70c-fc23-43d4-8b18-68f547280a4a" label="%DBModellingRuleStereotype.properties.rule" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="RDFModellingRuleStereotype" metaclass="Class" is-hidden="false" label="%RDFModellingRuleStereotype.label" uid="797e1b67-4f63-43e5-8048-1e43f0bebfc3">
@@ -176,7 +176,7 @@
             <Stereotype name="StateStereotype" metaclass="Class" is-hidden="false" label="%StateStereotype.label" uid="b506e386-cb84-42a1-b19d-49dbb5a18540">
                 <Icon path="res/icons/reasoning/elements/state_16.png"/>
                 <Image path="res/icons/reasoning/elements/state_32.png"/>
-                <TagTypes/>                
+                <TagTypes/>
             </Stereotype>
             <Stereotype name="ContextStateStereotype" metaclass="Class" is-hidden="false" label="%ContextStateStereotype.label" uid="f044b21a-4d82-4e50-9925-e6af0ec92295">
                 <Icon path="res/icons/reasoning/elements/context_state_16.png"/>
