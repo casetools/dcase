@@ -552,7 +552,13 @@
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="SourceStereotype"/>
                 </Handler>
-            </Tool>                                                                                         
+            </Tool>     
+            <Tool id="ControlsTool" label="%ControlsTool.label" tooltip="%ControlsTool.tooltip" image="%ControlsTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.relations.ControlsTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="ControlsStereotype"/>
+                </Handler>
+            </Tool>                                                                                      
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
