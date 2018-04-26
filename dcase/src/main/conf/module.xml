@@ -424,7 +424,13 @@
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="ObserveStereotype"/>
                 </Handler>
-            </Tool>                                 
+            </Tool>    
+            <Tool id="FeedsTool" label="%FeedsTool.label" tooltip="%FeedsTool.tooltip" image="%FeedsTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.acqmod.tools.relations.FeedsTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="FeedsStereotype"/>
+                </Handler>
+            </Tool>                                           
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>
