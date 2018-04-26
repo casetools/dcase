@@ -21,7 +21,6 @@
 package edu.casetools.dcase.modelio.diagrams;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
