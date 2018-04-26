@@ -56,7 +56,7 @@ public class PreferenceSensorTool extends ElementTool {
 	
 	Class auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 			DCaseStereotypes.STEREOTYPE_SENSOR);
-		return addStereotype(auxiliarElement);
+		    return ElementUtils.getInstance().addStereotype(auxiliarElement, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR);
     }
 
     /*
@@ -80,16 +80,6 @@ public class PreferenceSensorTool extends ElementTool {
 
 	return graph;
     }
-    
-	private Class addStereotype(Class object) {
-		try {
-			object.addStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR);
-		} catch (ExtensionNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return object;
-	}
    
    
 }
