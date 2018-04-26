@@ -25,12 +25,15 @@ import java.util.List;
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramNode;
 import org.modelio.api.modelio.model.IModelingSession;
+import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
+import org.modelio.metamodel.uml.statik.Class;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.api.DCaseColours;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.diagrams.ElementTool;
 import edu.casetools.rcase.module.api.RCaseColours;
 import edu.casetools.rcase.utils.ElementUtils;
@@ -49,10 +52,11 @@ public class DBModellingRuleTool extends ElementTool {
      */
     @Override
     public MObject createOwnElement(IModelingSession session, MObject element) {
-	String name = I18nMessageService.getString("Names.MobileSensor");
+	String name = I18nMessageService.getString("Names.DBModellingRule");
 	
-	return ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
-			DCaseStereotypes.STEREOTYPE_MOBILE_SENSOR);
+	Class auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
+			DCaseStereotypes.STEREOTYPE_MODELLING_RULE);
+		return addStereotype(auxiliarElement);
     }
 
     /*
@@ -76,5 +80,15 @@ public class DBModellingRuleTool extends ElementTool {
 
 	return graph;
     }
+    
+	private Class addStereotype(Class object) {
+		try {
+			object.addStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_DB_MODELLING_RULE);
+		} catch (ExtensionNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return object;
+	}
    
 }
