@@ -158,10 +158,10 @@ public final class DCaseProperties {
 	public static final String PROPERTY_STATIONARY_SENSOR_MIN_VALUE 	  = "TagStationarySensorMinValue";
 	public static final String PROPERTY_STATIONARY_SENSOR_IS_BOOLEAN 	  = "TagStationarySensorIsBoolean";
 
-	public static final String PROPERTY_MOBILE_SENSOR_VERA_LIBRARY 	 	  = "TagStationarySensorVeraId";
-	public static final String PROPERTY_MOBILE_SENSOR_VERA_FREQUENCY      = "TagStationarySensorMaxValue";
-	public static final String PROPERTY_MOBILE_SENSOR_VERA_ONTOLOGY 	  = "TagStationarySensorMinValue";
-	public static final String PROPERTY_MOBILE_SENSOR_VERA_DATA 		  = "TagStationarySensorIsBoolean";
+	public static final String PROPERTY_MOBILE_SENSOR_LIBRARY 	 	  = "TagStationarySensorVeraId";
+	public static final String PROPERTY_MOBILE_SENSOR_FREQUENCY      = "TagStationarySensorMaxValue";
+	public static final String PROPERTY_MOBILE_SENSOR_ONTOLOGY 	  = "TagStationarySensorMinValue";
+	public static final String PROPERTY_MOBILE_SENSOR_DATA 		  = "TagStationarySensorIsBoolean";
 
 	public static final String PROPERTY_MODELLING_RULE_ID		  = "TagModellingRuleId";
 	
@@ -176,7 +176,7 @@ public final class DCaseProperties {
 	public static final String PROPERTY_FEEDS_IN_WINDOW_STREAM		= "SR_stream";
 	public static final String PROPERTY_FEEDS_IN_WINDOW_EVERY		= "SR_every";
 	public static final String PROPERTY_FEEDS_IN_WINDOW_FOR			= "SR_for";
-	
+
     private DCaseProperties() {
 
     }

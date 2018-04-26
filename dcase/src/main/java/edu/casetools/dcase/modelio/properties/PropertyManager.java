@@ -39,6 +39,7 @@ import edu.casetools.dcase.modelio.properties.pages.GenericContextPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.InfoPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.MessagePropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.MobileSensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.PreferenceSensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.SensorPropertyPage;
@@ -232,6 +233,11 @@ public class PropertyManager {
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new StationarySensorPropertyPage();
 		}	
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MOBILE_SENSOR,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new MobileSensorPropertyPage();
+		}		
     }
 
 }
