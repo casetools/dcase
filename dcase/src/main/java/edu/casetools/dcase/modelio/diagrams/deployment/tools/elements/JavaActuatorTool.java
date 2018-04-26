@@ -39,7 +39,7 @@ import edu.casetools.rcase.utils.ElementUtils;
 /**
  * The Class RequirementTool is the tool for creating a Requirement.
  */
-public class AndroidActuatorTool extends ElementTool {
+public class JavaActuatorTool extends ElementTool {
 
     /*
      * (non-Javadoc)
@@ -50,12 +50,12 @@ public class AndroidActuatorTool extends ElementTool {
      */
     @Override
     public MObject createOwnElement(IModelingSession session, MObject element) {
-	String name = I18nMessageService.getString("Names.AndroidActuator");
+	String name = I18nMessageService.getString("Names.JavaActuator");
 
 	Class auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_ACTUATOR);
 	
-	return ElementUtils.getInstance().addStereotype(auxiliarElement, DCaseStereotypes.STEREOTYPE_ANDROID_ACTUATOR);
+	return ElementUtils.getInstance().addStereotype(auxiliarElement, DCaseStereotypes.STEREOTYPE_JAVA_ACTUATOR);
     }
 
     /*
