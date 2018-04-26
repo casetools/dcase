@@ -44,6 +44,7 @@ import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.SensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.SpecificationPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.StatePropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.StationarySensorPropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
@@ -226,6 +227,11 @@ public class PropertyManager {
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new PreferenceSensorPropertyPage();
 		}		
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_STATIONARY_SENSOR,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new StationarySensorPropertyPage();
+		}	
     }
 
 }
