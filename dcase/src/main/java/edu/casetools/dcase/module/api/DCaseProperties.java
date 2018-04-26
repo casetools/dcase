@@ -176,7 +176,10 @@ public final class DCaseProperties {
 	public static final String PROPERTY_FEEDS_IN_WINDOW_STREAM		= "SR_stream";
 	public static final String PROPERTY_FEEDS_IN_WINDOW_EVERY		= "SR_every";
 	public static final String PROPERTY_FEEDS_IN_WINDOW_FOR			= "SR_for";
-
+	////////////////////////////
+	
+	public static final String PROPERTY_ACTUATOR_CONFIGS			= "TagActuatorConfigs";
+	
     private DCaseProperties() {
 
     }

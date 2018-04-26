@@ -70,5 +70,9 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 
 	public static final String STEREOTYPE_STATE = "StateStereotype";
 
+	///////////////////////////////////////////////
+	public static final String STEREOTYPE_ACTUATOR = "ActuatorStereotype";
+	
 
+	
 }
