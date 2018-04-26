@@ -172,7 +172,10 @@ public final class DCaseProperties {
 	public static final String PROPERTY_RDF_MODELLING_RULE_METHOD 					= "TagRDFModellingRuleMethod";	
 	public static final String PROPERTY_RDF_MODELLING_RULE_METHOD_TRIPLE_VAR 		= "TagRDFModellingRuleMethodTripleVar";	
 	public static final String PROPERTY_RDF_MODELLING_RULE_METHOD_RESULT_EXPR 		= "TagRDFModellingRuleMethodResultExpr";		
-	
+
+	public static final String PROPERTY_FEEDS_IN_WINDOW_STREAM		= "SR_stream";
+	public static final String PROPERTY_FEEDS_IN_WINDOW_EVERY		= "SR_every";
+	public static final String PROPERTY_FEEDS_IN_WINDOW_FOR			= "SR_for";
 	
     private DCaseProperties() {
 

@@ -149,7 +149,11 @@
             <Stereotype name="FeedsInWindowStereotype" metaclass="Dependency" is-hidden="false" label="%FeedsInWindowStereotype.label" uid="">
                 <Icon path="res/icons/acquisition/relations/feeds_window_16.png"/>
                 <Image path="res/icons/acquisition/relations/feeds_window_16.png"/>
-                <TagTypes/>
+                <TagTypes>
+                    <TagType name="SR_stream" uid="" label="%FeedsInWindowStereotype.properties.stream" parameter-card="1" is-hidden="true" is-signed="false"/>
+                    <TagType name="SR_every" uid="" label="%FeedsInWindowStereotype.properties.every" parameter-card="1" is-hidden="true" is-signed="false"/>
+                    <TagType name="SR_for" uid="" label="%FeedsInWindowStereotype.properties.for" parameter-card="1" is-hidden="true" is-signed="false"/>
+                </TagTypes>
             </Stereotype>   
             <Stereotype name="ProduceStereotype" metaclass="Dependency" is-hidden="false" label="%ProduceStereotype.label" uid="646d8bd2-6d16-4ea5-a9d1-45ef01aceac6">
                 <Icon path="%ProduceStereotype.image"/>
