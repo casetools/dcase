@@ -56,7 +56,7 @@ public class DBModellingRuleTool extends ElementTool {
 	
 	Class auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 			DCaseStereotypes.STEREOTYPE_MODELLING_RULE);
-		return addStereotype(auxiliarElement);
+		return ElementUtils.getInstance().addStereotype(auxiliarElement, DCaseStereotypes.STEREOTYPE_DB_MODELLING_RULE);
     }
 
     /*
@@ -80,15 +80,6 @@ public class DBModellingRuleTool extends ElementTool {
 
 	return graph;
     }
-    
-	private Class addStereotype(Class object) {
-		try {
-			object.addStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_DB_MODELLING_RULE);
-		} catch (ExtensionNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return object;
-	}
+
    
 }
