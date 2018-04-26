@@ -125,7 +125,17 @@
                 <TagTypes>
                     <TagType name="TagDBModellingRuleRule" uid="" label="%DBModellingRuleStereotype.properties.rule" parameter-card="1" is-hidden="false" is-signed="false"/>                      
                 </TagTypes>
-            </Stereotype>                                                                
+            </Stereotype>    
+            <Stereotype name="RDFModellingRuleStereotype" metaclass="Class" is-hidden="false" label="%RDFModellingRuleStereotype.label" uid="">
+                <Icon path="res/icons/acquisition/elements/rdf_16.png"/>
+                <Image path="res/icons/acquisition/elements/rdf_16.png"/>
+                <TagTypes>
+                    <TagType name="TagRDFModellingRuleLogicalEvaluations" uid="" label="%RDFModellingRuleStereotype.properties.logicalEvaluations" parameter-card="1" is-hidden="false" is-signed="false"/>                
+                    <TagType name="TagRDFModellingRuleMethod" uid="" label="%RDFModellingRuleStereotype.properties.method" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagRDFModellingRuleMethodTripleVar" uid="" label="$RDFModellingRuleStereotype.properties.methodTripleVar" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagRDFModellingRuleMethodResultExpr" uid="" label="%RDFModellingRuleStereotype.properties.methodResultExpr" parameter-card="1" is-hidden="false" is-signed="false"/>          
+                </TagTypes>
+            </Stereotype>                                                                         
             <Stereotype name="DeploymentDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%DeploymentDiagramStereotype.label" uid="cee9aab2-b93c-4190-9fbe-2bd4efadcdd4">
                 <Icon path="res/icons/acquisition/deployment_diagram_16.png"/>
                 <Image path="res/icons/acquisition/deployment_diagram_16.png"/>

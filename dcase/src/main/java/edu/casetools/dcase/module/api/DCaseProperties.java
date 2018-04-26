@@ -138,7 +138,9 @@ public final class DCaseProperties {
 	public static final String PROPERTY_INFO_CONTEXT_ATTRIBUTE = "TagInfoContextAttribute";
 	
 	
-	
+    /****************************************************************************
+     * Acquisition and Modelling Diagram Related Properties
+     **************************************************************************/
 	
 	
 	public static final String PROPERTY_SENSOR_ID 			  = "TagSensorId";
@@ -164,6 +166,13 @@ public final class DCaseProperties {
 	public static final String PROPERTY_MODELLING_RULE_ID		  = "TagModellingRuleId";
 	
 	public static final String PROPERTY_DB_MODELLING_RULE_RULE 	  = "TagDBModellingRuleRule";
+	
+	
+	public static final String PROPERTY_RDF_MODELLING_RULE_LOGICAL_EVALUATIONS 		= "TagRDFModellingRuleLogicalEvaluations";
+	public static final String PROPERTY_RDF_MODELLING_RULE_METHOD 					= "TagRDFModellingRuleMethod";	
+	public static final String PROPERTY_RDF_MODELLING_RULE_METHOD_TRIPLE_VAR 		= "TagRDFModellingRuleMethodTripleVar";	
+	public static final String PROPERTY_RDF_MODELLING_RULE_METHOD_RESULT_EXPR 		= "TagRDFModellingRuleMethodResultExpr";		
+	
 	
     private DCaseProperties() {
 
