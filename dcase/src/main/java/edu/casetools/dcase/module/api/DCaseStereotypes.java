@@ -80,5 +80,6 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 	public static final String STEREOTYPE_VERA_ROUTER 	 = "VeraRouterStereotype";	
 	
 	public static final String STEREOTYPE_SOFTWARE_COMPONENT = "SoftwareComponentStereotype";
+	public static final String STEREOTYPE_M_DATABASE		 = "MDatabaseStereotype";
 	
 }

@@ -187,6 +187,13 @@ public final class DCaseProperties {
 	public static final String PROPERTY_VERA_ROUTER_PORT				= "TagVeraRouterPort";
 	public static final String PROPERTY_VERA_ROUTER_USERNAME			= "TagVeraRouterUsername";
 	public static final String PROPERTY_VERA_ROUTER_PASSWORD			= "TagVeraRouterPassword";
+
+	public static final String PROPERTY_M_DATABASE_TYPE			= "TagMDatabaseType";
+	public static final String PROPERTY_M_DATABASE_HOSTNAME		= "TagMDatabaseHostname";
+	public static final String PROPERTY_M_DATABASE_PORT			= "TagMDatabasePort";
+	public static final String PROPERTY_M_DATABASE_USERNAME		= "TagMDatabaseUsername";
+	public static final String PROPERTY_M_DATABASE_PASSWORD		= "TagMDatabasePassword";
+
 	
     private DCaseProperties() {
 

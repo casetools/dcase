@@ -210,7 +210,18 @@
                 <Icon path="res/icons/deployment/elements/software_16.png"/>
                 <Image path="res/icons/deployment/elements/software_16.png"/>
                 <TagTypes/>
-            </Stereotype>                                           
+            </Stereotype>    
+            <Stereotype name="MDatabaseStereotype" metaclass="Class" is-hidden="false" label="%MDatabaseStereotype.label" uid="">
+                <Icon path="res/icons/deployment/elements/m_database_16.png"/>
+                <Image path="res/icons/deployment/elements/m_database_16.png"/>
+                <TagTypes>
+                    <TagType name="TagMDatabaseType" uid="" label="%MDatabaseStereotype.properties.type" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMDatabaseHostname" uid="" label="%MDatabaseStereotype.properties.hostname" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMDatabasePort" uid="" label="%MDatabaseStereotype.properties.port" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                    <TagType name="TagMDatabaseUsername" uid="" label="%MDatabaseStereotype.properties.username" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                    <TagType name="TagMDatabasePassword" uid="" label="%MDatabaseStereotype.properties.password" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                </TagTypes>
+            </Stereotype>                                                       
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
