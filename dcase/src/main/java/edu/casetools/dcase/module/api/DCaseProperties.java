@@ -180,6 +180,9 @@ public final class DCaseProperties {
 	
 	public static final String PROPERTY_ACTUATOR_CONFIGS			= "TagActuatorConfigs";
 	
+	public static final String PROPERTY_VERA_ACTUATOR_SERVICE_ID	 = "TagVeraActuatorServiceId";
+	public static final String PROPERTY_VERA_ACTUATOR_ACTION_COMMAND = "TagVeraActuatorActionCommand";	
+	
     private DCaseProperties() {
 
     }
