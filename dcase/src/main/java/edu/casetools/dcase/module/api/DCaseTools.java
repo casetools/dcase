@@ -67,6 +67,8 @@ public final class DCaseTools {
 	public static final String TOOL_M_REASONER 		  		  = "MReasonerTool";
 	public static final String TOOL_ANDROID_RECEIVER  		  = "AndroidReceiverTool";
 	public static final String TOOL_ANDROID_REASONER		  = "AndroidReasonerTool";
+	public static final String TOOL_VERA_REASONER     		  = "VeraReasonerTool";
+	public static final String TOOL_DEVICE 			 	  	  = "DeviceTool";		
 	public static final String TOOL_SOURCE		     		  = "SourceTool";
 	public static final String TOOL_CONTROLS 			 	  = "ControlsTool";	
     private DCaseTools() {

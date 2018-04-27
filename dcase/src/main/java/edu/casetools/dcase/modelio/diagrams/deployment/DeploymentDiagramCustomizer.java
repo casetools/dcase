@@ -56,7 +56,8 @@ public class DeploymentDiagramCustomizer extends DiagramCustomizer implements ID
 	PaletteDrawer commonGroup = createBasics();
 
 	paletteRoot.add(commonGroup);
-	paletteRoot.add(createNodesGroup(toolRegistry));
+	paletteRoot.add(createStationaryNodesGroup(toolRegistry));
+	paletteRoot.add(createMobileNodesGroup(toolRegistry));
 	paletteRoot.add(createLinksGroup(toolRegistry));
 	paletteRoot.add(createDefaultNotesGroup(toolRegistry));
 	paletteRoot.add(createDefaultFreeDrawingGroup(toolRegistry));
@@ -84,13 +85,19 @@ public class DeploymentDiagramCustomizer extends DiagramCustomizer implements ID
 
     private org.eclipse.gef.palette.PaletteEntry createLinksGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Links");
-	String[] toolNames = new String[] { DCaseTools.TOOL_DISPLAYS, DCaseTools.TOOL_RECEIVES, RCaseTools.TOOL_TRACEABILITY};
+	String[] toolNames = new String[] { DCaseTools.TOOL_SOURCE, DCaseTools.TOOL_CONTROLS, RCaseTools.TOOL_TRACEABILITY};
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
-    private org.eclipse.gef.palette.PaletteEntry createNodesGroup(IDiagramService toolRegistry) {
+    private org.eclipse.gef.palette.PaletteEntry createStationaryNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
-	String[] toolNames = new String[] { DCaseTools.TOOL_ANDROID_MESSAGE_INTERFACE, DCaseTools.TOOL_JAVA_MESSAGE_INTERFACE, DCaseTools.TOOL_MESSAGE, DCaseTools.TOOL_INFO, DCaseTools.TOOL_OPTION_LIST, DCaseTools.TOOL_LIST_ITEM };
+	String[] toolNames = new String[] { DCaseTools.TOOL_M_DATABASE, DCaseTools.TOOL_M_REASONER, DCaseTools.TOOL_VERA_ACTUATOR, DCaseTools.TOOL_JAVA_ACTUATOR};
+	return createGroup(groupName, toolNames, toolRegistry, 0);
+    }
+    
+    private org.eclipse.gef.palette.PaletteEntry createMobileNodesGroup(IDiagramService toolRegistry) {
+	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
+	String[] toolNames = new String[] { DCaseTools.TOOL_ANDROID_RECEIVER, DCaseTools.TOOL_ANDROID_REASONER ,DCaseTools.TOOL_ANDROID_ACTUATOR };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 

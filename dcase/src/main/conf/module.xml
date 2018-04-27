@@ -547,6 +547,18 @@
                     <HParameter name="stereotype" value="AndroidReasonerStereotype"/>
                 </Handler>
             </Tool> 
+            <Tool id="VeraRouterTool" label="%VeraRouterTool.label" tooltip="%VeraRouterTool.tooltip" image="%VeraRouterTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.VeraRouterTool">
+                    <HParameter name="metaclass" value="Package"/>
+                    <HParameter name="stereotype" value="VeraRouterStereotype"/>
+                </Handler>
+            </Tool>  
+            <Tool id="DeviceTool" label="%DeviceTool.label" tooltip="%DeviceTool.tooltip" image="%DeviceTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.DeviceTool">
+                    <HParameter name="metaclass" value="Package"/>
+                    <HParameter name="stereotype" value="DeviceStereotype"/>
+                </Handler>
+            </Tool>                           
             <Tool id="SourceTool" label="%SourceTool.label" tooltip="%SourceTool.tooltip" image="%SourceTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.relations.SourceTool">
                     <HParameter name="metaclass" value="Dependency"/>
