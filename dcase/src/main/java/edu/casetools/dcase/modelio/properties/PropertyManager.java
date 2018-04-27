@@ -48,6 +48,7 @@ import edu.casetools.dcase.modelio.properties.pages.info.InfoPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.info.MessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.AbsolutePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.AntecedentPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.ContextStatePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.SpecificationPropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
@@ -137,7 +138,7 @@ public class PropertyManager {
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 			.getMClass(Class.class)))) {
 	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME,
-		    DCaseProperties.PROPERTY_ANTECEDENT_STATE_VALUE);
+		    DCaseProperties.PROPERTY_ANTECEDENT_STATE_VALUE,true);
 	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
@@ -146,11 +147,17 @@ public class PropertyManager {
 	    this.propertyPage = new RuleDiagramPropertyPage();
 	}
 
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
+			DCaseStereotypes.STEREOTYPE_CONTEXT_STATE, DCaseModule.getInstance().getModuleContext()
+				.getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
+		    this.propertyPage = new ContextStatePropertyPage();
+		}
+	
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONSEQUENT,
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 			.getMClass(Class.class)))) {
 	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME,
-		    DCaseProperties.PROPERTY_CONSEQUENT_STATE_VALUE);
+		    DCaseProperties.PROPERTY_CONSEQUENT_STATE_VALUE,false);
 	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,

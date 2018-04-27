@@ -56,7 +56,7 @@ public class MdData {
 
 	states = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, states, 
 		DCaseStereotypes.STEREOTYPE_STATE);
-	updateIDs(states, DCaseProperties.PROPERTY_STATE_ID);
+	updateIDs(states, DCaseProperties.PROPERTY_CONTEXT_STATE_ID);
 
 	bops = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, bops, 
 		DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
@@ -373,7 +373,7 @@ public class MdData {
 
     private State createState(boolean independence, MObject state) {
 	State s = new State();
-	s.setId(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATE_ID));
+	s.setId(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_CONTEXT_STATE_ID));
 	s.setInitialValue(((ModelElement) state).getTagValue(DCasePeerModule.MODULE_NAME,
 		DCaseProperties.PROPERTY_STATE_INITIAL_VALUE));
 	s.setIndepedence(independence);

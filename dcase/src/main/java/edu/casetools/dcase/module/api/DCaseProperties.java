@@ -125,9 +125,10 @@ public final class DCaseProperties {
      * M State Context Related Properties
      **************************************************************************/
 
-    public static final String PROPERTY_STATE_ID = "TagStateId";
 
-    public static final String PROPERTY_STATE_NAME = "TagStateName";
+	public static final String PROPERTY_CONTEXT_STATE_ID = "TagStateId";
+
+	public static final String PROPERTY_CONTEXT_STATE_DESCRIPTION = "TagStateDescription";
 
     public static final String PROPERTY_STATE_INDEPENDENT = "TagStateIndpendent";
 
@@ -205,6 +206,8 @@ public final class DCaseProperties {
 	
 	public static final String PROPERTY_ANDROID_REASONER_ONTOLOGY 		= "TagAndroidReasonerOntologyBase";	
 	public static final String PROPERTY_ANDROID_REASONER_STREAM_IRI		= "TagAndroidReasonerStreamIRI";
+
+
 
     private DCaseProperties() {
 
