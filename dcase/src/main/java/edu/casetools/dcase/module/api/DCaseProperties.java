@@ -178,10 +178,14 @@ public final class DCaseProperties {
 	public static final String PROPERTY_FEEDS_IN_WINDOW_FOR			= "SR_for";
 	////////////////////////////
 	
-	public static final String PROPERTY_ACTUATOR_CONFIGS			= "TagActuatorConfigs";
+	public static final String PROPERTY_ACTUATOR_ID = "TagActuatorId";
 	
-	public static final String PROPERTY_VERA_ACTUATOR_SERVICE_ID	 = "TagVeraActuatorServiceId";
-	public static final String PROPERTY_VERA_ACTUATOR_ACTION_COMMAND = "TagVeraActuatorActionCommand";	
+	public static final String PROPERTY_VERA_ACTUATOR_SERVICE_ID	 	= "TagVeraActuatorServiceId";
+	public static final String PROPERTY_VERA_ACTUATOR_ACTION_COMMAND 	= "TagVeraActuatorActionCommand";	
+	public static final String PROPERTY_VERA_ACTUATOR_CONTEXT_STATE		= "TagVeraActuatorContextState";
+	public static final String PROPERTY_VERA_ACTUATOR_IP				= "TagVeraActuatorIP";
+	public static final String PROPERTY_VERA_ACTUATOR_PORT				= "TagVeraActuatorPort";
+
 	
 	public static final String PROPERTY_VERA_ROUTER_HOSTNAME			= "TagVeraRouterHostname";
 	public static final String PROPERTY_VERA_ROUTER_PORT				= "TagVeraRouterPort";
@@ -201,6 +205,8 @@ public final class DCaseProperties {
 	
 	public static final String PROPERTY_ANDROID_REASONER_ONTOLOGY 		= "TagAndroidReasonerOntologyBase";	
 	public static final String PROPERTY_ANDROID_REASONER_STREAM_IRI		= "TagAndroidReasonerStreamIRI";
+
+
     private DCaseProperties() {
 
     }

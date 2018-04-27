@@ -38,6 +38,7 @@ import edu.casetools.dcase.modelio.properties.pages.acqmod.PreferenceSensorPrope
 import edu.casetools.dcase.modelio.properties.pages.acqmod.RDFModellingRulePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.acqmod.SensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.acqmod.StationarySensorPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.deployment.ActuatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.info.InfoPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.info.MessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.AbsolutePastOperatorPropertyPage;
@@ -217,7 +218,12 @@ public class PropertyManager {
 			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new FeedsInWindowPropertyPage();
-		}			
+		}	
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ACTUATOR,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new ActuatorPropertyPage();
+		}		
     }
 
 }

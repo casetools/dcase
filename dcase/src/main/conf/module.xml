@@ -170,6 +170,10 @@
                 <Icon path="res/icons/deployment/elements/actuator_16.png"/>
                 <Image path="res/icons/deployment/elements/actuator_16.png"/>
                 <TagTypes>
+                    <TagType name="TagActuatorContextState" uid="" label="%ActuatorStereotype.properties.contextState" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagActuatorIP" uid="" label="%ActuatorStereotype.properties.ip" parameter-card="1" is-hidden="false" is-signed="false"/>    
+                    <TagType name="TagActuatorPort" uid="" label="%ActuatorStereotype.properties.port" parameter-card="1" is-hidden="false" is-signed="false"/>                                    
+                    <TagType name="TagActuatorId" uid="" label="%EventMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagActuatorConfigs" uid="fc0978d6-7275-451a-a87e-5e11147601a7" label="%ActuatorStereotype.properties.configs" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
