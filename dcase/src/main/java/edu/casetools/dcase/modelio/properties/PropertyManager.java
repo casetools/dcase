@@ -39,6 +39,7 @@ import edu.casetools.dcase.modelio.properties.pages.acqmod.RDFModellingRulePrope
 import edu.casetools.dcase.modelio.properties.pages.acqmod.SensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.acqmod.StationarySensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.deployment.ActuatorPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.deployment.AndroidReasonerPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.deployment.MDatabasePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.deployment.MReasonerPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.deployment.VeraActuatorPropertyPage;
@@ -241,6 +242,11 @@ public class PropertyManager {
 			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new MReasonerPropertyPage();
+		}	
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ANDROID_REASONER,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new AndroidReasonerPropertyPage();
 		}			
     }
 

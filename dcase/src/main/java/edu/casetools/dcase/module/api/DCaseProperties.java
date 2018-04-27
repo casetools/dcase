@@ -206,7 +206,6 @@ public final class DCaseProperties {
 	public static final String PROPERTY_ANDROID_REASONER_ONTOLOGY 		= "TagAndroidReasonerOntologyBase";	
 	public static final String PROPERTY_ANDROID_REASONER_STREAM_IRI		= "TagAndroidReasonerStreamIRI";
 
-
     private DCaseProperties() {
 
     }
