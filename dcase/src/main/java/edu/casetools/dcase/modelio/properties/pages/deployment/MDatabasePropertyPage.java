@@ -77,8 +77,8 @@ public class MDatabasePropertyPage implements IPropertyContent {
 	table.addProperty(I18nMessageService.getString("Ui.MDatabase.Property.Type"),
 			property,
 			new String[] {
-				I18nMessageService.getString("Ui.MDatabase.Property.Type.Sensor"),
-				I18nMessageService.getString("Ui.MDatabase.Property.Type.Location"),
+				I18nMessageService.getString("Ui.MDatabase.Property.Type.PostgreSQL"),
+				I18nMessageService.getString("Ui.MDatabase.Property.Type.MYSQL"),
 				I18nMessageService.getString("Ui.MDatabase.Property.Type.Other") });
 
 	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_M_DATABASE_HOSTNAME, element);

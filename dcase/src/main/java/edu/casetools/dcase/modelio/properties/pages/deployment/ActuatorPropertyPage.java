@@ -20,6 +20,8 @@
  */
 package edu.casetools.dcase.modelio.properties.pages.deployment;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,12 +29,16 @@ import org.eclipse.core.runtime.AssertionFailedException;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
+import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
+import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.properties.IPropertyContent;
 import edu.casetools.rcase.utils.PropertiesUtils;
+import edu.casetools.rcase.utils.tables.TableUtils;
 
 public class ActuatorPropertyPage implements IPropertyContent {
 
@@ -48,6 +54,9 @@ public class ActuatorPropertyPage implements IPropertyContent {
 		break;
 	    case 2:
 		element.setName(value);
+		break;	
+	    case 3:
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_ACTUATOR_CONTEXT_STATE, value);
 		break;		
 	    default:
 		break;
@@ -68,8 +77,24 @@ public class ActuatorPropertyPage implements IPropertyContent {
 	table.addProperty(I18nMessageService.getString("Ui.ACLContext.Property.TagId"), property);
 	
 	table.addProperty(DCaseProperties.PROPERTY_NAME, element.getName());
+	
+	// TagSpecification
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_ACTUATOR_CONTEXT_STATE, element);
+	table.addProperty(I18nMessageService.getString("Ui.VeraActuator.ContextState"), property, getAllContextStates());
 
 
     }
 
+    private String[] getAllContextStates(){
+    	List<MObject> contextAttributes = new ArrayList<>();
+    	List<String>  contextAttributeNames = new ArrayList<>();
+    	contextAttributes = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, contextAttributes, DCaseStereotypes.STEREOTYPE_CONTEXT_STATE);
+    	for(MObject contextAttribute: contextAttributes){
+    		contextAttributeNames.add(contextAttribute.getName());
+    	}
+    	return contextAttributeNames.toArray(new String[0]);
+
+    }
+
+    
 }

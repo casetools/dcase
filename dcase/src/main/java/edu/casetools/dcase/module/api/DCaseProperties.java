@@ -179,10 +179,10 @@ public final class DCaseProperties {
 	////////////////////////////
 	
 	public static final String PROPERTY_ACTUATOR_ID = "TagActuatorId";
+	public static final String PROPERTY_ACTUATOR_CONTEXT_STATE		= "TagActuatorContextState";
 	
 	public static final String PROPERTY_VERA_ACTUATOR_SERVICE_ID	 	= "TagVeraActuatorServiceId";
 	public static final String PROPERTY_VERA_ACTUATOR_ACTION_COMMAND 	= "TagVeraActuatorActionCommand";	
-	public static final String PROPERTY_VERA_ACTUATOR_CONTEXT_STATE		= "TagVeraActuatorContextState";
 	public static final String PROPERTY_VERA_ACTUATOR_IP				= "TagVeraActuatorIP";
 	public static final String PROPERTY_VERA_ACTUATOR_PORT				= "TagVeraActuatorPort";
 

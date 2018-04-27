@@ -249,11 +249,10 @@ public class PropertyManager {
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new AndroidReasonerPropertyPage();
 		}	
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_VERA_ROUTER,
-			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
-				.getMClass(Class.class)))) {
+	if (ster.getName().equals(DCaseStereotypes.STEREOTYPE_VERA_ROUTER)) {
 		    this.propertyPage = new VeraRouterPropertyPage();
 		}			
     }
+    
 
 }

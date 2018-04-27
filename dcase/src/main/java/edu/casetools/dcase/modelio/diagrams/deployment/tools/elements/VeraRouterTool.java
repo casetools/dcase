@@ -54,9 +54,9 @@ public class VeraRouterTool extends ElementTool {
 	String name = I18nMessageService.getString("Names.VeraRouter");
 
 	ModelElement auxiliarElement = ElementUtils.getInstance().createPackage(DCaseModule.getInstance(), adaptElement(element), session, name,
-			DCaseStereotypes.STEREOTYPE_DEVICE);
+			DCaseStereotypes.STEREOTYPE_VERA_ROUTER);
 	
-	return ElementUtils.getInstance().addStereotype(DCasePeerModule.MODULE_NAME, auxiliarElement, DCaseStereotypes.STEREOTYPE_VERA_ROUTER);
+	return ElementUtils.getInstance().addStereotype(DCasePeerModule.MODULE_NAME, auxiliarElement, DCaseStereotypes.STEREOTYPE_DEVICE);
     }
 
     /*

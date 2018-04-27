@@ -68,7 +68,7 @@ public class AndroidReasonerPropertyPage implements IPropertyContent {
 	
 	
 	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_ANDROID_REASONER_STREAM_IRI, element);
-	table.addProperty(I18nMessageService.getString("Ui.MReasoner.Property.StreamIRI"), property);
+	table.addProperty(I18nMessageService.getString("Ui.AndroidReasoner.Property.StreamIRI"), property);
 	
 
     }
