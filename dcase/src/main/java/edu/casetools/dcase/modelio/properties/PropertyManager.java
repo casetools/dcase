@@ -39,6 +39,7 @@ import edu.casetools.dcase.modelio.properties.pages.acqmod.RDFModellingRulePrope
 import edu.casetools.dcase.modelio.properties.pages.acqmod.SensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.acqmod.StationarySensorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.deployment.ActuatorPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.deployment.MDatabasePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.deployment.VeraActuatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.info.InfoPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.info.MessagePropertyPage;
@@ -229,6 +230,11 @@ public class PropertyManager {
 			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new VeraActuatorPropertyPage();
+		}		
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_M_DATABASE,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new MDatabasePropertyPage();
 		}		
     }
 
