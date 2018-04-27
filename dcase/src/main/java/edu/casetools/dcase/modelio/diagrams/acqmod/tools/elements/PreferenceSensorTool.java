@@ -32,6 +32,7 @@ import edu.casetools.dcase.module.api.DCaseColours;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.diagrams.ElementTool;
 import edu.casetools.rcase.module.api.RCaseColours;
 import edu.casetools.rcase.utils.ElementUtils;
@@ -54,7 +55,7 @@ public class PreferenceSensorTool extends ElementTool {
 	
 	Class auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 			DCaseStereotypes.STEREOTYPE_SENSOR);
-		    return ElementUtils.getInstance().addStereotype(auxiliarElement, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR);
+		    return ElementUtils.getInstance().addStereotype(DCasePeerModule.MODULE_NAME, auxiliarElement, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR);
     }
 
     /*

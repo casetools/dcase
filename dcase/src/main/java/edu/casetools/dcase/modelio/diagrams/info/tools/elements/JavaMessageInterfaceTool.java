@@ -32,6 +32,7 @@ import edu.casetools.dcase.module.api.DCaseColours;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.diagrams.ElementTool;
 import edu.casetools.rcase.utils.ElementUtils;
 
@@ -53,7 +54,7 @@ public class JavaMessageInterfaceTool extends ElementTool {
 
 	Class auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_MESSAGE_INTERFACE);
-	return ElementUtils.getInstance().addStereotype(auxiliarElement, DCaseStereotypes.STEREOTYPE_JAVA_MESSAGE_INTERFACE);
+	return ElementUtils.getInstance().addStereotype(DCasePeerModule.MODULE_NAME, auxiliarElement, DCaseStereotypes.STEREOTYPE_JAVA_MESSAGE_INTERFACE);
     }
 
     /*

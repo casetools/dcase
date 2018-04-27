@@ -59,7 +59,7 @@ public class AbsolutePastOperatorTool extends ElementTool {
 		ModelElement auxiliarElement = ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 			DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
 	
-		auxiliarElement = ElementUtils.getInstance().addStereotype(auxiliarElement, DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR);
+		auxiliarElement = ElementUtils.getInstance().addStereotype(DCasePeerModule.MODULE_NAME, auxiliarElement, DCaseStereotypes.STEREOTYPE_ABSOLUTE_PAST_OPERATOR);
 	
 		PropertiesUtils.getInstance().setFreeProperty(DCaseModule.getInstance(), (ModelElement) auxiliarElement, DCasePeerModule.MODULE_NAME,
 			DCaseStereotypes.STEREOTYPE_PAST_OPERATOR, DCaseProperties.PROPERTY_PAST_OPERATOR_ID);

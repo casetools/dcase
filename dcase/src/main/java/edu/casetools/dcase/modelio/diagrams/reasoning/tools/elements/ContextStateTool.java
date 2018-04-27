@@ -32,6 +32,7 @@ import edu.casetools.dcase.module.api.DCaseColours;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.diagrams.ElementTool;
 import edu.casetools.rcase.utils.ElementUtils;
 
@@ -53,7 +54,7 @@ public class ContextStateTool extends ElementTool {
 
 	Class contextState =  ElementUtils.getInstance().createClass(DCaseModule.getInstance(), adaptElement(element), session, name,
 		DCaseStereotypes.STEREOTYPE_STATE);
-	return ElementUtils.getInstance().addStereotype(contextState, DCaseStereotypes.STEREOTYPE_CONTEXT_STATE);
+	return ElementUtils.getInstance().addStereotype(DCasePeerModule.MODULE_NAME, contextState, DCaseStereotypes.STEREOTYPE_CONTEXT_STATE);
     }
 
     /*
