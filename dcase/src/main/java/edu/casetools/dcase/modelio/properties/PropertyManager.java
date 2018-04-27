@@ -50,6 +50,7 @@ import edu.casetools.dcase.modelio.properties.pages.reasoning.AbsolutePastOperat
 import edu.casetools.dcase.modelio.properties.pages.reasoning.AntecedentPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.ContextStatePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.ImmediatePastOperatorPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.InternalTimeStatePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.SpecificationPropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
@@ -152,6 +153,12 @@ public class PropertyManager {
 				.getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
 		    this.propertyPage = new ContextStatePropertyPage();
 		}
+	
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
+			DCaseStereotypes.STEREOTYPE_INTERNAL_TIME_STATE, DCaseModule.getInstance().getModuleContext()
+				.getModelioServices().getMetamodelService().getMetamodel().getMClass(Class.class)))) {
+		    this.propertyPage = new InternalTimeStatePropertyPage();
+		}	
 	
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_CONSEQUENT,
 		DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
