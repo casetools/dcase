@@ -170,10 +170,10 @@
                 <Icon path="res/icons/deployment/elements/actuator_16.png"/>
                 <Image path="res/icons/deployment/elements/actuator_16.png"/>
                 <TagTypes>
-                    <TagType name="TagActuatorContextState" uid="" label="%ActuatorStereotype.properties.contextState" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagActuatorIP" uid="" label="%ActuatorStereotype.properties.ip" parameter-card="1" is-hidden="false" is-signed="false"/>    
-                    <TagType name="TagActuatorPort" uid="" label="%ActuatorStereotype.properties.port" parameter-card="1" is-hidden="false" is-signed="false"/>                                    
-                    <TagType name="TagActuatorId" uid="" label="%EventMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagActuatorContextState" uid="eb90339d-03cc-4625-a157-c7a224dad394" label="%ActuatorStereotype.properties.contextState" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagActuatorIP" uid="c660c552-30f4-47d5-9e29-5f50a018d572" label="%ActuatorStereotype.properties.ip" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagActuatorPort" uid="0a92afa9-689c-4061-83a0-dcd0eedadd98" label="%ActuatorStereotype.properties.port" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagActuatorId" uid="8a6f1cea-870b-4df0-9413-f07c47453c04" label="%EventMessageStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagActuatorConfigs" uid="fc0978d6-7275-451a-a87e-5e11147601a7" label="%ActuatorStereotype.properties.configs" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>

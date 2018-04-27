@@ -90,13 +90,13 @@ public class DeploymentDiagramCustomizer extends DiagramCustomizer implements ID
     }
 
     private org.eclipse.gef.palette.PaletteEntry createStationaryNodesGroup(IDiagramService toolRegistry) {
-	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
+	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes.Stationary");
 	String[] toolNames = new String[] { DCaseTools.TOOL_DEVICE, DCaseTools.TOOL_VERA_ROUTER, DCaseTools.TOOL_M_DATABASE, DCaseTools.TOOL_M_REASONER, DCaseTools.TOOL_VERA_ACTUATOR, DCaseTools.TOOL_JAVA_ACTUATOR};
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
     
     private org.eclipse.gef.palette.PaletteEntry createMobileNodesGroup(IDiagramService toolRegistry) {
-	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
+	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes.Mobile");
 	String[] toolNames = new String[] { DCaseTools.TOOL_DEVICE, DCaseTools.TOOL_ANDROID_RECEIVER, DCaseTools.TOOL_ANDROID_REASONER ,DCaseTools.TOOL_ANDROID_ACTUATOR };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
