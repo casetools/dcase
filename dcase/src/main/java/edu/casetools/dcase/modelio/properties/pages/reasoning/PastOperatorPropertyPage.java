@@ -77,7 +77,7 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME);
 	table.addProperty(I18nMessageService.getString("Ui.PastOperator.Property.TagStateName"), property,
 		PropertiesUtils.getInstance().getAllElements(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
-			DCaseStereotypes.STEREOTYPE_STATE, "Ui.None"));
+			DCaseStereotypes.STEREOTYPE_CONTEXT_STATE, "Ui.None"));
 
 	// TagStateValue
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_VALUE);

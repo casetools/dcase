@@ -41,10 +41,12 @@ public class AntecedentPropertyPage implements IPropertyContent {
 
     private final String propertyName;
     private final String propertyValue;
+    private final boolean enableInternalStates;
 
-    public AntecedentPropertyPage(final String propertyName, final String propertyValue) {
-	this.propertyName = propertyName;
-	this.propertyValue = propertyValue;
+    public AntecedentPropertyPage(final String propertyName, final String propertyValue, boolean enableInternalStates) {
+		this.propertyName = propertyName;
+		this.propertyValue = propertyValue;
+		this.enableInternalStates = enableInternalStates;
     }
 
     @Override
@@ -73,10 +75,16 @@ public class AntecedentPropertyPage implements IPropertyContent {
 
 	// TagStateName
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyName);
-	table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateName"), property,
-		PropertiesUtils.getInstance().getAllElements(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
-			DCaseStereotypes.STEREOTYPE_STATE, I18nMessageService.getString("Ui.None")));
-
+	if(enableInternalStates){
+		table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateName"), property,
+			PropertiesUtils.getInstance().getAllElements(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
+				DCaseStereotypes.STEREOTYPE_STATE, I18nMessageService.getString("Ui.None")));
+	}
+	else{
+		table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateName"), property,
+				PropertiesUtils.getInstance().getAllElements(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
+					DCaseStereotypes.STEREOTYPE_CONTEXT_STATE, I18nMessageService.getString("Ui.None")));
+	}
 	// TagStateValue
 	property = element.getTagValue(DCasePeerModule.MODULE_NAME, propertyValue);
 	table.addProperty(I18nMessageService.getString("Ui.Antecedent.Property.TagStateValue"), property,
