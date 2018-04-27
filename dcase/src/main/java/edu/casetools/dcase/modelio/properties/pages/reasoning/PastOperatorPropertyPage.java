@@ -43,6 +43,10 @@ public class PastOperatorPropertyPage implements IPropertyContent {
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
 	    switch (row) {
+	    case 1:
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
+			DCaseProperties.PROPERTY_PAST_OPERATOR_ID, value, element);
+		break;	    
 	    case 2:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_PAST_OPERATOR_STATE_NAME, value, element);
