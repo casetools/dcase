@@ -70,7 +70,7 @@ public class VeraRouterTool extends ElementTool {
 
 	if ((null != graph) && (!graph.isEmpty()) && (graph.get(0) instanceof IDiagramNode)) {
 	    IDiagramNode dnode = (IDiagramNode) graph.get(0);
-	    dnode.setProperty("REPMODE", "SIMPLE");
+	    dnode.setProperty("REPMODE", "IMAGE");
 	    dnode.setProperty("FILLCOLOR", RCaseColours.PINK4);
 	    dnode.setProperty("FILLMODE", "SOLID");
 	    dnode.setProperty("LINECOLOR", DCaseColours.BLACK);

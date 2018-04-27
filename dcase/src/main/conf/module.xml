@@ -202,7 +202,7 @@
             </Stereotype>
             <Stereotype name="VeraRouterStereotype" metaclass="Package" is-hidden="false" label="%VeraRouterStereotype.label" uid="89470ddc-9adc-432b-9e73-c52c9d3c7440">
                 <Icon path="res/icons/deployment/elements/vera_router_16.png"/>
-                <Image path="res/icons/deployment/elements/vera_router_16.png"/>
+                <Image path="res/icons/deployment/elements/vera_router_64.png"/>
                 <TagTypes>
                     <TagType name="TagVeraRouterHostname" uid="c39785aa-5e23-42be-af53-386afc27e159" label="%VeraRouterStereotype.properties.hostname" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagVeraRouterPort" uid="ce18d215-bf01-4806-964d-9d26b5863b02" label="%VeraRouterStereotype.properties.port" parameter-card="1" is-hidden="false" is-signed="false"/>
