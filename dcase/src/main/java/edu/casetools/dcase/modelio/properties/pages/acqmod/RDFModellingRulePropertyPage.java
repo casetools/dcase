@@ -18,7 +18,7 @@
  * along with Modelio. If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package edu.casetools.dcase.modelio.properties.pages;
+package edu.casetools.dcase.modelio.properties.pages.acqmod;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,21 +34,27 @@ import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.properties.IPropertyContent;
 import edu.casetools.rcase.utils.PropertiesUtils;
 
-public class SpecificationPropertyPage implements IPropertyContent {
+public class RDFModellingRulePropertyPage implements IPropertyContent {
 
-    private static final Logger LOGGER = Logger.getLogger(SpecificationPropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(RDFModellingRulePropertyPage.class.getName());
 
     // TODO Reduce the complexity of the switch case
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
-	    switch (row) {
+	    switch (row-1) {
 	    case 1:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SPECIFICATION_TYPE, value);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_LOGICAL_EVALUATIONS, value);
 		break;
 	    case 2:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SPECIFICATION, value);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD, value);
 		break;
+	    case 3:
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD_TRIPLE_VAR, value);
+		break;
+	    case 4:
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD_RESULT_EXPR, value);
+		break;		
 	    default:
 		break;
 	    }
@@ -62,19 +68,20 @@ public class SpecificationPropertyPage implements IPropertyContent {
     public void update(ModelElement element, IModulePropertyTable table) {
 	String property;
 
-	// TagSpecificationType
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SPECIFICATION_TYPE);
-	table.addProperty(I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType"), property,
-		new String[] { I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.None"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.CTL"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.LTL"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.PSL"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Invariant"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Compute") });
 
 	// TagSpecification
-	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_SPECIFICATION, element);
-	table.addProperty(I18nMessageService.getString("Ui.Specification.Property.TagSpecification"), property);
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_RDF_MODELLING_RULE_LOGICAL_EVALUATIONS, element);
+	table.addProperty(I18nMessageService.getString("Ui.RDFModellingRule.Property.LogicalEvaluations"), property);
+	
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD, element);
+	table.addProperty(I18nMessageService.getString("Ui.RDFModellingRule.Property.Method"), property);
+	
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD_TRIPLE_VAR, element);
+	table.addProperty(I18nMessageService.getString("Ui.RDFModellingRule.Property.MethodTripleVar"), property);
+	
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD_RESULT_EXPR, element);
+	table.addProperty(I18nMessageService.getString("Ui.RDFModellingRule.Property.MethodResultExpr"), property);	
+	
 
     }
 

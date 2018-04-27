@@ -166,14 +166,14 @@
                 <Image path="res/icons/acquisition/deployment_diagram_16.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="ActuatorStereotype" metaclass="Class" is-hidden="false" label="%ActuatorStereotype.label" uid="">
+            <Stereotype name="ActuatorStereotype" metaclass="Class" is-hidden="false" label="%ActuatorStereotype.label" uid="fabb555b-84ee-4321-aada-e19003b12d45">
                 <Icon path="res/icons/deployment/elements/actuator_16.png"/>
                 <Image path="res/icons/deployment/elements/actuator_16.png"/>
                 <TagTypes>
                     <TagType name="TagActuatorConfigs" uid="fc0978d6-7275-451a-a87e-5e11147601a7" label="%ActuatorStereotype.properties.configs" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="VeraActuatorStereotype" metaclass="Class" is-hidden="false" label="%VeraActuatorStereotype.label" uid="">
+            <Stereotype name="VeraActuatorStereotype" metaclass="Class" is-hidden="false" label="%VeraActuatorStereotype.label" uid="db815cf0-3e16-44cd-9b7c-e1ba6f7d8e6d">
                 <Icon path="res/icons/deployment/elements/vera_16.png"/>
                 <Image path="res/icons/deployment/elements/vera_16.png"/>
                 <TagTypes>
@@ -181,80 +181,80 @@
                     <TagType name="TagVeraActuatorActionCommand" uid="c79bc408-79a9-4a1d-a36d-cd7fc768666e" label="%VeraActuatorStereotype.properties.actionCommand" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="AndroidActuatorStereotype" metaclass="Class" is-hidden="false" label="%AndroidActuatorStereotype.label" uid="">
+            <Stereotype name="AndroidActuatorStereotype" metaclass="Class" is-hidden="false" label="%AndroidActuatorStereotype.label" uid="9712dea4-c240-40ad-a0f5-36ce8e404595">
                 <Icon path="res/icons/deployment/elements/android_actuator_16.png"/>
                 <Image path="res/icons/deployment/elements/android_actuator_16.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="JavaActuatorStereotype" metaclass="Class" is-hidden="false" label="%JavaActuatorStereotype.label" uid="">
+            <Stereotype name="JavaActuatorStereotype" metaclass="Class" is-hidden="false" label="%JavaActuatorStereotype.label" uid="9b53c35b-e6a5-4da1-a73b-83c5595164cd">
                 <Icon path="res/icons/deployment/elements/java_actuator_16.png"/>
                 <Image path="res/icons/deployment/elements/java_actuator_16.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="DeviceStereotype" metaclass="Package" is-hidden="false" label="%DeviceStereotype.label" uid="">
+            <Stereotype name="DeviceStereotype" metaclass="Package" is-hidden="false" label="%DeviceStereotype.label" uid="2ff52626-7f8b-4e8f-bf95-030d7e625493">
                 <Icon path="res/icons/deployment/elements/device_16.png"/>
                 <Image path="res/icons/deployment/elements/device_16.png"/>
                 <TagTypes/>
-            </Stereotype>     
-            <Stereotype name="VeraRouterStereotype" metaclass="Package" is-hidden="false" label="%VeraRouterStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="VeraRouterStereotype" metaclass="Package" is-hidden="false" label="%VeraRouterStereotype.label" uid="89470ddc-9adc-432b-9e73-c52c9d3c7440">
                 <Icon path="res/icons/deployment/elements/vera_router_16.png"/>
                 <Image path="res/icons/deployment/elements/vera_router_16.png"/>
                 <TagTypes>
-                    <TagType name="TagVeraRouterHostname" uid="" label="%VeraRouterStereotype.properties.hostname" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagVeraRouterPort" uid="" label="%VeraRouterStereotype.properties.port" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagVeraRouterUsername" uid="" label="%VeraRouterStereotype.properties.username" parameter-card="1" is-hidden="false" is-signed="false"/>                    
-                    <TagType name="TagVeraRouterPassword" uid="" label="%VeraRouterStereotype.properties.password" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                    <TagType name="TagVeraRouterHostname" uid="c39785aa-5e23-42be-af53-386afc27e159" label="%VeraRouterStereotype.properties.hostname" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagVeraRouterPort" uid="ce18d215-bf01-4806-964d-9d26b5863b02" label="%VeraRouterStereotype.properties.port" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagVeraRouterUsername" uid="20ee5ff0-6e1c-44cb-bc83-03ba2d29acc4" label="%VeraRouterStereotype.properties.username" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagVeraRouterPassword" uid="2f613a39-51c4-4363-b89b-a4ce32dff6cd" label="%VeraRouterStereotype.properties.password" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="SoftwareComponentStereotype" metaclass="Class" is-hidden="false" label="%SoftwareComponentStereotype.label" uid="">
+            <Stereotype name="SoftwareComponentStereotype" metaclass="Class" is-hidden="false" label="%SoftwareComponentStereotype.label" uid="4a588337-5b35-4ae2-b72d-90875534a925">
                 <Icon path="res/icons/deployment/elements/software_16.png"/>
                 <Image path="res/icons/deployment/elements/software_16.png"/>
                 <TagTypes/>
-            </Stereotype>    
-            <Stereotype name="MDatabaseStereotype" metaclass="Class" is-hidden="false" label="%MDatabaseStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="MDatabaseStereotype" metaclass="Class" is-hidden="false" label="%MDatabaseStereotype.label" uid="e942eb10-3133-417b-95e9-9ccada64c5f8">
                 <Icon path="res/icons/deployment/elements/m_database_16.png"/>
                 <Image path="res/icons/deployment/elements/m_database_16.png"/>
                 <TagTypes>
-                    <TagType name="TagMDatabaseType" uid="" label="%MDatabaseStereotype.properties.type" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagMDatabaseHostname" uid="" label="%MDatabaseStereotype.properties.hostname" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagMDatabasePort" uid="" label="%MDatabaseStereotype.properties.port" parameter-card="1" is-hidden="false" is-signed="false"/>                    
-                    <TagType name="TagMDatabaseUsername" uid="" label="%MDatabaseStereotype.properties.username" parameter-card="1" is-hidden="false" is-signed="false"/>                    
-                    <TagType name="TagMDatabasePassword" uid="" label="%MDatabaseStereotype.properties.password" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                    <TagType name="TagMDatabaseType" uid="9416b5de-9b86-4c9e-b0c0-3cefc73df0c7" label="%MDatabaseStereotype.properties.type" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMDatabaseHostname" uid="d4cc4842-a4c0-42d3-97a2-d68965394700" label="%MDatabaseStereotype.properties.hostname" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMDatabasePort" uid="68411600-8da4-4f1e-81d8-1e6f51c38bc2" label="%MDatabaseStereotype.properties.port" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMDatabaseUsername" uid="bcc3636a-98ce-4b25-a1a8-164bab3c122a" label="%MDatabaseStereotype.properties.username" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMDatabasePassword" uid="9359443d-73b5-46f2-b856-d039ba995a01" label="%MDatabaseStereotype.properties.password" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>         
-            <Stereotype name="MReasonerStereotype" metaclass="Class" is-hidden="false" label="%MReasonerStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="MReasonerStereotype" metaclass="Class" is-hidden="false" label="%MReasonerStereotype.label" uid="5e8b54ef-8dd3-4917-a8a9-35dfac35247d">
                 <Icon path="res/icons/deployment/elements/m_16.png"/>
                 <Image path="res/icons/deployment/elements/m_16.png"/>
                 <TagTypes>
-                    <TagType name="TagMReasonerFixedIterationTime" uid="" label="%MReasonerStereotype.properties.fixedIterationTime" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagMReasonerIterationTime" uid="" label="%MReasonerStereotype.properties.iterationTime" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagMReasonerHasMaxExecutionTime" uid="" label="%MReasonerStereotype.properties.hasMaxExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>                    
-                    <TagType name="TagMReasonerMaxExecutionTime" uid="" label="%MReasonerStereotype.properties.maxExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                    <TagType name="TagMReasonerFixedIterationTime" uid="9fbc59ff-768c-42a7-8e53-58eee2328cfb" label="%MReasonerStereotype.properties.fixedIterationTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMReasonerIterationTime" uid="077626e3-1dae-45c3-96f7-fdb19b43b7d5" label="%MReasonerStereotype.properties.iterationTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMReasonerHasMaxExecutionTime" uid="473cb89b-f7e6-4c8b-b9d6-4c89718c9b0d" label="%MReasonerStereotype.properties.hasMaxExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMReasonerMaxExecutionTime" uid="1996d01b-f245-48cc-93fe-174e45f1d90f" label="%MReasonerStereotype.properties.maxExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>       
-            <Stereotype name="AndroidReceiverStereotype" metaclass="Class" is-hidden="false" label="%AndroidReceiverStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="AndroidReceiverStereotype" metaclass="Class" is-hidden="false" label="%AndroidReceiverStereotype.label" uid="6c7a3686-13bc-4072-90a8-145b9efe3046">
                 <Icon path="res/icons/deployment/elements/receiver_16.png"/>
                 <Image path="res/icons/deployment/elements/receiver_16.png"/>
                 <TagTypes/>
-            </Stereotype>  
-            <Stereotype name="AndroidReasonerStereotype" metaclass="Class" is-hidden="false" label="%AndroidReasonerStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="AndroidReasonerStereotype" metaclass="Class" is-hidden="false" label="%AndroidReasonerStereotype.label" uid="b01e20b1-9ebb-40f8-88fd-c98da1edb1a4">
                 <Icon path="res/icons/deployment/elements/android_reasoner_16.png"/>
                 <Image path="res/icons/deployment/elements/android_reasoner_16.png"/>
                 <TagTypes>
-                    <TagType name="TagAndroidReasonerOntologyBase" uid="" label="%AndroidReasonerStereotype.properties.ontologyBase" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagAndroidReasonerStreamIRI" uid="" label="%AndroidReasonerStereotype.properties.streamIRI" parameter-card="1" is-hidden="false" is-signed="false"/>                    
+                    <TagType name="TagAndroidReasonerOntologyBase" uid="7838ee7e-2b4b-4e86-8a1a-d341207c2f90" label="%AndroidReasonerStereotype.properties.ontologyBase" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagAndroidReasonerStreamIRI" uid="089ed2b8-6b8d-4165-9830-47a0abd28d95" label="%AndroidReasonerStereotype.properties.streamIRI" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
-            </Stereotype>      
-            <Stereotype name="SourceStereotype" metaclass="Dependency" is-hidden="false" label="%SourceStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="SourceStereotype" metaclass="Dependency" is-hidden="false" label="%SourceStereotype.label" uid="942e2075-1ab4-4d14-b30d-484b3ae6317b">
                 <Icon path="res/icons/deployment/relations/source_16.png"/>
                 <Image path="res/icons/deployment/relations/source_16.png"/>
                 <TagTypes/>
-            </Stereotype>  
-            <Stereotype name="ControlsStereotype" metaclass="Dependency" is-hidden="false" label="%ControlsStereotype.label" uid="">
+            </Stereotype>
+            <Stereotype name="ControlsStereotype" metaclass="Dependency" is-hidden="false" label="%ControlsStereotype.label" uid="c053ef95-1d25-441e-aa8d-f41479d76b4c">
                 <Icon path="res/icons/deployment/relations/controls_16.png"/>
                 <Image path="res/icons/deployment/relations/controls_16.png"/>
                 <TagTypes/>
-            </Stereotype>                                                                                                    
+            </Stereotype>
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
@@ -510,67 +510,67 @@
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="VeraActuatorStereotype"/>
                 </Handler>
-            </Tool>  
+            </Tool>
             <Tool id="AndroidActuatorTool" label="%AndroidActuatorTool.label" tooltip="%AndroidActuatorTool.tooltip" image="%AndroidActuatorTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.AndroidActuatorTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="AndroidActuatorStereotype"/>
                 </Handler>
-            </Tool>       
+            </Tool>
             <Tool id="JavaActuatorTool" label="%JavaActuatorTool.label" tooltip="%JavaActuatorTool.tooltip" image="%JavaActuatorTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.JavaActuatorTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="JavaActuatorStereotype"/>
                 </Handler>
-            </Tool>         
+            </Tool>
             <Tool id="MDatabaseTool" label="%MDatabaseTool.label" tooltip="%MDatabaseTool.tooltip" image="%MDatabaseTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.MDatabaseTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="MDatabaseStereotype"/>
                 </Handler>
-            </Tool>   
+            </Tool>
             <Tool id="MReasonerTool" label="%MReasonerTool.label" tooltip="%MReasonerTool.tooltip" image="%MReasonerTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.MReasonerTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="MReasonerStereotype"/>
                 </Handler>
-            </Tool>  
+            </Tool>
             <Tool id="AndroidReceiverTool" label="%AndroidReceiverTool.label" tooltip="%AndroidReceiverTool.tooltip" image="%AndroidReceiverTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.AndroidReceiverTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="AndroidReceiverStereotype"/>
                 </Handler>
-            </Tool>  
+            </Tool>
             <Tool id="AndroidReasonerTool" label="%AndroidReasonerTool.label" tooltip="%AndroidReasonerTool.tooltip" image="%AndroidReasonerTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.AndroidReasonerTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="AndroidReasonerStereotype"/>
                 </Handler>
-            </Tool> 
+            </Tool>
             <Tool id="VeraRouterTool" label="%VeraRouterTool.label" tooltip="%VeraRouterTool.tooltip" image="%VeraRouterTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.VeraRouterTool">
                     <HParameter name="metaclass" value="Package"/>
                     <HParameter name="stereotype" value="VeraRouterStereotype"/>
                 </Handler>
-            </Tool>  
+            </Tool>
             <Tool id="DeviceTool" label="%DeviceTool.label" tooltip="%DeviceTool.tooltip" image="%DeviceTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.elements.DeviceTool">
                     <HParameter name="metaclass" value="Package"/>
                     <HParameter name="stereotype" value="DeviceStereotype"/>
                 </Handler>
-            </Tool>                           
+            </Tool>
             <Tool id="SourceTool" label="%SourceTool.label" tooltip="%SourceTool.tooltip" image="%SourceTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.relations.SourceTool">
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="SourceStereotype"/>
                 </Handler>
-            </Tool>     
+            </Tool>
             <Tool id="ControlsTool" label="%ControlsTool.label" tooltip="%ControlsTool.tooltip" image="%ControlsTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.relations.ControlsTool">
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="ControlsStereotype"/>
                 </Handler>
-            </Tool>                                                                                      
+            </Tool>
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.reasoning.tools.elements.ContextStateTool">
                     <HParameter name="metaclass" value="Class"/>

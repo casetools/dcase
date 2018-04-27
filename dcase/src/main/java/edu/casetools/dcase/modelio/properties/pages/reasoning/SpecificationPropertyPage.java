@@ -18,10 +18,8 @@
  * along with Modelio. If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package edu.casetools.dcase.modelio.properties.pages;
+package edu.casetools.dcase.modelio.properties.pages.reasoning;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,22 +27,16 @@ import org.eclipse.core.runtime.AssertionFailedException;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
-import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
-import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.properties.IPropertyContent;
-import edu.casetools.rcase.module.api.RCaseStereotypes;
-import edu.casetools.rcase.module.impl.RCaseModule;
-import edu.casetools.rcase.module.impl.RCasePeerModule;
 import edu.casetools.rcase.utils.PropertiesUtils;
-import edu.casetools.rcase.utils.tables.TableUtils;
 
-public class InfoPropertyPage implements IPropertyContent {
+public class SpecificationPropertyPage implements IPropertyContent {
 
-    private static final Logger LOGGER = Logger.getLogger(InfoPropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SpecificationPropertyPage.class.getName());
 
     // TODO Reduce the complexity of the switch case
     @Override
@@ -52,15 +44,10 @@ public class InfoPropertyPage implements IPropertyContent {
 	try {
 	    switch (row) {
 	    case 1:
-		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_INFO_ID, value, element);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SPECIFICATION_TYPE, value);
 		break;
 	    case 2:
-		element.setName(value);
-		break;
-	    case 3:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_INFO_CONTEXT_ATTRIBUTE,
-			value);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SPECIFICATION, value);
 		break;
 	    default:
 		break;
@@ -75,29 +62,20 @@ public class InfoPropertyPage implements IPropertyContent {
     public void update(ModelElement element, IModulePropertyTable table) {
 	String property;
 
-		// TagId
-		String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_INFO_ID, element);
-		table.addProperty(I18nMessageService.getString("Ui.ACLContext.Property.TagId"), string);
-	
-		// Name
-		table.addProperty(DCaseProperties.PROPERTY_NAME, element.getName());
-	
-		// TagContent
-		property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_INFO_CONTEXT_ATTRIBUTE);
+	// TagSpecificationType
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SPECIFICATION_TYPE);
+	table.addProperty(I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType"), property,
+		new String[] { I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.None"),
+			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.CTL"),
+			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.LTL"),
+			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.PSL"),
+			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Invariant"),
+			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Compute") });
 
-		table.addProperty(I18nMessageService.getString("Ui.Info.ContextAttribute"), property, getAllContextAttributes());
-		
-    }
-    
-    private String[] getAllContextAttributes(){
-		List<MObject> contextAttributes = new ArrayList<>();
-		List<String>  contextAttributeNames = new ArrayList<>();
-		contextAttributes = TableUtils.getInstance().getAllElementsStereotypedAs(RCaseModule.getInstance(), RCasePeerModule.MODULE_NAME, contextAttributes, RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE);
-		for(MObject contextAttribute: contextAttributes){
-			contextAttributeNames.add(contextAttribute.getName());
-		}
-		return contextAttributeNames.toArray(new String[0]);
-    
+	// TagSpecification
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_SPECIFICATION, element);
+	table.addProperty(I18nMessageService.getString("Ui.Specification.Property.TagSpecification"), property);
+
     }
 
 }

@@ -18,7 +18,7 @@
  * along with Modelio. If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package edu.casetools.dcase.modelio.properties.pages;
+package edu.casetools.dcase.modelio.properties.pages.acqmod;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,14 +30,13 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
-import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.properties.IPropertyContent;
 import edu.casetools.rcase.utils.PropertiesUtils;
 
-public class MessagePropertyPage implements IPropertyContent {
+public class ModellingRulePropertyPage implements IPropertyContent {
 
-    private static final Logger LOGGER = Logger.getLogger(MessagePropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ModellingRulePropertyPage.class.getName());
 
     // TODO Reduce the complexity of the switch case
     @Override
@@ -45,15 +44,10 @@ public class MessagePropertyPage implements IPropertyContent {
 	try {
 	    switch (row) {
 	    case 1:
-		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_MESSAGE_ID, value, element);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MODELLING_RULE_ID, value);
 		break;
 	    case 2:
 		element.setName(value);
-		break;
-	    case 3:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_CONTENT,
-			value);
 		break;
 	    default:
 		break;
@@ -68,16 +62,12 @@ public class MessagePropertyPage implements IPropertyContent {
     public void update(ModelElement element, IModulePropertyTable table) {
 	String property;
 
-		// TagId
-		String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MESSAGE_ID, element);
-		table.addProperty(I18nMessageService.getString("Ui.ACLContext.Property.TagId"), string);
+
+	// TagSpecification
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MODELLING_RULE_ID, element);
+	table.addProperty(I18nMessageService.getString("Ui.ACLContext.Property.TagId"), property);
 	
-		// Name
-		table.addProperty(DCaseProperties.PROPERTY_NAME, element.getName());
-	
-		// TagContent
-		property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MESSAGE_CONTENT);
-		table.addProperty(I18nMessageService.getString("Ui.Message.Content"), property);
+	table.addProperty(DCaseProperties.PROPERTY_NAME, element.getName());
 
     }
 

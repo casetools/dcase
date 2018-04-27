@@ -18,7 +18,7 @@
  * along with Modelio. If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package edu.casetools.dcase.modelio.properties.pages;
+package edu.casetools.dcase.modelio.properties.pages.acqmod;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

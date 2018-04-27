@@ -18,7 +18,7 @@
  * along with Modelio. If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package edu.casetools.dcase.modelio.properties.pages;
+package edu.casetools.dcase.modelio.properties.pages.acqmod;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,13 +30,14 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
+import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.properties.IPropertyContent;
 import edu.casetools.rcase.utils.PropertiesUtils;
 
-public class DBModellingRulePropertyPage implements IPropertyContent {
+public class PreferenceSensorPropertyPage implements IPropertyContent {
 
-    private static final Logger LOGGER = Logger.getLogger(DBModellingRulePropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PreferenceSensorPropertyPage.class.getName());
 
     // TODO Reduce the complexity of the switch case
     @Override
@@ -44,7 +45,16 @@ public class DBModellingRulePropertyPage implements IPropertyContent {
 	try {
 	    switch (row-1) {
 	    case 1:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_DB_MODELLING_RULE_RULE, value);
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
+			DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MIN_VALUE, value, element);
+		break;
+	    case 2:
+			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MAX_VALUE,
+					value);
+		break;
+	    case 3:
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PREFERENCE_SENSOR_IS_BOOLEAN,
+			value);
 		break;
 	    default:
 		break;
@@ -59,11 +69,21 @@ public class DBModellingRulePropertyPage implements IPropertyContent {
     public void update(ModelElement element, IModulePropertyTable table) {
 	String property;
 
+		// TagId
+		String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MIN_VALUE, element);
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.MinValue"), string);
+		
+		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MAX_VALUE, element);
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.MaxValue"), string);
 
-	// TagSpecification
-	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_DB_MODELLING_RULE_RULE, element);
-	table.addProperty(I18nMessageService.getString("Ui.DBModellingRule.Property.Rule"), property);
 	
+		// TagDataType
+		property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PREFERENCE_SENSOR_IS_BOOLEAN);
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean"),
+			property,
+			new String[] {
+				I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean.True"),
+				I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean.False") });
 
     }
 

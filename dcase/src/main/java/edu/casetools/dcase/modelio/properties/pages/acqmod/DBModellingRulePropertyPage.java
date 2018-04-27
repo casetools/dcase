@@ -18,7 +18,7 @@
  * along with Modelio. If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package edu.casetools.dcase.modelio.properties.pages;
+package edu.casetools.dcase.modelio.properties.pages.acqmod;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,20 +34,17 @@ import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.properties.IPropertyContent;
 import edu.casetools.rcase.utils.PropertiesUtils;
 
-public class ModellingRulePropertyPage implements IPropertyContent {
+public class DBModellingRulePropertyPage implements IPropertyContent {
 
-    private static final Logger LOGGER = Logger.getLogger(ModellingRulePropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(DBModellingRulePropertyPage.class.getName());
 
     // TODO Reduce the complexity of the switch case
     @Override
     public void changeProperty(ModelElement element, int row, String value) {
 	try {
-	    switch (row) {
+	    switch (row-1) {
 	    case 1:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MODELLING_RULE_ID, value);
-		break;
-	    case 2:
-		element.setName(value);
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_DB_MODELLING_RULE_RULE, value);
 		break;
 	    default:
 		break;
@@ -64,10 +61,9 @@ public class ModellingRulePropertyPage implements IPropertyContent {
 
 
 	// TagSpecification
-	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MODELLING_RULE_ID, element);
-	table.addProperty(I18nMessageService.getString("Ui.ACLContext.Property.TagId"), property);
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_DB_MODELLING_RULE_RULE, element);
+	table.addProperty(I18nMessageService.getString("Ui.DBModellingRule.Property.Rule"), property);
 	
-	table.addProperty(DCaseProperties.PROPERTY_NAME, element.getName());
 
     }
 

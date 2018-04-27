@@ -18,7 +18,7 @@
  * along with Modelio. If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package edu.casetools.dcase.modelio.properties.pages;
+package edu.casetools.dcase.modelio.properties.pages.acqmod;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,9 +35,9 @@ import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.properties.IPropertyContent;
 import edu.casetools.rcase.utils.PropertiesUtils;
 
-public class MobileSensorPropertyPage implements IPropertyContent {
+public class StationarySensorPropertyPage implements IPropertyContent {
 
-    private static final Logger LOGGER = Logger.getLogger(MobileSensorPropertyPage.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(StationarySensorPropertyPage.class.getName());
 
     // TODO Reduce the complexity of the switch case
     @Override
@@ -46,18 +46,18 @@ public class MobileSensorPropertyPage implements IPropertyContent {
 	    switch (row-1) {
 	    case 1:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_MOBILE_SENSOR_LIBRARY, value, element);
+			DCaseProperties.PROPERTY_STATIONARY_SENSOR_VERA_ID, value, element);
 		break;
 	    case 2:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_MOBILE_SENSOR_FREQUENCY, value, element);
+			DCaseProperties.PROPERTY_STATIONARY_SENSOR_MIN_VALUE, value, element);
 		break;
 	    case 3:
-			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MOBILE_SENSOR_ONTOLOGY,
+			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATIONARY_SENSOR_MAX_VALUE,
 					value);
 		break;
 	    case 4:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MOBILE_SENSOR_DATA,
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATIONARY_SENSOR_IS_BOOLEAN,
 			value);
 		break;
 	    default:
@@ -73,24 +73,22 @@ public class MobileSensorPropertyPage implements IPropertyContent {
     public void update(ModelElement element, IModulePropertyTable table) {
 	String property;
 	
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MOBILE_SENSOR_LIBRARY);
-	table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library"),
-		property,
-		new String[] {
-			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Sensor"),
-			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Location"),
-			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Broadcast"),			
-			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Bluetooth") });
-	
-		String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_FREQUENCY, element);
-		table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Frequency"), string);
+		String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_STATIONARY_SENSOR_VERA_ID, element);
+		table.addProperty(I18nMessageService.getString("Ui.StationarySensorPropertyPage.Property.VeraId"), string);
+
+		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_STATIONARY_SENSOR_MIN_VALUE, element);
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.MinValue"), string);
 		
-		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_ONTOLOGY, element);
-		table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Ontology"), string);
+		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_STATIONARY_SENSOR_MAX_VALUE, element);
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.MaxValue"), string);
 
 	
-		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_DATA, element);
-		table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Data"), string);
+		property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATIONARY_SENSOR_IS_BOOLEAN);
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean"),
+			property,
+			new String[] {
+				I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean.True"),
+				I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean.False") });
 
     }
 
