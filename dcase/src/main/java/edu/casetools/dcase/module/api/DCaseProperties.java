@@ -133,6 +133,14 @@ public final class DCaseProperties {
     public static final String PROPERTY_STATE_INDEPENDENT = "TagStateIndpendent";
 
     public static final String PROPERTY_STATE_INITIAL_VALUE = "TagStateInitial";
+    
+
+    
+    public static final String PROPERTY_INTERNAL_TIME_TYPE = "TagStateTimeType";
+    
+    public static final String PROPERTY_INTERNAL_TIME_DOMAIN = "TagStateTimeDomain";
+
+    public static final String PROPERTY_INTERNAL_TIME_VALUE = "TagStateTimeValue";
 
 	public static final String PROPERTY_INFO_ID = "TagInfoId";
 	

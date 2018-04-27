@@ -274,8 +274,8 @@
                 <Icon path="res/icons/reasoning/elements/context_state_16.png"/>
                 <Image path="res/icons/reasoning/elements/context_state_16.png"/>
                 <TagTypes>
-                    <TagType name="TagStateId" uid="" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>                
-                    <TagType name="TagStateDescription" uid="" label="%StateStereotype.properties.description" parameter-card="1" is-hidden="false" is-signed="false"/>                
+                    <TagType name="TagStateId" uid="cba8b033-b418-4ca9-be6e-00fb9c486833" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStateDescription" uid="12aeed33-b3f6-47e7-9752-29ed1366516f" label="%StateStereotype.properties.description" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStateIndpendent" uid="ce140ef3-0e6c-4a31-ab35-3b9edc49d648" label="%StateStereotype.properties.independent" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStateInitial" uid="5961398c-4ae6-4bfa-a1d6-5f39f3d77f01" label="$StateStereotype.properties.initial" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStateBooleanValue" uid="be649e51-a4c5-4238-ba82-a9daab8b3306" label="$StateStereotype.properties.value" parameter-card="1" is-hidden="false" is-signed="false"/>
