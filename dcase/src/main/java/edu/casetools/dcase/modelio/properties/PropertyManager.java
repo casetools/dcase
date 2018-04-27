@@ -43,6 +43,7 @@ import edu.casetools.dcase.modelio.properties.pages.deployment.AndroidReasonerPr
 import edu.casetools.dcase.modelio.properties.pages.deployment.MDatabasePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.deployment.MReasonerPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.deployment.VeraActuatorPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.deployment.VeraRouterPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.info.InfoPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.info.MessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.AbsolutePastOperatorPropertyPage;
@@ -247,6 +248,11 @@ public class PropertyManager {
 			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new AndroidReasonerPropertyPage();
+		}	
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_VERA_ROUTER,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Class.class)))) {
+		    this.propertyPage = new VeraRouterPropertyPage();
 		}			
     }
 
