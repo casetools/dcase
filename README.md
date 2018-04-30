@@ -9,7 +9,7 @@ that aids the design of a Context-Aware System (C-AS).
 
 ### Third party libraries and icons
 * see [LIBRARIES](https://github.com/casetools/dcase/blob/master/LIBRARIES.md) file
-* Icons are made by [Freepik](http://www.freepik.com/), [GraphicsBay](http://www.flaticon.com/authors/graphicsbay), [Ocha](http://www.flaticon.com/authors/ocha), [UIUXER](http://www.flaticon.com/authors/uiuxer) [Anton Saputro] (https://www.flaticon.com/authors/anton-saputro), [SmashIcons] (https://www.flaticon.com/authors/smashicons), [Eucalyp] (https://www.flaticon.com/authors/eucalyp), and [Amit Jakhu](http://www.flaticon.com/authors/amit-jakhu). Downloaded from [Flaticon] (www.flaticon.com)
+* Icons are made by [Freepik](http://www.freepik.com/), [GraphicsBay](http://www.flaticon.com/authors/graphicsbay), [Ocha](http://www.flaticon.com/authors/ocha), [UIUXER](http://www.flaticon.com/authors/uiuxer), [Anton Saputro] (https://www.flaticon.com/authors/anton-saputro), [SmashIcons](https://www.flaticon.com/authors/smashicons), [Eucalyp](https://www.flaticon.com/authors/eucalyp), and [Amit Jakhu](http://www.flaticon.com/authors/amit-jakhu). Downloaded from [Flaticon](www.flaticon.com)
 
 ## License 
 * see [LICENSE](https://github.com/casetools/dcase/blob/master/LICENSE.md) file

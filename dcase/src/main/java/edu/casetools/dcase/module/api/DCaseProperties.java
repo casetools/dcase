@@ -144,7 +144,7 @@ public final class DCaseProperties {
 
 	public static final String PROPERTY_INFO_ID = "TagInfoId";
 	
-	public static final String PROPERTY_INFO_CONTEXT_ATTRIBUTE = "TagInfoContextAttribute";
+	public static final String PROPERTY_INFO_DESCRIPTION = "TagInfoDescription";
 	
 	
     /****************************************************************************
