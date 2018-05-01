@@ -20,8 +20,6 @@
  */
 package edu.casetools.dcase.modelio.properties.pages.info;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -68,7 +66,6 @@ public class InfoPropertyPage implements IPropertyContent {
 
     @Override
     public void update(ModelElement element, IModulePropertyTable table) {
-	String property;
 
 		// TagId
 		String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_INFO_ID, element);

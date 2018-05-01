@@ -84,8 +84,6 @@ public final class DCaseProperties {
     
     public static final String PROPERTY_MESSAGE_ID      = "TagMessageId";
 
-    public static final String PROPERTY_MESSAGE_NAME    = "TagMessageName";
-
     public static final String PROPERTY_MESSAGE_CONTENT = "TagMessageContent";
     
     

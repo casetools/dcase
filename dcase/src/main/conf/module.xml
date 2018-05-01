@@ -35,8 +35,8 @@
                 <Icon path="res/icons/info/elements/message_16.png"/>
                 <Image path="res/icons/info/elements/message_16.png"/>
                 <TagTypes>
-                    <TagType name="TagMessageId" uid="5aac75f8-1d57-4eb2-a45a-e68a4efe1e31" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="TagMessageContent" uid="2af7733f-95e6-4e0d-bfb5-5386413c1a8b" label="$StateStereotype.properties.description" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMessageId" uid="4a9d46db-13ef-4e92-802b-a36c11716c4c" label="%StateStereotype.properties.id" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagMessageContent" uid="15b30580-a192-4bcd-b04d-c7dbd8980dc6" label="$StateStereotype.properties.description" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="InfoStereotype" metaclass="Class" is-hidden="false" label="%InfoStereotype.label" uid="72498088-de0b-4fce-a239-e9a034fdfe1f">
