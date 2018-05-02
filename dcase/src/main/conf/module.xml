@@ -452,13 +452,13 @@
             </Tool>
             <Tool id="DisplaysTool" label="%DisplaysTool.label" tooltip="%DisplaysTool.tooltip" image="%DisplaysTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.relations.DisplaysTool">
-                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="DisplaysStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="ReceivesTool" label="%ReceivesTool.label" tooltip="%ReceivesTool.tooltip" image="%ReceivesTool.image">
                 <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.relations.ReceivesTool">
-                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="ReceivesStereotype"/>
                 </Handler>
             </Tool>

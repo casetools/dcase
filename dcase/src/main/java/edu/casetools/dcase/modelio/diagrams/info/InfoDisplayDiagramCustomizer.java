@@ -84,13 +84,14 @@ public class InfoDisplayDiagramCustomizer extends DiagramCustomizer implements I
 
     private org.eclipse.gef.palette.PaletteEntry createLinksGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Links");
-	String[] toolNames = new String[] { DCaseTools.TOOL_DISPLAYS, DCaseTools.TOOL_RECEIVES, RCaseTools.TOOL_TRACEABILITY};
+	String[] toolNames = new String[] { DCaseTools.TOOL_DISPLAYS, DCaseTools.TOOL_RECEIVES, RCaseTools.TOOL_TRACEABILITY, RCaseTools.TOOL_UML_COMPOSITION, RCaseTools.TOOL_UML_AGGREGATION, RCaseTools.TOOL_UML_ASSOCIATION};
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
     private org.eclipse.gef.palette.PaletteEntry createNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
-	String[] toolNames = new String[] { DCaseTools.TOOL_ANDROID_MESSAGE_INTERFACE, DCaseTools.TOOL_JAVA_MESSAGE_INTERFACE, DCaseTools.TOOL_MESSAGE, DCaseTools.TOOL_INFO, DCaseTools.TOOL_OPTION_LIST, DCaseTools.TOOL_LIST_ITEM };
+	String[] toolNames = new String[] { DCaseTools.TOOL_ANDROID_MESSAGE_INTERFACE, DCaseTools.TOOL_JAVA_MESSAGE_INTERFACE, DCaseTools.TOOL_MESSAGE, DCaseTools.TOOL_INFO, 
+			RCaseTools.TOOL_CONTEXT_ATTRIBUTE, RCaseTools.TOOL_CONTEXT_PREFERENCE, DCaseTools.TOOL_OPTION_LIST, DCaseTools.TOOL_LIST_ITEM, RCaseTools.TOOL_USER_PROFILE };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
