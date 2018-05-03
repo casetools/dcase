@@ -38,6 +38,9 @@ import edu.casetools.rcase.utils.ElementUtils;
  */
 public class ObserveTool extends RelationTool {
 
+	
+	private boolean isPreferenceSensor;
+	private boolean isMobileOrStationarySensor;
     /*
      * (non-Javadoc)
      * 
@@ -48,7 +51,10 @@ public class ObserveTool extends RelationTool {
      */
     @Override
     public boolean acceptFirstElement(IDiagramHandle representation, IDiagramGraphic target) {
-	return acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_SENSOR);
+    	isPreferenceSensor =  acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR);
+    	isMobileOrStationarySensor = acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_MOBILE_SENSOR) ||
+    							 acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_STATIONARY_SENSOR);
+    	return isPreferenceSensor || isMobileOrStationarySensor;
     }
 
     /*
@@ -62,7 +68,11 @@ public class ObserveTool extends RelationTool {
      */
     @Override
     public boolean acceptSecondElement(IDiagramHandle representation, IDiagramGraphic source, IDiagramGraphic target) {
-	return acceptElement(RCasePeerModule.MODULE_NAME, target, RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE);
+    	if(isPreferenceSensor)
+    		return acceptElement(RCasePeerModule.MODULE_NAME, target, RCaseStereotypes.STEREOTYPE_CONTEXT_PREFERENCE);
+    	if(isMobileOrStationarySensor)
+    		return acceptElement(RCasePeerModule.MODULE_NAME, target, RCaseStereotypes.STEREOTYPE_CONTEXT_ATTRIBUTE);
+    	return false;
     }
 
     /*
