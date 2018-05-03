@@ -57,6 +57,11 @@
                 <Image path="res/icons/info/elements/list_item_16.png"/>
                 <TagTypes/>
             </Stereotype>
+            <Stereotype name="SensorInformationStereotype" metaclass="Class" is-hidden="false" label="%SensorInformationStereotype.label" uid="e298c53d-b476-40b1-98a3-5ac116a6befa">
+                <Icon path="res/icons/info/elements/list_item_16.png"/>
+                <Image path="res/icons/info/elements/list_item_16.png"/>
+                <TagTypes/>
+            </Stereotype>
             <Stereotype name="DisplaysStereotype" metaclass="Dependency" is-hidden="false" label="%DisplaysStereotype.label" uid="e43a0880-84dd-41cd-a3f2-491fd998437b">
                 <Icon path="res/icons/info/relations/displays_16.png"/>
                 <Image path="res/icons/info/relations/displays_16.png"/>
@@ -448,6 +453,12 @@
                 <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.elements.ListItemTool">
                     <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="ListItemStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="SensorInformationTool" label="%SensorInformationTool.label" tooltip="%SensorInformationTool.tooltip" image="%SensorInformationTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.info.tools.elements.SensorInformationTool">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="SensorInformationStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="DisplaysTool" label="%DisplaysTool.label" tooltip="%DisplaysTool.tooltip" image="%DisplaysTool.image">

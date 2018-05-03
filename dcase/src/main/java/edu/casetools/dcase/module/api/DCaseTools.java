@@ -45,6 +45,7 @@ public final class DCaseTools {
 	public static final String TOOL_JAVA_MESSAGE_INTERFACE    = "JavaMessageInterfaceTool";
 	public static final String TOOL_MESSAGE 				  = "MessageTool";
 	public static final String TOOL_INFO 					  = "InfoTool";
+	public static final String TOOL_SENSOR_INFORMATION		  = "SensorInformationTool";
 	public static final String TOOL_OPTION_LIST 			  = "OptionListTool";
 	public static final String TOOL_LIST_ITEM 				  = "ListItemTool";
 	

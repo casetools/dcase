@@ -51,15 +51,15 @@ public class InfoDisplayDiagramCustomizer extends DiagramCustomizer implements I
      */
     @Override
     public void fillPalette(PaletteRoot paletteRoot) {
-	IDiagramService toolRegistry = DCaseModule.getInstance().getModuleContext().getModelioServices()
-		.getDiagramService();
-	PaletteDrawer commonGroup = createBasics();
-
-	paletteRoot.add(commonGroup);
-	paletteRoot.add(createNodesGroup(toolRegistry));
-	paletteRoot.add(createLinksGroup(toolRegistry));
-	paletteRoot.add(createDefaultNotesGroup(toolRegistry));
-	paletteRoot.add(createDefaultFreeDrawingGroup(toolRegistry));
+		IDiagramService toolRegistry = DCaseModule.getInstance().getModuleContext().getModelioServices()
+			.getDiagramService();
+		PaletteDrawer commonGroup = createBasics();
+	
+		paletteRoot.add(commonGroup);
+		paletteRoot.add(createNodesGroup(toolRegistry));
+		paletteRoot.add(createLinksGroup(toolRegistry));
+		paletteRoot.add(createDefaultNotesGroup(toolRegistry));
+		paletteRoot.add(createDefaultFreeDrawingGroup(toolRegistry));
     }
 
     /*
@@ -91,7 +91,7 @@ public class InfoDisplayDiagramCustomizer extends DiagramCustomizer implements I
     private org.eclipse.gef.palette.PaletteEntry createNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes");
 	String[] toolNames = new String[] { DCaseTools.TOOL_ANDROID_MESSAGE_INTERFACE, DCaseTools.TOOL_JAVA_MESSAGE_INTERFACE, DCaseTools.TOOL_MESSAGE, DCaseTools.TOOL_INFO, 
-			RCaseTools.TOOL_CONTEXT_ATTRIBUTE, RCaseTools.TOOL_CONTEXT_PREFERENCE, DCaseTools.TOOL_OPTION_LIST, DCaseTools.TOOL_LIST_ITEM, RCaseTools.TOOL_USER_PROFILE };
+			DCaseTools.TOOL_CONTEXT_STATE, DCaseTools.TOOL_SENSOR_INFORMATION, DCaseTools.TOOL_OPTION_LIST, DCaseTools.TOOL_LIST_ITEM, RCaseTools.TOOL_USER_PROFILE };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 

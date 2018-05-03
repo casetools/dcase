@@ -11,6 +11,7 @@ public class DCaseStereotypes { // NOSONAR The class only contains static
 	public static final String STEREOTYPE_MESSAGE_INTERFACE		    = "MessageInterfaceStereotype";
 	
 	public static final String STEREOTYPE_INFO 	  = "InfoStereotype";
+	public static final String STEREOTYPE_SENSOR_INFORMATION = "SensorInformationStereotype";
 	public static final String STEREOTYPE_MESSAGE = "MessageStereotype";
 	
 	public static final String STEREOTYPE_OPTION_LIST = "OptionListStereotype";
