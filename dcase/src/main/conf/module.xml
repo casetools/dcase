@@ -111,6 +111,7 @@
                 <Icon path="res/icons/acquisition/elements/mobile_16.png"/>
                 <Image path="res/icons/acquisition/elements/mobile_16.png"/>
                 <TagTypes>
+                    <TagType name="TagMobileSensorDriver" uid="78bcf645-e98a-4ba4-9e0a-b66444f479ed" label="%MobileSensorStereotype.properties.driver" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagMobileSensorLibrary" uid="f280a9d3-b06d-4b1a-ba8e-d3ce528145e7" label="%MobileSensorStereotype.properties.library" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagMobileSensorFrequency" uid="152c2f87-7031-4435-b37d-459f74c83a24" label="%MobileSensorStereotype.properties.frequency" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagMobileSensorOntology" uid="cc98ddb0-141d-44dd-a288-67ffd0f09a29" label="%MobileSensorStereotype.properties.ontology" parameter-card="1" is-hidden="false" is-signed="false"/>
@@ -384,7 +385,11 @@
                 <TagTypes/>
                 <NoteTypes/>
             </Stereotype>
-            <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement"/>
+            <MetaclassReference uid="d37c757d-7036-4b89-aaa2-4e91f36b80d3" metaclass="ModelElement">
+                <NoteTypes>
+                    <NoteType name="FeedsInWindowNote" label="FeedsInWindowNote" is-hidden="false" uid="dc0b03df-294f-4f8e-92c1-fe6887260d19"/>
+                </NoteTypes>
+            </MetaclassReference>
         </Profile>
     </Profiles>
     <Gui>

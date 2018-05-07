@@ -46,17 +46,21 @@ public class MobileSensorPropertyPage implements IPropertyContent {
 	    switch (row-1) {
 	    case 1:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
+			DCaseProperties.PROPERTY_MOBILE_SENSOR_DRIVER, value, element);
+		break;	    
+	    case 2:
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_MOBILE_SENSOR_LIBRARY, value, element);
 		break;
-	    case 2:
+	    case 3:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
 			DCaseProperties.PROPERTY_MOBILE_SENSOR_FREQUENCY, value, element);
 		break;
-	    case 3:
+	    case 4:
 			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MOBILE_SENSOR_ONTOLOGY,
 					value);
 		break;
-	    case 4:
+	    case 5:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MOBILE_SENSOR_DATA,
 			value);
 		break;
@@ -73,25 +77,72 @@ public class MobileSensorPropertyPage implements IPropertyContent {
     public void update(ModelElement element, IModulePropertyTable table) {
 	String property;
 	
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MOBILE_SENSOR_LIBRARY);
-	table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library"),
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MOBILE_SENSOR_DRIVER);
+	table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver"),
 		property,
 		new String[] {
-			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Sensor"),
-			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Location"),
-			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Broadcast"),			
-			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Bluetooth") });
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.NewDriver"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.Weather"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.Battery"),					
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.Compass"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.Location"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.DistanceTravelled"),					
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.ExternalStorageSpace"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.GPSIndoor"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.Light"),					
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.PluggedIn"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.Pressure"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.RelativeHumidity"),					
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.StepCounter"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.Telephony"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.Temperature"),						
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.Wifi"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.HeartRate"),
+			I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.Mood") });
 	
-		String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_FREQUENCY, element);
-		table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Frequency"), string);
+		if(property!=null)
+			table = getValue(property, element, table);
+
+		table = getFrequency(element, table);
 		
-		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_ONTOLOGY, element);
-		table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Ontology"), string);
+		
+		property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_ONTOLOGY, element);
+		table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Ontology"), property);
 
 	
-		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_DATA, element);
-		table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Data"), string);
+		property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_DATA, element);
+		table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Data"), property);
 
     }
+
+	private IModulePropertyTable getValue(String property, ModelElement element, IModulePropertyTable table) {
+		if(property.equals(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Driver.NewDriver"))){
+			property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_MOBILE_SENSOR_LIBRARY);
+			table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library"),
+				property,
+				new String[] {
+					I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Sensor"),
+					I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Location"),
+					I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Broadcast"),			
+					I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library.Bluetooth") });
+		}else{
+			table.addConsultProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Library"),"");
+		}
+		
+		return table;
+	}
+
+	private IModulePropertyTable getFrequency(ModelElement element, IModulePropertyTable table) {
+		String responsibility =  element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SENSOR_RESPONSIBILITY);
+		if (responsibility == null) responsibility = "";
+		if(responsibility.equals(I18nMessageService.getString("Ui.SensorPropertyPage.Property.TagResponsibility.Pull"))){
+			String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_FREQUENCY, element);
+			if(string == null) string = "";
+			table.addProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Frequency"), string);
+		}else{
+		table.addConsultProperty(I18nMessageService.getString("Ui.MobileSensorPropertyPage.Property.Frequency"), "");
+		}
+		return table;
+	}
 
 }

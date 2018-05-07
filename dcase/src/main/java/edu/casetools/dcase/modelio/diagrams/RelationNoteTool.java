@@ -34,6 +34,7 @@ import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Note;
 
+import edu.casetools.dcase.module.api.DCaseNotes;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.diagrams.RelationTool;
@@ -56,6 +57,9 @@ public abstract class RelationNoteTool extends RelationTool {
      * org.modelio.api.diagram.IDiagramLink.LinkRouterKind,
      * org.modelio.api.diagram.ILinkPath)
      */
+	
+	protected String noteName;
+	
     @Override
     public void actionPerformed(IDiagramHandle representation, IDiagramGraphic origin, IDiagramGraphic target,
 	    IDiagramLink.LinkRouterKind kind, ILinkPath path) {
@@ -69,7 +73,7 @@ public abstract class RelationNoteTool extends RelationTool {
 
 	    Dependency dependency = createDependency(originElement, targetElement);
 
-		Note note = ElementUtils.getInstance().createNote(DCaseModule.getInstance().getModuleContext().getModelingSession().getModel(), DCasePeerModule.MODULE_NAME, dependency, "");
+		Note note =  ElementUtils.getInstance().createNote(DCaseModule.getInstance().getModuleContext().getModelingSession().getModel(), DCasePeerModule.MODULE_NAME, dependency, DCaseNotes.NOTE_FEEDS_IN_WINDOW);
 		note.setContent("Stream: \nEvery: \nFor: ");
 	    
 	    List<IDiagramGraphic> graphics = representation.unmask(note, 0, 0);
@@ -91,6 +95,8 @@ public abstract class RelationNoteTool extends RelationTool {
 	}
     }
 
- 
+    protected void setNoteStereotype(String stereotype){
+    	 this.noteName = stereotype;
+    }
 
 }

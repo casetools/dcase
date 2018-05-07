@@ -1,5 +1,6 @@
 package edu.casetools.dcase.module.impl;
 
+import org.modelio.api.modelio.model.event.IModelChangeHandler;
 import org.modelio.api.module.context.log.ILogService;
 import org.modelio.api.module.lifecycle.DefaultModuleLifeCycleHandler;
 import org.modelio.api.module.lifecycle.ModuleException;
@@ -18,6 +19,8 @@ public class DCaseSession extends DefaultModuleLifeCycleHandler {
      * @param module
      *            the Module this session is instanciated for.
      */
+	private DCaseModuleChangeHandler modelChangeHandler;
+	
     public DCaseSession(DCaseModule module) {
 	super(module);
     }
@@ -30,6 +33,9 @@ public class DCaseSession extends DefaultModuleLifeCycleHandler {
 	// get the version of the module
 	Version moduleVersion = this.module.getVersion();
 
+	modelChangeHandler = new DCaseModuleChangeHandler();
+	this.module.getModuleContext().getModelingSession().addModelHandler((IModelChangeHandler) modelChangeHandler);
+	
 	// get the Modelio log service
 	ILogService logService = this.module.getModuleContext().getLogService();
 
