@@ -136,6 +136,7 @@
                 <Icon path="res/icons/acquisition/elements/rdf_16.png"/>
                 <Image path="res/icons/acquisition/elements/rdf_16.png"/>
                 <TagTypes>
+                    <TagType name="TagRDFModellingRulePredicate" uid="cc0130f1-0d44-4e9a-b71e-a66c64a2bcca" label="%RDFModellingRuleStereotype.properties.predicate" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagRDFModellingRuleLogicalEvaluations" uid="c634add5-188d-4ca8-a14e-98e838ac1b2d" label="%RDFModellingRuleStereotype.properties.logicalEvaluations" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagRDFModellingRuleMethod" uid="1bfb3f5a-923e-4e94-8f96-2765d60d6769" label="%RDFModellingRuleStereotype.properties.method" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagRDFModellingRuleMethodTripleVar" uid="f8551963-7824-4369-af12-1c6638fed95d" label="$RDFModellingRuleStereotype.properties.methodTripleVar" parameter-card="1" is-hidden="false" is-signed="false"/>
@@ -401,6 +402,10 @@
             <Command id="CreateAcquisitionAndModellingDiagram" label="%CreateAcquisitionAndModellingDiagram.label" tooltip="%CreateAcquisitionAndModellingDiagram.tooltip" image="%CreateAcquisitionAndModellingDiagram.image" group="%CreateAcquisitionAndModellingDiagram.group" modify-model="true" group-image="%CreateAcquisitionAndModellingDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateAcquisitionAndModellingDiagram"/>
+            </Command>
+            <Command id="GenerateCSPARQLRules" label="%GenerateCSPARQLRules.label" tooltip="%GenerateCSPARQLRules.tooltip" image="%GenerateCSPARQLRules.image" group="%GenerateCSPARQLRules.group" modify-model="true" group-image="%GenerateCSPARQLRules.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateCSPARQLRules"/>
             </Command>
             <Command id="CreateReasoningDiagram" label="%CreateReasoningDiagram.label" tooltip="%CreateReasoningDiagram.tooltip" image="%CreateReasoningDiagram.image" group="%CreateReasoningDiagram.group" modify-model="true" group-image="%CreateReasoningDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
@@ -668,6 +673,7 @@
         <ContextualMenu>
             <CommandRef refid="CreateInfoDisplayDiagram"/>
             <CommandRef refid="CreateAcquisitionAndModellingDiagram"/>
+            <CommandRef refid="GenerateCSPARQLRules"/>
             <CommandRef refid="GenerateACLCode"/>
             <CommandRef refid="CreateReasoningDiagram"/>
             <CommandRef refid="GenerateNuSMV"/>

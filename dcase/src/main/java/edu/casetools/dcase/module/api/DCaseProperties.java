@@ -175,7 +175,7 @@ public final class DCaseProperties {
 	
 	public static final String PROPERTY_DB_MODELLING_RULE_RULE 	  = "TagDBModellingRuleRule";
 	
-	
+	public static final String PROPERTY_RDF_MODELLING_RULE_PREDICATE 		= "TagRDFModellingRulePredicate";	
 	public static final String PROPERTY_RDF_MODELLING_RULE_LOGICAL_EVALUATIONS 		= "TagRDFModellingRuleLogicalEvaluations";
 	public static final String PROPERTY_RDF_MODELLING_RULE_METHOD 					= "TagRDFModellingRuleMethod";	
 	public static final String PROPERTY_RDF_MODELLING_RULE_METHOD_TRIPLE_VAR 		= "TagRDFModellingRuleMethodTripleVar";	

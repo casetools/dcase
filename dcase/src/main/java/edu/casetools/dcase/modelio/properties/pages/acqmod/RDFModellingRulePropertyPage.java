@@ -44,15 +44,18 @@ public class RDFModellingRulePropertyPage implements IPropertyContent {
 	try {
 	    switch (row-1) {
 	    case 1:
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_PREDICATE, value);
+		break;	    
+	    case 2:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_LOGICAL_EVALUATIONS, value);
 		break;
-	    case 2:
+	    case 3:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD, value);
 		break;
-	    case 3:
+	    case 4:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD_TRIPLE_VAR, value);
 		break;
-	    case 4:
+	    case 5:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD_RESULT_EXPR, value);
 		break;		
 	    default:
@@ -70,6 +73,9 @@ public class RDFModellingRulePropertyPage implements IPropertyContent {
 
 
 	// TagSpecification
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_RDF_MODELLING_RULE_PREDICATE, element);
+	table.addProperty(I18nMessageService.getString("Ui.RDFModellingRule.Property.Predicate"), property);
+	
 	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_RDF_MODELLING_RULE_LOGICAL_EVALUATIONS, element);
 	table.addProperty(I18nMessageService.getString("Ui.RDFModellingRule.Property.LogicalEvaluations"), property);
 	

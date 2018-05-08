@@ -21,12 +21,10 @@ import java.util.Set;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.event.IModelChangeEvent;
 import org.modelio.api.modelio.model.event.IModelChangeHandler;
-import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Note;
 import org.modelio.metamodel.uml.infrastructure.TagParameter;
 import org.modelio.metamodel.uml.infrastructure.TaggedValue;
-import org.modelio.metamodel.uml.statik.Association;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.api.DCaseNotes;
