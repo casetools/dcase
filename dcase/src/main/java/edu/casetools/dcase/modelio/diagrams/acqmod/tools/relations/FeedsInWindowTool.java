@@ -25,16 +25,16 @@ import org.modelio.api.modelio.diagram.IDiagramHandle;
 import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 
-import edu.casetools.dcase.modelio.diagrams.RelationNoteTool;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.rcase.modelio.diagrams.RelationTool;
 import edu.casetools.rcase.utils.ElementUtils;
 
 /**
  * The Class CopyTool is the tool for creating a Copy relation.
  */
-public class FeedsInWindowTool extends RelationNoteTool {
+public class FeedsInWindowTool extends RelationTool {
 
     /*
      * (non-Javadoc)

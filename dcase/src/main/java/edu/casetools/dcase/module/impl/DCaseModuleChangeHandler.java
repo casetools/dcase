@@ -70,12 +70,36 @@ public class DCaseModuleChangeHandler implements IModelChangeHandler {
 		ModelElement element = property.getAnnoted();
 
 		if (element.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_FEEDS_IN_WINDOW)) {
-			updateContextSourceRelationships(element);
+			updateFeedsInWindowRelationship(element);
+		}
+		
+		if (element.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_MOBILE_SENSOR)) {
+			updateMobileSensorRDFProperties(element);
 		}
 
 	}
 
-	private static void updateContextSourceRelationships(ModelElement element) {
+	private static void updateMobileSensorRDFProperties(ModelElement element) {
+		String adata = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_DATA, element);
+		String aontology = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_MOBILE_SENSOR_ONTOLOGY, element);
+
+		StringBuilder value = new StringBuilder();
+
+		if (! adata.isEmpty()) {
+			value.append("Data: ");
+			value.append(adata + "\n");
+		}
+		if (! aontology.isEmpty()) {
+			value.append("Ont: ");
+			value.append(aontology + "\n");
+		}
+		
+		Note note = element.getNote(DCasePeerModule.MODULE_NAME, DCaseNotes.NOTE_FEEDS_IN_WINDOW);
+		note.setContent(value.toString());
+	
+	}
+	
+	private static void updateFeedsInWindowRelationship(ModelElement element) {
 		String astream = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_FEEDS_IN_WINDOW_STREAM, element);
 		String aevery = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_FEEDS_IN_WINDOW_EVERY, element);
 		String afor =PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_FEEDS_IN_WINDOW_FOR, element);
@@ -95,9 +119,9 @@ public class DCaseModuleChangeHandler implements IModelChangeHandler {
 			value.append(afor);
 		}
 
-		Note note = element.getNote(DCasePeerModule.MODULE_NAME, DCaseNotes.NOTE_FEEDS_IN_WINDOW);
-		note.setContent(value.toString());
-		//element.setName(value.toString());
+//		Note note = element.getNote(DCasePeerModule.MODULE_NAME, DCaseNotes.NOTE_FEEDS_IN_WINDOW);
+//		note.setContent(value.toString());
+		element.setName(value.toString());
 
 	}
 

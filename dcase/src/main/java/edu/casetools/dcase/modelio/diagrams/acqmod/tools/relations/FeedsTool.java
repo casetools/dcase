@@ -38,16 +38,20 @@ public class FeedsTool extends RelationTool {
 
     /*
      * (non-Javadoc)
-     * 
      * @see
      * org.modelio.api.diagram.tools.DefaultLinkTool#acceptFirstElement(org.
      * modelio.api.diagram.IDiagramHandle,
      * org.modelio.api.diagram.IDiagramGraphic)
      */
+	
+	private boolean isStationarySensor;
+	private boolean isPreferenceSensor;
+	
     @Override
     public boolean acceptFirstElement(IDiagramHandle representation, IDiagramGraphic target) {
-	return acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_STATIONARY_SENSOR) || 
-			acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR);
+		isStationarySensor = acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_STATIONARY_SENSOR); 
+		isPreferenceSensor = acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR);
+		return (isStationarySensor || isPreferenceSensor);
     }
 
     /*
@@ -61,7 +65,10 @@ public class FeedsTool extends RelationTool {
      */
     @Override
     public boolean acceptSecondElement(IDiagramHandle representation, IDiagramGraphic source, IDiagramGraphic target) {
-	return acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_DB_MODELLING_RULE);
+	if(isPreferenceSensor)
+		return (acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_DB_MODELLING_RULE) || acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_RDF_MODELLING_RULE));
+	else 
+		return acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_DB_MODELLING_RULE);
     }
 
     /*

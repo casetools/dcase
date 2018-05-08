@@ -22,22 +22,22 @@ package edu.casetools.dcase.modelio.diagrams;
 
 import java.util.List;
 
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.modelio.api.modelio.Modelio;
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramHandle;
-import org.modelio.api.modelio.diagram.IDiagramLink;
-import org.modelio.api.modelio.diagram.ILinkPath;
+import org.modelio.api.modelio.diagram.IDiagramNode;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
-import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Note;
+import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.api.DCaseNotes;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.rcase.modelio.diagrams.RelationTool;
+import edu.casetools.rcase.modelio.diagrams.ElementTool;
 import edu.casetools.rcase.utils.ElementUtils;
 
 
@@ -46,7 +46,7 @@ import edu.casetools.rcase.utils.ElementUtils;
  * relation.
  */
 @SuppressWarnings("deprecation")
-public abstract class RelationNoteTool extends RelationTool {
+public abstract class ElementNoteTool extends ElementTool {
     /*
      * (non-Javadoc)
      * 
@@ -60,40 +60,41 @@ public abstract class RelationNoteTool extends RelationTool {
 	
 	protected String noteName;
 	
-    @Override
-    public void actionPerformed(IDiagramHandle representation, IDiagramGraphic origin, IDiagramGraphic target,
-	    IDiagramLink.LinkRouterKind kind, ILinkPath path) {
-	IModelingSession session = Modelio.getInstance().getModelingSession(); 
-	ITransaction transaction = session
-		.createTransaction("Create");
+	@Override
+    public ITransaction createElement(IDiagramHandle representation, MObject element, IDiagramGraphic target, // NOSONAR
+    	    Rectangle rect) {
 
-	try {
-	    ModelElement originElement = (ModelElement) origin.getElement();
-	    ModelElement targetElement = (ModelElement) target.getElement();
+    	IModelingSession session = Modelio.getInstance().getModelingSession();
 
-	    Dependency dependency = createDependency(originElement, targetElement);
+    	ITransaction transaction = session.createTransaction("Create");
 
-		Note note =  ElementUtils.getInstance().createNote(DCaseModule.getInstance().getModuleContext().getModelingSession().getModel(), DCasePeerModule.MODULE_NAME, dependency, DCaseNotes.NOTE_FEEDS_IN_WINDOW);
-		note.setContent("Stream: \nEvery: \nFor: ");
-	    
-	    List<IDiagramGraphic> graphics = representation.unmask(note, 0, 0);
-	    graphics = representation.unmask(dependency, 0, 0);
-	    
-	    for (IDiagramGraphic graphic : graphics) {
-	    	createLink(kind, path, graphic);
-	    }
+    	MObject createdElement = createOwnElement(session, element);
+    	
+		try {
+			Note note = ElementUtils.getInstance().createNote(DCaseModule.getInstance().getModuleContext().getModelingSession().getModel(), DCasePeerModule.MODULE_NAME, (ModelElement) createdElement, DCaseNotes.NOTE_FEEDS_IN_WINDOW);
+			note.setContent("No Ontological Properties");
+			
+		    representation.unmask(note, rect.x, rect.y+ 400);
+		} catch (ExtensionNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-	    representation.save();
-	    representation.close();
-	    transaction.commit();
-	    transaction.close();
-	} catch (ExtensionNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} finally {
-	    transaction.close();
-	}
-    }
+
+    	List<IDiagramGraphic> graph = representation.unmask(createdElement, rect.x, rect.y);
+
+    	graph = representationConfigs(graph);
+
+    	if ((null != graph) && (!graph.isEmpty()) && (graph.get(0) instanceof IDiagramNode)) {
+    	    ((IDiagramNode) graph.get(0)).setBounds(rect);
+    	}
+
+    	representation.save();
+    	representation.close();
+    	transaction.commit();
+
+    	return transaction;
+        }
 
     protected void setNoteStereotype(String stereotype){
     	 this.noteName = stereotype;
