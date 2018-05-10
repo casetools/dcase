@@ -407,6 +407,14 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateCSPARQLRules"/>
             </Command>
+            <Command id="GeneratePostgresRules" label="%GeneratePostgresRules.label" tooltip="%GeneratePostgresRules.tooltip" image="%GeneratePostgresRules.image" group="%GeneratePostgresRules.group" modify-model="true" group-image="%GeneratePostgresRules.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GeneratePostgresRules"/>
+            </Command>
+            <Command id="GenerateMySQLRules" label="%GenerateMySQLRules.label" tooltip="%GenerateMySQLRules.tooltip" image="%GenerateMySQLRules.image" group="%GenerateMySQLRules.group" modify-model="true" group-image="%GenerateMySQLRules.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateMySQLRules"/>
+            </Command>
             <Command id="CreateReasoningDiagram" label="%CreateReasoningDiagram.label" tooltip="%CreateReasoningDiagram.tooltip" image="%CreateReasoningDiagram.image" group="%CreateReasoningDiagram.group" modify-model="true" group-image="%CreateReasoningDiagram.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.diagrams.CreateReasoningDiagram"/>
@@ -426,6 +434,10 @@
             <Command id="GenerateMCode" label="%GenerateMCode.label" tooltip="%GenerateMCode.tooltip" image="%GenerateMCode.image" group="%GenerateMCode.group" modify-model="true" group-image="%GenerateMCode.groupimage">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateM"/>
+            </Command>
+            <Command id="GenerateAndroidReasoningRules" label="%GenerateAndroidReasoningRules.label" tooltip="%GenerateAndroidReasoningRules.tooltip" image="%GenerateAndroidReasoningRules.image" group="%GenerateAndroidReasoningRules.group" modify-model="true" group-image="%GenerateAndroidReasoningRules.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateAndroidReasoningRules"/>
             </Command>
         </Commands>
         <Tools>
@@ -673,11 +685,14 @@
         <ContextualMenu>
             <CommandRef refid="CreateInfoDisplayDiagram"/>
             <CommandRef refid="CreateAcquisitionAndModellingDiagram"/>
+            <CommandRef refid="GeneratePostgresRules"/>
+            <CommandRef refid="GenerateMySQLRules"/>
             <CommandRef refid="GenerateCSPARQLRules"/>
             <CommandRef refid="GenerateACLCode"/>
             <CommandRef refid="CreateReasoningDiagram"/>
             <CommandRef refid="GenerateNuSMV"/>
             <CommandRef refid="GenerateMCode"/>
+            <CommandRef refid="GenerateAndroidReasoningRules"/>
             <CommandRef refid="CreateDeploymentDiagram"/>
         </ContextualMenu>
         <Diagrams>

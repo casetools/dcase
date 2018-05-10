@@ -11,6 +11,8 @@ that aids the design of a Context-Aware System (C-AS).
 * see [LIBRARIES](https://github.com/casetools/dcase/blob/master/LIBRARIES.md) file
 * Icons are made by [Freepik](http://www.freepik.com/), [GraphicsBay](http://www.flaticon.com/authors/graphicsbay), [Ocha](http://www.flaticon.com/authors/ocha), [UIUXER](http://www.flaticon.com/authors/uiuxer), [Anton Saputro] (https://www.flaticon.com/authors/anton-saputro), [SmashIcons](https://www.flaticon.com/authors/smashicons), [Eucalyp](https://www.flaticon.com/authors/eucalyp), and [Amit Jakhu](http://www.flaticon.com/authors/amit-jakhu). Downloaded from [Flaticon](www.flaticon.com)
 
+### Part of the code presented in this Modelio module has been taken from 
+
 ## License 
 * see [LICENSE](https://github.com/casetools/dcase/blob/master/LICENSE.md) file
 
@@ -18,5 +20,5 @@ that aids the design of a Context-Aware System (C-AS).
 * see [INSTRUCTIONS](https://github.com/casetools/dcase/blob/master/INSTRUCTIONS.md) file
 
 #### Developer Contact
-* author: Unai Alegre-Ibarra
+* author: Unai Alegre-Ibarra and Dean Kramer
 * e-mail: u.alegre@mdx.ac.uk
