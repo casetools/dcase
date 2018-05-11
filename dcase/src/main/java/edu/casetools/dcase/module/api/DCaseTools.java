@@ -72,6 +72,7 @@ public final class DCaseTools {
 	public static final String TOOL_DEVICE 			 	  	  = "DeviceTool";		
 	public static final String TOOL_SOURCE		     		  = "SourceTool";
 	public static final String TOOL_CONTROLS 			 	  = "ControlsTool";
+	public static final String TOOL_INFORMS 			 	  = "InformsTool";
 	
     private DCaseTools() {
 

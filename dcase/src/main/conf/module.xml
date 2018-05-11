@@ -265,11 +265,11 @@
                 <Image path="res/icons/deployment/relations/controls_16.png"/>
                 <TagTypes/>
             </Stereotype>
-            <Stereotype name="InformsStereotype" metaclass="Dependency" is-hidden="false" label="%InformsStereotype.label" uid="">
+            <Stereotype name="InformsStereotype" metaclass="Dependency" is-hidden="false" label="%InformsStereotype.label" uid="c43c8214-8159-4e61-a2e5-55fdae316065">
                 <Icon path="res/icons/deployment/relations/informs_16.png"/>
                 <Image path="res/icons/deployment/relations/informs_16.png"/>
                 <TagTypes/>
-            </Stereotype>            
+            </Stereotype>
             <Stereotype name="ReasoningDiagramStereotype" metaclass="StaticDiagram" is-hidden="false" label="%ReasoningDiagramStereotype.label" uid="6154a253-ea33-4a49-b7d4-4d12acfff976">
                 <Icon path="res/icons/reasoning/reasoning_diagram_16.png"/>
                 <Image path="res/icons/reasoning/reasoning_diagram_16.png"/>
@@ -612,6 +612,12 @@
                 <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.relations.ControlsTool">
                     <HParameter name="metaclass" value="Dependency"/>
                     <HParameter name="stereotype" value="ControlsStereotype"/>
+                </Handler>
+            </Tool>
+            <Tool id="InformsTool" label="%InformsTool.label" tooltip="%InformsTool.tooltip" image="%InformsTool.image">
+                <Handler class="edu.casetools.dcase.modelio.diagrams.deployment.tools.relations.InformsTool">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="InformsStereotype"/>
                 </Handler>
             </Tool>
             <Tool id="ContextStateTool" label="%ContextStateTool.label" tooltip="%ContextStateTool.tooltip" image="%ContextStateTool.image">

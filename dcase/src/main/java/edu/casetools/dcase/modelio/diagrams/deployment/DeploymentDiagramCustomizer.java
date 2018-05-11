@@ -85,7 +85,7 @@ public class DeploymentDiagramCustomizer extends DiagramCustomizer implements ID
 
     private org.eclipse.gef.palette.PaletteEntry createLinksGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Links");
-	String[] toolNames = new String[] { DCaseTools.TOOL_SOURCE, DCaseTools.TOOL_CONTROLS, RCaseTools.TOOL_TRACEABILITY};
+	String[] toolNames = new String[] { DCaseTools.TOOL_SOURCE, DCaseTools.TOOL_CONTROLS, DCaseTools.TOOL_INFORMS, RCaseTools.TOOL_TRACEABILITY};
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
