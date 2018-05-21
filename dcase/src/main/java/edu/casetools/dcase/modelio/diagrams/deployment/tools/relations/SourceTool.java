@@ -67,7 +67,8 @@ public class SourceTool extends RelationTool {
     		return (acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_VERA_ROUTER) ||
     				acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR));
     	if (mobile)
-        	return acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_ANDROID_RECEIVER);
+        	return (acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_ANDROID_RECEIVER) ||
+    			   acceptElement(DCasePeerModule.MODULE_NAME, target, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR));
     	return false;
     }
 

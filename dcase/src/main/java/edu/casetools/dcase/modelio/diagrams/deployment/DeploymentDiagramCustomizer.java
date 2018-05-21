@@ -59,6 +59,7 @@ public class DeploymentDiagramCustomizer extends DiagramCustomizer implements ID
 	paletteRoot.add(createStationaryNodesGroup(toolRegistry));
 	paletteRoot.add(createMobileNodesGroup(toolRegistry));
 	paletteRoot.add(createLinksGroup(toolRegistry));
+	paletteRoot.add(createSpecificationNodesGroup(toolRegistry));
 	paletteRoot.add(createDefaultNotesGroup(toolRegistry));
 	paletteRoot.add(createDefaultFreeDrawingGroup(toolRegistry));
     }
@@ -85,7 +86,7 @@ public class DeploymentDiagramCustomizer extends DiagramCustomizer implements ID
 
     private org.eclipse.gef.palette.PaletteEntry createLinksGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Links");
-	String[] toolNames = new String[] { DCaseTools.TOOL_SOURCE, DCaseTools.TOOL_CONTROLS, DCaseTools.TOOL_INFORMS, RCaseTools.TOOL_TRACEABILITY};
+	String[] toolNames = new String[] { DCaseTools.TOOL_SOURCE, DCaseTools.TOOL_CONTROLS, DCaseTools.TOOL_INFORMS, DCaseTools.TOOL_SYSML_ALLOCATE, RCaseTools.TOOL_VERIFY, RCaseTools.TOOL_TRACEABILITY};
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 
@@ -98,6 +99,12 @@ public class DeploymentDiagramCustomizer extends DiagramCustomizer implements ID
     private org.eclipse.gef.palette.PaletteEntry createMobileNodesGroup(IDiagramService toolRegistry) {
 	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes.Mobile");
 	String[] toolNames = new String[] { DCaseTools.TOOL_DEVICE, DCaseTools.TOOL_ANDROID_RECEIVER, DCaseTools.TOOL_ANDROID_REASONER ,DCaseTools.TOOL_ANDROID_ACTUATOR };
+	return createGroup(groupName, toolNames, toolRegistry, 0);
+    }
+    
+    private org.eclipse.gef.palette.PaletteEntry createSpecificationNodesGroup(IDiagramService toolRegistry) {
+	String groupName = I18nMessageService.getString("ScopePaletteGroup.Nodes.Spec");
+	String[] toolNames = new String[] { DCaseTools.TOOL_SPECIFICATION, DCaseTools.TOOL_SPECIFICATION_SET, RCaseTools.TOOL_REQUIREMENT };
 	return createGroup(groupName, toolNames, toolRegistry, 0);
     }
 

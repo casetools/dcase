@@ -74,8 +74,10 @@ public final class DCaseTools {
 	public static final String TOOL_CONTROLS 			 	  = "ControlsTool";
 	public static final String TOOL_INFORMS 			 	  = "InformsTool";
 	
+	public static final String TOOL_SYSML_ALLOCATE			  = "SysMLAllocate";
+	
     private DCaseTools() {
-
+    	
     }
 
 }
