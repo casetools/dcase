@@ -40,7 +40,7 @@ This project is licensed under the [GNU General Public License v3.0](https://git
 * [RCASE](https://github.com/ualegre/rcase), [GNU General Public License, Version 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
 * [JavaPoet-1.8](https://github.com/square/javapoet), [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-Part of the code presented in this Modelio, mostly related to the automatic generation of C-SPARQL rules, has been adopted from the [Context Modeller](https://github.com/deankramer/ContextModeller).
+Part of the code presented in this Modelio module, mostly related to the automatic generation of C-SPARQL rules, has been adopted from the [Context Modeller](https://github.com/deankramer/ContextModeller).
 
 ### Third party icons
 The stereotypes of the UML profile introduced as part of the new diagrams available include different icons, which have been made and released for free use by the following users of [Flaticon](www.flaticon.com): 
