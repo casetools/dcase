@@ -24,7 +24,12 @@ More information on the theoretical aspects of this module can be found in:
 
 ## How-to use the content of this repository
 ### Instructions for users
-Modelio is an open-source modelling tool which is freely available to be [downloaded](https://www.modelio.org/downloads/download-modelio.html) from its [official website](http://www.modelio.org). The current Modelio version for which this module is compatible is v3.7. Modelio, and therefore this module, is available for Linux, Windows and Mac. Follow the [Modelio Quick-start guide](https://www.modelio.org/quick-start-pages-35.html) provided in the official Modelio website to install the program in your preferred operating system. The guide also includes how to download .jmdac modules from the official [Modelio store](http://store.modelio.org/resource/modules.html), as well as how to use them in the different Modelio projects. 
+Modelio is an open-source modelling tool which is freely available to be [downloaded](https://www.modelio.org/downloads/download-modelio.html) from its [official website](http://www.modelio.org). The current Modelio version for which this module is compatible is v3.7. Modelio, and therefore this module, is available for Linux, Windows and Mac. Follow the [Modelio Quick-start guide](https://www.modelio.org/quick-start-pages-35.html) provided in the official Modelio website to install the program in your preferred operating system. 
+
+In order to install the DC-ASE Modelio module, follow the [official guide for working with modules](https://www.modelio.org/quick-start-pages-35/928-modelio/quick-start-35x/132-working-with-modules-35.html). You can download the latest RC-ASE Modelio module (.jmdac) directly from the [dcase/target](https://github.com/ualegre/dcase/blob/master/dcase/target/) folder of the repository. Other versions of the binaries can be directly downloaded below: 
+
+* [DC-ASE v0.7.0](https://github.com/ualegre/dcase/raw/master/dcase/target/DCase_0.7.0.jmdac)
+
 ### Instructions for developers
 For developing this module, it is recommended to have the Eclipse RCP neon with Maven (M2e) and Git (EGit) plugins correctly installed. Then, follow the steps:
 1. Clone this repository to your local hard disk.
