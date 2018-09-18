@@ -9,7 +9,7 @@ import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.io.acl.java.ACLGenerator;
+import edu.casetools.dcase.extensions.io.mobile.acl.ACLGenerator;
 
 public class GenerateACLCode extends DefaultModuleCommandHandler {
 
