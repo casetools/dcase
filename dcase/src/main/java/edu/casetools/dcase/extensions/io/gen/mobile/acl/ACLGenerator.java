@@ -1,4 +1,4 @@
-package edu.casetools.dcase.extensions.io.mobile.acl;
+package edu.casetools.dcase.extensions.io.gen.mobile.acl;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,9 +8,9 @@ import java.util.List;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.io.mobile.acl.classes.PullObserverGenerator;
-import edu.casetools.dcase.extensions.io.mobile.acl.classes.PushObserverGenerator;
-import edu.casetools.dcase.extensions.io.mobile.acl.classes.ReceiverGenerator;
+import edu.casetools.dcase.extensions.io.gen.mobile.acl.classes.PullObserverGenerator;
+import edu.casetools.dcase.extensions.io.gen.mobile.acl.classes.PushObserverGenerator;
+import edu.casetools.dcase.extensions.io.gen.mobile.acl.classes.ReceiverGenerator;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
@@ -19,22 +19,13 @@ import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.utils.tables.TableUtils;
 
 public class ACLGenerator {
-
-    List<MObject> 	  contextAttributeList;
-    ReceiverGenerator receiver;
-    
-    public ACLGenerator(){
-    	receiver = new ReceiverGenerator();
-    	
-    }
-    
-    public void generateACLTemplates(String folder) {
-
-	List<MObject> contextAttributeList = generateContextAttributes(folder);
-	
-	if (!contextAttributeList.isEmpty()) {
-	    generateReceiver(folder);
-	}
+   
+    public void generateTemplates(String folder) {
+		List<MObject> contextAttributeList = generateContextAttributes(folder);
+		
+		if (!contextAttributeList.isEmpty()) {
+		    generateReceiver(folder);
+		}
 
     }
 
@@ -60,7 +51,7 @@ public class ACLGenerator {
 
     private void generateReceiver(String folder) {
 		try {
-		    receiver.generate().writeTo(new File(folder));
+			new ReceiverGenerator().generate().writeTo(new File(folder));
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}

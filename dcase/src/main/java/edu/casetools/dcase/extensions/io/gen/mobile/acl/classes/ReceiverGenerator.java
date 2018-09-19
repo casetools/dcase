@@ -1,4 +1,4 @@
-package edu.casetools.dcase.extensions.io.mobile.acl.classes;
+package edu.casetools.dcase.extensions.io.gen.mobile.acl.classes;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,10 +15,11 @@ import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 
+import edu.casetools.dcase.extensions.io.gen.ClassTemplate;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.rcase.utils.ModelioUtils;
 
-public class ReceiverGenerator implements ACLClass {
+public class ReceiverGenerator implements ClassTemplate {
 
 	@Override
 	public JavaFile generate() {

@@ -1,4 +1,4 @@
-package edu.casetools.dcase.extensions.io.stationary.m;
+package edu.casetools.dcase.extensions.io.gen.stationary.m;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

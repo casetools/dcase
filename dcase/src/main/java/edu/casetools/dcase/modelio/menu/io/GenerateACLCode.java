@@ -9,7 +9,7 @@ import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.io.mobile.acl.ACLGenerator;
+import edu.casetools.dcase.extensions.io.gen.mobile.acl.ACLGenerator;
 
 public class GenerateACLCode extends DefaultModuleCommandHandler {
 
@@ -18,7 +18,7 @@ public class GenerateACLCode extends DefaultModuleCommandHandler {
 	DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent().getActiveShell());
 	String path = dialog.open();
 	ACLGenerator generator = new ACLGenerator();
-	generator.generateACLTemplates(path);
+	generator.generateTemplates(path);
 	MessageDialog.openInformation(null, "Model Exported", "Android code skeleton generated at:\n" + path);
     }
 

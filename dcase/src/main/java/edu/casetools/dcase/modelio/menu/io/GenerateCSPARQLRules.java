@@ -31,7 +31,7 @@ import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.extensions.io.AbstractModelWriter;
-import edu.casetools.dcase.extensions.io.mobile.areasoner.csparql.CSPARQLWriter;
+import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.csparql.CSPARQLWriter;
 import edu.casetools.dcase.module.impl.DCaseModule;
 
 /**

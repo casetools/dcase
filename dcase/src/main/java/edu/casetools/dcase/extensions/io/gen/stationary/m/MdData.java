@@ -1,4 +1,4 @@
-package edu.casetools.dcase.extensions.io.stationary.m;
+package edu.casetools.dcase.extensions.io.gen.stationary.m;
 
 import java.util.ArrayList;
 import java.util.List;

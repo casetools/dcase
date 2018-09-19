@@ -1,4 +1,4 @@
-package edu.casetools.dcase.extensions.io.mobile.acl.classes;
+package edu.casetools.dcase.extensions.io.gen.mobile.acl.classes;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -14,13 +14,14 @@ import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
+import edu.casetools.dcase.extensions.io.gen.ClassTemplate;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.utils.ModelioUtils;
 
-public class PushObserverGenerator implements ACLClass{
+public class PushObserverGenerator implements ClassTemplate{
 
 	private MObject contextAttribute;
 	

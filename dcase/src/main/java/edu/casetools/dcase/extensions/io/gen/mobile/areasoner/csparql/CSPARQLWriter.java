@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package edu.casetools.dcase.extensions.io.mobile.areasoner.csparql;
+package edu.casetools.dcase.extensions.io.gen.mobile.areasoner.csparql;
 
 import java.util.ArrayList;
 import java.util.HashMap;
