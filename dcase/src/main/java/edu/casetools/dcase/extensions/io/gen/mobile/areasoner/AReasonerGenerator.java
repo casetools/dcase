@@ -25,7 +25,6 @@ import edu.casetools.rcase.utils.tables.TableUtils;
 
 public class AReasonerGenerator implements TemplateManager{
 
-
 	
 	 @Override
 	 public void generateTemplates(String folder){
@@ -52,6 +51,7 @@ public class AReasonerGenerator implements TemplateManager{
 		}
 		
 		private void getSituationsOfInterest(String folder) {
+			List<MObject> usedSOIs = new ArrayList<>();
 			List<MObject> detectionPlanList = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
 				RCasePeerModule.MODULE_NAME, new ArrayList<>(), RCaseStereotypes.STEREOTYPE_SITUATION_DETECTION_PLAN);
 			
@@ -71,10 +71,14 @@ public class AReasonerGenerator implements TemplateManager{
 				}
 				if(soi==null)
 					MessageDialog.openInformation(null, "Error", "No situation of interest associated to the '"+detectionPlan.getName()+"' detection plan.");
-				if(contextAttributeList.isEmpty())
+				else if(contextAttributeList.isEmpty())
 					MessageDialog.openInformation(null, "Error", "No context attributes to define the '"+detectionPlan.getName()+"' detection plan.");
-				else
+				else if(usedSOIs.contains(soi))
+					MessageDialog.openInformation(null, "Warning", "The situation of interest '"+soi.getName()+"' is referenced by more than one detection plan. The detection plan '"+detectionPlan.getName()+"' will not be implemented.");
+				else{
 					generateSituationOfInterest(folder, soi, contextAttributeList);
+					usedSOIs.add(soi);
+				}
 			}
 		}
 		

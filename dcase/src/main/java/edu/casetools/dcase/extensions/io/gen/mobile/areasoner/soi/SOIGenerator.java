@@ -102,8 +102,21 @@ public class SOIGenerator implements ClassTemplate{
 	}
 
 	private void generateReasoningRule(MObject rule) {
+		List<MObject> contextStates = getContextStates(rule);
+		for(MObject contextState : contextStates){
+			//List<MObject> 
+		}
 		
-		
+	}
+
+	private List<MObject> getContextStates(MObject rule) {
+		List<MObject> contextStates = new ArrayList<>();
+		for(MObject element : rule.getCompositionChildren()){
+			if(isStereotyped(element, DCaseStereotypes.STEREOTYPE_PRODUCE)){
+				contextStates.add(((Dependency)element).getDependsOn());
+			}
+		}
+		return contextStates;
 	}
 
 	private void generateModellingRule(MObject rule) {
@@ -142,8 +155,8 @@ public class SOIGenerator implements ClassTemplate{
 		for(MObject sensor : sensorList){
 			for(MObject sensorChild : sensor.getCompositionChildren()){
 				if(isObserve(sensorChild)){
-					if(sensor.getUuid().equals(sensorChild.getCompositionOwner().getUuid()))
-						contextAttributeSensorList.add(sensorChild.getCompositionOwner());	
+					if(contextAttribute.getUuid().equals(((Dependency)sensorChild).getDependsOn().getUuid()))
+						contextAttributeSensorList.add(sensor);	
 				}
 			}
 		}

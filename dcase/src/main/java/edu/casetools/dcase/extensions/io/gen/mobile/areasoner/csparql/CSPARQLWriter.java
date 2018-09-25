@@ -283,7 +283,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
 
 			String methodValue = ((ModelElement) rule).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD);
 
-			if (! methodValue.isEmpty()) {
+			if (methodValue != null && !methodValue.isEmpty()) {
 				newMethodTriples.append(index);
 				newMethodExpr.append(index);
 				String methodTriplesValue = ((ModelElement) rule).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_METHOD_TRIPLE_VAR);
