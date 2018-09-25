@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.lang.model.element.Modifier;
 
+import org.metawidget.util.simple.StringUtils;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
@@ -54,7 +55,6 @@ public class PushObserverGenerator implements ClassTemplate{
 	
 		ClassName locationContext = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "LocationContext");
 		ClassName androidContext = ClassName.get("android.content", "Context");
-		String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
 		String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
 	
 		MethodSpec constructor = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
@@ -69,7 +69,7 @@ public class PushObserverGenerator implements ClassTemplate{
 			.addJavadoc("import android.location.Location;\nimport android.location.LocationManager;\n")
 			.superclass(locationContext).addMethod(constructor).addMethod(checkContext).build();
 	
-		return JavaFile.builder(projectName, contextClass)
+		return JavaFile.builder("uk.ac.mdx.cs.ie.acontextlib", contextClass)
 			.addFileComment(
 				"/* This code skeleton has been automatically generated \n * as part of the DCase Android Context Library code generator \n * Date: $L, \n */",
 				dateFormat.format(date))
@@ -84,7 +84,7 @@ public class PushObserverGenerator implements ClassTemplate{
 		ClassName sensorContext = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "SensorContext");
 		ClassName androidContext = ClassName.get("android.content", "Context");
 		String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
-		String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
+		String mainClassName = StringUtils.camelCase(contextAttribute.getName(),' ');
 	
 		MethodSpec constructor = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
 			.addParameter(androidContext, "c")
@@ -118,8 +118,8 @@ public class PushObserverGenerator implements ClassTemplate{
 	
 		ClassName bluetoothContext = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "BluetoothLEDevice");
 		ClassName androidContext = ClassName.get("android.content", "Context");
-		String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
-		String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
+		String projectName = StringUtils.camelCase(ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()),' ');
+		String mainClassName = StringUtils.camelCase(contextAttribute.getName(),' ');
 	
 		MethodSpec constructor = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
 			.addParameter(androidContext, "c").addJavadoc(
@@ -154,8 +154,8 @@ public class PushObserverGenerator implements ClassTemplate{
 	
 		ClassName broadcastContext = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "BroadcastContext");
 		ClassName androidContext = ClassName.get("android.content", "Context");
-		String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
-		String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
+		String projectName   = StringUtils.camelCase(ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()),' ');
+		String mainClassName = StringUtils.camelCase(contextAttribute.getName(),' ');
 	
 		MethodSpec constructor = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
 			.addParameter(androidContext, "c")
@@ -191,8 +191,8 @@ public class PushObserverGenerator implements ClassTemplate{
 	
 		ClassName pushObserver = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "PushObserver");
 		ClassName androidContext = ClassName.get("android.content", "Context");
-		String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
-		String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
+		String projectName = StringUtils.camelCase(ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()),' ');
+		String mainClassName = StringUtils.camelCase(contextAttribute.getName(),' ');
 	
 		MethodSpec constructor = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
 			.addJavadoc("// Include your variables here \n").addParameter(androidContext, "c")

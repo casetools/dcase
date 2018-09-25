@@ -18,9 +18,16 @@ package edu.casetools.dcase.modelio.menu.io;
 
 import java.util.List;
 
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.DirectoryDialog;
+import org.eclipse.swt.widgets.Display;
 import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.vcore.smkernel.mapi.MObject;
+
+import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.AReasonerGenerator;
+import edu.casetools.dcase.module.impl.DCaseModule;
+import edu.casetools.rcase.utils.ModelioUtils;
 
 /**
  * Implementation of the IModuleContextualCommand interface. <br>
@@ -33,7 +40,7 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 public class GenerateAndroidReasoningRules extends DefaultModuleCommandHandler {
 
 	//private ILogService logService;
-
+	private static final String aContextReasonerFolder = "\\aContextReasoner";
 	/**
 	 * Constructor.
 	 */
@@ -59,7 +66,13 @@ public class GenerateAndroidReasoningRules extends DefaultModuleCommandHandler {
 	 */
 	@Override
 	public void actionPerformed(List<MObject> selectedElements, IModule module) {
-
+	    String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");  
+		DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent().getActiveShell());
+		String path = dialog.open();
+		path = path.concat("\\").concat(projectName).concat(aContextReasonerFolder);
+		AReasonerGenerator generator = new AReasonerGenerator();
+		generator.generateTemplates(path);
+		MessageDialog.openInformation(null, "Model Exported", "Android reasoner code skeleton generated at:\n" + path);
 		
 
 	}

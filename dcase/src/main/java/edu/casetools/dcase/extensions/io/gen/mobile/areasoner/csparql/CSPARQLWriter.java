@@ -55,19 +55,19 @@ public class CSPARQLWriter extends AbstractModelWriter {
 
 		for (MObject rule : atomicRules) {
 			if(rule instanceof ModelElement)
-				generateCSPARQLQuery(result, (ModelElement)rule);
+				result = generateCSPARQLQuery(result, (ModelElement)rule);
 		}
 
-		result.append(System.lineSeparator());
+		//result.append(System.lineSeparator());
 
 		for (MObject rule : aggRules) {
-			generateAggregateRule(result, rule);
+			result = generateAggregateRule(result, rule);
 		}
 
 		return result.toString();
 	}
 
-	private static void generateAggregateRule(StringBuilder result, MObject rule) {
+	private static StringBuilder generateAggregateRule(StringBuilder result, MObject rule) {
 
 //		boolean start = true;
 //
@@ -98,7 +98,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
 //		result.append("iff ");
 //		result.append(rule.getName());
 //		result.append(System.lineSeparator());
-
+		return result;
 	}
 
 	private List<MObject> getAggrRules() {
@@ -136,7 +136,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
 		return rules;
 	}
 
-	private static void generateCSPARQLQuery(StringBuilder result, ModelElement rule) {
+	public static StringBuilder generateCSPARQLQuery(StringBuilder result, ModelElement rule) {
 
 		List<MObject> relatedSources;
 		List<MObject> relatedStates;
@@ -145,7 +145,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
 		relatedStates = getRuleState(rule);
 
 		//We cannot proceed without a source and state
-		if (relatedSources.isEmpty() || relatedStates.isEmpty()) return;
+		if (relatedSources.isEmpty() || relatedStates.isEmpty()) return result;
 		for(MObject relatedState : relatedStates){
 			generateRegisterQuery(result, relatedState);
 			result.append(System.lineSeparator());
@@ -158,12 +158,12 @@ public class CSPARQLWriter extends AbstractModelWriter {
 			generateWhereClause(result, rule, relatedSources);
 			result.append(System.lineSeparator());
 		}
-		
+		return result;
 	}
 
 	private static void generateWhereClause(StringBuilder result, MObject rule, List<MObject> relatedSources) {
 		result.append("WHERE { ");
-		result.append(System.lineSeparator());
+		//result.append(System.lineSeparator());
 
 		List<RDFTriple> sourceRDF = new ArrayList<RDFTriple>();
 
@@ -176,7 +176,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
 		for (RDFTriple rdf : sourceRDF) {
 			result.append(rdf.toString());
 			result.append(" . ");
-			result.append(System.lineSeparator());
+			//result.append(System.lineSeparator());
 		}
 
 		HashMap<String, String> subresexp = generateCSPARQLSubqueries(result, sourceRDF, rule);
@@ -196,7 +196,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
 	        		result.append("PREFIX ex:");
 	        		result.append(prefix);
 	        		result.append(" ");
-	        		result.append(System.lineSeparator());
+	        		//result.append(System.lineSeparator());
 	    		}
 		}
 
@@ -219,7 +219,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
 			
 			String predicate =  ((ModelElement) rule).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_PREDICATE);
 			result.append("CONSTRUCT { ex:" + firstSourceName.toLowerCase() +" "+predicate+" \"" + relatedState.getName() + "\"} ");
-			result.append(System.lineSeparator());
+			//result.append(System.lineSeparator());
 		}
 	}
 
@@ -243,7 +243,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
 
         	int l = result.length();
         	result.replace(l-3, l, " ) ");
-        	result.append(System.lineSeparator());
+        	//result.append(System.lineSeparator());
     	}
 
     	String logExp = ((ModelElement) rule).getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_RDF_MODELLING_RULE_LOGICAL_EVALUATIONS);
@@ -255,7 +255,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
     			result.append("FILTER ( ");
         		result.append(exp.trim());
         		result.append(" ) ");
-        		result.append(System.lineSeparator());
+        	//	result.append(System.lineSeparator());
     		}
     	}
 
@@ -321,7 +321,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
 
 				if (! methodExprValue.isEmpty()) {
 					result.append("{");
-					result.append(System.lineSeparator());
+					//result.append(System.lineSeparator());
 					result.append("SELECT ");
 					
 					subqueryResultExp.put(subqueryResultText, methodExprValue);
@@ -331,7 +331,7 @@ public class CSPARQLWriter extends AbstractModelWriter {
 					result.append(" AS ");
 					result.append(subqueryResultText);
 					result.append(") ");
-					result.append(System.lineSeparator());
+					//result.append(System.lineSeparator());
 					result.append("WHERE { ");
 
 					for (RDFTriple rdftriple : queryRelatedTriples) {
@@ -341,20 +341,20 @@ public class CSPARQLWriter extends AbstractModelWriter {
 						result.append(" ");
 						result.append(rdftriple.getObject());
 						result.append(" . ");
-						result.append(System.lineSeparator());
+						//result.append(System.lineSeparator());
 					}
 
 					if (! methodTriplesValue.isEmpty()) {
 						result.append("FILTER( ");
 						result.append(methodTriplesValue);
 						result.append(" ) ");
-						result.append(System.lineSeparator());
+						//result.append(System.lineSeparator());
 						result.append("}");
-						result.append(System.lineSeparator());
+						//result.append(System.lineSeparator());
 					}
 
 					result.append("}");
-					result.append(System.lineSeparator());
+					//result.append(System.lineSeparator());
 				}
 
 

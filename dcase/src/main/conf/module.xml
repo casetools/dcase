@@ -8,6 +8,7 @@
         <PathEntry path="lib/rcase-0.4.7.jar"/>
         <PathEntry path="lib/javapoet-1.8.0.jar"/>
         <PathEntry path="lib/m2nusmv-0.2.3.jar"/>
+        <PathEntry path="lib/metawidget-all-1.20.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="3ad34a80-8df8-404a-8ff1-c7599b89f39b" id="dcase">

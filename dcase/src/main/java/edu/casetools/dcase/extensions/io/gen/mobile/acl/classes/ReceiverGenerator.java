@@ -70,7 +70,7 @@ public class ReceiverGenerator implements ClassTemplate {
 			.addMethod(newContextValue2).addMethod(newContextValue3).addMethod(newContextValue4)
 			.addMethod(newContextValue5).build();
 
-		return JavaFile.builder(projectName, contextClass)
+		return JavaFile.builder("uk.ac.mdx.cs.ie.acontextlib",contextClass)
 			.addFileComment(
 				"/* This code skeleton has been automatically generated \n * as part of the DCase Android Context Library code generator \n * Date: $L, \n */",
 				dateFormat.format(date))

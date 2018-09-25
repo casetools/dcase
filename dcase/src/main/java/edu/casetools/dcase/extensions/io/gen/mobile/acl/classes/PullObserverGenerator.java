@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.lang.model.element.Modifier;
 
+import org.metawidget.util.simple.StringUtils;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import com.squareup.javapoet.ClassName;
@@ -14,8 +15,6 @@ import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
 import edu.casetools.dcase.extensions.io.gen.ClassTemplate;
-import edu.casetools.dcase.module.impl.DCaseModule;
-import edu.casetools.rcase.utils.ModelioUtils;
 
 public class PullObserverGenerator implements ClassTemplate{
 
@@ -31,8 +30,7 @@ public class PullObserverGenerator implements ClassTemplate{
 	public JavaFile generate() {
 		ClassName pullObserver = ClassName.get("uk.ac.mdx.cs.ie.acontextlib", "PullObserver");
 		ClassName androidContext = ClassName.get("android.content", "Context");
-		String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
-		String mainClassName = contextAttribute.getName().replaceAll("\\s", "");
+		String mainClassName = StringUtils.camelCase(contextAttribute.getName(),' ');
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
@@ -53,7 +51,7 @@ public class PullObserverGenerator implements ClassTemplate{
 			.addJavadoc("import android.os.Environment;\n").superclass(pullObserver).addMethod(constructor)
 			.addMethod(checkContext).build();
 
-		return JavaFile.builder(projectName, contextClass)
+		return JavaFile.builder("uk.ac.mdx.cs.ie.acontextlib", contextClass)
 			.addFileComment(
 				"/* This code skeleton has been automatically generated \n * as part of the DCase Android Context Library code generator \n * Date: $L, \n */",
 				dateFormat.format(date))
