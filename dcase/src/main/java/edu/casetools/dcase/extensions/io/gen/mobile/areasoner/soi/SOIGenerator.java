@@ -14,7 +14,6 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -23,6 +22,11 @@ import com.squareup.javapoet.TypeSpec.Builder;
 
 import edu.casetools.dcase.extensions.io.gen.ClassTemplate;
 import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.csparql.CSPARQLWriter;
+import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.reasoner.MobileReasoner;
+import edu.casetools.dcase.extensions.io.gen.stationary.m.MdData;
+import edu.casetools.dcase.m2nusmv.data.MData;
+import edu.casetools.dcase.m2nusmv.data.elements.Rule;
+import edu.casetools.dcase.m2nusmv.data.elements.RuleElement;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
@@ -30,16 +34,26 @@ import edu.casetools.rcase.utils.tables.TableUtils;
 
 public class SOIGenerator implements ClassTemplate{
 
-	MObject 		 soi;
-	List<MObject>    contextAttributeList;
-	List<FieldSpec>  fields;
-	List<MethodSpec> methods;
+	private MObject 		 soi;
+	private List<MObject>    contextAttributeList;
+	private List<FieldSpec>  modellingFields;
+	private List<MethodSpec> modellingMethods;
+	private List<FieldSpec>  reasoningFields;
+	private List<MethodSpec> reasoningMethods;
+	private List<Rule> 		 usedRules;
+	private MData reasoningRuleData;
 	
 	public SOIGenerator(MObject soi, List<MObject> contextAttributeList){
-		this.soi = soi;
+		this.soi 				  = soi;
 		this.contextAttributeList = contextAttributeList;
-		this.fields = new ArrayList<FieldSpec>();
-		this.methods = new ArrayList<MethodSpec>();		
+		this.modellingFields               = new ArrayList<FieldSpec>();
+		this.modellingMethods   			  = new ArrayList<MethodSpec>();	
+		this.reasoningFields               = new ArrayList<FieldSpec>();
+		this.reasoningMethods   			  = new ArrayList<MethodSpec>();	
+		this.usedRules 			  = new ArrayList<Rule>();
+	    MdData dData   			  = new MdData();
+	    dData.loadDiagramElements();
+	    this.reasoningRuleData    = dData.getMData();
 	}
 	
 	@Override
@@ -48,24 +62,15 @@ public class SOIGenerator implements ClassTemplate{
 		ClassName SOIClass 		  = ClassName.get("org.poseidon_project.context.reasoner", "SituationOfInterest");
 		Builder typeSpecBuilder   = TypeSpec.classBuilder(currentSOIClass).addModifiers(Modifier.PUBLIC).superclass(SOIClass); 
 		
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		DateFormat dateFormat 	  = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		
-		this.fields = new ArrayList<FieldSpec>();
-		this.methods = new ArrayList<MethodSpec>();		
+		this.modellingFields  	  = new ArrayList<FieldSpec>();
+		this.modellingMethods 	  = new ArrayList<MethodSpec>();		
 
 		generateRules();
+		typeSpecBuilder = generateMethodsAndFields(typeSpecBuilder);
 		
-		
-		for(FieldSpec field : fields){
-			typeSpecBuilder = typeSpecBuilder.addField(field);
-		}
-		
-		for(MethodSpec method : methods){
-			typeSpecBuilder = typeSpecBuilder.addMethod(method);
-		}
-		
-
 		return JavaFile.builder("edu.casetools.icase.custom.situations", typeSpecBuilder.build())
 				.addFileComment(
 					"/* This code skeleton has been automatically generated \n * as part of the DCase Android Context Library code generator \n * Date: $L, \n */",
@@ -82,6 +87,25 @@ public class SOIGenerator implements ClassTemplate{
 	//			.build();
 	}
 
+	private Builder generateMethodsAndFields(Builder typeSpecBuilder) {
+		for(FieldSpec field : modellingFields){
+			typeSpecBuilder = typeSpecBuilder.addField(field);
+		}
+		
+		for(MethodSpec method : modellingMethods){
+			typeSpecBuilder = typeSpecBuilder.addMethod(method);
+		}
+		
+		for(FieldSpec field : reasoningFields){
+			typeSpecBuilder = typeSpecBuilder.addField(field);
+		}
+		
+		for(MethodSpec method : reasoningMethods){
+			typeSpecBuilder = typeSpecBuilder.addMethod(method);
+		}
+		return typeSpecBuilder;
+	}
+
 
 	private void generateRules() {
 	
@@ -91,7 +115,7 @@ public class SOIGenerator implements ClassTemplate{
 				
 				for(MObject rule : getSensorRules(sensor,DCaseStereotypes.STEREOTYPE_FEEDS_IN_WINDOW)){
 					generateModellingRule(rule);
-					generateReasoningRule(rule);
+					handleReasoningRuleFromModellingRule(rule);
 				}
 				for(MObject rule : getSensorRules(sensor,DCaseStereotypes.STEREOTYPE_FEEDS)){
 					// TO BE IMPLEMENTED: FEATURE FOR GENERATING PREFS
@@ -101,13 +125,67 @@ public class SOIGenerator implements ClassTemplate{
 		}
 	}
 
-	private void generateReasoningRule(MObject rule) {
-		List<MObject> contextStates = getContextStates(rule);
+	private void handleReasoningRuleFromModellingRule(MObject modellingRule) {
+		List<MObject> contextStates = getContextStates(modellingRule);
+		List<Rule> reasoningRules = new ArrayList<>();
+		 //FIND CORRESPONDING RULES
+				//FIND STR
 		for(MObject contextState : contextStates){
-			//List<MObject> 
+			reasoningRules = getReasoningRulesFromContextState(contextState,reasoningRules);
 		}
-		
+		for(Rule reasoningRule : reasoningRules){
+			if(!checkIsRepeated(reasoningRule)){
+				generateReasoningRule(reasoningRule);
+				this.usedRules.add(reasoningRule);
+			}
+		}
 	}
+	
+	private boolean checkIsRepeated(Rule reasoningRule) {
+		for(Rule storedRule : this.usedRules){
+			if(storedRule.equals(reasoningRule)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private List<Rule> getReasoningRulesFromContextState(MObject contextState, List<Rule> reasoningRules){
+		for(Rule str : reasoningRuleData.getStrs()){
+			for(RuleElement antecedent : str.getAntecedents()){
+				if(antecedent.getName().equals(contextState.getName())){
+					reasoningRules.add(str);
+				}
+			}
+		}
+		for(Rule ntr : reasoningRuleData.getNtrs()){
+			for(RuleElement antecedent : ntr.getAntecedents()){
+				if(antecedent.getName().equals(contextState.getName())){
+					reasoningRules.add(ntr);
+				}
+			}
+		}
+		return reasoningRules;
+	}
+	
+//	private List<MObject> generateReasoningRules(MObject rule) {
+//		List<MObject> contextStates = getContextStates(rule);
+//		List<MObject> ruleList = new ArrayList<>();
+//		for(MObject contextState : contextStates){
+//			for(MObject reasoningRule : getAllReasoningRules()){
+//				MObject source = ((Dependency)reasoningRule).getImpacted();
+//				if(isStereotyped(source,DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP)){
+//					
+//				} else if (isStereotyped(source,DCaseStereotypes.STEREOTYPE_ANTECEDENT) || isStereotyped(source,DCaseStereotypes.STEREOTYPE_PAST_OPERATOR)){
+//					for(MObject reasoningRuleChild : reasoningRule.getCompositionChildren()){
+//						if(isStereotyped)
+//					}
+//				}
+//			}
+//		}
+//		return ruleList;
+//	}
+	
 
 	private List<MObject> getContextStates(MObject rule) {
 		List<MObject> contextStates = new ArrayList<>();
@@ -121,14 +199,20 @@ public class SOIGenerator implements ClassTemplate{
 
 	private void generateModellingRule(MObject rule) {
 		StringBuilder result = new StringBuilder(150);
-		generateField(rule.getName(), CSPARQLWriter.generateCSPARQLQuery(result, (ModelElement)rule).toString());
-		generateMethod(rule.getName());
+		this.modellingFields.add(generateField(rule.getName(), CSPARQLWriter.generateCSPARQLQuery(result, (ModelElement)rule).toString()));
+		this.modellingMethods.add(generateMethod(rule.getName()));
 	}
 	
-	private void generateMethod(String name) {
-		this.methods.add(MethodSpec.methodBuilder("get"+StringUtils.camelCase(name,' ')).addModifiers(Modifier.PUBLIC)
+	private void generateReasoningRule(Rule rule) {
+		String name = StringUtils.camelCase(soi.getName(),' ')+StringUtils.camelCase(rule.getConsequent().getName(),' ');
+		this.reasoningFields.add(generateField(name, MobileReasoner.generateReasoningRuleQuery(rule).toString()));
+		this.reasoningMethods.add(generateMethod("get"+StringUtils.uppercaseFirstLetter(name)));
+	}
+	
+	private MethodSpec generateMethod(String name) {
+		return MethodSpec.methodBuilder("get"+StringUtils.camelCase(name,' ')).addModifiers(Modifier.PUBLIC)
 				.returns(String.class).addStatement("$L", "return "+name)
-				.build());
+				.build();
 		
 	}
 
@@ -170,14 +254,15 @@ public class SOIGenerator implements ClassTemplate{
 	    		DCaseStereotypes.STEREOTYPE_OBSERVE);
 	}
 
-	private void generateField(String name, String query){
+	private FieldSpec generateField(String name, String query){
 		query = query.replaceAll("\"", "\\\\\"");
 		query = query.replaceAll(System.lineSeparator(), "\" +"+System.lineSeparator()+"\"");
-		this.fields.add(FieldSpec.builder(String.class, name)
+		return FieldSpec.builder(String.class, name)
 			    .addModifiers(Modifier.PRIVATE)
 			    .addModifiers(Modifier.FINAL)
 			    .initializer("\"$L\"",query)
-			    .build());
+			    .build();
 	}
+	
 
 }
