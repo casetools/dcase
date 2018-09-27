@@ -11,8 +11,8 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.extensions.io.gen.TemplateManager;
-import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.ontologies.OntologyManagerGenerator;
-import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.soi.SOIGenerator;
+import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.ontologies.OntologyManagerGenerator;
+import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.soi.SOIGenerator;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.rcase.module.i18n.I18nMessageService;

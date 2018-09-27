@@ -11,7 +11,7 @@ import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.io.gen.stationary.m.MdData;
+import edu.casetools.dcase.extensions.io.gen.stationary.reasoner.MdData;
 import edu.casetools.dcase.m2nusmv.M2NuSMV;
 import edu.casetools.dcase.m2nusmv.data.MData;
 import edu.casetools.dcase.module.api.DCaseProperties;

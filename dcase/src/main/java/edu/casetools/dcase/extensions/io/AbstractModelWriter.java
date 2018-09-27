@@ -39,11 +39,14 @@ public abstract class AbstractModelWriter {
 	public void writeToFile(File file) {
 		FileOutputStream output = null;
 		try {
-			if (!file.exists()) file.createNewFile();
+			file.getParentFile().mkdirs();
+			if (!file.exists()) 
+				file.createNewFile();
 			output = new FileOutputStream(file);
 			output.write(writeToString().getBytes());
 			output.flush();
 		} catch (IOException e) {
+			System.out.println("PATH: "+file.getAbsolutePath());
 			System.out.println("IOException " + e.toString());
 		} finally {
 			try {

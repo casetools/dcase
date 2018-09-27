@@ -81,7 +81,7 @@ public class InformsTool extends RelationTool {
     @Override
     public Dependency createDependency(ModelElement originElement, ModelElement targetElement) {
 	return ElementUtils.getInstance().createDependency(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, originElement, targetElement,
-		DCaseStereotypes.STEREOTYPE_SOURCE);
+		DCaseStereotypes.STEREOTYPE_INFORMS);
     }
 
 }

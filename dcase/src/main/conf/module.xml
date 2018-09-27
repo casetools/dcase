@@ -445,6 +445,14 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateAndroidReasoningRules"/>
             </Command>
+            <Command id="GenerateMobileCode" label="%GenerateMobileCode.label" tooltip="%GenerateMobileCode.tooltip" image="%GenerateMobileCode.image" group="%GenerateMobileCode.group" modify-model="true" group-image="%GenerateMobileCode.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateMobileCode"/>
+            </Command>
+            <Command id="GenerateStationaryCode" label="%GenerateStationaryCode.label" tooltip="%GenerateStationaryCode.tooltip" image="%GenerateStationaryCode.image" group="%GenerateStationaryCode.group" modify-model="true" group-image="%GenerateStationaryCode.groupimage">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="edu.casetools.dcase.modelio.menu.io.GenerateStationaryCode"/>
+            </Command>
         </Commands>
         <Tools>
             <Tool id="AndroidMessageInterfaceTool" label="%AndroidMessageInterfaceTool.label" tooltip="%AndroidMessageInterfaceTool.tooltip" image="%AndroidMessageInterfaceTool.image">
@@ -706,6 +714,8 @@
             <CommandRef refid="GenerateMCode"/>
             <CommandRef refid="GenerateAndroidReasoningRules"/>
             <CommandRef refid="CreateDeploymentDiagram"/>
+            <CommandRef refid="GenerateMobileCode"/>
+            <CommandRef refid="GenerateStationaryCode"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="StaticDiagram" stereotype="InformationDisplayDiagramStereotype">

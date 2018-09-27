@@ -9,7 +9,7 @@ import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.io.gen.mobile.acl.ACLGenerator;
+import edu.casetools.dcase.extensions.io.gen.mobile.acontextlibrary.ACLGenerator;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.rcase.utils.ModelioUtils;
 
