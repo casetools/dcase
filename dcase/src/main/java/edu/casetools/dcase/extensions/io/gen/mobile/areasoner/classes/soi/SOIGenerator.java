@@ -33,8 +33,6 @@ import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.utils.tables.TableUtils;
 
-
-
 public class SOIGenerator implements ClassTemplate{
 
 	private MObject 		 soi;

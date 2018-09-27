@@ -11,6 +11,7 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.extensions.io.gen.TemplateManager;
+import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.contextmapper.ContextMapperGenerator;
 import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.ontologies.OntologyManagerGenerator;
 import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.soi.SOIGenerator;
 import edu.casetools.dcase.module.api.DCaseProperties;
@@ -80,9 +81,12 @@ public class AReasonerGenerator implements TemplateManager{
 					usedSOIs.add(soi);
 				}
 			}
+			generateContextMapper(folder,usedSOIs);
 		}
 		
-	    private boolean isToBeImplemented(MObject detectionPlan) {
+
+
+		private boolean isToBeImplemented(MObject detectionPlan) {
 			if(detectionPlan instanceof ModelElement){
 				String result = ((ModelElement) detectionPlan).getTagValue(RCasePeerModule.MODULE_NAME,
 			    RCaseProperties.PROPERTY_SITUATION_DETECTION_PLAN_TOBEIMPLEMENTED);
@@ -115,6 +119,15 @@ public class AReasonerGenerator implements TemplateManager{
 			}
 
 	    }
+	    
+	    private void generateContextMapper(String folder, List<MObject> usedSOIs) {
+			try {
+				new ContextMapperGenerator(usedSOIs).generate().writeTo(new File(folder));
+			} catch (IOException e) {
+			    e.printStackTrace();
+			}
+		
+		}
 	    
 	    private void generateSituationOfInterest(String folder, MObject soi, List<MObject> contextAttributeList) {
 	    	try {
