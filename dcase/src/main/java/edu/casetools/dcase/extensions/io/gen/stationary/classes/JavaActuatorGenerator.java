@@ -36,7 +36,8 @@ public class JavaActuatorGenerator implements ClassTemplate{
 
 		MethodSpec checkContext = MethodSpec.methodBuilder("performAction").addModifiers(Modifier.PUBLIC).addParameter(action,"action")
 			.addAnnotation(Override.class).returns(void.class).addComment("Add your own custom code")
-			.addComment("JFrame messageFrame = new JFrame();\n JOptionPane.showMessageDialog(messageFrame,\"Put here your custom message.\");\n")
+			.addComment("JFrame messageFrame = new JFrame();\n")
+			.addComment("JOptionPane.showMessageDialog(messageFrame,\"Put here your custom message.\");\n")
 			.build();
 
 		TypeSpec contextClass = TypeSpec.classBuilder(newJavaActuator).addModifiers(Modifier.PUBLIC)

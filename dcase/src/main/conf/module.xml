@@ -103,6 +103,8 @@
                 <Image path="res/icons/acquisition/elements/stationary_16.png"/>
                 <TagTypes>
                     <TagType name="TagStationarySensorVeraId" uid="66e555ad-4748-4767-90e6-51b065f84025" label="%PreferenceSensorStereotype.properties.veraId" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStationarySensorModelName" uid="2f0cc094-8748-4081-9108-eb281c37a3b0" label="%PreferenceSensorStereotype.properties.modelName" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagStationarySensorPhysicalLocation" uid="366387af-459c-4f28-8b09-67adb2027d9d" label="%PreferenceSensorStereotype.properties.physicalLocation" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStationarySensorMinValue" uid="f39b7f7d-2719-44fc-b039-d2a937d8a2af" label="%PreferenceSensorStereotype.properties.minValue" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStationarySensorMaxValue" uid="e0d21994-569c-4e37-8019-35a9fb9cbfe8" label="$PreferenceSensorStereotype.properties.maxValue" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagStationarySensorIsBoolean" uid="8da0b1a1-b9f2-46e0-85b8-50268806f27f" label="%PreferenceSensorStereotype.properties.isBoolean" parameter-card="1" is-hidden="false" is-signed="false"/>

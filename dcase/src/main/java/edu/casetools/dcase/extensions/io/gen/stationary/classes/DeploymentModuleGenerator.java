@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
+import java.util.Vector;
 
 import javax.lang.model.element.Modifier;
 
@@ -15,75 +15,82 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.TypeSpec.Builder;
 
 import edu.casetools.dcase.extensions.io.gen.ClassTemplate;
-import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.csparql.CSPARQLWriter;
-import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.reasoner.MobileReasoner;
-import edu.casetools.dcase.extensions.io.gen.stationary.reasoner.MdData;
-import edu.casetools.dcase.m2nusmv.data.MData;
-import edu.casetools.dcase.m2nusmv.data.elements.Rule;
-import edu.casetools.dcase.m2nusmv.data.elements.RuleElement;
+import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.rcase.utils.ModelioUtils;
 import edu.casetools.rcase.utils.tables.TableUtils;
 
 public class DeploymentModuleGenerator implements ClassTemplate{
 
-	private MObject 		 soi;
-	private List<MObject>    contextAttributeList;
-	private List<FieldSpec>  modellingFields;
-	private List<MethodSpec> modellingMethods;
-	private List<FieldSpec>  reasoningFields;
-	private List<MethodSpec> reasoningMethods;
-	private List<Rule> 		 usedRules;
-	private List<String>	 modellingRuleMethodNames;
-	private List<String>	 reasoningRuleMethodNames;
-	private MData reasoningRuleData;
+	private String projectName;
+	private List<MObject>    sensorList;
 	
-	public DeploymentModuleGenerator(MObject soi, List<MObject> contextAttributeList){
-		this.soi 				  		= soi;
-		this.contextAttributeList 		= contextAttributeList;
-		this.modellingFields      		= new ArrayList<FieldSpec>();
-		this.modellingMethods     		= new ArrayList<MethodSpec>();	
-		this.reasoningFields      		= new ArrayList<FieldSpec>();
-		this.reasoningMethods     	  	= new ArrayList<MethodSpec>();	
-		this.usedRules 			  	 	= new ArrayList<Rule>();
-	    this.modellingRuleMethodNames 	= new ArrayList<String>();
-	    this.reasoningRuleMethodNames 	= new ArrayList<String>();
-	    MdData dData   			  	  	= new MdData();
-	    dData.loadDiagramElements();
-	    this.reasoningRuleData        	= dData.getMData();
+	public DeploymentModuleGenerator(List<MObject> sensorList){
+		this.projectName =  StringUtils.uppercaseFirstLetter(StringUtils.camelCase(ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance())));
+		this.sensorList 				= sensorList;
 
 	}
 	
 	@Override
 	public JavaFile generate() {
-		ClassName currentSOIClass = ClassName.get("edu.casetools.icase.custom.situations", StringUtils.uppercaseFirstLetter(StringUtils.camelCase(soi.getName(),' ')+"SOI"));
-		ClassName SOIClass 		  = ClassName.get("org.poseidon_project.context.reasoner", "SituationOfInterest");
-		Builder typeSpecBuilder   = TypeSpec.classBuilder(currentSOIClass).addModifiers(Modifier.PUBLIC).superclass(SOIClass); 
+		ClassName deploymentModule 		   		 = ClassName.get("edu.casetools.icase.mreasoner.extensions.modules", projectName+"DeploymentModule");
+		ClassName abstractDeploymentModule 		 = ClassName.get("edu.casetools.icase.mreasoner.deployment.realenvironment", "AbstractDeploymentModule");
+		ClassName sensorClass 				   	 = ClassName.get("edu.casetools.icase.mreasoner.deployment.sensors","Sensor");
+		ClassName veraActuator					 = ClassName.get("edu.casetools.icase.mreasoner.vera.actuators.device","VeraActuator");
+		Builder typeSpecBuilder   				 = TypeSpec.classBuilder(deploymentModule).addModifiers(Modifier.PUBLIC).superclass(abstractDeploymentModule); 
+		List<MethodSpec.Builder> observerMethods = new ArrayList<>();
+		List<MethodSpec.Builder> stateMethods    = new ArrayList<>();
 		
 		DateFormat dateFormat 	  = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date date = new Date();
+		Date date = new Date();		
 		
-		this.modellingFields  	  = new ArrayList<FieldSpec>();
-		this.modellingMethods 	  = new ArrayList<MethodSpec>();		
+		MethodSpec constructor = MethodSpec.constructorBuilder()
+		        .addModifiers(Modifier.PUBLIC)
+		        .addStatement("super()")
+		        .build();
+		
+		
+		MethodSpec.Builder initialiseSensorObserversBuilder = MethodSpec.methodBuilder("initialiseSensorObservers")
+				.addModifiers(Modifier.PROTECTED)
+				.addAnnotation(Override.class)
+				.returns(void.class);
+		
+		for(MObject sensor : sensorList){
 
-		typeSpecBuilder = typeSpecBuilder.addMethod(MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
-        .addStatement("super($S)",StringUtils.uppercaseFirstLetter(StringUtils.camelCase(soi.getName(),' ')+"SOI")).build());
-        
+			ParameterizedTypeName stringVector = ParameterizedTypeName.get(Vector.class, String.class);
+			String sensorName = StringUtils.uppercaseFirstLetter(StringUtils.camelCase(sensor.getName()));
+			ClassName observer = ClassName.get("edu.casetools.icase.mreasoner.extensions.sensors", sensorName+"Observer");
+			
+			
+			initialiseSensorObserversBuilder.addStatement("initialise$LObserver()", sensorName);	
+			observerMethods.add(generateObserverMethod(sensorClass, sensor, stringVector, sensorName, observer));
+			stateMethods.add(generateStateMethod(stringVector, sensorName, sensor));
+			
+		}
 		
-		generateRules();
+		MethodSpec.Builder initialiseActuatorsBuilder = MethodSpec.methodBuilder("initialiseActuators")
+				.addModifiers(Modifier.PROTECTED)
+				.addAnnotation(Override.class)
+				.returns(void.class);
 		
+		initialiseActuatorsBuilder = addVeraActuators(initialiseActuatorsBuilder, veraActuator);
+		initialiseActuatorsBuilder = addJavaActuators(initialiseActuatorsBuilder);
 		
-		typeSpecBuilder = generateMethodsAndFields(typeSpecBuilder);
+		typeSpecBuilder = typeSpecBuilder.addMethod(constructor)
+										 .addMethod(initialiseSensorObserversBuilder.build());
+		typeSpecBuilder = addSensorMethods(typeSpecBuilder, observerMethods, stateMethods);
+		typeSpecBuilder = typeSpecBuilder.addMethod(initialiseActuatorsBuilder.build());
 		
-		return JavaFile.builder("edu.casetools.icase.custom.situations", typeSpecBuilder.build())
+		return JavaFile.builder("edu.casetools.icase.mreasoner.extensions.modules", typeSpecBuilder.build())
 				.addFileComment(
 					"/* This code skeleton has been automatically generated \n * as part of the DCase Android Context Library code generator \n * Date: $L, \n */",
 					dateFormat.format(date))
@@ -99,224 +106,117 @@ public class DeploymentModuleGenerator implements ClassTemplate{
 	//			.build();
 	}
 
-	private Builder generateMethodsAndFields(Builder typeSpecBuilder) {
+	private MethodSpec.Builder addVeraActuators(MethodSpec.Builder initialiseActuatorsBuilder, ClassName veraActuatorClass) {
+		List<MObject> veraActuators = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
+				DCasePeerModule.MODULE_NAME, new ArrayList<>(), DCaseStereotypes.STEREOTYPE_VERA_ACTUATOR);
+		for(MObject veraActuator : veraActuators){
+			String veraActuatorName = StringUtils.lowercaseFirstLetter(StringUtils.camelCase(veraActuator.getName()));
+			initialiseActuatorsBuilder.addStatement("$T $LActuator = new $T($S,$S)", 
+					veraActuatorClass, veraActuatorName, veraActuatorClass,
+					getProperty(veraActuator,DCaseProperties.PROPERTY_VERA_ACTUATOR_SERVICE_ID),
+					getProperty(veraActuator,DCaseProperties.PROPERTY_VERA_ACTUATOR_ACTION_COMMAND)
+					);
+			initialiseActuatorsBuilder.addStatement("this.actuators.add($LActuator)",veraActuatorName);
+		}
+		return initialiseActuatorsBuilder;
+	}
+	
+	private MethodSpec.Builder addJavaActuators(MethodSpec.Builder initialiseActuatorsBuilder) {
+		List<MObject> javaActuators = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
+				DCasePeerModule.MODULE_NAME, new ArrayList<>(), DCaseStereotypes.STEREOTYPE_JAVA_ACTUATOR);
+		for(MObject javaActuator : javaActuators){
+			String javaActuatorName = StringUtils.uppercaseFirstLetter(StringUtils.camelCase(javaActuator.getName()));
+			ClassName javaActuatorClass = ClassName.get("edu.casetools.icase.mreasoner.extensions.actuators",javaActuatorName+"Actuator");
+			initialiseActuatorsBuilder.addStatement("$T $L = new $T()", javaActuatorClass, StringUtils.lowercaseFirstLetter(javaActuatorName), javaActuatorClass);
+			initialiseActuatorsBuilder.addStatement("this.actuators.add($L)",StringUtils.lowercaseFirstLetter(javaActuatorName));
+		}
+		return initialiseActuatorsBuilder;
+	}
+
+	private MethodSpec.Builder generateStateMethod(ParameterizedTypeName stringVector,
+			String sensorName, MObject sensor) {
+		MethodSpec.Builder builder =  MethodSpec.methodBuilder("initialise"+sensorName+"States")
+		.addModifiers(Modifier.PRIVATE)
+		.returns(stringVector)
+		.addStatement("$T states = new $T()", stringVector, stringVector);
+		
+		for(MObject contextState : getContextStates(sensor)){
+			builder = builder.addStatement("states.add($S)", StringUtils.lowercaseFirstLetter(StringUtils.camelCase(contextState.getName())));
+		}
+		builder = builder.addStatement("return states");
+		return builder;
+	}
+
+	private com.squareup.javapoet.MethodSpec.Builder generateObserverMethod(ClassName sensorClass, MObject sensor,
+			ParameterizedTypeName stringVector, String sensorName, ClassName observer) {
+		return MethodSpec.methodBuilder("initialise"+sensorName+"Observer")
+		.addModifiers(Modifier.PRIVATE)
+		.returns(void.class)
+		.addStatement("$T states = initialise$LStates()", stringVector, sensorName)
+		.addStatement("$T $LObserver =  new $T()", observer, StringUtils.lowercaseFirstLetter(sensorName),observer)	
+		.addStatement("$T $LSensor =  new $T($S,$S,$S,$S,$S,$S,$S,$L,states)", 
+				sensorClass, StringUtils.lowercaseFirstLetter(sensorName), sensorClass,
+				getProperty(sensor,DCaseProperties.PROPERTY_STATIONARY_SENSOR_VERA_ID),
+				sensorName,
+				getProperty(sensor,DCaseProperties.PROPERTY_STATIONARY_SENSOR_MODEL_NAME),
+				getProperty(sensor,DCaseProperties.PROPERTY_STATIONARY_SENSOR_PHYSICAL_LOCATION),//LOCATION
+				getProperty(sensor,DCaseProperties.PROPERTY_SENSOR_VALUE_TYPE),
+				getProperty(sensor,DCaseProperties.PROPERTY_STATIONARY_SENSOR_MIN_VALUE),
+				getProperty(sensor,DCaseProperties.PROPERTY_STATIONARY_SENSOR_MAX_VALUE),
+				getProperty(sensor,DCaseProperties.PROPERTY_STATIONARY_SENSOR_IS_BOOLEAN).toLowerCase()
+				)	
+		.addStatement("$LObserver.setSensor($LSensor)", StringUtils.lowercaseFirstLetter(sensorName), StringUtils.lowercaseFirstLetter(sensorName))
+		.addStatement("this.sensorObservers.add($LObserver)", StringUtils.lowercaseFirstLetter(sensorName));
+	}
+
+	private String getProperty(MObject element, String property){
+		return ((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME,
+			    property);
+	}
+	
+
+	private Builder addSensorMethods(Builder typeSpecBuilder, List<MethodSpec.Builder> observerMethods, List<MethodSpec.Builder> stateMethods) {
 		
 	
-		for(FieldSpec field : modellingFields){
-			typeSpecBuilder = typeSpecBuilder.addField(field);
+		for(MethodSpec.Builder method : observerMethods){
+			typeSpecBuilder = typeSpecBuilder.addMethod(method.build());
 		}
 		
-		for(MethodSpec method : modellingMethods){
-			typeSpecBuilder = typeSpecBuilder.addMethod(method);
+		for(MethodSpec.Builder method : stateMethods){
+			typeSpecBuilder = typeSpecBuilder.addMethod(method.build());
 		}
-		
-		for(FieldSpec field : reasoningFields){
-			typeSpecBuilder = typeSpecBuilder.addField(field);
-		}
-		
-		for(MethodSpec method : reasoningMethods){
-			typeSpecBuilder = typeSpecBuilder.addMethod(method);
-		}
-		
-		typeSpecBuilder = typeSpecBuilder.addMethod(generateRegisterSOIMethod());
-		typeSpecBuilder = typeSpecBuilder.addMethod(generateUnRegisterSOIMethod());
 		return typeSpecBuilder;
 	}
 
-	private MethodSpec generateRegisterSOIMethod() {
-		// TODO CREATE PREFERENCES VARIABLES
-		ClassName reasonerManager = ClassName.get("org.poseidon_project.context.reasoner", "ReasonerManager");
-		ClassName abstractContextMapper = ClassName.get("org.poseidon_project.context.reasoner", "AbstractContextMapper");
-		ClassName dataLogger = ClassName.get("org.poseidon_project.context.logging", "DataLogger");
-		ClassName sharedPreferences = ClassName.get("android.content", "SharedPreferences");
-
-		MethodSpec.Builder builder =   MethodSpec.methodBuilder("registerSituationOfInterest")
-				 .addModifiers(Modifier.PUBLIC)
-				 .returns(boolean.class)
-				 .addParameter(reasonerManager, "mReasonerManager")
-				 .addParameter(abstractContextMapper, "contextMapper")
-				 .addParameter(sharedPreferences, "mRuleSettings")
-				 .addParameter(dataLogger, "mLogger")
-				 .addParameter(String.class, "logTag")
-				 .addParameter(Map.class, "parameters");
-		 builder.addStatement("$L", "boolean okExit = true");
-		 for(int i=0;i<modellingRuleMethodNames.size();i++){
-			 builder.addStatement("eu.larkc.csparql.core.engine.CsparqlQueryResultProxy c$L = mReasonerManager.registerCSPARQLQuery(get$L())", i,modellingRuleMethodNames.get(i)); //TODO ADD PREFERENCE VARIABLES
-			 builder.addStatement("okExit = contextMapper.registerModellingRule(\"$L\", c$L, okExit)", modellingRuleMethodNames.get(i),i);
-		 }
-		 for(int i=0;i<reasoningRuleMethodNames.size();i++){
-			 builder.addStatement("mReasonerManager.registerReasoningRule(\"$L\", get$L())", reasoningRuleMethodNames.get(i),reasoningRuleMethodNames.get(i)); //TODO ADD PREFERENCE VARIABLES
-		 }
-		// TODO CREATE PREFERENCES METHODS
-		 builder.addStatement("mLogger.logVerbose(DataLogger.REASONER, logTag, \"Registered $L Situation of Interest\")", StringUtils.uppercaseFirstLetter(StringUtils.camelCase(soi.getName(),' ')+"SOI"));
-		 builder.addStatement("return contextMapper.addObserverRequirementWithParameters(\"engine\", \"$L\",okExit, parameters)", StringUtils.uppercaseFirstLetter(StringUtils.camelCase(soi.getName(),' ')+"SOI"));
-		 return builder.build();
-	}
-
-	private MethodSpec generateUnRegisterSOIMethod() {
-		// TODO CREATE PREFERENCES VARIABLES
-		ClassName contextReasonerCore = ClassName.get("org.poseidon_project.context", "ContextReasonerCore");
-		ClassName reasonerManager = ClassName.get("org.poseidon_project.context.reasoner", "ReasonerManager");
-		ClassName abstractContextMapper = ClassName.get("org.poseidon_project.context.reasoner", "AbstractContextMapper");
-		ClassName dataLogger = ClassName.get("org.poseidon_project.context.logging", "DataLogger");
-		MethodSpec.Builder builder =   MethodSpec.methodBuilder("unRegisterSituationOfInterest")
-				 .addModifiers(Modifier.PUBLIC)
-				 .returns(boolean.class)
-				 .addParameter(contextReasonerCore, "mReasonerCore")
-				 .addParameter(reasonerManager, "mReasonerManager")
-				 .addParameter(abstractContextMapper, "contextMapper")
-				 .addParameter(dataLogger, "mLogger")
-				 .addParameter(String.class, "logTag");
-		 builder.addStatement("boolean okExit = contextMapper.removeObserverRequirement(\"engine\", \"$L\")", StringUtils.uppercaseFirstLetter(StringUtils.camelCase(soi.getName(),' ')+"SOI"));
-		 for(int i=0;i<modellingRuleMethodNames.size();i++){
-			 builder.addStatement("okExit = contextMapper.unregisterModellingRule(\"$L\", okExit)", modellingRuleMethodNames.get(i));
-		 }
-		 for(int i=0;i<reasoningRuleMethodNames.size();i++){
-			 builder.addStatement("mReasonerManager.unregisterReasoningRule(\"$L\")", reasoningRuleMethodNames.get(i)); //TODO ADD PREFERENCE VARIABLES
-		 }
-		// TODO UNREGISTER PREFERENCES METHODS
-		 builder.addStatement("mLogger.logVerbose(DataLogger.REASONER, logTag, \"Unregistered $L Situation of Interest\")", StringUtils.uppercaseFirstLetter(StringUtils.camelCase(soi.getName(),' ')+"SOI"));
-		 builder.addStatement("return okExit", StringUtils.uppercaseFirstLetter(StringUtils.camelCase(soi.getName(),' ')+"SOI"));
-		 return builder.build();
-	}
 	
-	private void generateRules() {
+
 	
-		for(MObject contextAttribute:contextAttributeList){
-			List<MObject> sensors = getContextPrefAttributeSensors(contextAttribute);
-			for(MObject sensor : sensors){
-				
-				for(MObject rule : getSensorRules(sensor,DCaseStereotypes.STEREOTYPE_FEEDS_IN_WINDOW)){
-					generateModellingRule(rule);
-					handleReasoningRuleFromModellingRule(rule);
-				}
-				for(MObject rule : getSensorRules(sensor,DCaseStereotypes.STEREOTYPE_FEEDS)){
-					// TO BE IMPLEMENTED: FEATURE FOR GENERATING PREFS
-				}
-				
-			}
-		}
-	}
 
-	private void handleReasoningRuleFromModellingRule(MObject modellingRule) {
-		List<MObject> contextStates = getContextStates(modellingRule);
-		List<Rule> reasoningRules = new ArrayList<>();
-		 //FIND CORRESPONDING RULES
-				//FIND STR
-		for(MObject contextState : contextStates){
-			reasoningRules = getReasoningRulesFromContextState(contextState,reasoningRules);
-		}
-		for(Rule reasoningRule : reasoningRules){
-			if(!checkIsRepeated(reasoningRule)){
-				generateReasoningRule(reasoningRule);
-				this.usedRules.add(reasoningRule);
-			}
-		}
-	}
-	
-	private boolean checkIsRepeated(Rule reasoningRule) {
-		for(Rule storedRule : this.usedRules){
-			if(storedRule.equals(reasoningRule)){
-				return true;
-			}
-		}
-		return false;
-	}
 
-	private List<Rule> getReasoningRulesFromContextState(MObject contextState, List<Rule> reasoningRules){
-		for(Rule str : reasoningRuleData.getStrs()){
-			for(RuleElement antecedent : str.getAntecedents()){
-				if(antecedent.getName().equals(contextState.getName())){
-					reasoningRules.add(str);
-				}
-			}
-		}
-		for(Rule ntr : reasoningRuleData.getNtrs()){
-			for(RuleElement antecedent : ntr.getAntecedents()){
-				if(antecedent.getName().equals(contextState.getName())){
-					reasoningRules.add(ntr);
-				}
-			}
-		}
-		return reasoningRules;
-	}
-
-	private List<MObject> getContextStates(MObject rule) {
+	private List<MObject> getContextStates(MObject sensor) {
 		List<MObject> contextStates = new ArrayList<>();
-		for(MObject element : rule.getCompositionChildren()){
-			if(isStereotyped(element, DCaseStereotypes.STEREOTYPE_PRODUCE)){
-				contextStates.add(((Dependency)element).getDependsOn());
+		for(MObject element : sensor.getCompositionChildren()){
+			if(isStereotyped(element, DCaseStereotypes.STEREOTYPE_FEEDS)){
+				MObject modellingRule = ((Dependency)element).getDependsOn();
+				if(isStereotyped(modellingRule, DCaseStereotypes.STEREOTYPE_DB_MODELLING_RULE)){
+					for(MObject modellingRuleChild : modellingRule.getCompositionChildren()){
+						if(isStereotyped(modellingRuleChild, DCaseStereotypes.STEREOTYPE_PRODUCE)){
+							MObject contextState = ((Dependency)modellingRuleChild).getDependsOn();
+							if(isStereotyped(contextState, DCaseStereotypes.STEREOTYPE_CONTEXT_STATE))
+									contextStates.add(((Dependency)element).getDependsOn());	
+						}
+					}
+
+				}
 			}
 		}
 		return contextStates;
 	}
-
-	private void generateModellingRule(MObject rule) {
-		StringBuilder result = new StringBuilder(150);
-		this.modellingFields.add(generateField(rule.getName(), CSPARQLWriter.generateCSPARQLQuery(result, (ModelElement)rule).toString()));
-		this.modellingMethods.add(generateMethod(rule.getName()));
-	    this.modellingRuleMethodNames.add(StringUtils.uppercaseFirstLetter(StringUtils.camelCase(rule.getName(),' ')));
-	}
 	
-	private void generateReasoningRule(Rule rule) {
-		String name = StringUtils.camelCase(soi.getName(),' ')+StringUtils.camelCase(rule.getConsequent().getName(),' ');
-		this.reasoningFields.add(generateField(name, MobileReasoner.generateReasoningRuleQuery(rule).toString()));
-		this.reasoningMethods.add(generateMethod(name));
-		this.reasoningRuleMethodNames.add(StringUtils.uppercaseFirstLetter(StringUtils.camelCase(name,' ')));
-	}
-	
-	private MethodSpec generateMethod(String name) {
-		return MethodSpec.methodBuilder("get"+StringUtils.uppercaseFirstLetter(StringUtils.camelCase(name,' '))).addModifiers(Modifier.PUBLIC)
-				.returns(String.class).addStatement("$L", "return "+name)
-				.build();
-	}
-	
-	private FieldSpec generateField(String name, String query){
-		query = query.replaceAll("\"", "\\\\\"");
-		query = query.replaceAll(System.lineSeparator(), "\" +"+System.lineSeparator()+"\"");
-		return FieldSpec.builder(String.class, name)
-			    .addModifiers(Modifier.PRIVATE)
-			    .addModifiers(Modifier.FINAL)
-			    .initializer("\"$L\"",query)
-			    .build();
-	}
-
-	private List<MObject> getSensorRules(MObject sensor, String stereotype) {
-		List<MObject> sensorRules = new ArrayList<>();
-		for(MObject child:sensor.getCompositionChildren()){
-			if(isStereotyped(child,stereotype)){
-				sensorRules.add(((Dependency)child).getDependsOn());
-			}
-		}
-		return sensorRules;
-	}
 
 	private boolean isStereotyped(MObject element, String stereotype) {
 		return ((ModelElement) element).isStereotyped(DCasePeerModule.MODULE_NAME,
 	    		stereotype);
-	}
-
-	private List<MObject> getContextPrefAttributeSensors(MObject contextAttribute) {
-		List<MObject> contextAttributeSensorList = new ArrayList<MObject>();
-		List<MObject> sensorList = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
-				DCasePeerModule.MODULE_NAME, new ArrayList<MObject>(), DCaseStereotypes.STEREOTYPE_MOBILE_SENSOR);
-		
-		for(MObject sensor : sensorList){
-			for(MObject sensorChild : sensor.getCompositionChildren()){
-				if(isObserve(sensorChild)){
-					if(contextAttribute.getUuid().equals(((Dependency)sensorChild).getDependsOn().getUuid()))
-						contextAttributeSensorList.add(sensor);	
-				}
-			}
-		}
-		
-		
-		return contextAttributeSensorList;
-	}
-	
-	private boolean isObserve(MObject element){
-		return ((ModelElement) element).isStereotyped(DCasePeerModule.MODULE_NAME,
-	    		DCaseStereotypes.STEREOTYPE_OBSERVE);
 	}
 
 }

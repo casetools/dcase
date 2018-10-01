@@ -6,15 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.modelio.metamodel.uml.infrastructure.Dependency;
+import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.extensions.io.gen.TemplateManager;
+import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.soi.SOIGenerator;
+import edu.casetools.dcase.extensions.io.gen.stationary.classes.DeploymentModuleGenerator;
 import edu.casetools.dcase.extensions.io.gen.stationary.classes.JavaActuatorGenerator;
+import edu.casetools.dcase.extensions.io.gen.stationary.classes.ObserverGenerator;
 import edu.casetools.dcase.extensions.io.gen.stationary.configs.ConfigurationGenerator;
 import edu.casetools.dcase.extensions.io.gen.stationary.configs.SSHConfigurationGenerator;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
+import edu.casetools.rcase.module.api.RCaseProperties;
+import edu.casetools.rcase.module.api.RCaseStereotypes;
+import edu.casetools.rcase.module.i18n.I18nMessageService;
+import edu.casetools.rcase.module.impl.RCasePeerModule;
 import edu.casetools.rcase.utils.tables.TableUtils;
 
 public class StationaryCodeGenerator implements TemplateManager{
@@ -29,7 +38,17 @@ public class StationaryCodeGenerator implements TemplateManager{
 			getConfigurations(folder+configsFolder);
 			getSSHConfigurations(folder+configsFolder);
 			getJavaActuator(folder+mReasoner);
-	 }
+			getDeploymentModule(folder+mReasoner);
+	}
+	 
+	private void getDeploymentModule(String folder) {
+			List<MObject> sensors = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
+					DCasePeerModule.MODULE_NAME, new ArrayList<>(), DCaseStereotypes.STEREOTYPE_STATIONARY_SENSOR);
+
+			generateDeploymentModule(folder, sensors);
+			generateObservers(folder,sensors);
+
+		}
 
 	private void getJavaActuator(String folder) {
 		List<MObject> javaActuators = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
@@ -80,16 +99,26 @@ public class StationaryCodeGenerator implements TemplateManager{
 			    e.printStackTrace();
 			}
 
-	    }
-	    
-	    	    
-//	    private void generateMySQLRules(String folder, MObject soi, List<MObject> contextAttributeList) {
-//	    	try {
-//	    		new MySQLRuleGenerator(soi,contextAttributeList).generate().writeTo(new File(folder));
-//			} catch (IOException e) {
-//			    e.printStackTrace();
-//			}
-//
-//	    }
+	    }		
 
+		private void generateDeploymentModule(String folder, List<MObject> sensors) {
+	    	try {
+	    		new DeploymentModuleGenerator(sensors).generate().writeTo(new File(folder));
+			} catch (IOException e) {
+			    e.printStackTrace();
+			}
+	
+		}
+		
+
+		private void generateObservers(String folder, List<MObject> sensors) {
+	    	try {
+	    		for(MObject sensor : sensors)
+	    			new ObserverGenerator(sensor).generate().writeTo(new File(folder));
+			} catch (IOException e) {
+			    e.printStackTrace();
+			}
+			
+		}
+	    
 }

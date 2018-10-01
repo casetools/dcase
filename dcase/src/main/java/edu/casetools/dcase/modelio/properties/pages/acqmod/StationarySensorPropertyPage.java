@@ -50,13 +50,21 @@ public class StationarySensorPropertyPage implements IPropertyContent {
 		break;
 	    case 2:
 		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
-			DCaseProperties.PROPERTY_STATIONARY_SENSOR_MIN_VALUE, value, element);
+			DCaseProperties.PROPERTY_STATIONARY_SENSOR_MODEL_NAME, value, element);
 		break;
 	    case 3:
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
+			DCaseProperties.PROPERTY_STATIONARY_SENSOR_PHYSICAL_LOCATION, value, element);
+		break;
+	    case 4:
+		PropertiesUtils.getInstance().findAndAddValue(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME,
+			DCaseProperties.PROPERTY_STATIONARY_SENSOR_MIN_VALUE, value, element);
+		break;
+	    case 5:
 			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATIONARY_SENSOR_MAX_VALUE,
 					value);
 		break;
-	    case 4:
+	    case 6:
 		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_STATIONARY_SENSOR_IS_BOOLEAN,
 			value);
 		break;
@@ -76,6 +84,12 @@ public class StationarySensorPropertyPage implements IPropertyContent {
 		String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_STATIONARY_SENSOR_VERA_ID, element);
 		table.addProperty(I18nMessageService.getString("Ui.StationarySensorPropertyPage.Property.VeraId"), string);
 
+		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_STATIONARY_SENSOR_MODEL_NAME, element);
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.ModelName"), string);
+		
+		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_STATIONARY_SENSOR_PHYSICAL_LOCATION, element);
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.PhysicalLocation"), string);
+		
 		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_STATIONARY_SENSOR_MIN_VALUE, element);
 		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.MinValue"), string);
 		
