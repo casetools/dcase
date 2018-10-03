@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import edu.casetools.dcase.extensions.io.gen.stationary.reasoner.MdData.PLATFORM;
 import edu.casetools.dcase.m2nusmv.data.MData;
 import edu.casetools.dcase.m2nusmv.data.elements.BoundedOperator;
 import edu.casetools.dcase.m2nusmv.data.elements.Rule;
@@ -17,20 +18,23 @@ public class MGenerator {
     private BufferedWriter writer;
     private MData data;
 
-    private void initialiseWriter(String file) {
+    private void initialiseWriter(String file, PLATFORM platform) {
 	try {
 	    filestream = new FileWriter(file);
 	    writer = new BufferedWriter(filestream);
 	    MdData dData = new MdData();
 	    dData.loadDiagramElements();
+	    if(platform != PLATFORM.BOTH) 
+	    	dData.filterPlatform(platform);
 	    this.data = dData.getMData();
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
     }
+  
 
-    public void generate(String file) throws IOException {
-	initialiseWriter(file);
+    public void generate(String file, PLATFORM platform) throws IOException {
+	initialiseWriter(file, platform);
 	generateCommentHeader();
 	generateStateHeader();
 	writer.append("\n");

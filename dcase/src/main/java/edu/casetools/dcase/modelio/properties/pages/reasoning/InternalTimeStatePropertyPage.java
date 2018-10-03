@@ -86,7 +86,6 @@ public class InternalTimeStatePropertyPage implements IPropertyContent {
 	table.addProperty(I18nMessageService.getString("Ui.InternalTime.Property.Value"), property);
 
 
-
     }
     
 

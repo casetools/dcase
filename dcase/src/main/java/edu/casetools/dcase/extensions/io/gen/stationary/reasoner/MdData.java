@@ -18,6 +18,12 @@ import edu.casetools.dcase.m2nusmv.data.elements.RuleElement;
 import edu.casetools.dcase.m2nusmv.data.elements.Specification;
 import edu.casetools.dcase.m2nusmv.data.elements.Specification.TYPE;
 import edu.casetools.dcase.m2nusmv.data.elements.State;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.AntecedentGroupPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.ContextStatePropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.NTRPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.PastOperatorPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.STRPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.SpecificationPropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
@@ -36,6 +42,8 @@ public class MdData {
     private List<MObject> events;
     private List<MObject> specifications;
     private MData data;
+    
+    public enum PLATFORM {STATIONARY,MOBILE, BOTH};
 
     public MdData() {
 	data = new MData();
@@ -57,29 +65,118 @@ public class MdData {
 	states = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, states, 
 		DCaseStereotypes.STEREOTYPE_STATE);
 	updateIDs(states, DCaseProperties.PROPERTY_CONTEXT_STATE_ID);
-
+	updateStates();
+	
 	bops = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, bops, 
 		DCaseStereotypes.STEREOTYPE_PAST_OPERATOR);
 	updateIDs(bops, DCaseProperties.PROPERTY_PAST_OPERATOR_ID);
+	updateBOPs();
 
 	strs = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, strs, 
 		DCaseStereotypes.STEREOTYPE_SAME_TIME);
 	updateIDs(strs, DCaseProperties.PROPERTY_STR_ID);
+	updateSTRs();
 
 	ntrs = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, ntrs, 
 		DCaseStereotypes.STEREOTYPE_NEXT_TIME);
 	updateIDs(ntrs, DCaseProperties.PROPERTY_NTR_ID);
 
+	updateNTRs();
+	
 	events = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, events, 
 		DCaseStereotypes.STEREOTYPE_EVENT);
 	updateIDs(events, DCaseProperties.PROPERTY_EVENT_ID);
 
 	antecedentGroups = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, 
 			antecedentGroups, DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP);
+	
+	updateAntecedentGroups();
+	
+	specifications = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), DCasePeerModule.MODULE_NAME, events, 
+			DCaseStereotypes.STEREOTYPE_SPECIFICATION);
+	
+	updateSpecifications();
 
     }
+    
+	private String getRemoveFilter(PLATFORM filter) {
+		switch(filter){
+		case STATIONARY:
+			return I18nMessageService.getString("Ui.Platform.Mobile");
+		case MOBILE:
+			return I18nMessageService.getString("Ui.Platform.Stationary");
+		default:
+			break;
+		}
+		return "";
+	}
+    
+	// Gets only the elements of the platform specified in the filter
+    public void filterPlatform(PLATFORM filter){
+    	String removeFilter = getRemoveFilter(filter);
+    	states.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_CONTEXT_STATE_PLATFORM, states));
+    	bops.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_PAST_OPERATOR_PLATFORM, bops));
+    	strs.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_STR_PLATFORM, strs));
+    	ntrs.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_NTR_PLATFORM, ntrs));   
+    	antecedentGroups.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_ANTECEDENT_GROUP_PLATFORM, antecedentGroups));        	
+    }
 
-    public void loadSpecifications() {
+	private List<MObject> filter(String removeFilter, String property, List<MObject> list) {
+		List<MObject> auxiliars = new ArrayList<MObject>();
+		for(MObject element : list){
+			String tagValue = ((ModelElement) element).getTagValue(DCasePeerModule.MODULE_NAME, property);
+    		if(tagValue.equals(removeFilter)){
+    			auxiliars.add(element);
+    		}
+    	}
+		return auxiliars;
+	}
+
+    
+    private void updateAntecedentGroups() {
+		for(MObject antecedentGroup : antecedentGroups){
+			AntecedentGroupPropertyPage.updateAntecedentGroupPlatform((ModelElement) antecedentGroup);
+		}
+		
+	}
+
+	private void updateNTRs() {
+		for(MObject ntr : ntrs){
+			NTRPropertyPage.updateNTRPlatform((ModelElement) ntr);
+		}
+		
+	}
+
+    private void updateSTRs() {
+		for(MObject str : strs){
+			STRPropertyPage.updateSTRPlatform((ModelElement) str);
+		}
+		
+	}
+
+	private void updateBOPs() {
+		for(MObject bop : bops){
+			PastOperatorPropertyPage.updatePastOperatorPlatform((ModelElement) bop);
+		}
+		
+		
+	}
+
+	private void updateStates() {
+		for(MObject contextState : states){
+				ContextStatePropertyPage.updateContextStatePlatform((ModelElement) contextState);
+		}
+	}
+	
+	private void updateSpecifications() {
+		for(MObject specification : specifications){
+				SpecificationPropertyPage.updateSpecificationPlatform((ModelElement) specification);
+		}
+	}
+	
+	
+
+	public void loadSpecifications() {
 	List<MObject> diagramElements = new ArrayList<>();
 	diagramElements = ModelioUtils.getInstance().getAllElements(DCaseModule.getInstance());
 

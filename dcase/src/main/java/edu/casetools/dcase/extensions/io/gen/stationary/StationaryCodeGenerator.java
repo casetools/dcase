@@ -6,24 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.modelio.metamodel.uml.infrastructure.Dependency;
-import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.extensions.io.gen.TemplateManager;
-import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.soi.SOIGenerator;
 import edu.casetools.dcase.extensions.io.gen.stationary.classes.DeploymentModuleGenerator;
 import edu.casetools.dcase.extensions.io.gen.stationary.classes.JavaActuatorGenerator;
 import edu.casetools.dcase.extensions.io.gen.stationary.classes.ObserverGenerator;
 import edu.casetools.dcase.extensions.io.gen.stationary.configs.ConfigurationGenerator;
 import edu.casetools.dcase.extensions.io.gen.stationary.configs.SSHConfigurationGenerator;
+import edu.casetools.dcase.extensions.io.gen.stationary.reasoner.MGenerator;
+import edu.casetools.dcase.extensions.io.gen.stationary.reasoner.MdData.PLATFORM;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
-import edu.casetools.rcase.module.api.RCaseProperties;
-import edu.casetools.rcase.module.api.RCaseStereotypes;
-import edu.casetools.rcase.module.i18n.I18nMessageService;
-import edu.casetools.rcase.module.impl.RCasePeerModule;
 import edu.casetools.rcase.utils.tables.TableUtils;
 
 public class StationaryCodeGenerator implements TemplateManager{
@@ -32,22 +27,39 @@ public class StationaryCodeGenerator implements TemplateManager{
 	private final String mReasoner = "\\mreasoner";
 	private final String configsFileName = "\\session.txt";
 	private final String sshConfigsFileName = "\\ssh_configs.txt";
-	
+	private final String specificationsFileName = "\\reasoning_rule_specification.mtpl";
 	 @Override
 	 public void generateTemplates(String folder){
-			getConfigurations(folder+configsFolder);
-			getSSHConfigurations(folder+configsFolder);
-			getJavaActuator(folder+mReasoner);
-			getDeploymentModule(folder+mReasoner);
+			getConfigs(folder+configsFolder);
+			getJavaCode(folder+mReasoner);
+			getSpecification(folder+configsFolder);
+	}
+
+	private void getSpecification(String folder) {
+			try {
+				MGenerator generator = new MGenerator();
+				generator.generate(folder+specificationsFileName,PLATFORM.STATIONARY);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+	private void getJavaCode(String folder) {
+		getJavaActuator(folder);
+		getDeploymentModuleAndObservers(folder);
+	}
+
+	private void getConfigs(String folder) {
+		getConfigurations(folder);
+		getSSHConfigurations(folder);
 	}
 	 
-	private void getDeploymentModule(String folder) {
+	private void getDeploymentModuleAndObservers(String folder) {
 			List<MObject> sensors = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
 					DCasePeerModule.MODULE_NAME, new ArrayList<>(), DCaseStereotypes.STEREOTYPE_STATIONARY_SENSOR);
-
 			generateDeploymentModule(folder, sensors);
 			generateObservers(folder,sensors);
-
 		}
 
 	private void getJavaActuator(String folder) {

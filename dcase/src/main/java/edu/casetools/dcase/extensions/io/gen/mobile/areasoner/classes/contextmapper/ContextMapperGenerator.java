@@ -12,8 +12,6 @@ import org.metawidget.util.simple.StringUtils;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.FieldSpec.Builder;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;

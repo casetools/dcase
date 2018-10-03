@@ -95,6 +95,15 @@ public class PastOperatorPropertyPage implements IPropertyContent {
 		new String[] { I18nMessageService.getString("Ui.PastOperator.Property.TagType.Strong"),
 			I18nMessageService.getString("Ui.PastOperator.Property.TagType.Weak") });
 
+	// TagPlatformValue
+	updatePastOperatorPlatform((ModelElement) element);
+	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PAST_OPERATOR_PLATFORM);
+	table.addConsultProperty(I18nMessageService.getString("Ui.Platform"), property);
+
+    }
+    
+    public static void updatePastOperatorPlatform(ModelElement element){
+    	ContextStatePropertyPage.putTagValue(element, DCaseProperties.PROPERTY_PAST_OPERATOR_PLATFORM, AntecedentPropertyPage.getAntecedentPlatformType(element));
     }
 
 }

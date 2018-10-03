@@ -12,6 +12,7 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.extensions.io.gen.stationary.reasoner.MGenerator;
+import edu.casetools.dcase.extensions.io.gen.stationary.reasoner.MdData.PLATFORM;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
@@ -52,7 +53,7 @@ public class GenerateM extends DefaultModuleCommandHandler {
 	    String file = dialog.open();
 	    if (!IOUtils.getInstance().checkIfExists(dialog.getFileName())) {
 		MGenerator generator = new MGenerator();
-		generator.generate(file);
+		generator.generate(file, PLATFORM.BOTH);
 		MessageDialog.openInformation(null, "Model Exported",
 			"Model exported to M at:\n" + dialog.getFileName());
 	    }

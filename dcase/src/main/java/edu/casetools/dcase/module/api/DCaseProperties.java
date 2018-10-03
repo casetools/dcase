@@ -217,6 +217,19 @@ public final class DCaseProperties {
 	public static final String PROPERTY_STATIONARY_SENSOR_MODEL_NAME = "TagStationarySensorModelName";
 	public static final String PROPERTY_STATIONARY_SENSOR_PHYSICAL_LOCATION = "TagStationarySensorPhysicalLocation";
 
+	public static final String PROPERTY_CONTEXT_STATE_PLATFORM = "TagStatePlatform";
+
+	public static final String PROPERTY_ANTECEDENT_GROUP_PLATFORM = "TagAntecedentGroupPlatform";
+
+	public static final String PROPERTY_STR_PLATFORM = "STPlatform";
+	public static final String PROPERTY_NTR_PLATFORM = "NTPlatform";
+
+	public static final String PROPERTY_ANTECEDENT_PLATFORM = "TagAntecedentPlatform";
+
+	public static final String PROPERTY_PAST_OPERATOR_PLATFORM = "TagOPlatform";
+
+	public static final String PROPERTY_SPECIFICATION_PLATFORM = "TagSpecificationPlatform";
+
 
     private DCaseProperties() {
 

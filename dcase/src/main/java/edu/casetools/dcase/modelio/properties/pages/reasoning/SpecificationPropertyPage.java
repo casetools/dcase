@@ -26,9 +26,12 @@ import java.util.logging.Logger;
 import org.eclipse.core.runtime.AssertionFailedException;
 import org.modelio.api.module.propertiesPage.IModulePropertyTable;
 import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
+import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
+import org.modelio.vcore.smkernel.mapi.MObject;
 
 import edu.casetools.dcase.module.api.DCaseProperties;
+import edu.casetools.dcase.module.api.DCaseStereotypes;
 import edu.casetools.dcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.modelio.properties.IPropertyContent;
@@ -62,20 +65,43 @@ public class SpecificationPropertyPage implements IPropertyContent {
     public void update(ModelElement element, IModulePropertyTable table) {
 	String property;
 
-	// TagSpecificationType
-	property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SPECIFICATION_TYPE);
-	table.addProperty(I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType"), property,
-		new String[] { I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.None"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.CTL"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.LTL"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.PSL"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Invariant"),
-			I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Compute") });
+		// TagSpecificationType
+		property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SPECIFICATION_TYPE);
+		table.addProperty(I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType"), property,
+			new String[] { I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.None"),
+				I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.CTL"),
+				I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.LTL"),
+				I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.PSL"),
+				I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Invariant"),
+				I18nMessageService.getString("Ui.Specification.Property.TagSpecificationType.Compute") });
+	
+		// TagSpecification
+		property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_SPECIFICATION, element);
+		table.addProperty(I18nMessageService.getString("Ui.Specification.Property.TagSpecification"), property);
+	
+		// TagPlatformValue
+		updateSpecificationPlatform((ModelElement) element);
+		property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_SPECIFICATION_PLATFORM);
+		table.addConsultProperty(I18nMessageService.getString("Ui.Platform"), property);
 
-	// TagSpecification
-	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_SPECIFICATION, element);
-	table.addProperty(I18nMessageService.getString("Ui.Specification.Property.TagSpecification"), property);
+	    }
+	    
+	    public static void updateSpecificationPlatform(ModelElement element){
+	    	ContextStatePropertyPage.putTagValue(element, DCaseProperties.PROPERTY_SPECIFICATION_PLATFORM, getSpecificationPlatformType(element));
+	    }
 
-    }
+		public static String getSpecificationPlatformType(ModelElement element) {
+			for(MObject child : element.getCompositionChildren()){
+				if(((ModelElement)child).isStereotyped("SysMLArchitect", "Allocate")){
+					if((((Dependency)child).getDependsOn()).isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_ANDROID_REASONER)){
+						return I18nMessageService.getString("Ui.Platform.Mobile");
+					} else if((((Dependency)child).getDependsOn()).isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_M_REASONER)){
+						return I18nMessageService.getString("Ui.Platform.Stationary");
+					}
+				}
+			}
+			
+			return I18nMessageService.getString("Ui.Platform.Unknown");
+		}
 
 }

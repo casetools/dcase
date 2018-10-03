@@ -48,10 +48,13 @@ import edu.casetools.dcase.modelio.properties.pages.deployment.VeraRouterPropert
 import edu.casetools.dcase.modelio.properties.pages.info.InfoPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.info.MessagePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.AbsolutePastOperatorPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.AntecedentGroupPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.AntecedentPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.ContextStatePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.ImmediatePastOperatorPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.InternalTimeStatePropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.NTRPropertyPage;
+import edu.casetools.dcase.modelio.properties.pages.reasoning.STRPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.reasoning.SpecificationPropertyPage;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
@@ -167,6 +170,10 @@ public class PropertyManager {
 	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.PROPERTY_CONSEQUENT_STATE_NAME,
 		    DCaseProperties.PROPERTY_CONSEQUENT_STATE_VALUE,false);
 	}
+	
+	if (ster.getName().equals(DCaseStereotypes.STEREOTYPE_ANTECEDENT_GROUP)) {
+		    this.propertyPage = new AntecedentGroupPropertyPage();
+		}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
 		DCaseStereotypes.STEREOTYPE_IMMEDIATE_PAST_OPERATOR, DCaseModule.getInstance().getModuleContext()
@@ -264,6 +271,16 @@ public class PropertyManager {
 				.getMClass(Class.class)))) {
 		    this.propertyPage = new AndroidReasonerPropertyPage();
 		}	
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_SAME_TIME,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Dependency.class)))) {
+		    this.propertyPage = new STRPropertyPage();
+		}	
+	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_NEXT_TIME,
+			DCaseModule.getInstance().getModuleContext().getModelioServices().getMetamodelService().getMetamodel()
+				.getMClass(Dependency.class)))) {
+		    this.propertyPage = new NTRPropertyPage();
+		}			
 	if (ster.getName().equals(DCaseStereotypes.STEREOTYPE_VERA_ROUTER)) {
 		    this.propertyPage = new VeraRouterPropertyPage();
 		}			
