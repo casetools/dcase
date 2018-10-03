@@ -9,23 +9,29 @@ import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import edu.casetools.dcase.extensions.io.gen.mobile.acontextlibrary.ACLGenerator;
+import edu.casetools.dcase.extensions.io.gen.mobile.MobileCodeGenerator;
+import edu.casetools.dcase.extensions.io.gen.stationary.StationaryCodeGenerator;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.rcase.utils.ModelioUtils;
 
 public class GenerateMobileCode extends DefaultModuleCommandHandler {
 
-	private static final String aContextLibraryFolder = "\\aContextLibrary";
+	private static final String mobileFolder = "\\mobile";
+	private static final String stationaryFolder = "\\stationary";
 	
     @Override
     public void actionPerformed(List<MObject> arg0, IModule arg1) {
     String projectName = ModelioUtils.getInstance().getProjectName(DCaseModule.getInstance()).replaceAll("\\s", "");
 	DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent().getActiveShell());
-	String path = dialog.open();
-	path = path.concat("\\").concat(projectName).concat(aContextLibraryFolder);
-	ACLGenerator generator = new ACLGenerator();
-	generator.generateTemplates(path);
-	MessageDialog.openInformation(null, "Model Exported", "Android code skeleton generated at:\n" + path);
+	String selectedPath = dialog.open();
+	
+	String path = selectedPath.concat("\\").concat(projectName).concat(mobileFolder);
+	MobileCodeGenerator mobileGenerator = new MobileCodeGenerator();
+	mobileGenerator.generateTemplates(path);
+	path = selectedPath.concat("\\").concat(projectName).concat(stationaryFolder);
+	StationaryCodeGenerator stationaryGenerator = new StationaryCodeGenerator();
+	stationaryGenerator.generateTemplates(path);
+	MessageDialog.openInformation(null, "Model Exported", "All code skeletons have been generated at:\n" + selectedPath);
     }
 
 }

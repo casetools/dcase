@@ -185,7 +185,7 @@ public class SOIGenerator implements ClassTemplate{
 		for(MObject contextAttribute:contextAttributeList){
 			List<MObject> sensors = getContextPrefAttributeSensors(contextAttribute);
 			for(MObject sensor : sensors){
-				
+
 				for(MObject rule : getSensorRules(sensor,DCaseStereotypes.STEREOTYPE_FEEDS_IN_WINDOW)){
 					generateModellingRule(rule);
 					handleReasoningRuleFromModellingRule(rule);
@@ -205,6 +205,7 @@ public class SOIGenerator implements ClassTemplate{
 				//FIND STR
 		for(MObject contextState : contextStates){
 			reasoningRules = getReasoningRulesFromContextState(contextState,reasoningRules);
+			reasoningRules.addAll(getDependentContextStatesRules(contextState, reasoningRules));
 		}
 		for(Rule reasoningRule : reasoningRules){
 			if(!checkIsRepeated(reasoningRule)){
@@ -214,6 +215,34 @@ public class SOIGenerator implements ClassTemplate{
 		}
 	}
 	
+	private List<Rule> getDependentContextStatesRules(MObject contextState, List<Rule> reasoningRules) {
+		List<Rule> dependentContextStatesRules = new ArrayList<Rule>();
+		
+		for(Rule str : reasoningRuleData.getStrs()){
+			for(RuleElement antecedent : str.getAntecedents()){
+				if(antecedent.getName().equals(contextState.getName())){
+					if(!reasoningRules.contains(str) && !usedRules.contains(str)){
+						dependentContextStatesRules.add(str);
+						usedRules.add(str);
+					}
+				}
+			}
+		} 
+		
+		for(Rule ntr : reasoningRuleData.getNtrs()){
+			for(RuleElement antecedent : ntr.getAntecedents()){
+				if(antecedent.getName().equals(contextState.getName())){
+					if(!reasoningRules.contains(ntr) && !usedRules.contains(ntr)){
+						dependentContextStatesRules.add(ntr);
+						usedRules.add(ntr);
+					}
+				}
+			}
+		} 
+		
+		return dependentContextStatesRules;
+	}
+
 	private boolean checkIsRepeated(Rule reasoningRule) {
 		for(Rule storedRule : this.usedRules){
 			if(storedRule.equals(reasoningRule)){
