@@ -13,10 +13,10 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 import edu.casetools.dcase.extensions.io.gen.TemplateManager;
 import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.contextmapper.ContextMapperGenerator;
 import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.ontologies.OntologyManagerGenerator;
+import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.prefs.PreferencesGenerator;
 import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.soi.SOIGenerator;
 import edu.casetools.dcase.module.api.DCaseProperties;
 import edu.casetools.dcase.module.api.DCaseStereotypes;
-import edu.casetools.rcase.module.i18n.I18nMessageService;
 import edu.casetools.dcase.module.impl.DCaseModule;
 import edu.casetools.dcase.module.impl.DCasePeerModule;
 import edu.casetools.rcase.module.api.RCaseProperties;
@@ -31,7 +31,26 @@ public class AReasonerGenerator implements TemplateManager{
 	 public void generateTemplates(String folder){
 			getAndroidReasoner(folder);
 			getSituationsOfInterest(folder); 
+			getPreferences(folder);
 	 }
+
+		private void getPreferences(String folder) {
+			List<MObject> preferences = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
+				DCasePeerModule.MODULE_NAME, new ArrayList<>(), DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR);
+			List<MObject> filteredPreferences = new ArrayList<>();
+			
+			for(MObject preference: preferences){
+				for(MObject dependency : preference.getCompositionChildren()){
+					if( ((ModelElement)dependency).isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_FEEDS)){
+						MObject rule = ((Dependency) dependency).getDependsOn();
+						if(((ModelElement) rule).isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_RDF_MODELLING_RULE)){
+							filteredPreferences.add(preference);
+						}
+					}
+				}
+			}
+			generatePreferences(folder, filteredPreferences);
+		}
 
 		private List<MObject> getAndroidReasoner(String folder) {
 			List<MObject> androidReasonerList = new ArrayList<>();
@@ -90,7 +109,7 @@ public class AReasonerGenerator implements TemplateManager{
 			if(detectionPlan instanceof ModelElement){
 				String result = ((ModelElement) detectionPlan).getTagValue(RCasePeerModule.MODULE_NAME,
 			    RCaseProperties.PROPERTY_SITUATION_DETECTION_PLAN_TOBEIMPLEMENTED);
-			    if(result.equalsIgnoreCase(I18nMessageService.getString("Ui.SituationDetectionPlan.Property.TagToBeImplemented.True")))
+			    if(result.equalsIgnoreCase("True"))
 			    	return true;
 			}
 			return false;
@@ -132,6 +151,15 @@ public class AReasonerGenerator implements TemplateManager{
 	    private void generateSituationOfInterest(String folder, MObject soi, List<MObject> contextAttributeList) {
 	    	try {
 	    		new SOIGenerator(soi,contextAttributeList).generate().writeTo(new File(folder));
+			} catch (IOException e) {
+			    e.printStackTrace();
+			}
+
+	    }
+	    
+	    private void generatePreferences(String folder, List<MObject> preferences) {
+	    	try {
+	    		new PreferencesGenerator(preferences).generate().writeTo(new File(folder));
 			} catch (IOException e) {
 			    e.printStackTrace();
 			}

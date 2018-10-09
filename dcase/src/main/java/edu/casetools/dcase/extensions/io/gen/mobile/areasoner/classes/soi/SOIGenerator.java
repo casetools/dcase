@@ -22,6 +22,7 @@ import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.TypeSpec.Builder;
 
 import edu.casetools.dcase.extensions.io.gen.ClassTemplate;
+import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.classes.prefs.PreferencesGenerator;
 import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.csparql.CSPARQLWriter;
 import edu.casetools.dcase.extensions.io.gen.mobile.areasoner.reasoner.MobileReasoner;
 import edu.casetools.dcase.extensions.io.gen.stationary.reasoner.MdData;
@@ -42,9 +43,10 @@ public class SOIGenerator implements ClassTemplate{
 	private List<FieldSpec>  reasoningFields;
 	private List<MethodSpec> reasoningMethods;
 	private List<Rule> 		 usedRules;
-	private List<String>	 modellingRuleMethodNames;
+	private List<MObject>	 modellingRules;
 	private List<String>	 reasoningRuleMethodNames;
-	private MData reasoningRuleData;
+	private MData 			 reasoningRuleData;
+	private List<MObject>    preferences;
 	
 	public SOIGenerator(MObject soi, List<MObject> contextAttributeList){
 		this.soi 				  		= soi;
@@ -54,8 +56,9 @@ public class SOIGenerator implements ClassTemplate{
 		this.reasoningFields      		= new ArrayList<FieldSpec>();
 		this.reasoningMethods     	  	= new ArrayList<MethodSpec>();	
 		this.usedRules 			  	 	= new ArrayList<Rule>();
-	    this.modellingRuleMethodNames 	= new ArrayList<String>();
+	    this.modellingRules 			= new ArrayList<MObject>();
 	    this.reasoningRuleMethodNames 	= new ArrayList<String>();
+	    this.preferences			 	= new ArrayList<MObject>();
 	    MdData dData   			  	  	= new MdData();
 	    dData.loadDiagramElements();
 	    this.reasoningRuleData        	= dData.getMData();
@@ -122,14 +125,16 @@ public class SOIGenerator implements ClassTemplate{
 		typeSpecBuilder = typeSpecBuilder.addMethod(generateUnRegisterSOIMethod());
 		return typeSpecBuilder;
 	}
+	
 
 	private MethodSpec generateRegisterSOIMethod() {
-		// TODO CREATE PREFERENCES VARIABLES
 		ClassName reasonerManager = ClassName.get("org.poseidon_project.context.reasoner", "ReasonerManager");
 		ClassName abstractContextMapper = ClassName.get("org.poseidon_project.context.reasoner", "AbstractContextMapper");
 		ClassName dataLogger = ClassName.get("org.poseidon_project.context.logging", "DataLogger");
 		ClassName sharedPreferences = ClassName.get("android.content", "SharedPreferences");
+		ClassName prefs = ClassName.get("edu.casetools.icase.custom.preferences", "Preferences");
 
+		
 		MethodSpec.Builder builder =   MethodSpec.methodBuilder("registerSituationOfInterest")
 				 .addModifiers(Modifier.PUBLIC)
 				 .returns(boolean.class)
@@ -139,10 +144,19 @@ public class SOIGenerator implements ClassTemplate{
 				 .addParameter(dataLogger, "mLogger")
 				 .addParameter(String.class, "logTag")
 				 .addParameter(Map.class, "parameters");
+		for(MObject preference : preferences){
+		builder.addStatement("String $L    = String.valueOf(mRuleSettings.get$L($T.$L, $L))", 
+				preference.getName().replaceAll("\\s+", "_"),
+				PreferencesGenerator.getPreferenceDataType(preference),
+				prefs,
+				StringUtils.uncamelCase(preference.getName()).replaceAll("\\s+", "_").toUpperCase(), PreferencesGenerator.getPreferenceValue(preference));
+		}
+		
 		 builder.addStatement("$L", "boolean okExit = true");
-		 for(int i=0;i<modellingRuleMethodNames.size();i++){
-			 builder.addStatement("eu.larkc.csparql.core.engine.CsparqlQueryResultProxy c$L = mReasonerManager.registerCSPARQLQuery(get$L())", i,modellingRuleMethodNames.get(i)); //TODO ADD PREFERENCE VARIABLES
-			 builder.addStatement("okExit = contextMapper.registerModellingRule(\"$L\", c$L, okExit)", modellingRuleMethodNames.get(i),i);
+		 for(int i=0;i<modellingRules.size();i++){
+			 String ruleName = StringUtils.uppercaseFirstLetter(StringUtils.camelCase(modellingRules.get(i).getName(),' '));
+			 builder.addStatement("eu.larkc.csparql.core.engine.CsparqlQueryResultProxy c$L = mReasonerManager.registerCSPARQLQuery(get$L($L))", i,ruleName, getProperties(modellingRules.get(i))); //TODO ADD PREFERENCE VARIABLES
+			 builder.addStatement("okExit = contextMapper.registerModellingRule(\"$L\", c$L, okExit)", ruleName,i);
 		 }
 		 for(int i=0;i<reasoningRuleMethodNames.size();i++){
 			 builder.addStatement("mReasonerManager.registerReasoningRule(\"$L\", get$L())", reasoningRuleMethodNames.get(i),reasoningRuleMethodNames.get(i)); //TODO ADD PREFERENCE VARIABLES
@@ -151,6 +165,25 @@ public class SOIGenerator implements ClassTemplate{
 		 builder.addStatement("mLogger.logVerbose(DataLogger.REASONER, logTag, \"Registered $L Situation of Interest\")", StringUtils.uppercaseFirstLetter(StringUtils.camelCase(soi.getName(),' ')+"SOI"));
 		 builder.addStatement("return contextMapper.addObserverRequirementWithParameters(\"engine\", \"$L\",okExit, parameters)", StringUtils.uppercaseFirstLetter(StringUtils.camelCase(soi.getName(),' ')+"SOI"));
 		 return builder.build();
+	}
+
+	private String getProperties(MObject rule) {
+		String result = "";
+		for(Dependency relation : ((ModelElement)rule).getImpactedDependency()){
+			if(relation.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_FEEDS)){
+				MObject element = ((Dependency)relation).getImpacted();
+				if(((ModelElement)element).isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR)){
+					if(result.equals("")){
+						result = element.getName();
+					} else {
+						result = result + ", "+ element.getName();
+					}
+				}
+			}
+		}
+		
+		
+		return result;
 	}
 
 	private MethodSpec generateUnRegisterSOIMethod() {
@@ -168,8 +201,8 @@ public class SOIGenerator implements ClassTemplate{
 				 .addParameter(dataLogger, "mLogger")
 				 .addParameter(String.class, "logTag");
 		 builder.addStatement("boolean okExit = contextMapper.removeObserverRequirement(\"engine\", \"$L\")", StringUtils.uppercaseFirstLetter(StringUtils.camelCase(soi.getName(),' ')+"SOI"));
-		 for(int i=0;i<modellingRuleMethodNames.size();i++){
-			 builder.addStatement("okExit = contextMapper.unregisterModellingRule(\"$L\", okExit)", modellingRuleMethodNames.get(i));
+		 for(int i=0;i<modellingRules.size();i++){
+			 builder.addStatement("okExit = contextMapper.unregisterModellingRule(\"$L\", okExit)", StringUtils.uppercaseFirstLetter(StringUtils.camelCase(modellingRules.get(i).getName(),' ')));
 		 }
 		 for(int i=0;i<reasoningRuleMethodNames.size();i++){
 			 builder.addStatement("mReasonerManager.unregisterReasoningRule(\"$L\")", reasoningRuleMethodNames.get(i)); //TODO ADD PREFERENCE VARIABLES
@@ -183,17 +216,13 @@ public class SOIGenerator implements ClassTemplate{
 	private void generateRules() {
 	
 		for(MObject contextAttribute:contextAttributeList){
-			List<MObject> sensors = getContextPrefAttributeSensors(contextAttribute);
+			List<MObject> sensors = getContextAttributeSensors(contextAttribute);
 			for(MObject sensor : sensors){
 
 				for(MObject rule : getSensorRules(sensor,DCaseStereotypes.STEREOTYPE_FEEDS_IN_WINDOW)){
 					generateModellingRule(rule);
 					handleReasoningRuleFromModellingRule(rule);
-				}
-				for(MObject rule : getSensorRules(sensor,DCaseStereotypes.STEREOTYPE_FEEDS)){
-					// TO BE IMPLEMENTED: FEATURE FOR GENERATING PREFS
-				}
-				
+				}				
 			}
 		}
 	}
@@ -282,22 +311,57 @@ public class SOIGenerator implements ClassTemplate{
 
 	private void generateModellingRule(MObject rule) {
 		StringBuilder result = new StringBuilder(150);
-		this.modellingFields.add(generateField(rule.getName(), CSPARQLWriter.generateCSPARQLQuery(result, (ModelElement)rule).toString()));
-		this.modellingMethods.add(generateMethod(rule.getName()));
-	    this.modellingRuleMethodNames.add(StringUtils.uppercaseFirstLetter(StringUtils.camelCase(rule.getName(),' ')));
+		String name = StringUtils.lowercaseFirstLetter(StringUtils.camelCase(rule.getName(),' '));
+		this.modellingFields.add(generateField(name, CSPARQLWriter.generateCSPARQLQuery(result, (ModelElement)rule).toString()));
+		MethodSpec.Builder methodBuilder = generateMethod(name);
+		for(MObject preference : getRulePreferences(rule)){
+			String preferenceName = StringUtils.lowercaseFirstLetter(StringUtils.camelCase(preference.getName(),' ')+"Value");
+			methodBuilder.addParameter(String.class, preferenceName);
+			methodBuilder.addStatement("query = query.replace($S, String.valueOf($L))", "$$"+ StringUtils.uppercaseFirstLetter(StringUtils.camelCase(preference.getName())), preferenceName);
+		}
+		methodBuilder.addStatement("$L", "return query");
+		this.modellingMethods.add(methodBuilder.build());
+	    this.modellingRules.add(rule);
+	    getPreferences(rule);
 	}
-	
+
+	private void getPreferences(MObject rule) {
+		for(Dependency relation : ((ModelElement)rule).getImpactedDependency()){
+			if(relation.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_FEEDS)){
+				ModelElement element = (ModelElement) relation.getImpacted();
+				if(element.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR)){
+					preferences.add(element);
+				}
+			}
+		}
+		
+	}
+
+	private List<MObject> getRulePreferences(MObject rule) {
+		List<MObject> preferences = new ArrayList<>();
+		for(Dependency relation : ((ModelElement)rule).getImpactedDependency()){
+			if(relation.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_FEEDS)){
+				ModelElement sensor = (ModelElement) relation.getImpacted();
+				if(sensor.isStereotyped(DCasePeerModule.MODULE_NAME, DCaseStereotypes.STEREOTYPE_PREFERENCE_SENSOR)){
+					preferences.add(sensor);
+				}
+			}
+		}
+		return preferences;
+	}
+
 	private void generateReasoningRule(Rule rule) {
 		String name = StringUtils.camelCase(soi.getName(),' ')+StringUtils.camelCase(rule.getConsequent().getName(),' ');
 		this.reasoningFields.add(generateField(name, MobileReasoner.generateReasoningRuleQuery(rule).toString()));
-		this.reasoningMethods.add(generateMethod(name));
+		this.reasoningMethods.add(generateMethod(name).addStatement("return query").build());
 		this.reasoningRuleMethodNames.add(StringUtils.uppercaseFirstLetter(StringUtils.camelCase(name,' ')));
 	}
 	
-	private MethodSpec generateMethod(String name) {
-		return MethodSpec.methodBuilder("get"+StringUtils.uppercaseFirstLetter(StringUtils.camelCase(name,' '))).addModifiers(Modifier.PUBLIC)
-				.returns(String.class).addStatement("$L", "return "+name)
-				.build();
+	private MethodSpec.Builder generateMethod(String name) {
+		return MethodSpec.methodBuilder("get"+StringUtils.uppercaseFirstLetter(StringUtils.camelCase(name,' ')))
+				.addModifiers(Modifier.PUBLIC)
+				.addStatement("String query = new String($L)",name)
+				.returns(String.class);
 	}
 	
 	private FieldSpec generateField(String name, String query){
@@ -325,7 +389,7 @@ public class SOIGenerator implements ClassTemplate{
 	    		stereotype);
 	}
 
-	private List<MObject> getContextPrefAttributeSensors(MObject contextAttribute) {
+	private List<MObject> getContextAttributeSensors(MObject contextAttribute) {
 		List<MObject> contextAttributeSensorList = new ArrayList<MObject>();
 		List<MObject> sensorList = TableUtils.getInstance().getAllElementsStereotypedAs(DCaseModule.getInstance(), 
 				DCasePeerModule.MODULE_NAME, new ArrayList<MObject>(), DCaseStereotypes.STEREOTYPE_MOBILE_SENSOR);

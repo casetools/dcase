@@ -203,7 +203,7 @@ public class DeploymentModuleGenerator implements ClassTemplate{
 						if(isStereotyped(modellingRuleChild, DCaseStereotypes.STEREOTYPE_PRODUCE)){
 							MObject contextState = ((Dependency)modellingRuleChild).getDependsOn();
 							if(isStereotyped(contextState, DCaseStereotypes.STEREOTYPE_CONTEXT_STATE))
-									contextStates.add(((Dependency)element).getDependsOn());	
+									contextStates.add(((Dependency)modellingRuleChild).getDependsOn());	
 						}
 					}
 

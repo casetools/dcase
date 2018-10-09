@@ -52,10 +52,10 @@ public class PreferenceSensorPropertyPage implements IPropertyContent {
 			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MAX_VALUE,
 					value);
 		break;
-	    case 3:
-		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PREFERENCE_SENSOR_IS_BOOLEAN,
+	    case 4:
+		element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PREFERENCE_SENSOR_DEFAULT_VALUE,
 			value);
-		break;
+		break;		
 	    default:
 		break;
 	    }
@@ -67,24 +67,34 @@ public class PreferenceSensorPropertyPage implements IPropertyContent {
 
     @Override
     public void update(ModelElement element, IModulePropertyTable table) {
-	String property;
 
-		// TagId
-		String string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MIN_VALUE, element);
-		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.MinValue"), string);
+
+		// Min Value
+		String property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MIN_VALUE, element);
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.MinValue"), property);
 		
-		string = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MAX_VALUE, element);
-		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.MaxValue"), string);
+		// Max Value
+		property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_PREFERENCE_SENSOR_MAX_VALUE, element);
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.MaxValue"), property);
 
-	
-		// TagDataType
+		//Is boolean
 		property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PREFERENCE_SENSOR_IS_BOOLEAN);
-		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean"),
-			property,
-			new String[] {
-				I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean.True"),
-				I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean.False") });
+		table.addConsultProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean"),
+			getIsBoolean(property));
+		
+		// Default value
+		property = element.getTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_PREFERENCE_SENSOR_DEFAULT_VALUE);		
+		table.addProperty(I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.DefaultValue"),
+			property);
 
     }
+
+	private String getIsBoolean(String property) {
+		if(property.equals(I18nMessageService.getString("Ui.SensorPropertyPage.Property.TagValueType.Boolean"))){
+			return I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean.True");
+		} else {
+			return I18nMessageService.getString("Ui.PreferenceSensorPropertyPage.Property.IsBoolean.False");
+		}
+	}
 
 }
