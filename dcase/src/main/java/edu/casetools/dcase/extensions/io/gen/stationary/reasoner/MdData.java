@@ -118,7 +118,8 @@ public class MdData {
     	bops.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_PAST_OPERATOR_PLATFORM, bops));
     	strs.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_STR_PLATFORM, strs));
     	ntrs.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_NTR_PLATFORM, ntrs));   
-    	antecedentGroups.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_ANTECEDENT_GROUP_PLATFORM, antecedentGroups));        	
+    	antecedentGroups.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_ANTECEDENT_GROUP_PLATFORM, antecedentGroups)); 
+    	specifications.removeAll(filter(removeFilter, DCaseProperties.PROPERTY_SPECIFICATION_PLATFORM, specifications));   
     }
 
 	private List<MObject> filter(String removeFilter, String property, List<MObject> list) {

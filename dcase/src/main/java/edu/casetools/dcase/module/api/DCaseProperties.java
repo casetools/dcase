@@ -92,7 +92,8 @@ public final class DCaseProperties {
      * Rule Diagram Related Properties
      **************************************************************************/
 
-    public static final String PROPERTY_MAX_EXECUTION_TIME = "TagExecutionTime";
+    public static final String PROPERTY_MREASONER_MAX_EXECUTION_TIME = "TagExecutionTime";
+    public static final String PROPERTY_ANDROID_MAX_EXECUTION_TIME = "TagAndroidMaxExecutionTime";
 
     /****************************************************************************
      * Specification Related Properties

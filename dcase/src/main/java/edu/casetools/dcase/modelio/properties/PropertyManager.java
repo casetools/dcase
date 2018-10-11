@@ -30,7 +30,6 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.Class;
 
-import edu.casetools.dcase.modelio.properties.pages.RuleDiagramPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.acqmod.DBModellingRulePropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.acqmod.FeedsInWindowPropertyPage;
 import edu.casetools.dcase.modelio.properties.pages.acqmod.MobileSensorPropertyPage;
@@ -144,12 +143,6 @@ public class PropertyManager {
 			.getMClass(Class.class)))) {
 	    this.propertyPage = new AntecedentPropertyPage(DCaseProperties.PROPERTY_ANTECEDENT_STATE_NAME,
 		    DCaseProperties.PROPERTY_ANTECEDENT_STATE_VALUE,true);
-	}
-
-	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,
-		DCaseStereotypes.STEREOTYPE_DIAGRAM_REASONING, DCaseModule.getInstance().getModuleContext()
-			.getModelioServices().getMetamodelService().getMetamodel().getMClass(StaticDiagram.class)))) {
-	    this.propertyPage = new RuleDiagramPropertyPage();
 	}
 
 	if (ster.equals(extensions.getStereotype(DCasePeerModule.MODULE_NAME,

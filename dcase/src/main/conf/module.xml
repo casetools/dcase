@@ -5,7 +5,7 @@
         <PathEntry path="lib/jdom2-2.0.6.jar"/>
         <PathEntry path="lib/contextmodeller-0.2.0.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
-        <PathEntry path="lib/rcase-0.4.8.jar"/>
+        <PathEntry path="lib/rcase-0.4.9.jar"/>
         <PathEntry path="lib/javapoet-1.8.0.jar"/>
         <PathEntry path="lib/m2nusmv-0.2.3.jar"/>
         <PathEntry path="lib/metawidget-all-1.20.jar"/>
@@ -257,6 +257,7 @@
                 <TagTypes>
                     <TagType name="TagAndroidReasonerOntologyBase" uid="7838ee7e-2b4b-4e86-8a1a-d341207c2f90" label="%AndroidReasonerStereotype.properties.ontologyBase" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="TagAndroidReasonerStreamIRI" uid="089ed2b8-6b8d-4165-9830-47a0abd28d95" label="%AndroidReasonerStereotype.properties.streamIRI" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="TagAndroidMaxExecutionTime" uid="f7cca85b-bfdd-4a7a-9e9a-250a9a50201b" label="%MReasonerStereotype.properties.hasMaxExecutionTime" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="SourceStereotype" metaclass="Dependency" is-hidden="false" label="%SourceStereotype.label" uid="942e2075-1ab4-4d14-b30d-484b3ae6317b">

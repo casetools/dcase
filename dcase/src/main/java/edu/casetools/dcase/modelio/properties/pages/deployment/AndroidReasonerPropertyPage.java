@@ -49,6 +49,9 @@ public class AndroidReasonerPropertyPage implements IPropertyContent {
 		    case 2:
 			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_ANDROID_REASONER_STREAM_IRI, value);
 			break;
+		    case 3:
+			element.putTagValue(DCasePeerModule.MODULE_NAME, DCaseProperties.PROPERTY_ANDROID_MAX_EXECUTION_TIME, value);
+			break;
 		    default:
 			break;
 	    }
@@ -70,6 +73,8 @@ public class AndroidReasonerPropertyPage implements IPropertyContent {
 	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_ANDROID_REASONER_STREAM_IRI, element);
 	table.addProperty(I18nMessageService.getString("Ui.AndroidReasoner.Property.StreamIRI"), property);
 	
+	property = PropertiesUtils.getInstance().getTaggedValue(DCaseProperties.PROPERTY_ANDROID_MAX_EXECUTION_TIME, element);
+	table.addProperty(I18nMessageService.getString("Ui.RuleDiagram.Property.ExecutionTime"), property);
 
     }
     
